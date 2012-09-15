@@ -199,8 +199,7 @@ function start_el(&$output, $item, $depth, $args) {
 				foreach ( $display_roles as $role => $name ) {
 
 					/* If the role has been selected, make sure it's checked. */
-					$checked =  is_array( $checked_roles ) && in_array( $role, $checked_roles ) ? ' checked="checked" ' : ''; 
-
+                    $checked = checked( true, ( is_array( $checked_roles ) && in_array( $role, $checked_roles ) ), false );
 					?>
 
 					<label for="nav_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>">
