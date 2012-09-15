@@ -20,8 +20,6 @@ class Nav_Menu_Role_Walker extends Walker_Nav_Menu {
 	 */
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) { 
 
-		var_dump($item->roles);
-
 		if ( isset( $item->roles ) && ! empty ( $item->roles ) ) {
 
 			$visible = false;
