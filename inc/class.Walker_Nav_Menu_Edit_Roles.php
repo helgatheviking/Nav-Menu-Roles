@@ -251,5 +251,3 @@ function start_el(&$output, $item, $depth, $args) {
     $output .= ob_get_clean();
     }
 }
-
-?>
