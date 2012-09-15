@@ -36,5 +36,3 @@ class Nav_Menu_Role_Walker extends Walker_Nav_Menu {
 	}
 
 }
-
-?>
