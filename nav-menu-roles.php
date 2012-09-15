@@ -171,5 +171,3 @@ endif; // class_exists check
 */
 global $Nav_Menu_Roles;
 $Nav_Menu_Roles = new Nav_Menu_Roles();
-
-?>
