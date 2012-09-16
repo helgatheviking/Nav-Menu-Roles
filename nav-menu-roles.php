@@ -104,7 +104,7 @@ class Nav_Menu_Roles {
      */
 
     function load_text_domain() {
-        load_plugin_textdomain( 'nav_menu_roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+        load_plugin_textdomain( 'nav-menu-roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     }
 
     /**
