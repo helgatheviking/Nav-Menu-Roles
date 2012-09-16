@@ -149,6 +149,11 @@ class Nav_Menu_Roles {
             }
            update_post_meta( $menu_item_db_id, '_nav_menu_role', $custom_roles );
         }
+
+        if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id] ) ) {  
+           update_post_meta( $menu_item_db_id, '_nav_menu_logged_in_out', $_POST['nav-menu-logged-in-out'][$menu_item_db_id] );
+        }
+
     }
 
     /**
