@@ -174,10 +174,10 @@ function start_el(&$output, $item, $depth, $args) {
             <?php
 
             /*
-             * This is the added field
+             * This is the added section
              */
 
-			global $wp_roles; 
+            global $wp_roles; 
 
 			$display_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
 
@@ -185,16 +185,33 @@ function start_el(&$output, $item, $depth, $args) {
             $checked_roles = get_post_meta( $item->ID, '_nav_menu_role', true );
 			
             $logged_in_out = get_post_meta( $item->ID, '_nav_menu_logged_in_out', true );
-            if( ! $logged_in_out ) $logged_in_out = 'either';
 
 			?>
 
-
 			<input type="hidden" name="nav-menu-role-nonce" value="<?php echo wp_create_nonce( 'nav-menu-nonce-name' ); ?>" />
 
-			<p class="field-nav_menu_role nav_menu_role description-wide">
+            <p class="field-nav_menu_role nav_menu_logged_in_out description-wide">
+                <strong><?php _e( "Display Mode", 'nav-menu-roles' ); ?></strong><br>
+                <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>">
+                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" /> 
+                            <?php _e( 'All Logged Out', 'nav-menu-roles'); ?>
+                </label>
+                <label for="nav_menu_logged_in-for-<?php echo $item->ID ;?>">
+                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" /> 
+                            <?php _e( 'All Logged In', 'nav-menu-roles'); ?>
+                </label>
+                <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>">
+                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" /> 
+                            <?php _e( 'By Role', 'nav-menu-roles'); ?>
+                </label>
+                <br/>
+                <span class="nav-menu-roles description"><?php _e( "Limit display of this menu item to users who are logged in or out, or customize by role.", 'nav-menu-roles' ); ?></span>
 
-			<?php _e( "Access Role", 'nav-menu-roles' ); ?><br>
+            </p>
+
+            <p class="field-nav_menu_role nav_menu_role description-wide">
+
+			<strong><?php _e( "Access Role", 'nav-menu-roles' ); ?></strong><br/>
 
 			<?php
 					
@@ -216,27 +233,10 @@ function start_el(&$output, $item, $depth, $args) {
 					<span class="nav-menu-roles description"><?php _e( "Limit display of this menu item to users of selected roles.", 'nav-menu-roles' ); ?></span>
 
 				</p>
-            <p class="field-nav_menu_role nav_menu_logged_in_out description-wide">
-                <?php _e( "Logged in or out", 'nav-menu-roles' ); ?><br>
-                <label for="nav_menu_logged_in-for-<?php echo $item->ID ;?>">
-                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" /> 
-                            <?php _e( 'Logged In', 'nav-menu-roles'); ?>
-                </label>
-                <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>">
-                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" /> 
-                            <?php _e( 'Logged Out', 'nav-menu-roles'); ?>
-                </label>
-                <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>">
-                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'either', $logged_in_out ); ?> value="either" /> 
-                            <?php _e( 'Either', 'nav-menu-roles'); ?>
-                </label>
-                <br/>
-                <span class="nav-menu-roles description"><?php _e( "Limit display of this menu item to users who are logged in or out.", 'nav-menu-roles' ); ?></span>
 
-            </p>
             <?php
             /*
-             * end added field
+             * end added section
              */
             ?>
             <div class="menu-item-actions description-wide submitbox">
