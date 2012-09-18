@@ -148,6 +148,8 @@ class Nav_Menu_Roles {
                 if ( array_key_exists ( $role, $allowed_roles ) ) $custom_roles[] = $role;
             }
            update_post_meta( $menu_item_db_id, '_nav_menu_role', $custom_roles );
+        } else {
+            delete_post_meta( $menu_item_db_id, '_nav_menu_role' ); 
         }
 
         if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id] ) ) {  
