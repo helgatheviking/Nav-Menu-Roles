@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nav Menu Roles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-15 13:24-0600\n"
-"PO-Revision-Date: 2012-09-15 13:26-0600\n"
+"POT-Creation-Date: 2012-09-18 09:33-0500\n"
+"PO-Revision-Date: 2012-09-18 09:33-0500\n"
 "Last-Translator: \n"
 "Language-Team: helgatheviking <helgatheviking@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -12,12 +12,35 @@ msgstr ""
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__\n"
 "X-Poedit-Basepath: C:\\Users\\Helga\\wamp\\www\\test\\wp-content\\plugins"
 "\\nav-menu-roles\n"
+"X-Generator: Poedit 1.5.3\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:194
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:196
+msgid "Display Mode"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:199
+msgid "All Logged Out"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:203
+msgid "All Logged In"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:207
+msgid "By Role"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:210
+msgid ""
+"Limit display of this menu item to users who are logged in or out, or "
+"customize by role."
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:216
 msgid "Access Role"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:214
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:235
 msgid "Limit display of this menu item to users of selected roles."
 msgstr ""
