@@ -22,6 +22,9 @@ This plugin lets you hide custom menu items based on user roles.
 1. If you chose customize by role, then you you can check the boxes next to the roles you'd like to restrict visibility to.
 1. If you choose 'By Role' and don't check any boxes, the item will be visible to everyone like normal. 
 
+== Screenshots ==
+1. Show the new options for the menu items in the admin menu customizer
+
 == Changelog ==
 
 = 1.0 =
