@@ -182,9 +182,11 @@ function start_el(&$output, $item, $depth, $args) {
 			$display_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
 
 			/* Get the roles saved for the post. */
-            $checked_roles = get_post_meta( $item->ID, '_nav_menu_role', true );
+            $roles = get_post_meta( $item->ID, '_nav_menu_role', true );
+
+            $checked_roles = is_array( $roles ) ? $roles : false;
 			
-            $logged_in_out = get_post_meta( $item->ID, '_nav_menu_logged_in_out', true );
+            $logged_in_out = ! is_array( $roles ) ? $roles : false;
 
 			?>
 

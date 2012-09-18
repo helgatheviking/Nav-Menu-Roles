@@ -21,7 +21,7 @@ class Nav_Menu_Role_Walker extends Walker_Nav_Menu {
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) { 
 
 		if( isset( $item->roles ) ) { 
-
+			
 			switch( $item->roles ) {
 			case 'in' :
 				$visible = is_user_logged_in() ? true : false;
@@ -35,7 +35,7 @@ class Nav_Menu_Role_Walker extends Walker_Nav_Menu {
 					if ( current_user_can( $role ) ) $visible = true;
 				}
 				break;
-		}
+			}
 			if ( $visible ) parent::start_el( &$output, $item, $depth, $args );
 	    } else {
 	    	parent::start_el( &$output, $item, $depth, $args );

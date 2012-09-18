@@ -121,15 +121,12 @@ class Nav_Menu_Roles {
      * @since 1.0
      */
     function setup_nav_item( $menu_item ) {
-        
-        $logged_in_out = get_post_meta( $menu_item->ID, '_nav_menu_logged_in_out', true );
+
         $roles = get_post_meta( $menu_item->ID, '_nav_menu_role', true );
         
-        if ( $logged_in_out ) {
-            $menu_item->roles = $logged_in_out;
-        } elseif ( $roles ) {
+        if ( ! empty( $roles ) ) {
             $menu_item->roles = $roles;
-        }
+        } 
         return $menu_item;
     }
     /**
@@ -146,24 +143,23 @@ class Nav_Menu_Roles {
         if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['nav-menu-role-nonce'], 'nav-menu-nonce-name' ) )
             return; 
         
+        $saved_data = false; 
 
-        if ( isset( $_POST['nav-menu-role'][$menu_item_db_id] ) && is_array( $_POST['nav-menu-role'][$menu_item_db_id] )  && ( '' == $_POST['nav-menu-logged-in-out'][$menu_item_db_id] ) ) {  
-
+        if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {  
+              $saved_data = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
+        } elseif ( isset( $_POST['nav-menu-role'][$menu_item_db_id] ) ) {
             $custom_roles = array();
-
             // only save allowed roles
             foreach( $_POST['nav-menu-role'][$menu_item_db_id] as $role ) { 
                 if ( array_key_exists ( $role, $allowed_roles ) ) $custom_roles[] = $role;
             }
-            update_post_meta( $menu_item_db_id, '_nav_menu_role', $custom_roles );
+            if ( ! empty ( $custom_roles ) ) $saved_data = $custom_roles;
+        } 
+
+        if ( $saved_data ) {
+            update_post_meta( $menu_item_db_id, '_nav_menu_role', $saved_data );
         } else {
             delete_post_meta( $menu_item_db_id, '_nav_menu_role' );
-        }
-
-        if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id] ) && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {  
-           update_post_meta( $menu_item_db_id, '_nav_menu_logged_in_out', $_POST['nav-menu-logged-in-out'][$menu_item_db_id] );
-        } else {
-            delete_post_meta( $menu_item_db_id, '_nav_menu_logged_in_out' );
         }
 
     }
