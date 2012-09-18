@@ -104,7 +104,7 @@ class Nav_Menu_Roles {
      */
 
     function load_text_domain() {
-        load_plugin_textdomain( 'nav_menu_roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+        load_plugin_textdomain( 'nav-menu-roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     }
 
     /**
@@ -148,7 +148,14 @@ class Nav_Menu_Roles {
                 if ( array_key_exists ( $role, $allowed_roles ) ) $custom_roles[] = $role;
             }
            update_post_meta( $menu_item_db_id, '_nav_menu_role', $custom_roles );
+        } else {
+            delete_post_meta( $menu_item_db_id, '_nav_menu_role' ); 
         }
+
+        if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id] ) ) {  
+           update_post_meta( $menu_item_db_id, '_nav_menu_logged_in_out', $_POST['nav-menu-logged-in-out'][$menu_item_db_id] );
+        }
+
     }
 
     /**

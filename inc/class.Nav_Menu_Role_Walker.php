@@ -20,19 +20,38 @@ class Nav_Menu_Role_Walker extends Walker_Nav_Menu {
 	 */
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) { 
 
-		if ( isset( $item->roles ) && ! empty ( $item->roles ) ) {
+		// check logged in/out status first
+		$logged_in_out = get_post_meta( $item->ID, '_nav_menu_logged_in_out', true );
+		switch( $logged_in_out ) {
+			case 'in' :
+				$can_view = is_user_logged_in() ? true : false;
+				break;
+			case 'out' :
+				$can_view = is_user_logged_in() ? false : true;
+				break;
+			default:
+				$can_view = true;
+				break;
+		}
 
-			$visible = false;
+		if( $can_view ) {
 
-			foreach ( $item->roles as $role ) {
-				if ( current_user_can( $role ) ) $visible = true;
-			}
+			if ( isset( $item->roles ) && ! empty ( $item->roles ) ) {
+				$visible = false;
+				foreach ( $item->roles as $role ) {
+					if ( current_user_can( $role ) ) 
+						$visible = true;
+					if( $logged_in_out == 'out' )
+						$visible = true; // no role checking for logged-out users
+				}
 
-			if ( $visible ) parent::start_el( &$output, $item, $depth, $args );
-	    
-	    } else {
-	    	parent::start_el( &$output, $item, $depth, $args );
-	    }
+				if ( $visible ) parent::start_el( &$output, $item, $depth, $args );
+		    
+		    } else {
+		    	parent::start_el( &$output, $item, $depth, $args );
+		    }
+
+		}
 	}
 
 }
