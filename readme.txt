@@ -1,17 +1,16 @@
 === Nav Menu Roles ===
 Contributors: helgatheviking
 Donate link: https://inspirepay.com/pay/helgatheviking
-Tags: subtitle, simple
+Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.4
 Tested up to: 3.4
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-This plugin lets you hide custom menu items based on user roles.  
-
+This plugin lets you hide custom menu items based on user roles.  So if you have a link in the menu that you only want to show to logged in users, certain types of users, or even only to logged out users, this plugin is for you.
 
 == Installation ==
 
