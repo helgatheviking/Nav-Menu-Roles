@@ -36,9 +36,9 @@ class Nav_Menu_Role_Walker extends Walker_Nav_Menu {
 				}
 				break;
 			}
-			if ( $visible ) parent::start_el( &$output, $item, $depth, $args );
+			if ( $visible ) parent::start_el( $output, $item, $depth, $args );
 	    } else {
-	    	parent::start_el( &$output, $item, $depth, $args );
+	    	parent::start_el( $output, $item, $depth, $args );
 	    }
 	}
 
