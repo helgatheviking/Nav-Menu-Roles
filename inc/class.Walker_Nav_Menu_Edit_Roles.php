@@ -202,8 +202,8 @@ function start_el(&$output, $item, $depth, $args) {
                     <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" /> 
                             <?php _e( 'All Logged In', 'nav-menu-roles'); ?>
                 </label>
-                <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>">
-                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" /> 
+                <label for="nav_menu_by_role-for-<?php echo $item->ID ;?>">
+                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_by_role-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" /> 
                             <?php _e( 'By Role', 'nav-menu-roles'); ?>
                 </label>
                 <br/>

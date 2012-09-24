@@ -28,6 +28,7 @@ This plugin lets you hide custom menu items based on user roles.  So if you have
 
 = 1.1.1 =
 fix link to plugin site
+fix labels in admin Walker
 
 = 1.1 =
 * Clean up debug messages
