@@ -4,7 +4,7 @@ Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.4
 Tested up to: 3.4
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,12 @@ This plugin lets you hide custom menu items based on user roles.  So if you have
 1. Show the new options for the menu items in the admin menu customizer
 
 == Changelog ==
+
+= 1.1.1 =
+fix link to plugin site
+
+= 1.1 =
+* Clean up debug messages
 
 = 1.0 =
 * Initial release.
