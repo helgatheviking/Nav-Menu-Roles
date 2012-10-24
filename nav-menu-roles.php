@@ -55,6 +55,8 @@ class Nav_Menu_Roles {
         add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 3 );
         // switch the front-end walker
         // add_filter( 'wp_nav_menu_args', array( $this, 'nav_menu_args' ), 99 );
+        
+        // switch to get rid of custom nav walker
         if (!is_admin()) {
           add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items'), 10, 3 );
         }
@@ -137,12 +139,25 @@ class Nav_Menu_Roles {
       // Iterate over the items to search and destroy
       foreach ( $items as $key => $item ) {
 
-        $roles = get_post_meta( $item->ID, '_nav_menu_role', true );
+        if( isset( $item->roles ) ) {
 
-        if ( ! empty( $roles ) ) {
-            $item->roles = $roles;
-            unset( $items[$key] );
+          switch( $item->roles ) {
+            case 'in' :
+              $visible = is_user_logged_in() ? true : false;
+              break;
+            case 'out' :
+              $visible = ! is_user_logged_in() ? true : false;
+              break;
+            default:
+              $visible = false;
+              if ( is_array( $item->roles ) && ! empty( $item->roles ) ) foreach ( $item->roles as $role ) {
+                if ( current_user_can( $role ) ) $visible = true;
+              }
+              break;
+          }
+          if ( ! $visible ) unset( $items[$key] ) ;
         }
+        
       }
       return $items;
     }
