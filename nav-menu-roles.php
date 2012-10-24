@@ -11,7 +11,7 @@ License: GPL2
     Copyright 2012  Kathy Darling  (email: kathy.darling@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
+    it under the terms of the GNU General Public License, version 2, as
     published by the Free Software Foundation.
 
     This program is distributed in the hope that it will be useful,
@@ -54,7 +54,8 @@ class Nav_Menu_Roles {
         // save the menu item meta
         add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 3 );
         // switch the front-end walker
-        add_filter( 'wp_nav_menu_args', array( $this, 'nav_menu_args' ), 99 );
+        // add_filter( 'wp_nav_menu_args', array( $this, 'nav_menu_args' ), 99 );
+        add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items'), 10, 3 );
 
     }
 
@@ -65,9 +66,9 @@ class Nav_Menu_Roles {
      * @return void
      */
     function includes() {
-        if ( is_admin() ) { 
+        if ( is_admin() ) {
             $this->admin_includes();
-        } else { 
+        } else {
             $this->frontend_includes();
         }
 
@@ -123,38 +124,55 @@ class Nav_Menu_Roles {
     function setup_nav_item( $menu_item ) {
 
         $roles = get_post_meta( $menu_item->ID, '_nav_menu_role', true );
-        
+
         if ( ! empty( $roles ) ) {
             $menu_item->roles = $roles;
-        } 
+        }
         return $menu_item;
     }
+
+    function exclude_menu_items( $items ) {
+
+      // Iterate over the items to search and destroy
+      foreach ( $items as $key => $item ) {
+
+        $roles = get_post_meta( $item->ID, '_nav_menu_role', true );
+
+        if ( ! empty( $roles ) ) {
+            $item->roles = $roles;
+            unset( $items[$key] );
+        }
+      }
+      return $items;
+    }
+
+
     /**
      * Save the roles as menu item meta
      * @return string
      * @since 1.0
      */
-    function nav_update( $menu_id, $menu_item_db_id, $args ) { 
+    function nav_update( $menu_id, $menu_item_db_id, $args ) {
         global $wp_roles;
 
         $allowed_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
 
         // verify this came from our screen and with proper authorization.
         if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['nav-menu-role-nonce'], 'nav-menu-nonce-name' ) )
-            return; 
-        
-        $saved_data = false; 
+            return;
 
-        if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {  
+        $saved_data = false;
+
+        if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {
               $saved_data = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
         } elseif ( isset( $_POST['nav-menu-role'][$menu_item_db_id] ) ) {
             $custom_roles = array();
             // only save allowed roles
-            foreach( $_POST['nav-menu-role'][$menu_item_db_id] as $role ) { 
+            foreach( $_POST['nav-menu-role'][$menu_item_db_id] as $role ) {
                 if ( array_key_exists ( $role, $allowed_roles ) ) $custom_roles[] = $role;
             }
             if ( ! empty ( $custom_roles ) ) $saved_data = $custom_roles;
-        } 
+        }
 
         if ( $saved_data ) {
             update_post_meta( $menu_item_db_id, '_nav_menu_role', $saved_data );
