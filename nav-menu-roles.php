@@ -55,8 +55,9 @@ class Nav_Menu_Roles {
         add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 3 );
         // switch the front-end walker
         // add_filter( 'wp_nav_menu_args', array( $this, 'nav_menu_args' ), 99 );
-        add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items'), 10, 3 );
-
+        if (!is_admin()) {
+          add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items'), 10, 3 );
+        }
     }
 
     /**
