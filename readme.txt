@@ -27,7 +27,7 @@ This plugin lets you hide custom menu items based on user roles.  So if you have
 == Changelog ==
 
 = 1.2 =
-* Major fix for theme's that use their own custom Walkers, thanks to Evan Stein @vanpop https://github.com/vanpop
+* Major fix for theme's that use their own custom Walkers, thanks to Evan Stein @vanpop http://vanpop.com/
 * Instead of a custom nav Walker, menu items are controlled through the wp_get_nav_menu_items filter
 * Remove the custom nav Walker code
 

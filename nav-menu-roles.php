@@ -144,7 +144,7 @@ class Nav_Menu_Roles {
     /**
      * Exclude menu items via wp_get_nav_menu_items filter
      * this fixes plugin's incompatibility with theme's that use their own custom Walker
-     * Thanks to Evan Stein https://github.com/vanpop
+     * Thanks to Evan Stein @vanpop http://vanpop.com/
      * @since 1.2
      */
     function exclude_menu_items( $items ) {
