@@ -41,7 +41,9 @@ class Nav_Menu_Roles {
     function __construct(){
 
         // Include required files
-        $this->includes();
+        if ( is_admin() ) {
+            $this->admin_includes();
+        } 
 
         // load the textdomain
         add_action( 'plugins_loaded', array( $this, 'load_text_domain' ) );
@@ -62,21 +64,6 @@ class Nav_Menu_Roles {
     }
 
     /**
-     * Include required core files.
-     *
-     * @access public
-     * @return void
-     */
-    function includes() {
-        if ( is_admin() ) {
-            $this->admin_includes();
-        } else {
-            $this->frontend_includes();
-        }
-    }
-
-
-    /**
      * Include required admin files.
      *
      * @access public
@@ -86,18 +73,6 @@ class Nav_Menu_Roles {
         /* include the custom admin walker */
         include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
     }
-
-    /**
-     * Include required frontend files.
-     *
-     * @access public
-     * @return void
-     */
-    function frontend_includes() {
-        /* include the custom front-end walker */
-        include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Nav_Menu_Role_Walker.php');
-    }
-
 
     /**
      * Make Plugin Translation-ready
