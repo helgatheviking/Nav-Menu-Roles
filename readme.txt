@@ -4,7 +4,7 @@ Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.4
 Tested up to: 3.4
-Stable tag: 1.1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,23 +21,22 @@ This plugin lets you hide custom menu items based on user roles.  So if you have
 1. If you chose customize by role, then you you can check the boxes next to the roles you'd like to restrict visibility to.
 1. If you choose 'By Role' and don't check any boxes, the item will be visible to everyone like normal. 
 
-== Frequently Asked Questions ==
-
-= It's not working, menu items still display no matter what boxes I check. Help? =
-
-The problem is almost assuredly with your theme.  Quickly switch over to the default Twenty Eleven theme to verify.  Your theme is probably filtering in its own custom Walker for the wp_nav_menu() function.  
-
 == Screenshots ==
 1. Show the new options for the menu items in the admin menu customizer
 
 == Changelog ==
 
+= 1.2 =
+* Major fix for theme's that use their own custom Walkers, thanks to Evan Stein @vanpop https://github.com/vanpop
+* Instead of a custom nav Walker, menu items are controlled through the wp_get_nav_menu_items filter
+* Remove the custom nav Walker code
+
 = 1.1.1 =
-fix link to plugin site
-fix labels in admin Walker
+* Fix link to plugin site
+* Fix labels in admin Walker
 
 = 1.1 =
 * Clean up debug messages
 
 = 1.0 =
-* Initial release.
+* Initial release
