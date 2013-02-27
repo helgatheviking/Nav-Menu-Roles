@@ -2,7 +2,7 @@
 
 /**
  * Copied from Walker_Nav_Menu_Edit class in core
- * 
+ *
  * Create HTML list of nav menu input items.
  *
  * @package nav-menu-roles
@@ -169,7 +169,7 @@ function start_el(&$output, $item, $depth, $args) {
                     <textarea id="edit-menu-item-description-<?php echo $item_id; ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo $item_id; ?>]"><?php echo esc_html( $item->description ); // textarea_escaped ?></textarea>
                     <span class="description"><?php _e('The description will be displayed in the menu if the current theme supports it.'); ?></span>
                 </label>
-            </p>        
+            </p>
 
             <?php
 
@@ -177,7 +177,7 @@ function start_el(&$output, $item, $depth, $args) {
              * This is the added section
              */
 
-            global $wp_roles; 
+            global $wp_roles;
 
 			$display_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
 
@@ -185,7 +185,7 @@ function start_el(&$output, $item, $depth, $args) {
             $roles = get_post_meta( $item->ID, '_nav_menu_role', true );
 
             $checked_roles = is_array( $roles ) ? $roles : false;
-			
+
             $logged_in_out = ! is_array( $roles ) ? $roles : false;
 
 			?>
@@ -195,15 +195,15 @@ function start_el(&$output, $item, $depth, $args) {
             <p class="field-nav_menu_role nav_menu_logged_in_out description-wide">
                 <strong><?php _e( "Display Mode", 'nav-menu-roles' ); ?></strong><br>
                 <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>">
-                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" /> 
+                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
                             <?php _e( 'All Logged Out', 'nav-menu-roles'); ?>
                 </label>
                 <label for="nav_menu_logged_in-for-<?php echo $item->ID ;?>">
-                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" /> 
+                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
                             <?php _e( 'All Logged In', 'nav-menu-roles'); ?>
                 </label>
                 <label for="nav_menu_by_role-for-<?php echo $item->ID ;?>">
-                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_by_role-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" /> 
+                    <input type="radio" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_by_role-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" />
                             <?php _e( 'By Role', 'nav-menu-roles'); ?>
                 </label>
                 <br/>
@@ -216,7 +216,7 @@ function start_el(&$output, $item, $depth, $args) {
 			<strong><?php _e( "Access Role", 'nav-menu-roles' ); ?></strong><br/>
 
 			<?php
-					
+
 				/* Loop through each of the available roles. */
 				foreach ( $display_roles as $role => $name ) {
 
@@ -225,12 +225,12 @@ function start_el(&$output, $item, $depth, $args) {
 					?>
 
 					<label for="nav_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>">
-							<input type="checkbox" name="nav-menu-role[<?php echo $item->ID ;?>][<?php echo $role; ?>]" id="nav_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>" <?php echo $checked; ?> value="<?php echo $role; ?>" /> 
+							<input type="checkbox" name="nav-menu-role[<?php echo $item->ID ;?>][<?php echo $role; ?>]" id="nav_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>" <?php echo $checked; ?> value="<?php echo $role; ?>" />
 							<?php echo esc_html( $name ); ?>
 					</label>
 
 			<?php } ?>
-					
+
 					<br/>
 					<span class="nav-menu-roles description"><?php _e( "Limit display of this menu item to users of selected roles.", 'nav-menu-roles' ); ?></span>
 
