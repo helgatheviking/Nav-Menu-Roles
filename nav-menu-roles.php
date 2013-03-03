@@ -40,24 +40,25 @@ class Nav_Menu_Roles {
 
     function __construct(){
 
-        // Include required files
-        if ( is_admin() ) {
-            $this->admin_includes();
-        } 
+        // Include some admin files
+        add_action( 'admin_init', array( $this, 'admin_init' ) );
+
+        // Register Importer
+        add_action( 'admin_init', array( $this, 'register_importer' ) );
 
         // load the textdomain
         add_action( 'plugins_loaded', array( $this, 'load_text_domain' ) );
 
         // switch the admin walker
         add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ), 10, 2 );
- 
+
         // save the menu item meta
-        add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 3 );
+        //add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 3 );
 
         // add meta to menu item
         add_filter( 'wp_setup_nav_menu_item', array( $this, 'setup_nav_item' ) );
-       
-        // exclude items via filter instead of via custom Walker 
+
+        // exclude items via filter instead of via custom Walker
         if ( ! is_admin() ) {
           add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items' ), 10, 3 );
         }
@@ -69,9 +70,34 @@ class Nav_Menu_Roles {
      * @access public
      * @return void
      */
-    function admin_includes() {
-        /* include the custom admin walker */
-        include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
+    function admin_init() {
+      /* include the custom admin walker */
+      include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
+
+    }
+
+
+    /**
+     * Register the Importer
+     * the regular Importer skips post meta for the menu items
+     *
+     * @access private
+     * @return void
+     */
+    function register_importer(){
+
+      include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Nav_Menu_Roles_Import.php');
+
+      // Register the new importer
+      if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
+
+        // Register the custom importer we've created.
+        $roles_import = new Nav_Menu_Roles_Import();
+
+        register_importer('nav_menu_roles', __('Nav Menu Roles', 'nav-menu-roles'), sprintf( __('Import %nav menu roles%s and other menu menu item meta skipped by the default importer', 'nav-menu-roles'), '<strong>', '</strong>'), array( $roles_import, 'dispatch' ) );
+
+      }
+
     }
 
     /**
@@ -170,7 +196,7 @@ class Nav_Menu_Roles {
           }
           if ( ! $visible ) unset( $items[$key] ) ;
         }
-        
+
       }
       return $items;
     }
