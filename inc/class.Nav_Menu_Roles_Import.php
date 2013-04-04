@@ -2,10 +2,8 @@
 /**
  * Nav Menu Roles Importer - import menu item meta
  *
- * @author 		WooThemes
- * @category 	Admin
- * @package 	WooCommerce/Admin/Importers
- * @version     2.0.0
+ * @author 		Kathy Darling
+ * @since    	1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
