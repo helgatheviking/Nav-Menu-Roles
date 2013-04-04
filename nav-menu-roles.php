@@ -3,7 +3,7 @@
 Plugin Name: Nav Menu Roles
 Plugin URI: http://www.kathyisawesome.com/449/nav-menu-roles/
 Description: Hide custom menu items based on user roles
-Version: 1.3.1
+Version: 1.3.2
 Author: Kathy Darling
 Author URI: http://www.kathyisawesome.com
 License: GPL2
@@ -53,7 +53,7 @@ class Nav_Menu_Roles {
         add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ), 10, 2 );
 
         // save the menu item meta
-        //add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 3 );
+        add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 3 );
 
         // add meta to menu item
         add_filter( 'wp_setup_nav_menu_item', array( $this, 'setup_nav_item' ) );
