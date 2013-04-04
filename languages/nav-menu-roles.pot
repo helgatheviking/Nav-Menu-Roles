@@ -1,19 +1,117 @@
+# Copyright (C) 2013 Nav Menu Roles
+# This file is distributed under the same license as the Nav Menu Roles package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Nav Menu Roles\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-18 09:33-0500\n"
-"PO-Revision-Date: 2012-09-18 09:33-0500\n"
-"Last-Translator: \n"
-"Language-Team: helgatheviking <helgatheviking@gmail.com>\n"
+"Project-Id-Version: Nav Menu Roles 1.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/nav-menu-roles\n"
+"POT-Creation-Date: 2013-04-04 10:32:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__\n"
-"X-Poedit-Basepath: C:\\Users\\Helga\\wamp\\www\\test\\wp-content\\plugins"
-"\\nav-menu-roles\n"
-"X-Generator: Poedit 1.5.3\n"
-"X-Poedit-SearchPath-0: .\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: inc/class.Nav_Menu_Roles_Import.php:87
+#: inc/class.Nav_Menu_Roles_Import.php:96
+#: inc/class.Nav_Menu_Roles_Import.php:142
+#: inc/class.Nav_Menu_Roles_Import.php:146
+#: inc/class.Nav_Menu_Roles_Import.php:155
+msgid "Sorry, there has been an error."
+msgstr ""
+
+#: inc/class.Nav_Menu_Roles_Import.php:88
+msgid "The file does not exist, please try again."
+msgstr ""
+
+#: inc/class.Nav_Menu_Roles_Import.php:127
+msgid "All done."
+msgstr ""
+
+#: inc/class.Nav_Menu_Roles_Import.php:127
+msgid "Have fun!"
+msgstr ""
+
+#: inc/class.Nav_Menu_Roles_Import.php:147
+msgid "The export file could not be found at <code>%s</code>. It is likely that this was caused by a permissions problem."
+msgstr ""
+
+#: inc/class.Nav_Menu_Roles_Import.php:163
+msgid "This WXR file (version %s) may not be supported by this version of the importer. Please consider updating."
+msgstr ""
+
+#: inc/class.Nav_Menu_Roles_Import.php:231
+msgid "Import Nav Menu Roles"
+msgstr ""
+
+#: inc/class.Nav_Menu_Roles_Import.php:238
+msgid "A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files."
+msgstr ""
+
+#: inc/class.Nav_Menu_Roles_Import.php:253
+msgid "Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll import the Nav Menu Roles and any other missing post meta for the Nav Menu items."
+msgstr ""
+
+#: inc/class.Nav_Menu_Roles_Import.php:254
+msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
+msgstr ""
+
+#. translators: %s: title of menu item which is invalid
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:77
+msgid "%s (Invalid)"
+msgstr ""
+
+#. translators: %s: title of menu item in draft status
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:81
+msgid "%s (Pending)"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:105
+msgid "Move up"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:118
+msgid "Move down"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:120
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:122
+msgid "Edit Menu Item"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:131
+msgid "URL"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:138
+msgid "Navigation Label"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:144
+msgid "Title Attribute"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:151
+msgid "Open link in a new window/tab"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:156
+msgid "CSS Classes (optional)"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:162
+msgid "Link Relationship (XFN)"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:168
+msgid "Description"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:170
+msgid "The description will be displayed in the menu if the current theme supports it."
+msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:196
 msgid "Display Mode"
@@ -32,9 +130,7 @@ msgid "By Role"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:210
-msgid ""
-"Limit display of this menu item to users who are logged in or out, or "
-"customize by role."
+msgid "Limit display of this menu item to users who are logged in or out, or customize by role."
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:216
@@ -43,4 +139,43 @@ msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:235
 msgid "Limit display of this menu item to users of selected roles."
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:247
+msgid "Original: %s"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:260
+msgid "Remove"
+msgstr ""
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:261
+msgid "Cancel"
+msgstr ""
+
+#: nav-menu-roles.php:97
+msgid "Nav Menu Roles"
+msgstr ""
+
+#: nav-menu-roles.php:97
+msgid "Import %nav menu roles%s and other menu menu item meta skipped by the default importer"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "Nav Menu Roles"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.kathyisawesome.com/449/nav-menu-roles/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Hide custom menu items based on user roles"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Kathy Darling"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.kathyisawesome.com"
 msgstr ""
