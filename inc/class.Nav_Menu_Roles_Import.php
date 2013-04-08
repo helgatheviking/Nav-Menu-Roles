@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if ( class_exists( 'WP_Importer' ) ) {
+if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) ) {
 	class Nav_Menu_Roles_Import extends WP_Importer {
 
 	var $max_wxr_version = 1.2; // max. supported WXR version
