@@ -8,6 +8,21 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+if ( ! defined( 'WP_LOAD_IMPORTERS' ) )
+	return;
+
+/** Display verbose errors */
+define( 'IMPORT_DEBUG', false );
+
+// Load Importer API
+require_once ABSPATH . 'wp-admin/includes/import.php';
+
+if ( ! class_exists( 'WP_Importer' ) ) {
+	$class_wp_importer = ABSPATH . 'wp-admin/includes/class-wp-importer.php';
+	if ( file_exists( $class_wp_importer ) )
+		require $class_wp_importer;
+}
+
 if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) ) {
 	class Nav_Menu_Roles_Import extends WP_Importer {
 
