@@ -54,6 +54,9 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 
 == Changelog ==
 
+= 1.3.4 =
+* Add Arabic translation thanks to @hassanhamm
+
 = 1.3.3 =
 * Fix Nav_Menu_Roles_Import not found error
 
