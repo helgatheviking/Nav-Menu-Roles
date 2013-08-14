@@ -55,6 +55,7 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 == Changelog ==
 
 = 1.3.4 =
+* Update admin language thanks to @hassanhamm
 * Add Arabic translation thanks to @hassanhamm
 
 = 1.3.3 =
