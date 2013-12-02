@@ -2,9 +2,9 @@
 Contributors: helgatheviking
 Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
-Requires at least: 3.6
+Requires at least: 3.7.1
 Tested up to: 3.7.1
-Stable tag: 1.3.5
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
