@@ -52,6 +52,9 @@ class Nav_Menu_Roles {
         // switch the admin walker
         add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ), 10, 2 );
 
+        // add some JS
+        add_action( 'admin_enqueue_scripts' , array( $this, 'enqueue_scripts' ) );
+
         // save the menu item meta
         add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 3 );
 
@@ -118,6 +121,17 @@ class Nav_Menu_Roles {
         return 'Walker_Nav_Menu_Edit_Roles';
     }
 
+    /**
+     * Save the roles as menu item meta
+     * @return null
+     * @since 1.4
+     * 
+     */
+    function enqueue_scripts( $hook ){
+        if ( $hook == 'nav-menus.php' )
+            wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles.js' , __FILE__ ), array( 'jquery' ), '1.5', true );
+    }
+    
     /**
      * Save the roles as menu item meta
      * @return string
