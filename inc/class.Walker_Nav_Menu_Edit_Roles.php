@@ -1,9 +1,8 @@
 <?php
 
 /**
- * Copied from Walker_Nav_Menu_Edit class in core /wp-admin/includes/nav-menu.php
- *
  * Create HTML list of nav menu input items.
+ * Copied from Walker_Nav_Menu_Edit class in core /wp-admin/includes/nav-menu.php
  *
  * @package nav-menu-roles
  * @since 1.0
@@ -212,21 +211,21 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu  {
 
                     <input type="hidden" class="nav-menu-id" value="<?php echo $item->ID ;?>" />
 
-                    <div class="logged-input-holder" style="float: left; width: 33.3%;">
+                    <div class="logged-input-holder" style="float: left; width: 35%;">
                         <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
                         <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>">
                             <?php _e( 'Logged Out Users', 'nav-menu-roles'); ?>
                         </label>
                     </div>
 
-                    <div class="logged-input-holder" style="float: left; width: 33.3%;">
+                    <div class="logged-input-holder" style="float: left; width: 35%;">
                         <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
                         <label for="nav_menu_logged_in-for-<?php echo $item->ID ;?>">
                             <?php _e( 'Logged In Users', 'nav-menu-roles'); ?>
                         </label>
                     </div>
 
-                    <div class="logged-input-holder" style="float: left; width: 33.3%;">
+                    <div class="logged-input-holder" style="float: left; width: 30%;">
                         <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_by_role-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" />
                         <label for="nav_menu_by_role-for-<?php echo $item->ID ;?>">
                             <?php _e( 'By Role', 'nav-menu-roles'); ?>
@@ -265,7 +264,7 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu  {
                 * end added section
                 */
                 ?>
-
+                
                 <p class="field-move hide-if-no-js description description-wide">
                     <label>
                         <span><?php _e( 'Move' ); ?></span>

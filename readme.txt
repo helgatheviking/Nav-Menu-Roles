@@ -2,9 +2,9 @@
 Contributors: helgatheviking
 Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
-Requires at least: 3.7.1
-Tested up to: 3.7.1
-Stable tag: 1.4
+Requires at least: 3.8
+Tested up to: 3.8
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,7 @@ This plugin lets you hide custom menu items based on user roles.  So if you have
 1. If you choose 'By Role' and don't check any boxes, the item will be visible to everyone like normal.
 
 == Screenshots ==
+
 1. Show the new options for the menu items in the admin menu customizer
 
 
@@ -38,7 +39,7 @@ http://core.trac.wordpress.org/ticket/18584
 
 When/if it is, I will update Nav Menu Roles.
 
-= 1.1 I'm using XYZ Membership plugin and I don't see its "levels"?
+= 1.1 I'm using XYZ Membership plugin and I don't see its "levels"? =
 
 There are apparently a few membership plugins out there that *don't* use traditional WordPress roles/capabilities. My plugin will list any role registered in the traditional WordPress way. If your membership plugin is using some other system, then Nav Menu Roles won't work with it out of the box.  Since 1.3.5 I've added a filter called `nav_menu_roles_item_visibility` just before my code decides whether to show/hide a menu item. There's also always been the `nav_menu_roles` filter which lets you modify the roles listed in the admin. Between these two, I believe you have enough to integrate Nav Menu Roles with any membership plugin. 
 
@@ -93,6 +94,16 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 == Changelog ==
+
+= 1.4.1 =
+* update to WP 3.8 version of Walker_Nav_Menu_Edit (prolly not any different from 3.7.1)
+* minor CSS adjustment to admin menu items
+* checked against WP 3.8
+
+= 1.4 =
+* Add to FAQ
+* add JS flair to admin menu items
+* update to WP 3.7.1 version of Walker_Nav_Menu_Edit
 
 = 1.3.5 =
 * Add nav_menu_roles_item_visibility filter to work with plugins that don't use traditional roles
