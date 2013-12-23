@@ -1,0 +1,216 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Nav Menu Roles v1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-22 21:14+0200\n"
+"PO-Revision-Date: 2013-12-22 21:31+0200\n"
+"Last-Translator: Timo Leiniö <timo@wpopas.fi>\n"
+"Language-Team: Timo Leiniö <timo@wpopas.fi>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: nav-menu-roles.php:100
+msgid "Nav Menu Roles"
+msgstr "Valikkoroolit"
+
+#: nav-menu-roles.php:100
+#, php-format
+msgid ""
+"Import %snav menu roles%s and other menu item meta skipped by the default "
+"importer"
+msgstr "Tuo %svalikkorooleja%s ja niiden muita metatietoja"
+
+#: inc/class.Nav_Menu_Roles_Import.php:100
+#: inc/class.Nav_Menu_Roles_Import.php:109
+#: inc/class.Nav_Menu_Roles_Import.php:155
+#: inc/class.Nav_Menu_Roles_Import.php:159
+#: inc/class.Nav_Menu_Roles_Import.php:168
+msgid "Sorry, there has been an error."
+msgstr "Virhe tapahtui."
+
+#: inc/class.Nav_Menu_Roles_Import.php:101
+msgid "The file does not exist, please try again."
+msgstr "Tiedostoa ei ole olemassa, yritä uudelleen."
+
+#: inc/class.Nav_Menu_Roles_Import.php:140
+msgid "All done."
+msgstr "Valmista."
+
+#: inc/class.Nav_Menu_Roles_Import.php:140
+msgid "Have fun!"
+msgstr "Pidä hauskaa!"
+
+#: inc/class.Nav_Menu_Roles_Import.php:160
+#, php-format
+msgid ""
+"The export file could not be found at <code>%s</code>. It is likely that "
+"this was caused by a permissions problem."
+msgstr ""
+"Vientitiedosta ei löytynyt <code>%s</code>. On todennäköistä, että kyseessä "
+"on käyttöoikeusongelma."
+
+#: inc/class.Nav_Menu_Roles_Import.php:176
+#, php-format
+msgid ""
+"This WXR file (version %s) may not be supported by this version of the "
+"importer. Please consider updating."
+msgstr ""
+"Tuontityökalun tämä versio ei välttämättä tue WXR-tiedostoa (versio %s). "
+"Harkitse työkalun päivitystä."
+
+#: inc/class.Nav_Menu_Roles_Import.php:244
+msgid "Import Nav Menu Roles"
+msgstr "Tuo valikkorooleja"
+
+#: inc/class.Nav_Menu_Roles_Import.php:251
+#, php-format
+msgid ""
+"A new version of this importer is available. Please update to version %s to "
+"ensure compatibility with newer export files."
+msgstr ""
+"Tuontityökalusta on uusi versio. Ole hyvä ja päivitä versioon %s "
+"varmistaaksesi yhteensopivuus uusien vientitiedostojen kanssa."
+
+#: inc/class.Nav_Menu_Roles_Import.php:266
+msgid ""
+"Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll "
+"import the Nav Menu Roles and any other missing post meta for the Nav Menu "
+"items."
+msgstr ""
+"Lataa WordPressin eXtended RSS (WXR) -tiedosto ja tuomme valikkoroolit."
+
+#: inc/class.Nav_Menu_Roles_Import.php:267
+msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
+msgstr ""
+"Valitse ladattava WXR (.xml) -tiedosto ja klikkaa Tuo tiedosto -nappia."
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:87
+#, php-format
+msgid "%s (Invalid)"
+msgstr "%s (virheellinen)"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:91
+#, php-format
+msgid "%s (Pending)"
+msgstr "%s (Odottaa)"
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:104
+msgid "sub item"
+msgstr "alavalinta"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:136
+msgid "Edit Menu Item"
+msgstr "Muokkaa valikon kohtaa"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:145
+msgid "URL"
+msgstr "URL"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:152
+msgid "Navigation Label"
+msgstr "Valikkoteksti"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:158
+msgid "Title Attribute"
+msgstr "Title-attribuutti"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:165
+msgid "Open link in a new window/tab"
+msgstr "Avaa linkki uuteen ikkunaan tai välilehteen"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:170
+msgid "CSS Classes (optional)"
+msgstr "CSS-luokat (vapaaehtoinen)"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:176
+msgid "Link Relationship (XFN)"
+msgstr "Linkkisuhde (XFN)"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:182
+msgid "Description"
+msgstr "Kuvaus"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:184
+msgid ""
+"The description will be displayed in the menu if the current theme supports "
+"it."
+msgstr ""
+"Kuvaus näytetään nykyisen teeman valikossa, jos nykyinen teema tukee sitä."
+
+# @ nav-menu-roles
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:209
+msgid "Display Mode"
+msgstr "Näytä"
+
+# @ nav-menu-roles
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:217
+msgid "Logged Out Users"
+msgstr "Kirjautumaton käyttäjä"
+
+# @ nav-menu-roles
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:224
+msgid "Logged In Users"
+msgstr "Kirjautunut käyttäjä"
+
+# @ nav-menu-roles
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:231
+msgid "By Role"
+msgstr "Roolin mukaan"
+
+# @ nav-menu-roles
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:238
+msgid "Access Role"
+msgstr "Käyttäjärooli"
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:270
+msgid "Move"
+msgstr "Siirrä"
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:271
+msgid "Up one"
+msgstr "Yksi ylöspäin"
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:272
+msgid "Down one"
+msgstr "Yksi alaspäin"
+
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:275
+msgid "To the top"
+msgstr "Ylimmäksi"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:282
+#, php-format
+msgid "Original: %s"
+msgstr "Alkuperäinen: %s"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:295
+msgid "Remove"
+msgstr "Poista"
+
+# @ default
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:296
+msgid "Cancel"
+msgstr "Peruuta"
