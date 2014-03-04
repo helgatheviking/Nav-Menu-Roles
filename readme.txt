@@ -3,14 +3,27 @@ Contributors: helgatheviking
 Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.8
-Tested up to: 3.8
-Stable tag: 1.4.1
+Tested up to: 3.8.1
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
 This plugin lets you hide custom menu items based on user roles.  So if you have a link in the menu that you only want to show to logged in users, certain types of users, or even only to logged out users, this plugin is for you.
+
+= Usage =
+
+1. Go to Appearance > Menus
+1. Edit the menu items accordingly.  First select whether you'd like to display the item to all logged in users, all logged out users or to customize by role.
+1. If you chose customize by role, then you you can check the boxes next to the roles you'd like to restrict visibility to.
+1. If you choose 'By Role' and don't check any boxes, the item will be visible to everyone like normal.
+
+= Support =
+
+Support is handled in the [WordPress forums](http://wordpress.org/support/plugin/radio-button-for-taxonomies). Please note that support is limited and does not cover any custom implementation of the plugin. Before posting, please read the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/). Also, please verify the problem with other plugins disabled and while using a default theme. 
+
+Please report any bugs, errors, warnings, code problems to [Github](https://github.com/helgatheviking/Radio-Buttons-for-Taxonomies/issues)
 
 == Installation ==
 
@@ -25,10 +38,9 @@ This plugin lets you hide custom menu items based on user roles.  So if you have
 
 1. Show the new options for the menu items in the admin menu customizer
 
-
 == Frequently Asked Questions ==
 
-= I don't see the Nav Menu Roles options in the admin menu items?  =
+= <a name="conflict"></a>I don't see the Nav Menu Roles options in the admin menu items?  =
 
 This is likely because you have another plugin (or theme) that is also trying to alter the same code that creates the Menu section in the admin.  For example, the UberMenu Mega Menus plugin is a known conflict with Nav Menu Roles.
 
