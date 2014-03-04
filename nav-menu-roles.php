@@ -128,8 +128,10 @@ class Nav_Menu_Roles {
      * 
      */
     function enqueue_scripts( $hook ){
-        if ( $hook == 'nav-menus.php' )
-            wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles.js' , __FILE__ ), array( 'jquery' ), '1.5', true );
+        if ( $hook == 'nav-menus.php' ){
+            $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+            wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js' , __FILE__ ), array( 'jquery' ), '1.5', true );
+        }
     }
     
     /**
