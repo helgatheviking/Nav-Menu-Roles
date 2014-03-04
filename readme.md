@@ -107,6 +107,11 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 
 == Changelog ==
 
+= 1.5.0 =
+* Switch to instance of plugin
+* Detect conflicts, add notice
+* remove some extraneous parameters
+
 = 1.4.1 =
 * update to WP 3.8 version of Walker_Nav_Menu_Edit (prolly not any different from 3.7.1)
 * minor CSS adjustment to admin menu items
