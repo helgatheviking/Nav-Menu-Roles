@@ -108,20 +108,20 @@ class Nav_Menu_Roles {
         add_action( 'deactivated_plugin', array( $this, 'delete_transient' ) );
 
         // switch the admin walker
-        add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ), 10, 2 );
+        add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
 
         // add some JS
         add_action( 'admin_enqueue_scripts' , array( $this, 'enqueue_scripts' ) );
 
         // save the menu item meta
-        add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 3 );
+        add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 2 );
 
         // add meta to menu item
         add_filter( 'wp_setup_nav_menu_item', array( $this, 'setup_nav_item' ) );
 
         // exclude items via filter instead of via custom Walker
         if ( ! is_admin() ) {
-          add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items' ), 10, 3 );
+          add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items' ) );
         }
     }
 
@@ -229,7 +229,7 @@ class Nav_Menu_Roles {
      * Override the Admin Menu Walker
      * @since 1.0
      */
-    function edit_nav_menu_walker( $walker, $menu_id ) {
+    function edit_nav_menu_walker( $walker ) {
         return 'Walker_Nav_Menu_Edit_Roles';
     }
 
@@ -251,7 +251,7 @@ class Nav_Menu_Roles {
      * @return string
      * @since 1.0
      */
-    function nav_update( $menu_id, $menu_item_db_id, $args ) {
+    function nav_update( $menu_id, $menu_item_db_id ) {
         global $wp_roles;
 
         $allowed_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
