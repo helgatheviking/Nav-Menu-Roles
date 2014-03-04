@@ -38,6 +38,59 @@ if ( ! class_exists( "Nav_Menu_Roles" ) ) :
 
 class Nav_Menu_Roles {
 
+    /**
+     * @var Nav_Menu_Roles The single instance of the class
+     * @since 1.5
+     */
+    protected static $_instance = null;
+
+    /**
+     * @var string donate url
+     * @since 1.5
+     */
+    public static $donate_url = "https://inspirepay.com/pay/helgatheviking";
+
+    /**
+     * Main WooCommerce Instance
+     *
+     * Ensures only one instance of WooCommerce is loaded or can be loaded.
+     *
+     * @since 1.5
+     * @static
+     * @see Nav_Menu_Roles()
+     * @return Nav_Menu_Roles - Main instance
+     */
+    public static function instance() {
+        if ( is_null( self::$_instance ) ) {
+        self::$_instance = new self();
+    }
+        return self::$_instance;
+    }
+
+    /**
+     * Cloning is forbidden.
+     *
+     * @since 1.5
+     */
+    public function __clone() {
+        _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' , 'nav-menu-roles'), '1.5' );
+    }
+
+    /**
+     * Unserializing instances of this class is forbidden.
+     *
+     * @since 1.5
+     */
+    public function __wakeup() {
+        _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' , 'nav-menu-roles'), '1.5' );
+    }
+
+  /**
+   * Nav_Menu_Roles Constructor.
+   * @access public
+   * @return Nav_Menu_Roles
+   * @since  1.0
+   */
     function __construct(){
 
         // Include some admin files
@@ -227,6 +280,14 @@ endif; // class_exists check
 
 /**
 * Launch the whole plugin
+ * Returns the main instance of Nav Menu Roles to prevent the need to use globals.
+ *
+ * @since  1.5
+ * @return Nav_Menu_Roles
 */
-global $Nav_Menu_Roles;
-$Nav_Menu_Roles = new Nav_Menu_Roles();
+function Nav_Menu_Roles() {
+  return Nav_Menu_Roles::instance();
+}
+
+// Global for backwards compatibility.
+$GLOBALS['Nav_Menu_Roles'] = Nav_Menu_Roles();
