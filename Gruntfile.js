@@ -147,6 +147,8 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('test', ['jshint', 'addtextdomain']);
 
+  grunt.registerTask('readme', ['wp_readme_to_markdown']);
+
 	grunt.registerTask('build', ['test', 'newer:uglify', 'makepot', 'newer:po2mo', 'wp_readme_to_markdown', 'clean', 'copy']);
 
 	grunt.registerTask('deploy', ['checkwpversion', 'checkbranch:master', 'checkrepo:deploy', 'build', 'wp_deploy', 'clean']);
