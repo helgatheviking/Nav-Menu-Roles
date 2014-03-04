@@ -86,7 +86,7 @@ module.exports = function(grunt) {
 			target: {
 				options: {
 					domainPath: '/languages', // Where to save the POT file.
-					exclude: ['build/**'], // List of files or directories to ignore.
+					exclude: ['build'], // List of files or directories to ignore.
 					mainFile: '<%= pkg.name %>.php', // Main project file.
 					potFilename: '<%= pkg.name %>.pot', // Name of the POT file.
 					type: 'wp-plugin' // Type of project (wp-plugin or wp-theme).
@@ -102,8 +102,7 @@ module.exports = function(grunt) {
 			},
 		},
 
-    // # Check some git repo settings
-
+		// # Check some git repo settings
 		checkrepo: {
 			deploy: {
 				tag: {
@@ -114,6 +113,7 @@ module.exports = function(grunt) {
 			}
 		},
 
+    // # Check the plugin, package & readme files have same version 
 		checkwpversion: {
 			plugin_equals_stable: {
 				version1: 'plugin',
@@ -127,7 +127,19 @@ module.exports = function(grunt) {
 			},
 		},
 
-    // # Deploy to WordPress
+		// # version bump, commit, tag & push in git
+		release: {
+			options: {
+				push: false, //until i can figure out the user/pass sitch
+				github: {
+					repo: '<%= pkg.repository.url %>', //put your user/repo here
+					usernameVar: 'GITHUB_USERNAME', //ENVIRONMENT VARIABLE that contains Github username 
+					passwordVar: 'GITHUB_PASSWORD' //ENVIRONMENT VARIABLE that contains Github password
+				}
+			}
+		},
+
+		// # Deploy to WordPress
 
 		wp_deploy: {
 			deploy: {
@@ -149,10 +161,8 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('test', ['jshint', 'addtextdomain']);
 
-  grunt.registerTask('readme', ['wp_readme_to_markdown']);
-
 	grunt.registerTask('build', ['test', 'newer:uglify', 'makepot', 'newer:po2mo', 'wp_readme_to_markdown', 'clean', 'copy']);
 
-	grunt.registerTask('deploy', ['checkwpversion', 'checkbranch:master', 'checkrepo:deploy', 'build', 'wp_deploy', 'clean']);
+	grunt.registerTask('deploy', ['checkbranch:master', 'checkrepo:deploy', 'build', 'release', 'wp_deploy', 'clean']);
 
 };
