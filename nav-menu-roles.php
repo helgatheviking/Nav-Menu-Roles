@@ -102,6 +102,11 @@ class Nav_Menu_Roles {
         // load the textdomain
         add_action( 'plugins_loaded', array( $this, 'load_text_domain' ) );
 
+        // add a notice that NMR is conflicting with another plugin
+        add_action( 'admin_notices', array( $this, 'admin_notice' ) );
+        add_action( 'activated_plugin', array( $this, 'delete_transient' ) );
+        add_action( 'deactivated_plugin', array( $this, 'delete_transient' ) );
+
         // switch the admin walker
         add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ), 10, 2 );
 
@@ -165,6 +170,60 @@ class Nav_Menu_Roles {
     function load_text_domain() {
         load_plugin_textdomain( 'nav-menu-roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     }
+
+
+    /**
+     * Display a Notice if plugin conflicts with another
+     * @since 1.5
+     */
+    function admin_notice() {
+        global $pagenow, $wp_filter;
+
+        // quit early if not on the menus page
+        if( ! in_array( $pagenow, array( 'nav-menus.php', 'plugins.php' ) ) ){
+            return;
+        }
+
+        // Get any existing copy of our transient data
+        if ( false === ( $conflicts = get_transient( 'nav_menu_roles_conflicts' ) ) ) {
+            
+            // It wasn't there, so regenerate the data and save the transient
+            global $wp_filter;
+
+            $filters = is_array( $wp_filter['wp_edit_nav_menu_walker'] ) ? array_shift( $wp_filter['wp_edit_nav_menu_walker'] ) : array();
+
+            foreach( $filters as $filter ){
+                // we expect to see NVR so collect everything else
+                if( ! is_a( $filter['function'][0], 'Nav_Menu_Roles') ) {
+                    $conflicts[] = is_object( $filter['function'][0] ) ? get_class( $filter['function'][0] ) : $filter['function'][0];
+                }
+            
+            }
+        }
+
+
+        // Check Transient for conflicts and show error
+        if ( ! empty ( $conflicts ) ) {
+            echo '<div class="error">
+                <p>';
+            printf ( __( 'Nav Menu Roles has detected a conflict with the following functions or classes: %1$s. Please see the %2$sFAQ%3$s for more information.', 'nav-menu-roles' ),
+                '<code>' . implode( $conflicts, ', ' ) . '</code>',
+                '<a href="http://wordpress.org/plugins/nav-menu-roles/faq#conflict" target="_blank">',
+                '</a>' );
+            echo '</p>
+                </div>';
+        }
+
+    }
+
+    /**
+     * Check for other plugins trying to filter the Walker
+     * @since 1.5
+     */
+    function delete_transient() {
+        delete_transient( 'nav_menu_roles_conflicts' );
+    }
+
 
     /**
      * Override the Admin Menu Walker
