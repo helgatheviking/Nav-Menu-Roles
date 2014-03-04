@@ -102,14 +102,14 @@ module.exports = function(grunt) {
 			},
 		},
 
-		// # Deploy to WordPress
+    // # Check some git repo settings
 
 		checkrepo: {
 			deploy: {
 				tag: {
 					eq: '<%= pkg.version %>', // Check if highest repo tag is equal to pkg.version
 				},
-				tagged: true, // Check if last repo commit (HEAD) is not tagged
+				tagged: false, // Check if last repo commit (HEAD) is not tagged
 				clean: true, // Check if the repo working directory is clean
 			}
 		},
@@ -126,6 +126,8 @@ module.exports = function(grunt) {
 				compare: '==',
 			},
 		},
+
+    // # Deploy to WordPress
 
 		wp_deploy: {
 			deploy: {
