@@ -51,16 +51,16 @@ module.exports = function(grunt) {
 					'!package.json',
 					'!.gitignore',
 					'!.gitmodules',
-          '!**/*.sublime-workspace',
-          '!**/*.sublime-project',
-          '!deploy.sh',
+					'!**/*.sublime-workspace',
+					'!**/*.sublime-project',
+					'!deploy.sh',
 					'!**/*~'
 				],
 				dest: 'build/'
 			}
 		},
 
-    // Generate git readme from readme.txt
+		// Generate git readme from readme.txt
 		wp_readme_to_markdown: {
 			convert: {
 				files: {
@@ -69,40 +69,40 @@ module.exports = function(grunt) {
 			},
 		},
 
-    // # Internationalization 
+		// # Internationalization 
 
-    // Add text domain
-    addtextdomain: {
-      textdomain: '<%= pkg.name %>',
-      target: {
-        files: {
-          src: ['*.php', '**/*.php', '!node_modules/**', '!build/**']
-        }
-      }
-    },
+		// Add text domain
+		addtextdomain: {
+			textdomain: '<%= pkg.name %>',
+			target: {
+				files: {
+					src: ['*.php', '**/*.php', '!node_modules/**', '!build/**']
+				}
+			}
+		},
 
-    // Generate .pot file
-    makepot: {
-      target: {
-        options: {
-          domainPath: '/languages', // Where to save the POT file.
-          exclude: ['build/**'], // List of files or directories to ignore.
-          mainFile: '<%= pkg.name %>.php', // Main project file.
-          potFilename: '<%= pkg.name %>.pot', // Name of the POT file.
-          type: 'wp-plugin' // Type of project (wp-plugin or wp-theme).
-        }
-      }
-    },
+		// Generate .pot file
+		makepot: {
+			target: {
+				options: {
+					domainPath: '/languages', // Where to save the POT file.
+					exclude: ['build/**'], // List of files or directories to ignore.
+					mainFile: '<%= pkg.name %>.php', // Main project file.
+					potFilename: '<%= pkg.name %>.pot', // Name of the POT file.
+					type: 'wp-plugin' // Type of project (wp-plugin or wp-theme).
+				}
+			}
+		},
 
-    // Create .mo files for existing .po
-    po2mo: {
-      files: {
-        src: 'languages/*.po',
-        expand: true,
-      },
-    },
+		// Create .mo files for existing .po
+		po2mo: {
+			files: {
+				src: 'languages/*.po',
+				expand: true,
+			},
+		},
 
-    // # Deploy to WordPress
+		// # Deploy to WordPress
 
 		checkrepo: {
 			deploy: {
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 			plugin_equals_stable: {
 				version1: 'plugin',
 				version2: 'readme',
-				compare: '!=',
+				compare: '==',
 			},
 			plugin_equals_package: {
 				version1: 'plugin',
@@ -139,8 +139,8 @@ module.exports = function(grunt) {
 
 	});
 
-  // makepot and addtextdomain tasks
-  grunt.loadNpmTasks('grunt-wp-i18n');
+	// makepot and addtextdomain tasks
+	grunt.loadNpmTasks('grunt-wp-i18n');
 
 	// Default task(s).
 	grunt.registerTask('default', ['jshint', 'uglify']);
