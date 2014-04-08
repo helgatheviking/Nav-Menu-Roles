@@ -5,8 +5,9 @@ Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.8
 Tested up to: 3.8.1
 Stable tag: 1.5.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3
+
+Hide custom menu items based on user roles
 
 == Description ==
 
@@ -16,7 +17,7 @@ Nav Menu Roles is very flexible. In addition to standard user roles, you can cus
 
 **IMPORTANT NOTE** 
 
-In WordPress menu items and pages are completely separate entities. Nav Menu Roles does not restrict access to the pages being hidden from the menu. Nav Menu Roles is only for showing/hiding nav menu items. If you wish to restrict content then you need to also be using a membership plugin.
+In WordPress menu items and pages are completely separate entities. Nav Menu Roles does not restrict access to content. Nav Menu Roles is *only* for showing/hiding *nav menu* items. If you wish to restrict content then you need to also be using a membership plugin.
 
 = Usage =
 
@@ -54,6 +55,7 @@ This is likely because you have another plugin (or theme) that is also trying to
 1. UberMenu Mega Menus plugin
 1. Menu Icons plugin
 1. Add Descendants As Submenu Items
+1. Menu Item Custom Fields
 1. Navception
 1. Avada theme
 
@@ -87,6 +89,7 @@ Note, if you want to add a WordPress capability the above is literally all you n
 
 In case you *do* need to check your visibility status against something very custom, here is how you'd go about it:
 
+`
 /*
  * Change visibilty of each menu item
  * param: $visible boolean
@@ -129,6 +132,7 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 * Switch to instance of plugin
 * Detect conflicts, add notice
 * remove some extraneous parameters
+* Add Spanish translation thanks to @deskarrada
 
 = 1.4.1 =
 * update to WP 3.8 version of Walker_Nav_Menu_Edit (prolly not any different from 3.7.1)
