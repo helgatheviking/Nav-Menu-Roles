@@ -22,121 +22,98 @@ msgstr ""
 #. translators: %s: title of menu item which is invalid
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:77
 #, php-format
-#@ default
 msgid "%s (Invalid)"
 msgstr ""
 
 #. translators: %s: title of menu item in draft status
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:81
 #, php-format
-#@ default
 msgid "%s (Pending)"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:105
-#@ default
 msgid "Move up"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:118
-#@ default
 msgid "Move down"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:120
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:122
-#@ default
 msgid "Edit Menu Item"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:131
-#@ default
 msgid "URL"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:138
-#@ default
 msgid "Navigation Label"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:144
-#@ default
 msgid "Title Attribute"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:151
-#@ default
 msgid "Open link in a new window/tab"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:156
-#@ default
 msgid "CSS Classes (optional)"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:162
-#@ default
 msgid "Link Relationship (XFN)"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:168
-#@ default
 msgid "Description"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:170
-#@ default
 msgid "The description will be displayed in the menu if the current theme supports it."
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:196
-#@ nav-menu-roles
 msgid "Display Mode"
 msgstr "Synlighet"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:199
-#@ nav-menu-roles
 msgid "All Logged Out"
 msgstr "Alla utloggade"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:203
-#@ nav-menu-roles
 msgid "All Logged In"
 msgstr "Alla inloggade"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:207
-#@ nav-menu-roles
 msgid "By Role"
 msgstr "via Roll"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:210
-#@ nav-menu-roles
 msgid "Limit display of this menu item to users who are logged in or out, or customize by role."
 msgstr "Begränsa synligheten för den här menyfliken för användare som är inloggade eller utloggade, eller utifrån användarroll."
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:216
-#@ nav-menu-roles
 msgid "Access Role"
 msgstr "Behörighetsroll"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:235
-#@ nav-menu-roles
 msgid "Limit display of this menu item to users of selected roles."
 msgstr "Begränsa synligheten för den här menyfliken för användare inom utvalda användarroller."
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:247
 #, php-format
-#@ default
 msgid "Original: %s"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:260
-#@ default
 msgid "Remove"
 msgstr ""
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:261
-#@ default
 msgid "Cancel"
 msgstr ""
 
