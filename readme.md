@@ -11,6 +11,7 @@
 Hide custom menu items based on user roles
 
 ## Description ##
+
 This plugin lets you hide custom menu items based on user roles.  So if you have a link in the menu that you only want to show to logged in users, certain types of users, or even only to logged out users, this plugin is for you.
 
 Nav Menu Roles is very flexible. In addition to standard user roles, you can customize the functionality by adding your own check boxes with custom labels using the `nav_menu_roles` filter and then using the `nav_menu_roles_item_visibility` filter to check against whatever criteria you need. You can check against any user meta values (like capabilities) and any custom attributes added by other plugins. See the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/#new-role).
@@ -43,7 +44,9 @@ Please report any bugs, errors, warnings, code problems to [Github](https://gith
 
 ## Screenshots ##
 
-1. Show the new options for the menu items in the admin menu customizer
+### 1. Show the new options for the menu items in the admin menu customizer ###
+![Show the new options for the menu items in the admin menu customizer](http://s.wordpress.org/extend/plugins/nav-menu-roles/screenshot-1.png)
+
 
 ## Frequently Asked Questions ##
 
@@ -72,6 +75,7 @@ There are apparently a few membership plugins out there that *don't* use traditi
 Here's an example where I've added a new pseudo role, creatively called "new-role".  The first function adds it to the menu item admin screen. The second function is pretty generic and won't actually do anything because you need to supply your own logic based on the plugin you are using.  Nav Menu Roles will save the new "role" info and add it to the item in an array to the `$item->roles` variable.
 
 = <a name="new-role"></a>Adding a new "role"  =
+
 `
 /*
  * Add custom roles to Nav Menu Roles menu list
@@ -130,7 +134,7 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 
 ### 1.5.0 ###
 * Switch to instance of plugin
-* Detect conflicts, add notice
+* Detect conflicting plugins, add notice
 * remove some extraneous parameters
 * Add Spanish translation thanks to @deskarrada
 
