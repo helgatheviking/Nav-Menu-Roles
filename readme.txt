@@ -1,4 +1,5 @@
 === Nav Menu Roles ===
+
 Contributors: helgatheviking
 Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
@@ -10,7 +11,6 @@ License: GPLv3
 Hide custom menu items based on user roles
 
 == Description ==
-
 This plugin lets you hide custom menu items based on user roles.  So if you have a link in the menu that you only want to show to logged in users, certain types of users, or even only to logged out users, this plugin is for you.
 
 Nav Menu Roles is very flexible. In addition to standard user roles, you can customize the functionality by adding your own check boxes with custom labels using the `nav_menu_roles` filter and then using the `nav_menu_roles_item_visibility` filter to check against whatever criteria you need. You can check against any user meta values (like capabilities) and any custom attributes added by other plugins. See the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/#new-role).
@@ -79,8 +79,8 @@ Here's an example where I've added a new pseudo role, creatively called "new-rol
  * return: array
  */
 function kia_new_roles( $roles ){
-	$roles['new-role-key'] = 'new-role';
-	return $roles;
+  $roles['new-role-key'] = 'new-role';
+  return $roles;
 }
 add_filter( 'nav_menu_roles', 'kia_new_roles' );
 `
@@ -98,14 +98,14 @@ In case you *do* need to check your visibility status against something very cus
  * return boolean
  */
 function kia_item_visibility( $visible, $item ){
-	if( isset( $item->roles ) && is_array( $item->roles ) && in_array( 'new-role-key', $item->roles ) ){
-	/*	if ( // your own custom check on the current user versus 'new-role' status ){
-				$visible = true;
-			} else {
-				$visible = false;
-		}
-	*/	}
-	return $visible;
+  if( isset( $item->roles ) && is_array( $item->roles ) && in_array( 'new-role-key', $item->roles ) ){
+  /*  if ( // your own custom check on the current user versus 'new-role' status ){
+        $visible = true;
+      } else {
+        $visible = false;
+    }
+  */  }
+  return $visible;
 }
 add_filter( 'nav_menu_roles_item_visibility', 'kia_item_visibility', 10, 2 );
 `
