@@ -1,119 +1,256 @@
+# Copyright (C) 2014 Nav Menu Roles
+# This file is distributed under the same license as the Nav Menu Roles package.
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: Nav Menu Roles v1.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2012-09-18 16:03:41+0000\n"
-"Last-Translator: napking <konsult@sennbrink.se>\n"
-"Language-Team: \n"
+"Project-Id-Version: Nav Menu Roles\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
+"POT-Creation-Date: 2014-04-07 08:43:26+00:00\n"
+"PO-Revision-Date: 2014-04-08 16:54+0000\n"
+"Last-Translator: helgatheviking <helgatheviking@gmail.com>\n"
+"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/nav-menu-roles/language/sv_SE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-Language: Swedish\n"
-"X-Poedit-Country: SWEDEN\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-Bookmarks: \n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Textdomain-Support: yes"
+"Language: sv_SE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: build/inc/class.Nav_Menu_Roles_Import.php:100
+#: build/inc/class.Nav_Menu_Roles_Import.php:109
+#: build/inc/class.Nav_Menu_Roles_Import.php:155
+#: build/inc/class.Nav_Menu_Roles_Import.php:159
+#: build/inc/class.Nav_Menu_Roles_Import.php:168
+#: inc/class.Nav_Menu_Roles_Import.php:100
+#: inc/class.Nav_Menu_Roles_Import.php:109
+#: inc/class.Nav_Menu_Roles_Import.php:155
+#: inc/class.Nav_Menu_Roles_Import.php:159
+#: inc/class.Nav_Menu_Roles_Import.php:168
+msgid "Sorry, there has been an error."
+msgstr ""
+
+#: build/inc/class.Nav_Menu_Roles_Import.php:101
+#: inc/class.Nav_Menu_Roles_Import.php:101
+msgid "The file does not exist, please try again."
+msgstr ""
+
+#: build/inc/class.Nav_Menu_Roles_Import.php:140
+#: inc/class.Nav_Menu_Roles_Import.php:140
+msgid "All done."
+msgstr ""
+
+#: build/inc/class.Nav_Menu_Roles_Import.php:140
+#: inc/class.Nav_Menu_Roles_Import.php:140
+msgid "Have fun!"
+msgstr ""
+
+#: build/inc/class.Nav_Menu_Roles_Import.php:160
+#: inc/class.Nav_Menu_Roles_Import.php:160
+msgid ""
+"The export file could not be found at <code>%s</code>. It is likely that "
+"this was caused by a permissions problem."
+msgstr ""
+
+#: build/inc/class.Nav_Menu_Roles_Import.php:176
+#: inc/class.Nav_Menu_Roles_Import.php:176
+msgid ""
+"This WXR file (version %s) may not be supported by this version of the "
+"importer. Please consider updating."
+msgstr ""
+
+#: build/inc/class.Nav_Menu_Roles_Import.php:244
+#: inc/class.Nav_Menu_Roles_Import.php:244
+msgid "Import Nav Menu Roles"
+msgstr ""
+
+#: build/inc/class.Nav_Menu_Roles_Import.php:251
+#: inc/class.Nav_Menu_Roles_Import.php:251
+msgid ""
+"A new version of this importer is available. Please update to version %s to "
+"ensure compatibility with newer export files."
+msgstr ""
+
+#: build/inc/class.Nav_Menu_Roles_Import.php:266
+#: inc/class.Nav_Menu_Roles_Import.php:266
+msgid ""
+"Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll "
+"import the Nav Menu Roles and any other missing post meta for the Nav Menu "
+"items."
+msgstr ""
+
+#: build/inc/class.Nav_Menu_Roles_Import.php:267
+#: inc/class.Nav_Menu_Roles_Import.php:267
+msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
+msgstr ""
 
 #. translators: %s: title of menu item which is invalid
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:77
-#, php-format
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:87
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:87
 msgid "%s (Invalid)"
 msgstr ""
 
 #. translators: %s: title of menu item in draft status
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:81
-#, php-format
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:91
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:91
 msgid "%s (Pending)"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:105
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:104
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:104
+msgid "sub item"
+msgstr ""
+
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:119
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:119
 msgid "Move up"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:118
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:132
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:132
 msgid "Move down"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:120
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:122
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:134
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:136
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:134
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:136
 msgid "Edit Menu Item"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:131
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:145
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:145
 msgid "URL"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:138
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:152
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:152
 msgid "Navigation Label"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:144
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:158
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:158
 msgid "Title Attribute"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:151
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:165
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:165
 msgid "Open link in a new window/tab"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:156
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:170
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:170
 msgid "CSS Classes (optional)"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:162
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:176
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:176
 msgid "Link Relationship (XFN)"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:168
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:182
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:182
 msgid "Description"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:170
-msgid "The description will be displayed in the menu if the current theme supports it."
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:184
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:184
+msgid ""
+"The description will be displayed in the menu if the current theme supports "
+"it."
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:196
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:209
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:209
 msgid "Display Mode"
 msgstr "Synlighet"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:199
-msgid "All Logged Out"
-msgstr "Alla utloggade"
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:217
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:217
+msgid "Logged Out Users"
+msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:203
-msgid "All Logged In"
-msgstr "Alla inloggade"
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:224
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:224
+msgid "Logged In Users"
+msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:207
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:231
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:231
 msgid "By Role"
 msgstr "via Roll"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:210
-msgid "Limit display of this menu item to users who are logged in or out, or customize by role."
-msgstr "Begränsa synligheten för den här menyfliken för användare som är inloggade eller utloggade, eller utifrån användarroll."
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:216
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:238
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:238
 msgid "Access Role"
 msgstr "Behörighetsroll"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:235
-msgid "Limit display of this menu item to users of selected roles."
-msgstr "Begränsa synligheten för den här menyfliken för användare inom utvalda användarroller."
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:270
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:270
+msgid "Move"
+msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:247
-#, php-format
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:271
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:271
+msgid "Up one"
+msgstr ""
+
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:272
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:272
+msgid "Down one"
+msgstr ""
+
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:275
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:275
+msgid "To the top"
+msgstr ""
+
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:282
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:282
 msgid "Original: %s"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:260
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:295
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:295
 msgid "Remove"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:261
+#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:296
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:296
 msgid "Cancel"
 msgstr ""
 
+#: build/nav-menu-roles.php:76 build/nav-menu-roles.php:85
+#: nav-menu-roles.php:76 nav-menu-roles.php:85
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Nav Menu Roles"
+msgstr ""
+
+#: build/nav-menu-roles.php:158 nav-menu-roles.php:158
+msgid ""
+"Import %snav menu roles%s and other menu item meta skipped by the default "
+"importer"
+msgstr ""
+
+#: build/nav-menu-roles.php:209 nav-menu-roles.php:209
+msgid ""
+"Nav Menu Roles has detected a conflict with the following functions or "
+"classes: %1$s. Please see the %2$sFAQ%3$s for more information."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.kathyisawesome.com/449/nav-menu-roles/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Hide custom menu items based on user roles"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Kathy Darling"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.kathyisawesome.com"
+msgstr ""

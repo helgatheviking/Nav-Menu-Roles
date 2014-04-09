@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Nav Menu Roles\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
 "POT-Creation-Date: 2014-04-07 08:43:26+00:00\n"
-"PO-Revision-Date: 2014-04-07 08:41+0000\n"
+"PO-Revision-Date: 2014-04-07 08:50+0000\n"
 "Last-Translator: iwocs <enrique@iwocs.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/nav-menu-roles/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -226,32 +226,32 @@ msgstr "Con que haciendo trampas, ¿eh?"
 
 #. Plugin Name of the plugin/theme
 msgid "Nav Menu Roles"
-msgstr ""
+msgstr "Nav Menu Roles"
 
 #: build/nav-menu-roles.php:158 nav-menu-roles.php:158
 msgid ""
 "Import %snav menu roles%s and other menu item meta skipped by the default "
 "importer"
-msgstr ""
+msgstr "Importar %snav menu roles%s y otros meta de ítems de menú ignorados por el importador por defecto."
 
 #: build/nav-menu-roles.php:209 nav-menu-roles.php:209
 msgid ""
 "Nav Menu Roles has detected a conflict with the following functions or "
 "classes: %1$s. Please see the %2$sFAQ%3$s for more information."
-msgstr ""
+msgstr "Nav Menu Roles ha detectado un conflicto con las siguientes funciones o clases: %1$s. Por favor, lee las %2$sPreguntas frecuentes%3$s para más información."
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.kathyisawesome.com/449/nav-menu-roles/"
-msgstr ""
+msgstr "http://www.kathyisawesome.com/449/nav-menu-roles/"
 
 #. Description of the plugin/theme
 msgid "Hide custom menu items based on user roles"
-msgstr ""
+msgstr "Ocultar ítems personalizados de menú basados en roles de usuarios"
 
 #. Author of the plugin/theme
 msgid "Kathy Darling"
-msgstr ""
+msgstr "Kathy Darling"
 
 #. Author URI of the plugin/theme
 msgid "http://www.kathyisawesome.com"
-msgstr ""
+msgstr "http://www.kathyisawesome.com"
