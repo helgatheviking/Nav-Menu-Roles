@@ -1,7 +1,7 @@
 {
   "title": "Nav Menu Roles",
   "name": "nav-menu-roles",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Hide menu items based on user roles",
   "main": "Gruntfile.js",
   "license": "GPL",
@@ -29,9 +29,7 @@
     "grunt-checkbranch": "~0.3.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-shell": "~0.6.4",
-    "grunt-wp-deploy": "~0.4.0"
-  },
-  "dependencies": {
-    "grunt-transifex": "erasys/grunt-transifex"
+    "grunt-wp-deploy": "~0.4.0",
+    "grunt-wp-readme-to-markdown": "~0.7.0"
   }
 }
