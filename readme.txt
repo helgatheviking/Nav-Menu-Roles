@@ -4,7 +4,7 @@ Contributors: helgatheviking
 Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.8
-Tested up to: 3.8.1
+Tested up to: 3.9.1
 Stable tag: 1.5.0
 License: GPLv3
 
@@ -132,8 +132,8 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 
 = 1.5.0 =
 * Switch to instance of plugin
-* Detect conflicting plugins, add notice
-* remove some extraneous parameters
+* Add notice when conflicting plugins are detected 
+* Remove some extraneous parameters
 * Add Spanish translation thanks to @deskarrada
 
 = 1.4.1 =
