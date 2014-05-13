@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nav Menu Roles\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2014-04-07 08:43:26+00:00\n"
+"POT-Creation-Date: 2014-04-09 20:54:37+00:00\n"
 "PO-Revision-Date: 2014-04-07 08:50+0000\n"
 "Last-Translator: iwocs <enrique@iwocs.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/nav-menu-roles/language/es/)\n"
@@ -16,11 +16,6 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: build/inc/class.Nav_Menu_Roles_Import.php:100
-#: build/inc/class.Nav_Menu_Roles_Import.php:109
-#: build/inc/class.Nav_Menu_Roles_Import.php:155
-#: build/inc/class.Nav_Menu_Roles_Import.php:159
-#: build/inc/class.Nav_Menu_Roles_Import.php:168
 #: inc/class.Nav_Menu_Roles_Import.php:100
 #: inc/class.Nav_Menu_Roles_Import.php:109
 #: inc/class.Nav_Menu_Roles_Import.php:155
@@ -29,48 +24,40 @@ msgstr ""
 msgid "Sorry, there has been an error."
 msgstr "Lo sentimos, ha ocurrido un error."
 
-#: build/inc/class.Nav_Menu_Roles_Import.php:101
 #: inc/class.Nav_Menu_Roles_Import.php:101
 msgid "The file does not exist, please try again."
 msgstr "El archivo no existe, por favor, vuélvelo a intentar."
 
-#: build/inc/class.Nav_Menu_Roles_Import.php:140
 #: inc/class.Nav_Menu_Roles_Import.php:140
 msgid "All done."
 msgstr "Terminado."
 
-#: build/inc/class.Nav_Menu_Roles_Import.php:140
 #: inc/class.Nav_Menu_Roles_Import.php:140
 msgid "Have fun!"
 msgstr "¡Diviértete!"
 
-#: build/inc/class.Nav_Menu_Roles_Import.php:160
 #: inc/class.Nav_Menu_Roles_Import.php:160
 msgid ""
 "The export file could not be found at <code>%s</code>. It is likely that "
 "this was caused by a permissions problem."
 msgstr "El archivo no se ha encontrado en  <code>%s</code>. Es probable que se deba a un problema de permisos."
 
-#: build/inc/class.Nav_Menu_Roles_Import.php:176
 #: inc/class.Nav_Menu_Roles_Import.php:176
 msgid ""
 "This WXR file (version %s) may not be supported by this version of the "
 "importer. Please consider updating."
 msgstr "Puede que el archivo WXR (versión %s) no esté soportado por esta versión del importador. Por favor, toma en consideración la posibilidad de actualizarlo."
 
-#: build/inc/class.Nav_Menu_Roles_Import.php:244
 #: inc/class.Nav_Menu_Roles_Import.php:244
 msgid "Import Nav Menu Roles"
 msgstr "Importar Nav Menu Roles"
 
-#: build/inc/class.Nav_Menu_Roles_Import.php:251
 #: inc/class.Nav_Menu_Roles_Import.php:251
 msgid ""
 "A new version of this importer is available. Please update to version %s to "
 "ensure compatibility with newer export files."
 msgstr "Está disponible una nueva versión del importador. Por favor, actualiza a la versión %s para garantizar la compatibilidad con nuevos archivos de exportación."
 
-#: build/inc/class.Nav_Menu_Roles_Import.php:266
 #: inc/class.Nav_Menu_Roles_Import.php:266
 msgid ""
 "Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll "
@@ -78,148 +65,119 @@ msgid ""
 "items."
 msgstr "Vuelve a subir tu archivo WordPress eXtended RSS (WXR) y nosotros importaremos el Nav Menu Roles y cualquier otro post meta para los ítems del Nav Menu."
 
-#: build/inc/class.Nav_Menu_Roles_Import.php:267
 #: inc/class.Nav_Menu_Roles_Import.php:267
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
 msgstr "Escoge un archivo WXR (.xml) a subir y luego clic en \"Subir archivo e importar\"."
 
 #. translators: %s: title of menu item which is invalid
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:87
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:87
 msgid "%s (Invalid)"
 msgstr "%s (Inválido)"
 
 #. translators: %s: title of menu item in draft status
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:91
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:91
 msgid "%s (Pending)"
 msgstr "%s (Pendiente)"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:104
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:104
 msgid "sub item"
 msgstr "sub ítem"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:119
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:119
 msgid "Move up"
 msgstr "Mover hacia arriba"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:132
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:132
 msgid "Move down"
 msgstr "Mover hacia abajo"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:134
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:136
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:134
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:136
 msgid "Edit Menu Item"
 msgstr "Editar ítem del menú"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:145
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:145
 msgid "URL"
 msgstr "URL"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:152
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:152
 msgid "Navigation Label"
 msgstr "Etiqueta de navegación"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:158
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:158
 msgid "Title Attribute"
 msgstr "Atributo de título"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:165
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:165
 msgid "Open link in a new window/tab"
 msgstr "Abrir enlace en una nueva ventana/pestaña"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:170
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:170
 msgid "CSS Classes (optional)"
 msgstr "Clases CSS (opcional)"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:176
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:176
 msgid "Link Relationship (XFN)"
 msgstr "Relación de enlace (XFN)"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:182
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:182
 msgid "Description"
 msgstr "Descripción"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:184
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:184
 msgid ""
 "The description will be displayed in the menu if the current theme supports "
 "it."
 msgstr "La descripción se mostrará en el menú si el tema actual lo soporta."
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:209
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:209
 msgid "Display Mode"
 msgstr "Modo de visualización"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:217
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:217
 msgid "Logged Out Users"
 msgstr "Usuarios no identificados"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:224
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:224
 msgid "Logged In Users"
 msgstr "Usuarios identificados"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:231
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:231
 msgid "By Role"
 msgstr "Por rol"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:238
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:238
 msgid "Access Role"
 msgstr "Rol de acceso"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:270
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:270
 msgid "Move"
 msgstr "Mover"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:271
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:271
 msgid "Up one"
 msgstr "Subir uno"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:272
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:272
 msgid "Down one"
 msgstr "Bajar uno"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:275
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:275
 msgid "To the top"
 msgstr "A arriba del todo"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:282
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:282
 msgid "Original: %s"
 msgstr "Original: %s"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:295
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:295
 msgid "Remove"
 msgstr "Eliminar"
 
-#: build/inc/class.Walker_Nav_Menu_Edit_Roles.php:296
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:296
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: build/nav-menu-roles.php:76 build/nav-menu-roles.php:85
 #: nav-menu-roles.php:76 nav-menu-roles.php:85
 msgid "Cheatin&#8217; huh?"
 msgstr "Con que haciendo trampas, ¿eh?"
@@ -228,13 +186,13 @@ msgstr "Con que haciendo trampas, ¿eh?"
 msgid "Nav Menu Roles"
 msgstr "Nav Menu Roles"
 
-#: build/nav-menu-roles.php:158 nav-menu-roles.php:158
+#: nav-menu-roles.php:158
 msgid ""
 "Import %snav menu roles%s and other menu item meta skipped by the default "
 "importer"
 msgstr "Importar %snav menu roles%s y otros meta de ítems de menú ignorados por el importador por defecto."
 
-#: build/nav-menu-roles.php:209 nav-menu-roles.php:209
+#: nav-menu-roles.php:209
 msgid ""
 "Nav Menu Roles has detected a conflict with the following functions or "
 "classes: %1$s. Please see the %2$sFAQ%3$s for more information."
