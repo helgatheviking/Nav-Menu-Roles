@@ -173,6 +173,8 @@ module.exports = function(grunt) {
 	// Default task(s).
 	grunt.registerTask('default', ['jshint', 'uglify']);
 
+	grunt.registerTask('docs', ['wp_readme_to_markdown']);
+
 	grunt.registerTask('test', ['jshint', 'addtextdomain']);
 
 	grunt.registerTask('build', ['test', 'newer:uglify', 'makepot', 'newer:po2mo', 'wp_readme_to_markdown', 'clean', 'copy']);

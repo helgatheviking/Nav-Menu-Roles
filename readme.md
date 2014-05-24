@@ -5,7 +5,7 @@
 **Tags:** menu, menus, nav menu, nav menus  
 **Requires at least:** 3.8  
 **Tested up to:** 3.9.1  
-**Stable tag:** 1.5.0  
+**Stable tag:** 1.5.1  
 **License:** GPLv3  
 
 Hide custom menu items based on user roles
@@ -76,7 +76,7 @@ Here's an example where I've added a new pseudo role, creatively called "new-rol
 
 = <a name="new-role"></a>Adding a new "role"  =
 
-```
+`
 /*
  * Add custom roles to Nav Menu Roles menu list
 ** * param:** $roles an array of all available roles, by default is global $wp_roles   
@@ -87,13 +87,13 @@ function kia_new_roles( $roles ){
   return $roles;
 }
 add_filter( 'nav_menu_roles', 'kia_new_roles' );
-```
+`
 
 Note, if you want to add a WordPress capability the above is literally all you need. Because Nav Menu Roles checks whether a role has permission to view the menu item using `current_user_can($role) you do not need to right a custom callback for the `nav_menu_roles_item_visibility` filter.
 
 In case you *do* need to check your visibility status against something very custom, here is how you'd go about it:
 
-```
+`
 /*
  * Change visibilty of each menu item
 ** * param:** $visible boolean  
@@ -112,7 +112,7 @@ function kia_item_visibility( $visible, $item ){
   return $visible;
 }
 add_filter( 'nav_menu_roles_item_visibility', 'kia_item_visibility', 10, 2 );
-```
+`
 
 Note that you have to generate your own if/then logic. I can't provide free support for custom integration with another plugin. You may [contact me](http://kathyisawesome.com/contact) to discuss hiring me, or I would suggest using a plugin that supports WordPress' roles, such as Justin Tadlock's [Membership](http://wordpress.org/extend/plugins/membership).
 
@@ -131,6 +131,9 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 ## Changelog ##
+
+### 1.5.1 ###
+* Hopefully fix missing nav-menu-roles.min.js SVN issue
 
 ### 1.5.0 ###
 * Switch to instance of plugin

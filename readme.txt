@@ -5,7 +5,7 @@ Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv3
 
 Hide custom menu items based on user roles
@@ -129,6 +129,9 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 == Changelog ==
+
+= 1.5.1 =
+* Hopefully fix missing nav-menu-roles.min.js SVN issue
 
 = 1.5.0 =
 * Switch to instance of plugin
