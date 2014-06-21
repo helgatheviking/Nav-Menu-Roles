@@ -8,29 +8,29 @@ Author: Kathy Darling
 Author URI: http://www.kathyisawesome.com
 License: GPL2
 
-    Copyright 2012  Kathy Darling  (email: kathy.darling@gmail.com)
+Copyright 2012Kathy Darling(email: kathy.darling@gmail.com)
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
-    published by the Free Software Foundation.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2, as
+published by the Free Software Foundation.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA02110-1301USA
 
 */
 
 
 // don't load directly
 if ( ! function_exists( 'is_admin' ) ) {
-    header( 'Status: 403 Forbidden' );
-    header( 'HTTP/1.1 403 Forbidden' );
-    exit();
+	header( 'Status: 403 Forbidden' );
+	header( 'HTTP/1.1 403 Forbidden' );
+	exit();
 }
 
 
@@ -38,269 +38,268 @@ if ( ! class_exists( "Nav_Menu_Roles" ) ) :
 
 class Nav_Menu_Roles {
 
-    /**
-     * @var Nav_Menu_Roles The single instance of the class
-     * @since 1.5
-     */
-    protected static $_instance = null;
+	/**
+	* @var Nav_Menu_Roles The single instance of the class
+	* @since 1.5
+	*/
+	protected static $_instance = null;
 
-    /**
-     * @var string donate url
-     * @since 1.5
-     */
-    public static $donate_url = "https://inspirepay.com/pay/helgatheviking";
+	/**
+	* @var string donate url
+	* @since 1.5
+	*/
+	public static $donate_url = "https://inspirepay.com/pay/helgatheviking";
 
-    /**
-     * Main WooCommerce Instance
-     *
-     * Ensures only one instance of WooCommerce is loaded or can be loaded.
-     *
-     * @since 1.5
-     * @static
-     * @see Nav_Menu_Roles()
-     * @return Nav_Menu_Roles - Main instance
-     */
-    public static function instance() {
-        if ( is_null( self::$_instance ) ) {
-        self::$_instance = new self();
-    }
-        return self::$_instance;
-    }
+	/**
+	* Main Nav Menu Roles Instance
+	*
+	* Ensures only one instance of Nav Menu Roles is loaded or can be loaded.
+	*
+	* @since 1.5
+	* @static
+	* @see Nav_Menu_Roles()
+	* @return Nav_Menu_Roles - Main instance
+	*/
+	public static function instance() {
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
+	}
 
-    /**
-     * Cloning is forbidden.
-     *
-     * @since 1.5
-     */
-    public function __clone() {
-        _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' , 'nav-menu-roles'), '1.5' );
-    }
+	/**
+	* Cloning is forbidden.
+	*
+	* @since 1.5
+	*/
+	public function __clone() {
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' , 'nav-menu-roles'), '1.5' );
+	}
 
-    /**
-     * Unserializing instances of this class is forbidden.
-     *
-     * @since 1.5
-     */
-    public function __wakeup() {
-        _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' , 'nav-menu-roles'), '1.5' );
-    }
+	/**
+	* Unserializing instances of this class is forbidden.
+	*
+	* @since 1.5
+	*/
+	public function __wakeup() {
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' , 'nav-menu-roles'), '1.5' );
+	}
 
-  /**
-   * Nav_Menu_Roles Constructor.
-   * @access public
-   * @return Nav_Menu_Roles
-   * @since  1.0
-   */
-    function __construct(){
+	/**
+	* Nav_Menu_Roles Constructor.
+	* @access public
+	* @return Nav_Menu_Roles
+	* @since  1.0
+	*/
+	function __construct(){
 
-        // Include some admin files
-        add_action( 'admin_init', array( $this, 'admin_init' ) );
+		// Include some admin files
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
-        // Register Importer
-        add_action( 'admin_init', array( $this, 'register_importer' ) );
+		// Register Importer
+		add_action( 'admin_init', array( $this, 'register_importer' ) );
 
-        // load the textdomain
-        add_action( 'plugins_loaded', array( $this, 'load_text_domain' ) );
+		// load the textdomain
+		add_action( 'plugins_loaded', array( $this, 'load_text_domain' ) );
 
-        // add a notice that NMR is conflicting with another plugin
-        add_action( 'admin_notices', array( $this, 'admin_notice' ) );
-        add_action( 'activated_plugin', array( $this, 'delete_transient' ) );
-        add_action( 'deactivated_plugin', array( $this, 'delete_transient' ) );
+		// add a notice that NMR is conflicting with another plugin
+		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
+		add_action( 'activated_plugin', array( $this, 'delete_transient' ) );
+		add_action( 'deactivated_plugin', array( $this, 'delete_transient' ) );
 
-        // switch the admin walker
-        add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
+		// switch the admin walker
+		add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
 
-        // add some JS
-        add_action( 'admin_enqueue_scripts' , array( $this, 'enqueue_scripts' ) );
+		// add some JS
+		add_action( 'admin_enqueue_scripts' , array( $this, 'enqueue_scripts' ) );
 
-        // save the menu item meta
-        add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 2 );
+		// save the menu item meta
+		add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 2 );
 
-        // add meta to menu item
-        add_filter( 'wp_setup_nav_menu_item', array( $this, 'setup_nav_item' ) );
+		// add meta to menu item
+		add_filter( 'wp_setup_nav_menu_item', array( $this, 'setup_nav_item' ) );
 
-        // exclude items via filter instead of via custom Walker
-        if ( ! is_admin() ) {
-          add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items' ) );
-        }
-    }
+		// exclude items via filter instead of via custom Walker
+		if ( ! is_admin() ) {
+			add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items' ) );
+		}
 
-    /**
-     * Include required admin files.
-     *
-     * @access public
-     * @return void
-     */
-    function admin_init() {
-      /* include the custom admin walker */
-      include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
+	}
 
-    }
-
-
-    /**
-     * Register the Importer
-     * the regular Importer skips post meta for the menu items
-     *
-     * @access private
-     * @return void
-     */
-    function register_importer(){
-
-      include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Nav_Menu_Roles_Import.php');
-
-      // Register the new importer
-      if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
-
-        // Register the custom importer we've created.
-        $roles_import = new Nav_Menu_Roles_Import();
-
-        register_importer('nav_menu_roles', __('Nav Menu Roles', 'nav-menu-roles'), sprintf( __('Import %snav menu roles%s and other menu item meta skipped by the default importer', 'nav-menu-roles'), '<strong>', '</strong>'), array( $roles_import, 'dispatch' ) );
-
-      }
-
-    }
-
-    /**
-     * Make Plugin Translation-ready
-     * CALLBACK FUNCTION FOR:  add_action( 'plugins_loaded', array( $this,'load_text_domain'));
-     * @since 1.0
-     */
-
-    function load_text_domain() {
-        load_plugin_textdomain( 'nav-menu-roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-    }
+	/**
+	* Include the custom admin walker
+	*
+	* @access public
+	* @return void
+	*/
+	function admin_init() {
+		include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
+	}
 
 
-    /**
-     * Display a Notice if plugin conflicts with another
-     * @since 1.5
-     */
-    function admin_notice() {
-        global $pagenow, $wp_filter;
+	/**
+	* Register the Importer
+	* the regular Importer skips post meta for the menu items
+	*
+	* @access private
+	* @return void
+	*/
+	function register_importer(){
 
-        // quit early if not on the menus page
-        if( ! in_array( $pagenow, array( 'nav-menus.php', 'plugins.php' ) ) ){
-            return;
-        }
+		include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Nav_Menu_Roles_Import.php');
 
-        // Get any existing copy of our transient data
-        if ( false === ( $conflicts = get_transient( 'nav_menu_roles_conflicts' ) ) ) {
-            
-            // It wasn't there, so regenerate the data and save the transient
-            global $wp_filter;
+		// Register the new importer
+		if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
 
-            $filters = is_array( $wp_filter['wp_edit_nav_menu_walker'] ) ? array_shift( $wp_filter['wp_edit_nav_menu_walker'] ) : array();
+			// Register the custom importer we've created.
+			$roles_import = new Nav_Menu_Roles_Import();
 
-            foreach( $filters as $filter ){
-                // we expect to see NVR so collect everything else
-                if( ! is_a( $filter['function'][0], 'Nav_Menu_Roles') ) {
-                    $conflicts[] = is_object( $filter['function'][0] ) ? get_class( $filter['function'][0] ) : $filter['function'][0];
-                }
-            
-            }
-        }
+			register_importer('nav_menu_roles', __('Nav Menu Roles', 'nav-menu-roles'), sprintf( __('Import %snav menu roles%s and other menu item meta skipped by the default importer', 'nav-menu-roles'), '<strong>', '</strong>'), array( $roles_import, 'dispatch' ) );
 
+		}
 
-        // Check Transient for conflicts and show error
-        if ( ! empty ( $conflicts ) ) {
-            echo '<div class="error">
-                <p>';
-            printf ( __( 'Nav Menu Roles has detected a conflict with the following functions or classes: %1$s. Please see the %2$sFAQ%3$s for more information.', 'nav-menu-roles' ),
-                '<code>' . implode( $conflicts, ', ' ) . '</code>',
-                '<a href="http://wordpress.org/plugins/nav-menu-roles/faq#conflict" target="_blank">',
-                '</a>' );
-            echo '</p>
-                </div>';
-        }
+	}
 
-    }
+	/**
+	* Make Plugin Translation-ready
+	* CALLBACK FUNCTION FOR:  add_action( 'plugins_loaded', array( $this,'load_text_domain'));
+	* @since 1.0
+	*/
 
-    /**
-     * Check for other plugins trying to filter the Walker
-     * @since 1.5
-     */
-    function delete_transient() {
-        delete_transient( 'nav_menu_roles_conflicts' );
-    }
+	function load_text_domain() {
+		load_plugin_textdomain( 'nav-menu-roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	}
 
 
-    /**
-     * Override the Admin Menu Walker
-     * @since 1.0
-     */
-    function edit_nav_menu_walker( $walker ) {
-        return 'Walker_Nav_Menu_Edit_Roles';
-    }
+	/**
+	* Display a Notice if plugin conflicts with another
+	* @since 1.5
+	*/
+	function admin_notice() {
+		global $pagenow, $wp_filter;
 
-    /**
-     * Save the roles as menu item meta
-     * @return null
-     * @since 1.4
-     * 
-     */
-    function enqueue_scripts( $hook ){
-        if ( $hook == 'nav-menus.php' ){
-            $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-            wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js' , __FILE__ ), array( 'jquery' ), '1.5', true );
-        }
-    }
-    
-    /**
-     * Save the roles as menu item meta
-     * @return string
-     * @since 1.0
-     */
-    function nav_update( $menu_id, $menu_item_db_id ) {
-        global $wp_roles;
+		// quit early if not on the menus page
+		if( ! in_array( $pagenow, array( 'nav-menus.php', 'plugins.php' ) ) ){
+			return;
+		}
 
-        $allowed_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
+		// Get any existing copy of our transient data
+		if ( false === ( $conflicts = get_transient( 'nav_menu_roles_conflicts' ) ) ) {
 
-        // verify this came from our screen and with proper authorization.
-        if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['nav-menu-role-nonce'], 'nav-menu-nonce-name' ) )
-            return;
+			// It wasn't there, so regenerate the data and save the transient
+			global $wp_filter;
 
-        $saved_data = false;
+			$filters = is_array( $wp_filter['wp_edit_nav_menu_walker'] ) ? array_shift( $wp_filter['wp_edit_nav_menu_walker'] ) : array();
 
-        if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {
-              $saved_data = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
-        } elseif ( isset( $_POST['nav-menu-role'][$menu_item_db_id] ) ) {
-            $custom_roles = array();
-            // only save allowed roles
-            foreach( $_POST['nav-menu-role'][$menu_item_db_id] as $role ) {
-                if ( array_key_exists ( $role, $allowed_roles ) ) $custom_roles[] = $role;
-            }
-            if ( ! empty ( $custom_roles ) ) $saved_data = $custom_roles;
-        }
+			foreach( $filters as $filter ){
+				// we expect to see NVR so collect everything else
+				if( ! is_a( $filter['function'][0], 'Nav_Menu_Roles') ) {
+					$conflicts[] = is_object( $filter['function'][0] ) ? get_class( $filter['function'][0] ) : $filter['function'][0];
+				}
 
-        if ( $saved_data ) {
-            update_post_meta( $menu_item_db_id, '_nav_menu_role', $saved_data );
-        } else {
-            delete_post_meta( $menu_item_db_id, '_nav_menu_role' );
-        }
-    }
+			}
+		}
 
-    /**
-     * Adds value of new field to $item object
-     * is be passed to Walker_Nav_Menu_Edit_Custom
-     * @since 1.0
-     */
-    function setup_nav_item( $menu_item ) {
 
-        $roles = get_post_meta( $menu_item->ID, '_nav_menu_role', true );
+		// Check Transient for conflicts and show error
+		if ( ! empty ( $conflicts ) ) {
+			echo '<div class="error">
+			<p>';
+			printf ( __( 'Nav Menu Roles has detected a conflict with the following functions or classes: %1$s. Please see the %2$sFAQ%3$s for more information.', 'nav-menu-roles' ),
+			'<code>' . implode( $conflicts, ', ' ) . '</code>',
+			'<a href="http://wordpress.org/plugins/nav-menu-roles/faq#conflict" target="_blank">',
+			'</a>' );
+			echo '</p>
+			</div>';
+		}
 
-        if ( ! empty( $roles ) ) {
-            $menu_item->roles = $roles;
-        }
-        return $menu_item;
-    }
+	}
 
-    /**
-     * Exclude menu items via wp_get_nav_menu_items filter
-     * this fixes plugin's incompatibility with theme's that use their own custom Walker
-     * Thanks to Evan Stein @vanpop http://vanpop.com/
-     * @since 1.2
-     */
+	/**
+	* Check for other plugins trying to filter the Walker
+	* @since 1.5
+	*/
+	function delete_transient() {
+		delete_transient( 'nav_menu_roles_conflicts' );
+	}
+
+
+	/**
+	* Override the Admin Menu Walker
+	* @since 1.0
+	*/
+	function edit_nav_menu_walker( $walker ) {
+		return 'Walker_Nav_Menu_Edit_Roles';
+	}
+
+	/**
+	* Save the roles as menu item meta
+	* @return null
+	* @since 1.4
+	* 
+	*/
+	function enqueue_scripts( $hook ){
+		if ( $hook == 'nav-menus.php' ){
+			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js' , __FILE__ ), array( 'jquery' ), '1.5', true );
+		}
+	}
+
+	/**
+	* Save the roles as menu item meta
+	* @return string
+	* @since 1.0
+	*/
+	function nav_update( $menu_id, $menu_item_db_id ) {
+		global $wp_roles;
+
+		$allowed_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
+
+		// verify this came from our screen and with proper authorization.
+		if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['nav-menu-role-nonce'], 'nav-menu-nonce-name' ) )
+			return;
+
+		$saved_data = false;
+
+		if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {
+			$saved_data = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
+		} elseif ( isset( $_POST['nav-menu-role'][$menu_item_db_id] ) ) {
+			$custom_roles = array();
+			// only save allowed roles
+			foreach( $_POST['nav-menu-role'][$menu_item_db_id] as $role ) {
+				if ( array_key_exists ( $role, $allowed_roles ) ) $custom_roles[] = $role;
+			}
+			if ( ! empty ( $custom_roles ) ) $saved_data = $custom_roles;
+		}
+
+		if ( $saved_data ) {
+			update_post_meta( $menu_item_db_id, '_nav_menu_role', $saved_data );
+		} else {
+			delete_post_meta( $menu_item_db_id, '_nav_menu_role' );
+		}
+	}
+
+	/**
+	* Adds value of new field to $item object
+	* is be passed to Walker_Nav_Menu_Edit_Custom
+	* @since 1.0
+	*/
+	function setup_nav_item( $menu_item ) {
+
+		$roles = get_post_meta( $menu_item->ID, '_nav_menu_role', true );
+
+		if ( ! empty( $roles ) ) {
+			$menu_item->roles = $roles;
+		}
+		return $menu_item;
+	}
+
+	/**
+	* Exclude menu items via wp_get_nav_menu_items filter
+	* this fixes plugin's incompatibility with theme's that use their own custom Walker
+	* Thanks to Evan Stein @vanpop http://vanpop.com/
+	* @since 1.2
+	*/
 	function exclude_menu_items( $items ) {
 
 		$hide_children_of = array();
@@ -353,7 +352,7 @@ class Nav_Menu_Roles {
 		}
 
 		return $items;
-    }
+}
 
 } // end class
 
@@ -368,7 +367,7 @@ endif; // class_exists check
  * @return Nav_Menu_Roles
 */
 function Nav_Menu_Roles() {
-  return Nav_Menu_Roles::instance();
+	return Nav_Menu_Roles::instance();
 }
 
 // Global for backwards compatibility.
