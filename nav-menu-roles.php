@@ -301,35 +301,58 @@ class Nav_Menu_Roles {
      * Thanks to Evan Stein @vanpop http://vanpop.com/
      * @since 1.2
      */
-    function exclude_menu_items( $items ) {
+	function exclude_menu_items( $items ) {
 
-      // Iterate over the items to search and destroy
-      foreach ( $items as $key => $item ) {
+		$hide_children_of = array();
 
-        if( isset( $item->roles ) ) {
+		// Iterate over the items to search and destroy
+		foreach ( $items as $key => $item ) {
 
-          switch( $item->roles ) {
-            case 'in' :
-              $visible = is_user_logged_in() ? true : false;
-              break;
-            case 'out' :
-              $visible = ! is_user_logged_in() ? true : false;
-              break;
-            default:
-              $visible = false;
-              if ( is_array( $item->roles ) && ! empty( $item->roles ) ) foreach ( $item->roles as $role ) {
-                if ( current_user_can( $role ) ) $visible = true;
-              }
-              break;
-          }
-          // add filter to work with plugins that don't use traditional roles
-          $visible = apply_filters( 'nav_menu_roles_item_visibility', $visible, $item );
+			$visible = true;
 
-          if ( ! $visible ) unset( $items[$key] ) ;
-        }
+			// hide any item that is the child of a hidden item
+			if( in_array( $item->menu_item_parent, $hide_children_of ) ){
+				$visible = false;
+				$hide_children_of[] = $item->ID; // for nested menus
+			}
 
-      }
-      return $items;
+			// check any item that has NMR roles set
+			if( isset( $item->roles ) ) {
+
+				// check all logged in, all logged out, or role
+				switch( $item->roles ) {
+					case 'in' :
+					$visible = is_user_logged_in() ? true : false;
+						break;
+					case 'out' :
+					$visible = ! is_user_logged_in() ? true : false;
+						break;
+					default:
+						$visible = false;
+						if ( is_array( $item->roles ) && ! empty( $item->roles ) ) {
+							foreach ( $item->roles as $role ) {
+								if ( current_user_can( $role ) ) 
+									$visible = true;
+							}
+						}
+
+						break;
+				}
+
+			}
+
+			// add filter to work with plugins that don't use traditional roles
+			$visible = apply_filters( 'nav_menu_roles_item_visibility', $visible, $item );
+
+			// unset non-visible item
+			if ( ! $visible ) {
+				$hide_children_of[] = $item->ID; // store ID of item 
+				unset( $items[$key] ) ;
+			}
+
+		}
+
+		return $items;
     }
 
 } // end class
