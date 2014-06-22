@@ -316,7 +316,7 @@ class Nav_Menu_Roles {
 			}
 
 			// check any item that has NMR roles set
-			if( isset( $item->roles ) ) {
+			if( $visible && isset( $item->roles ) ) {
 
 				// check all logged in, all logged out, or role
 				switch( $item->roles ) {
