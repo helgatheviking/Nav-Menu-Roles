@@ -111,7 +111,7 @@ class Nav_Menu_Roles {
 		add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
 
 		// add new fields via hook
-		add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'custom_fields' ), 10, 2 );
+		add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'custom_fields' ), 10, 4 );
 
 		// add some JS
 		add_action( 'admin_enqueue_scripts' , array( $this, 'enqueue_scripts' ) );
@@ -243,7 +243,7 @@ class Nav_Menu_Roles {
 	* @params array $args 
 	* @since 1.6
 	*/
-	function custom_fields( $item, $args ) {
+	function custom_fields( $item_id, $item, $depth, $args ) {
 		global $wp_roles;
 
 		$display_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
