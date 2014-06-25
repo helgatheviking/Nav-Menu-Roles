@@ -110,6 +110,9 @@ class Nav_Menu_Roles {
 		// switch the admin walker
 		add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
 
+		// add new fields via hook
+		add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'custom_fields' ), 10, 2 );
+
 		// add some JS
 		add_action( 'admin_enqueue_scripts' , array( $this, 'enqueue_scripts' ) );
 
@@ -231,6 +234,88 @@ class Nav_Menu_Roles {
 	function edit_nav_menu_walker( $walker ) {
 		return 'Walker_Nav_Menu_Edit_Roles';
 	}
+
+
+	/**
+	* Add fields to hook added in Walker
+	* This will allow us to play nicely with any other plugin that is adding the same hook
+	* @params obj $item - the menu item 
+	* @params array $args 
+	* @since 1.6
+	*/
+	function custom_fields( $item, $args ) {
+		global $wp_roles;
+
+		$display_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
+
+		/* Get the roles saved for the post. */
+		$roles = get_post_meta( $item->ID, '_nav_menu_role', true );
+
+		$checked_roles = is_array( $roles ) ? $roles : false;
+
+		$logged_in_out = ! is_array( $roles ) ? $roles : false;
+
+		?>
+
+		<input type="hidden" name="nav-menu-role-nonce" value="<?php echo wp_create_nonce( 'nav-menu-nonce-name' ); ?>" />
+
+		<div class="field-nav_menu_role nav_menu_logged_in_out_field description-wide" style="margin: 5px 0;">
+		    <span class="description"><?php _e( "Display Mode", 'nav-menu-roles' ); ?></span>
+		    <br />
+
+		    <input type="hidden" class="nav-menu-id" value="<?php echo $item->ID ;?>" />
+
+		    <div class="logged-input-holder" style="float: left; width: 35%;">
+		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
+		        <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>">
+		            <?php _e( 'Logged Out Users', 'nav-menu-roles'); ?>
+		        </label>
+		    </div>
+
+		    <div class="logged-input-holder" style="float: left; width: 35%;">
+		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
+		        <label for="nav_menu_logged_in-for-<?php echo $item->ID ;?>">
+		            <?php _e( 'Logged In Users', 'nav-menu-roles'); ?>
+		        </label>
+		    </div>
+
+		    <div class="logged-input-holder" style="float: left; width: 30%;">
+		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_by_role-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" />
+		        <label for="nav_menu_by_role-for-<?php echo $item->ID ;?>">
+		            <?php _e( 'By Role', 'nav-menu-roles'); ?>
+		        </label>
+		    </div>
+
+		</div>
+
+		<div class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0;">
+		    <span class="description"><?php _e( "Access Role", 'nav-menu-roles' ); ?></span>
+		    <br />
+
+		    <?php
+
+		    /* Loop through each of the available roles. */
+		    foreach ( $display_roles as $role => $name ) {
+
+		        /* If the role has been selected, make sure it's checked. */
+		        $checked = checked( true, ( is_array( $checked_roles ) && in_array( $role, $checked_roles ) ), false );
+		        
+		        ?>
+
+		        <div class="role-input-holder" style="float: left; width: 33.3%; margin: 2px 0;">
+		        <input type="checkbox" name="nav-menu-role[<?php echo $item->ID ;?>][<?php echo $role; ?>]" id="nav_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>" <?php echo $checked; ?> value="<?php echo $role; ?>" />
+		        <label for="nav_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>">
+		        <?php echo esc_html( $name ); ?>
+		        </label>
+		        </div>
+
+		<?php } ?>
+
+		</div>
+
+		<?php 
+	}
+
 
 	/**
 	* Save the roles as menu item meta
