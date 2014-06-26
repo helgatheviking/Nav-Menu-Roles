@@ -93,12 +93,9 @@ class Nav_Menu_Roles {
 	*/
 	function __construct(){
 
-		// Include some admin files
+		// Admin functions
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-
-		// Register Importer
-		add_action( 'admin_init', array( $this, 'register_importer' ) );
-
+		
 		// load the textdomain
 		add_action( 'plugins_loaded', array( $this, 'load_text_domain' ) );
 
@@ -137,6 +134,12 @@ class Nav_Menu_Roles {
 	*/
 	function admin_init() {
 		include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
+
+		// Register Importer
+		$this->register_importer();
+
+		// save user notice
+		$this->nag_ignore();
 	}
 
 
@@ -206,16 +209,39 @@ class Nav_Menu_Roles {
 
 		// Check Transient for conflicts and show error
 		if ( ! empty ( $conflicts ) ) {
-			echo '<div class="error">
-			<p>';
-			printf ( __( 'Nav Menu Roles has detected a possible conflict with the following functions or classes: %1$s. Please see the %2$sFAQ%3$s for more information and possible resolution.', 'nav-menu-roles' ),
-			'<code>' . implode( $conflicts, ', ' ) . '</code>',
-			'<a href="http://wordpress.org/plugins/nav-menu-roles/faq#conflict" target="_blank">',
-			'</a>' );
-			echo '</p>
-			</div>';
-		}
+			global $current_user ;
+			$user_id = $current_user->ID;
 
+			if ( ! get_user_meta( $user_id, 'nmr_ignore_notice' ) ) {
+
+				echo '<div class="updated">
+				<p>';
+				printf ( __( 'Nav Menu Roles has detected a possible conflict with the following functions or classes: %1$s. Please see the %2$sFAQ%3$s for more information and possible resolution. | %4$sHide Notice%3$s', 'nav-menu-roles' ),
+				'<code>' . implode( $conflicts, ', ' ) . '</code>',
+				'<a href="http://wordpress.org/plugins/nav-menu-roles/faq#conflict" target="_blank">',
+				'</a>',
+				'<a href="?nmr_nag_ignore=0">' );
+				echo '</p>
+				</div>';
+
+			}
+
+		}
+		
+	}
+
+
+	/**
+	* Allow the notice to be dismissable
+	* @since 1.6
+	*/
+	function nag_ignore() {
+		global $current_user;
+		$user_id = $current_user->ID;
+		/* If user clicks to ignore the notice, add that to their user meta */
+		if ( isset($_GET['nmr_nag_ignore']) && '0' == $_GET['nmr_nag_ignore'] ) {
+			add_user_meta($user_id, 'nmr_ignore_notice', 'true', true);
+		}
 	}
 
 	/**
