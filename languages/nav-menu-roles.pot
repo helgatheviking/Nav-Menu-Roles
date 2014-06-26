@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Nav Menu Roles package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Nav Menu Roles 1.5.0\n"
+"Project-Id-Version: Nav Menu Roles 1.6.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2014-04-09 20:54:37+00:00\n"
+"POT-Creation-Date: 2014-06-26 15:17:58+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -126,51 +126,31 @@ msgid ""
 "it."
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:209
-msgid "Display Mode"
-msgstr ""
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:217
-msgid "Logged Out Users"
-msgstr ""
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:224
-msgid "Logged In Users"
-msgstr ""
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:231
-msgid "By Role"
-msgstr ""
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:238
-msgid "Access Role"
-msgstr ""
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:270
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:196
 msgid "Move"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:271
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:197
 msgid "Up one"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:272
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:198
 msgid "Down one"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:275
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:201
 msgid "To the top"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:282
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:208
 msgid "Original: %s"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:295
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:221
 msgid "Remove"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:296
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:222
 msgid "Cancel"
 msgstr ""
 
@@ -182,16 +162,37 @@ msgstr ""
 msgid "Nav Menu Roles"
 msgstr ""
 
-#: nav-menu-roles.php:158
+#: nav-menu-roles.php:163
 msgid ""
 "Import %snav menu roles%s and other menu item meta skipped by the default "
 "importer"
 msgstr ""
 
-#: nav-menu-roles.php:209
+#: nav-menu-roles.php:219
 msgid ""
-"Nav Menu Roles has detected a conflict with the following functions or "
-"classes: %1$s. Please see the %2$sFAQ%3$s for more information."
+"Nav Menu Roles has detected a possible conflict with the following "
+"functions or classes: %1$s. Please see the %2$sFAQ%3$s for more information "
+"and possible resolution. | %4$sHide Notice%3$s"
+msgstr ""
+
+#: nav-menu-roles.php:289
+msgid "Display Mode"
+msgstr ""
+
+#: nav-menu-roles.php:297
+msgid "Logged Out Users"
+msgstr ""
+
+#: nav-menu-roles.php:304
+msgid "Logged In Users"
+msgstr ""
+
+#: nav-menu-roles.php:311
+msgid "By Role"
+msgstr ""
+
+#: nav-menu-roles.php:318
+msgid "Access Role"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
