@@ -45,8 +45,7 @@ Please report any bugs, errors, warnings, code problems to [Github](https://gith
 ## Screenshots ##
 
 ### 1. Show the new options for the menu items in the admin menu customizer ###
-![Show the new options for the menu items in the admin menu customizer](http://s.wordpress.org/extend/plugins/nav-menu-roles/screenshot-1.png)
-
+![Show the new options for the menu items in the admin menu customizer](http://plugins.svn.wordpress.org/nav-menu-roles/assets/screenshot-1.png)
 
 ## Frequently Asked Questions ##
 
@@ -130,7 +129,7 @@ function kia_item_visibility( $visible, $item ){
 add_filter( 'nav_menu_roles_item_visibility', 'kia_item_visibility', 10, 2 );
 `
 
-Note that you have to generate your own if/then logic. I can't provide free support for custom integration with another plugin. You may [contact me](http://kathyisawesome.com/contact) to discuss hiring me, or I would suggest using a plugin that supports WordPress' roles, such as Justin Tadlock's [Membership](http://wordpress.org/extend/plugins/membership).
+Note that you have to generate your own if/then logic. I can't provide free support for custom integration with another plugin. You may [contact me](http://kathyisawesome.com/contact) to discuss hiring me, or I would suggest using a plugin that supports WordPress' roles, such as Justin Tadlock's [Membership](http://wordpress.org/plugins/membership).
 
 ### What happened to my menu roles on import/export? ###
 
