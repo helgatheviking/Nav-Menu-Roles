@@ -50,7 +50,7 @@ Please report any bugs, errors, warnings, code problems to [Github](https://gith
 
 ## Frequently Asked Questions ##
 
-= <a name="conflict"></a>I don't see the Nav Menu Roles options in the admin menu items?  =
+### <a name="conflict"></a>I don't see the Nav Menu Roles options in the admin menu items?  ###
 
 This is because you have another plugin (or theme) that is also trying to alter the same code that creates the Menu section in the admin.  
 
@@ -65,18 +65,18 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 5. Navception
 6. Avada theme
 
-= <a name="compatibility"></a>Workaround #1 =
+### <a name="compatibility"></a>Workaround #1 ###
 Shazdeh, the author of Menu Item Visibility Control plugin had the [genius idea](http://shazdeh.me/2014/06/25/custom-fields-nav-menu-items/) to not wait for a core hook and simply add the hook ourselves. If all plugin and theme authors use the same hook, we can make our plugins play together.
 
 Therefore, as of version 1.6 I am modifying my admin walker to *only* adding the following line (right after the description input):
 
-`
+```
 <?php 
 // This is the added section
 do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
 // end added section 
 ?>
-`
+```
 
 I am then adding my fields to this hook. Ask your conflicting plugin/theme's author to do the same and our plugins should become compatible. 
 
@@ -90,9 +90,9 @@ There are apparently a few membership plugins out there that *don't* use traditi
 
 Here's an example where I've added a new pseudo role, creatively called "new-role".  The first function adds it to the menu item admin screen. The second function is pretty generic and won't actually do anything because you need to supply your own logic based on the plugin you are using.  Nav Menu Roles will save the new "role" info and add it to the item in an array to the `$item->roles` variable.
 
-= <a name="new-role"></a>Adding a new "role"  =
+### <a name="new-role"></a>Adding a new "role"  ###
 
-`
+```
 /*
  * Add custom roles to Nav Menu Roles menu list
 ** * param:** $roles an array of all available roles, by default is global $wp_roles   
@@ -103,13 +103,13 @@ function kia_new_roles( $roles ){
   return $roles;
 }
 add_filter( 'nav_menu_roles', 'kia_new_roles' );
-`
+```
 
 Note, if you want to add a WordPress capability the above is literally all you need. Because Nav Menu Roles checks whether a role has permission to view the menu item using `current_user_can($role) you do not need to right a custom callback for the `nav_menu_roles_item_visibility` filter.
 
 In case you *do* need to check your visibility status against something very custom, here is how you'd go about it:
 
-`
+```
 /*
  * Change visibilty of each menu item
 ** * param:** $visible boolean  
@@ -128,7 +128,7 @@ function kia_item_visibility( $visible, $item ){
   return $visible;
 }
 add_filter( 'nav_menu_roles_item_visibility', 'kia_item_visibility', 10, 2 );
-`
+```
 
 Note that you have to generate your own if/then logic. I can't provide free support for custom integration with another plugin. You may [contact me](http://kathyisawesome.com/contact) to discuss hiring me, or I would suggest using a plugin that supports WordPress' roles, such as Justin Tadlock's [Membership](http://wordpress.org/extend/plugins/membership).
 
