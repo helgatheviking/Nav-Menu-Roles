@@ -93,7 +93,7 @@ module.exports = function(grunt) {
 			target: {
 				options: {
 					domainPath: '/languages', // Where to save the POT file.
-					exclude: ['build'], // List of files or directories to ignore.
+					exclude: ['build/.*', 'svn/.*'], // List of files or directories to ignore.
 					mainFile: '<%= pkg.name %>.php', // Main project file.
 					potFilename: '<%= pkg.name %>.pot', // Name of the POT file.
 					type: 'wp-plugin' // Type of project (wp-plugin or wp-theme).
