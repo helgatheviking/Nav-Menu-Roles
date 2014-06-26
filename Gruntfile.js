@@ -48,15 +48,18 @@ module.exports = function(grunt) {
 					'**',
 					'!node_modules/**',
 					'!build/**',
+					'!svn/**',
+					'!wp-assets/**',
 					'!.git/**',
+					'!**.md',
 					'!Gruntfile.js',
 					'!package.json',
           			'!gitcreds.json',
           			'!.transifexrc',
 					'!.gitignore',
 					'!.gitmodules',
-					'!**/*.sublime-workspace',
-					'!**/*.sublime-project',
+					'!**.sublime-workspace',
+					'!**.sublime-project',
 					'!deploy.sh',
 					'!**/*~'
 				],
@@ -90,7 +93,7 @@ module.exports = function(grunt) {
 			target: {
 				options: {
 					domainPath: '/languages', // Where to save the POT file.
-					exclude: ['build'], // List of files or directories to ignore.
+					exclude: ['build/.*', 'svn/.*'], // List of files or directories to ignore.
 					mainFile: '<%= pkg.name %>.php', // Main project file.
 					potFilename: '<%= pkg.name %>.pot', // Name of the POT file.
 					type: 'wp-plugin' // Type of project (wp-plugin or wp-theme).
@@ -144,7 +147,7 @@ module.exports = function(grunt) {
 		// # version bump, commit, tag & push in git
 		release: {
 			options: {
-				push: true,
+				push: false,
 				github: {
 					repo: '<%= pkg.repository.url %>', //put your user/repo here
 					usernameVar: '<%= gitcreds.username %>', //ENVIRONMENT VARIABLE that contains Github username 
@@ -160,7 +163,8 @@ module.exports = function(grunt) {
 				options: {
 					svn_user: '<%= pkg.author %>',
 					plugin_slug: '<%= pkg.name %>',
-					build_dir: 'build/'
+					build_dir: 'build/',
+					assets_dir: 'wp-assets/'
 				},
 			}
 		},
