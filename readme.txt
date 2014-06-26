@@ -16,7 +16,7 @@ This plugin lets you hide custom menu items based on user roles.  So if you have
 
 Nav Menu Roles is very flexible. In addition to standard user roles, you can customize the functionality by adding your own check boxes with custom labels using the `nav_menu_roles` filter and then using the `nav_menu_roles_item_visibility` filter to check against whatever criteria you need. You can check against any user meta values (like capabilities) and any custom attributes added by other plugins. See the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/#new-role).
 
-**IMPORTANT NOTE** 
+= IMPORTANT NOTE =
 
 In WordPress menu items and pages are completely separate entities. Nav Menu Roles does not restrict access to content. Nav Menu Roles is *only* for showing/hiding *nav menu* items. If you wish to restrict content then you need to also be using a membership plugin.
 
@@ -145,6 +145,10 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 == Changelog ==
+
+= 1.6.0 =
+* Feature: Hiding a parent menu item will automatically hide all its children
+* Feature: Add compatibility with Menu Item Visibility Control plugin and any plugin/theme that is willing to add its inputs via the `wp_nav_menu_item_custom_fields` hook. See the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/#compatibility) to make our plugins compatible.
 
 = 1.5.1 =
 * Hopefully fix missing nav-menu-roles.min.js SVN issue
