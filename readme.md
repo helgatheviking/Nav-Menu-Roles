@@ -50,7 +50,7 @@ Please report any bugs, errors, warnings, code problems to [Github](https://gith
 
 ## Frequently Asked Questions ##
 
-= <a name="conflict"></a>I don't see the Nav Menu Roles options in the admin menu items?  =
+### <a name="conflict"></a>I don't see the Nav Menu Roles options in the admin menu items?###
 
 This is because you have another plugin (or theme) that is also trying to alter the same code that creates the Menu section in the admin.  
 
@@ -65,34 +65,24 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 5. Navception
 6. Avada theme
 
-= <a name="compatibility"></a>Workaround #1 =
+#### <a name="compatibility"></a>Workaround 1 ####
 Shazdeh, the author of Menu Item Visibility Control plugin had the [genius idea](http://shazdeh.me/2014/06/25/custom-fields-nav-menu-items/) to not wait for a core hook and simply add the hook ourselves. If all plugin and theme authors use the same hook, we can make our plugins play together.
 
 Therefore, as of version 1.6 I am modifying my admin walker to *only* adding the following line (right after the description input):
 
-`
+```
 <?php 
 // This is the added section
 do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
 // end added section 
 ?>
-`
+```
 
 I am then adding my fields to this hook. Ask your conflicting plugin/theme's author to do the same and our plugins should become compatible. 
 
-### Workaround #2 ###
+#### Workaround 2 ####
 
-As a workaround, you can switch to a default theme (or disable the conflicting plugin), edit the Nav Menu Roles, for each menu item, then revert to your original theme/ reenable the conflicting plugin. The front-end functionality of Nav Menu Roles will still work. This isn't really ideal, but there's nothing I can do about the WordPress admin's
-
-I am modifying the Walker in my plugin to only add the following action hook right after the description input:
-
-
-
-This is not a failure of Nav Menu Roles and there isn't anything I can do about it. Until these hooks are added the menu modification plugins are unfortunately going to conflict with one another.
-
-
-
- limitations. 
+As a workaround, you can switch to a default theme (or disable the conflicting plugin), edit the Nav Menu Roles, for each menu item, then revert to your original theme/ reenable the conflicting plugin. The front-end functionality of Nav Menu Roles will still work.
 
 ### I'm using XYZ Membership plugin and I don't see its "levels"? ###
 
