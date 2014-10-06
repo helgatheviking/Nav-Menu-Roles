@@ -240,12 +240,12 @@ class Nav_Menu_Roles {
 		$user_id = $current_user->ID;
 		/* If user clicks to ignore the notice, add that to their user meta */
 		if ( isset($_GET['nmr_nag_ignore']) && '0' == $_GET['nmr_nag_ignore'] ) {
-			add_user_meta( $user_id, 'nmr_ignore_notice', 'true', true );
+			add_user_meta($user_id, 'nmr_ignore_notice', 'true', true);
 		}
 	}
 
 	/**
-	* Delete the transient when a plugin is activated or deactivated
+	* Check for other plugins trying to filter the Walker
 	* @since 1.5
 	*/
 	function delete_transient() {
@@ -272,7 +272,25 @@ class Nav_Menu_Roles {
 	function custom_fields( $item_id, $item, $depth, $args ) {
 		global $wp_roles;
 
-		$display_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
+		/**
+		* Pass the menu item to the filter function.
+		* This change is suggested as it allows the use of information from the menu item (and
+		* by extension the target object) to further customize what filters appear during menu
+		* construction.
+		*/
+		$display_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names, $item );
+
+
+		/**
+		* If no roles are being used, don't use the selection menu at all.
+		* Unless something deliberately removes the WordPress roles from this list, nothing will
+		* be functionally altered to the end user.
+		* This change is suggested for the benefit of users constructing granular admin permissions
+		* using extensive custom roles as it is an effective means of stopping admins with partial
+		* permissions to the menu from accidentally removing all restrictions from a menu item to
+		* which they do not have access.
+		*/
+		if( !$display_roles ) return;
 
 		/* Get the roles saved for the post. */
 		$roles = get_post_meta( $item->ID, '_nav_menu_role', true );
