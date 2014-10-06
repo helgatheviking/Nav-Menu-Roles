@@ -240,12 +240,12 @@ class Nav_Menu_Roles {
 		$user_id = $current_user->ID;
 		/* If user clicks to ignore the notice, add that to their user meta */
 		if ( isset($_GET['nmr_nag_ignore']) && '0' == $_GET['nmr_nag_ignore'] ) {
-			add_user_meta($user_id, 'nmr_ignore_notice', 'true', true);
+			add_user_meta( $user_id, 'nmr_ignore_notice', 'true', true );
 		}
 	}
 
 	/**
-	* Check for other plugins trying to filter the Walker
+	* Delete the transient when a plugin is activated or deactivated
 	* @since 1.5
 	*/
 	function delete_transient() {
