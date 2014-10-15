@@ -1,7 +1,7 @@
 {
   "title": "Nav Menu Roles",
   "name": "nav-menu-roles",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Hide menu items based on user roles",
   "main": "Gruntfile.js",
   "license": "GPL",
