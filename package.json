@@ -30,6 +30,7 @@
     "grunt-checkbranch": "~0.3.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-wp-deploy": "~0.5.0",
-    "grunt-wp-readme-to-markdown": "~0.7.0"
+    "grunt-wp-readme-to-markdown": "~0.7.0",
+    "grunt-bump": "0.0.16"
   }
 }

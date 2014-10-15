@@ -156,6 +156,22 @@ module.exports = function(grunt) {
 			}
 		},
 
+		bump: {
+		    options: {
+		      files: ['package.json','nav-menu-roles.php', 'readme.md', 'readme.txt'],
+		      updateConfigs: ['pkg'],
+		      commit: false,
+		      commitMessage: 'Release v%VERSION%',
+		      commitFiles: ['nav-menu-roles.php', 'readme.md', 'readme.txt'],
+		      createTag: false,
+		      tagName: 'v%VERSION%',
+		      tagMessage: 'Version %VERSION%',
+		      push: false,
+		      pushTo: 'upstream',
+		      gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+		      globalReplace: false
+		    }
+		  },
 		// # Deploy to WordPress
 
 		wp_deploy: {
