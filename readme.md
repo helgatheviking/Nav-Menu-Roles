@@ -58,11 +58,10 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 
 **A non-exhaustive list of known conflicts:**
 
-1. UberMenu Mega Menus plugin
-2. Menu Icons plugin
-3. Add Descendants As Submenu Items
-4. Menu Item Custom Fields
-5. Navception
+1. UberMenu 2.x Mega Menus plugin
+1. Add Descendants As Submenu Items plugin
+1. Navception plugin
+1. Suffusion theme
 
 ### <a name="compatibility"></a>Workaround #1 ###
 Shazdeh, the author of Menu Item Visibility Control plugin had the [genius idea](http://shazdeh.me/2014/06/25/custom-fields-nav-menu-items/) to not wait for a core hook and simply add the hook ourselves. If all plugin and theme authors use the same hook, we can make our plugins play together.
