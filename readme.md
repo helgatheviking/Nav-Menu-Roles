@@ -5,7 +5,7 @@
 **Tags:** menu, menus, nav menu, nav menus  
 **Requires at least:** 3.8  
 **Tested up to:** 4.0  
-**Stable tag:** 1.6.0  
+**Stable tag:** 1.6.1  
 **License:** GPLv3  
 
 Hide custom menu items based on user roles
@@ -145,6 +145,10 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 ## Changelog ##
+
+### 1.6.1 ###
+* Update list of conflits
+* Don't display radio buttons if no roles - allows for granular permissions control
 
 ### 1.6.0 ###
 * Feature: Hiding a parent menu item will automatically hide all its children
