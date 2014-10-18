@@ -5,7 +5,7 @@ Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GPLv3
 
 Hide custom menu items based on user roles
@@ -127,7 +127,7 @@ function kia_item_visibility( $visible, $item ){
 add_filter( 'nav_menu_roles_item_visibility', 'kia_item_visibility', 10, 2 );
 `
 
-Note that you have to generate your own if/then logic. I can't provide free support for custom integration with another plugin. You may [contact me](http://kathyisawesome.com/contact) to discuss hiring me, or I would suggest using a plugin that supports WordPress' roles, such as Justin Tadlock's [Membership](http://wordpress.org/extend/plugins/membership).
+Note that you have to generate your own if/then logic. I can't provide free support for custom integration with another plugin. You may [contact me](http://kathyisawesome.com/contact) to discuss hiring me, or I would suggest using a plugin that supports WordPress' roles, such as Justin Tadlock's [Members](http://wordpress.org/plugins/members).
 
 = What happened to my menu roles on import/export? =
 
@@ -144,6 +144,9 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 == Changelog ==
+
+= 1.6.2 =
+* Add French translation. Props @Philippe Gilles
 
 = 1.6.1 =
 * Update list of conflits
