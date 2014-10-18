@@ -1,14 +1,14 @@
 # Copyright (C) 2014 Nav Menu Roles
 # This file is distributed under the same license as the Nav Menu Roles package.
 # Translators:
-# TheHassan, 2014
+# Hassan, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Nav Menu Roles\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2014-04-09 20:54:37+00:00\n"
-"PO-Revision-Date: 2014-04-08 08:21+0000\n"
-"Last-Translator: TheHassan\n"
+"POT-Creation-Date: 2014-06-26 15:17:58+00:00\n"
+"PO-Revision-Date: 2014-06-30 06:51+0000\n"
+"Last-Translator: Hassan\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/nav-menu-roles/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -130,51 +130,31 @@ msgid ""
 "it."
 msgstr "سيتم عرض الوصف في القائمة إذا كان القالب الحالي يدعم ذلك."
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:209
-msgid "Display Mode"
-msgstr "وضع العرض"
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:217
-msgid "Logged Out Users"
-msgstr "المستخدمين غير المسجلين"
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:224
-msgid "Logged In Users"
-msgstr "المستخدمين المسجلين"
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:231
-msgid "By Role"
-msgstr "حسب الدور"
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:238
-msgid "Access Role"
-msgstr "دور الولوج"
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:270
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:196
 msgid "Move"
 msgstr "تحريك"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:271
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:197
 msgid "Up one"
 msgstr "واحدة للأعلي"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:272
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:198
 msgid "Down one"
 msgstr "واحدة للأسفل"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:275
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:201
 msgid "To the top"
 msgstr "للأعلى"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:282
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:208
 msgid "Original: %s"
 msgstr "الأصل: %s"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:295
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:221
 msgid "Remove"
 msgstr "حذف"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:296
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:222
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -186,17 +166,38 @@ msgstr "تغش، أليس كذلك؟"
 msgid "Nav Menu Roles"
 msgstr "Nav Menu Roles"
 
-#: nav-menu-roles.php:158
+#: nav-menu-roles.php:163
 msgid ""
 "Import %snav menu roles%s and other menu item meta skipped by the default "
 "importer"
 msgstr "استيراد %snav menu roles%s والبيانات الوصفية الأخرى الخاصة بعناصر القوائم التي يتم تخطيها بواسطة المستورد الإفتراضي"
 
-#: nav-menu-roles.php:209
+#: nav-menu-roles.php:219
 msgid ""
-"Nav Menu Roles has detected a conflict with the following functions or "
-"classes: %1$s. Please see the %2$sFAQ%3$s for more information."
-msgstr "Nav Menu Roles قامت باكتشاف مشكلة مع الدوال أو التصنيفات التالية: %1$s. رجاء أنظر %2$sFAQ%3$s للمزيد من المعلومات."
+"Nav Menu Roles has detected a possible conflict with the following functions"
+" or classes: %1$s. Please see the %2$sFAQ%3$s for more information and "
+"possible resolution. | %4$sHide Notice%3$s"
+msgstr "Nav Menu Roles قامت باكتشاف مشكلة محتملة مع الدوال أو التصنيفات التالية: %1$s. رجاء أنظر %2$sFAQ%3$s للمزيد من المعلومات والحلول الممكنة. | %4$sإخفاء التنبيه%3$s"
+
+#: nav-menu-roles.php:289
+msgid "Display Mode"
+msgstr "وضع العرض"
+
+#: nav-menu-roles.php:297
+msgid "Logged Out Users"
+msgstr "المستخدمين غير المسجلين"
+
+#: nav-menu-roles.php:304
+msgid "Logged In Users"
+msgstr "المستخدمين المسجلين"
+
+#: nav-menu-roles.php:311
+msgid "By Role"
+msgstr "حسب الدور"
+
+#: nav-menu-roles.php:318
+msgid "Access Role"
+msgstr "دور الولوج"
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.kathyisawesome.com/449/nav-menu-roles/"

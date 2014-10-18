@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nav Menu Roles\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2014-04-09 20:54:37+00:00\n"
-"PO-Revision-Date: 2014-04-13 13:55+0000\n"
-"Last-Translator: timoleinio <tjlein@gmail.com>\n"
+"POT-Creation-Date: 2014-06-26 15:17:58+00:00\n"
+"PO-Revision-Date: 2014-06-27 09:35+0000\n"
+"Last-Translator: Kathy Darling <helgatheviking@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/nav-menu-roles/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -130,51 +130,31 @@ msgid ""
 "it."
 msgstr "Kuvaus näytetään nykyisen teeman valikossa, jos nykyinen teema tukee sitä."
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:209
-msgid "Display Mode"
-msgstr "Näytä"
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:217
-msgid "Logged Out Users"
-msgstr "Kirjautumaton käyttäjä"
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:224
-msgid "Logged In Users"
-msgstr "Kirjautunut käyttäjä"
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:231
-msgid "By Role"
-msgstr "Roolin mukaan"
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:238
-msgid "Access Role"
-msgstr "Käyttäjärooli"
-
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:270
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:196
 msgid "Move"
 msgstr "Siirrä"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:271
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:197
 msgid "Up one"
 msgstr "Yksi ylöspäin"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:272
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:198
 msgid "Down one"
 msgstr "Yksi alaspäin"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:275
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:201
 msgid "To the top"
 msgstr "Ylimmäksi"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:282
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:208
 msgid "Original: %s"
 msgstr "Alkuperäinen: %s"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:295
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:221
 msgid "Remove"
 msgstr "Poista"
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:296
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:222
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -186,17 +166,38 @@ msgstr "Yritätkö huijata?"
 msgid "Nav Menu Roles"
 msgstr "Valikkoroolit"
 
-#: nav-menu-roles.php:158
+#: nav-menu-roles.php:163
 msgid ""
 "Import %snav menu roles%s and other menu item meta skipped by the default "
 "importer"
 msgstr "Tuo %svalikkorooleja%s ja niiden muita metatietoja"
 
-#: nav-menu-roles.php:209
+#: nav-menu-roles.php:219
 msgid ""
-"Nav Menu Roles has detected a conflict with the following functions or "
-"classes: %1$s. Please see the %2$sFAQ%3$s for more information."
-msgstr "Lisäosa on havainnut konfliktin seuraavien funktioiden tai luokkien kanssa: %1$s. Lisätietoja löydät %2$sFAQ:sta%3$s"
+"Nav Menu Roles has detected a possible conflict with the following functions"
+" or classes: %1$s. Please see the %2$sFAQ%3$s for more information and "
+"possible resolution. | %4$sHide Notice%3$s"
+msgstr ""
+
+#: nav-menu-roles.php:289
+msgid "Display Mode"
+msgstr "Näytä"
+
+#: nav-menu-roles.php:297
+msgid "Logged Out Users"
+msgstr "Kirjautumaton käyttäjä"
+
+#: nav-menu-roles.php:304
+msgid "Logged In Users"
+msgstr "Kirjautunut käyttäjä"
+
+#: nav-menu-roles.php:311
+msgid "By Role"
+msgstr "Roolin mukaan"
+
+#: nav-menu-roles.php:318
+msgid "Access Role"
+msgstr "Käyttäjärooli"
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.kathyisawesome.com/449/nav-menu-roles/"
