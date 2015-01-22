@@ -4,8 +4,8 @@ Contributors: helgatheviking
 Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.8
-Tested up to: 4.0
-Stable tag: 1.6.2
+Tested up to: 4.1
+Stable tag: 1.6.3
 License: GPLv3
 
 Hide custom menu items based on user roles
@@ -60,6 +60,10 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 2. Add Descendants As Submenu Items plugin
 3. Navception plugin
 4. Suffusion theme
+5. BeTheme
+6. Yith Menu
+7. Kleo Theme
+8. Jupiter Theme
 
 
 = <a name="compatibility"></a>Workaround #1 =
@@ -144,6 +148,9 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 == Changelog ==
+
+= 1.6.3 =
+* Try again to add languages. Where'd they all go?
 
 = 1.6.2 =
 * Add French translation. Props @Philippe Gilles
