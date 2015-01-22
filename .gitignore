@@ -4,3 +4,4 @@ temp/
 build/
 svn/
 wp-assets/
+deploy.sh

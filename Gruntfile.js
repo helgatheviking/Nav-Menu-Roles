@@ -147,7 +147,7 @@ module.exports = function(grunt) {
 		// # version bump, commit, tag & push in git
 		release: {
 			options: {
-				push: false,
+				push: true,
 				github: {
 					repo: '<%= pkg.repository.url %>', //put your user/repo here
 					usernameVar: '<%= gitcreds.username %>', //ENVIRONMENT VARIABLE that contains Github username 
