@@ -6,13 +6,19 @@
  * @since    	1.3
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; 
+}
 
-if ( ! defined( 'WP_LOAD_IMPORTERS' ) )
+if ( ! defined( 'WP_LOAD_IMPORTERS' ) ){
 	return;
+}
 
 /** Display verbose errors */
-define( 'IMPORT_DEBUG', false );
+if( ! defined( 'IMPORT_DEBUG' ) ){
+	define( 'IMPORT_DEBUG', false );
+}
 
 // Load Importer API
 require_once ABSPATH . 'wp-admin/includes/import.php';
@@ -79,7 +85,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 	 */
 	function import( $file ) {
 		add_filter( 'import_post_meta_key', array( $this, 'is_valid_meta_key' ) );
-		add_filter( 'http_request_timeout', array( &$this, 'bump_request_timeout' ) );
+		add_filter( 'http_request_timeout', array( $this, 'bump_request_timeout' ) );
 
 		$this->import_start( $file );
 
@@ -286,9 +292,10 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 
 	/**
 	 * Added to http_request_timeout filter to force timeout at 60 seconds during import
-	 * @return int 60
+	 * @param int $val
+	 * @return int
 	 */
-	function bump_request_timeout() {
+	public function bump_request_timeout( $val ) {
 		return 60;
 	}
 
