@@ -4,8 +4,8 @@
 **Donate link:** https://inspirepay.com/pay/helgatheviking  
 **Tags:** menu, menus, nav menu, nav menus  
 **Requires at least:** 3.8  
-**Tested up to:** 4.1  
-**Stable tag:** 1.6.4  
+**Tested up to:** 4.2  
+**Stable tag:** 1.6.5  
 **License:** GPLv3  
 
 Hide custom menu items based on user roles
