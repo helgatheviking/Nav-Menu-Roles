@@ -295,9 +295,18 @@ class Nav_Menu_Roles {
 		/* Get the roles saved for the post. */
 		$roles = get_post_meta( $item->ID, '_nav_menu_role', true );
 
-		$checked_roles = is_array( $roles ) ? $roles : false;
+		// by default nothing is checked (will match "everyone" radio)
+		$logged_in_out = '';
 
-		$logged_in_out = ! is_array( $roles ) ? $roles : false;
+		// specific roles are saved as an array, so "in" or an array equals "in" is checked
+		if( is_array( $roles ) || $roles == 'in' ){
+			$logged_in_out = 'in';
+		} else if ( $roles == 'out' ){
+			$logged_in_out = 'out';
+		}
+
+		// the specific roles to check
+		$checked_roles = is_array( $roles ) ? $roles : false;
 
 		?>
 
@@ -310,30 +319,30 @@ class Nav_Menu_Roles {
 		    <input type="hidden" class="nav-menu-id" value="<?php echo $item->ID ;?>" />
 
 		    <div class="logged-input-holder" style="float: left; width: 35%;">
-		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
-		        <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>">
-		            <?php _e( 'Logged Out Users', 'nav-menu-roles'); ?>
-		        </label>
-		    </div>
-
-		    <div class="logged-input-holder" style="float: left; width: 35%;">
 		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
 		        <label for="nav_menu_logged_in-for-<?php echo $item->ID ;?>">
 		            <?php _e( 'Logged In Users', 'nav-menu-roles'); ?>
 		        </label>
 		    </div>
 
+		    <div class="logged-input-holder" style="float: left; width: 35%;">
+		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
+		        <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>">
+		            <?php _e( 'Logged Out Users', 'nav-menu-roles'); ?>
+		        </label>
+		    </div>
+
 		    <div class="logged-input-holder" style="float: left; width: 30%;">
 		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_by_role-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" />
 		        <label for="nav_menu_by_role-for-<?php echo $item->ID ;?>">
-		            <?php _e( 'By Role', 'nav-menu-roles'); ?>
+		            <?php _e( 'Everyone', 'nav-menu-roles'); ?>
 		        </label>
 		    </div>
 
 		</div>
 
 		<div class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0;">
-		    <span class="description"><?php _e( "Access Role", 'nav-menu-roles' ); ?></span>
+		    <span class="description"><?php _e( "Limit logged in users to specific roles", 'nav-menu-roles' ); ?></span>
 		    <br />
 
 		    <?php
@@ -390,16 +399,16 @@ class Nav_Menu_Roles {
 
 		$saved_data = false;
 
-		if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {
-			$saved_data = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
-		} elseif ( isset( $_POST['nav-menu-role'][$menu_item_db_id] ) ) {
+		if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && $_POST['nav-menu-logged-in-out'][$menu_item_db_id] == 'in' && ! empty ( $_POST['nav-menu-role'][$menu_item_db_id] ) ) {
 			$custom_roles = array();
 			// only save allowed roles
 			foreach( $_POST['nav-menu-role'][$menu_item_db_id] as $role ) {
 				if ( array_key_exists ( $role, $allowed_roles ) ) $custom_roles[] = $role;
 			}
 			if ( ! empty ( $custom_roles ) ) $saved_data = $custom_roles;
-		}
+		} else if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {
+			$saved_data = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
+		} 
 
 		if ( $saved_data ) {
 			update_post_meta( $menu_item_db_id, '_nav_menu_role', $saved_data );
