@@ -5,7 +5,7 @@ Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 1.6.5
+Stable tag: 1.7.0
 License: GPLv3
 
 Hide custom menu items based on user roles
@@ -132,6 +132,18 @@ add_filter( 'nav_menu_roles_item_visibility', 'kia_item_visibility', 10, 2 );
 `
 
 Note that you have to generate your own if/then logic. I can't provide free support for custom integration with another plugin. You may [contact me](http://kathyisawesome.com/contact) to discuss hiring me, or I would suggest using a plugin that supports WordPress' roles, such as Justin Tadlock's [Members](http://wordpress.org/plugins/members).
+
+= The menu exploded? Why are all my pages displaying for logged out users? =
+
+If every item in your menu is configured to display to logged in users (either all logged in users, or by specific role), then when a logged out visitor comes to your site there are no items in the menu to display.  `wp_nav_menu()` will then try check its `fallback_cb` argument... which defaults to `wp_page_menu`.
+
+Therefore, if you have no items to display, WordPress will end up displaying ALL your pages!!
+
+If you don't want this, you must set the fallback argument to be a null string.
+
+`
+wp_nav_menu( array( 'theme_location' => 'primary-menu', 'fallback_cb' => '' ) );
+`
 
 = What happened to my menu roles on import/export? =
 
