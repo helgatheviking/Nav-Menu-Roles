@@ -1,67 +1,67 @@
-# Copyright (C) 2014 Nav Menu Roles
+# Copyright (C) 2015 Nav Menu Roles
 # This file is distributed under the same license as the Nav Menu Roles package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Nav Menu Roles 1.6.0\n"
+"Project-Id-Version: Nav Menu Roles 1.6.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2014-06-26 15:17:58+00:00\n"
+"POT-Creation-Date: 2015-04-30 07:17:10+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: inc/class.Nav_Menu_Roles_Import.php:100
-#: inc/class.Nav_Menu_Roles_Import.php:109
-#: inc/class.Nav_Menu_Roles_Import.php:155
-#: inc/class.Nav_Menu_Roles_Import.php:159
-#: inc/class.Nav_Menu_Roles_Import.php:168
+#: inc/class.Nav_Menu_Roles_Import.php:106
+#: inc/class.Nav_Menu_Roles_Import.php:115
+#: inc/class.Nav_Menu_Roles_Import.php:161
+#: inc/class.Nav_Menu_Roles_Import.php:165
+#: inc/class.Nav_Menu_Roles_Import.php:174
 msgid "Sorry, there has been an error."
 msgstr ""
 
-#: inc/class.Nav_Menu_Roles_Import.php:101
+#: inc/class.Nav_Menu_Roles_Import.php:107
 msgid "The file does not exist, please try again."
 msgstr ""
 
-#: inc/class.Nav_Menu_Roles_Import.php:140
+#: inc/class.Nav_Menu_Roles_Import.php:146
 msgid "All done."
 msgstr ""
 
-#: inc/class.Nav_Menu_Roles_Import.php:140
+#: inc/class.Nav_Menu_Roles_Import.php:146
 msgid "Have fun!"
 msgstr ""
 
-#: inc/class.Nav_Menu_Roles_Import.php:160
+#: inc/class.Nav_Menu_Roles_Import.php:166
 msgid ""
 "The export file could not be found at <code>%s</code>. It is likely that "
 "this was caused by a permissions problem."
 msgstr ""
 
-#: inc/class.Nav_Menu_Roles_Import.php:176
+#: inc/class.Nav_Menu_Roles_Import.php:182
 msgid ""
 "This WXR file (version %s) may not be supported by this version of the "
 "importer. Please consider updating."
 msgstr ""
 
-#: inc/class.Nav_Menu_Roles_Import.php:244
+#: inc/class.Nav_Menu_Roles_Import.php:250
 msgid "Import Nav Menu Roles"
 msgstr ""
 
-#: inc/class.Nav_Menu_Roles_Import.php:251
+#: inc/class.Nav_Menu_Roles_Import.php:257
 msgid ""
 "A new version of this importer is available. Please update to version %s to "
 "ensure compatibility with newer export files."
 msgstr ""
 
-#: inc/class.Nav_Menu_Roles_Import.php:266
+#: inc/class.Nav_Menu_Roles_Import.php:272
 msgid ""
 "Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll "
 "import the Nav Menu Roles and any other missing post meta for the Nav Menu "
 "items."
 msgstr ""
 
-#: inc/class.Nav_Menu_Roles_Import.php:267
+#: inc/class.Nav_Menu_Roles_Import.php:273
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
 msgstr ""
 
@@ -175,24 +175,24 @@ msgid ""
 "and possible resolution. | %4$sHide Notice%3$s"
 msgstr ""
 
-#: nav-menu-roles.php:289
+#: nav-menu-roles.php:316
 msgid "Display Mode"
 msgstr ""
 
-#: nav-menu-roles.php:297
-msgid "Logged Out Users"
-msgstr ""
-
-#: nav-menu-roles.php:304
+#: nav-menu-roles.php:324
 msgid "Logged In Users"
 msgstr ""
 
-#: nav-menu-roles.php:311
-msgid "By Role"
+#: nav-menu-roles.php:331
+msgid "Logged Out Users"
 msgstr ""
 
-#: nav-menu-roles.php:318
-msgid "Access Role"
+#: nav-menu-roles.php:338
+msgid "Everyone"
+msgstr ""
+
+#: nav-menu-roles.php:345
+msgid "Limit logged in users to specific roles"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
