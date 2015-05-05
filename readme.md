@@ -38,9 +38,8 @@ Please report any bugs, errors, warnings, code problems to [Github](https://gith
 1. Upload the `plugin` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Go to Appearance > Menus
-1. Edit the menu items accordingly.  First select whether you'd like to display the item to all logged in users, all logged out users or to customize by role.
-1. If you chose customize by role, then you you can check the boxes next to the roles you'd like to restrict visibility to.
-1. If you choose 'By Role' and don't check any boxes, the item will be visible to everyone like normal.
+1. Edit the menu items accordingly. First select whether you'd like to display the item to Everyone, all logged out users, or all logged in users. 
+1. Logged in users can be further limited to specific roles by checking the boxes next to the roles you'd like to restrict visibility to.
 
 ## Screenshots ##
 
@@ -162,6 +161,9 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 ## Changelog ##
+
+### 1.7.0 ###
+* adjust admin UI to be more user-friendly. Options are now: show to everyone, show to logged out users, and show to logged in users (optionally, logged in users by specific role)
 
 ### 1.6.5 ###
 * add Guajarati language. props @rohilmistry93
