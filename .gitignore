@@ -5,3 +5,7 @@ build/
 svn/
 wp-assets/
 deploy.sh
+sftp-config.json
+*.sublime-workspace
+*.sublime-project
+*.transifexrc
