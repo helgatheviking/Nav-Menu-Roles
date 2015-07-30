@@ -172,6 +172,32 @@ module.exports = function(grunt) {
 		      globalReplace: false
 		    }
 		  },
+		
+		// bump version numbers
+		replace: {
+			Version: {
+				src: [
+					'readme.txt',
+					'readme.md',
+					'<%= pkg.name %>.php'
+				],
+				overwrite: true,
+				replacements: [
+					{
+						from: /Stable tag:.*$/m,
+						to: "Stable tag: <%= pkg.version %>"
+					},
+					{ 
+						from: /Version:.*$/m,
+						to: "Version: <%= pkg.version %>"
+					},
+					{ 
+						from: /public \$version = \'.*.'/m,
+						to: "public $version = '<%= pkg.version %>'"
+					}
+				]
+			}
+		},
 		// # Deploy to WordPress
 
 		wp_deploy: {
