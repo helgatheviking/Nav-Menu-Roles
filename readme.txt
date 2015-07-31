@@ -5,7 +5,7 @@ Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 1.7.0
+Stable tag: 1.7.1
 License: GPLv3
 
 Hide custom menu items based on user roles
@@ -204,6 +204,11 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 == Changelog ==
+
+= 1.7.1 =
+* Updated FAQ with patch instructions for conflicting plugins/themes
+* add Italian language. props @sododesign
+* add Portugeuse language. props @brunobarros
 
 = 1.7.0 =
 * adjust admin UI to be more user-friendly. Options are now: show to everyone, show to logged out users, and show to logged in users (optionally, logged in users by specific role)

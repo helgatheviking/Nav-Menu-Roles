@@ -3,7 +3,7 @@
 Plugin Name: Nav Menu Roles
 Plugin URI: http://www.kathyisawesome.com/449/nav-menu-roles/
 Description: Hide custom menu items based on user roles
-Version: 1.7.0
+Version: 1.7.1
 Author: Kathy Darling
 Author URI: http://www.kathyisawesome.com
 License: GPL2
@@ -49,6 +49,12 @@ class Nav_Menu_Roles {
 	* @since 1.5
 	*/
 	public static $donate_url = "https://inspirepay.com/pay/helgatheviking";
+
+	/**
+	* @var string version number
+	* @since 1.7.1
+	*/
+	public $version = '1.7.1';
 
 	/**
 	* Main Nav Menu Roles Instance
@@ -379,7 +385,7 @@ class Nav_Menu_Roles {
 	function enqueue_scripts( $hook ){
 		if ( $hook == 'nav-menus.php' ){
 			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js' , __FILE__ ), array( 'jquery' ), '1.5', true );
+			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js' , __FILE__ ), array( 'jquery' ), $this->version, true );
 		}
 	}
 
