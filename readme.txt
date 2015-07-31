@@ -66,19 +66,64 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 
 
 = <a name="compatibility"></a>Workaround #1 =
-Shazdeh, the author of Menu Item Visibility Control plugin had the [genius idea](http://shazdeh.me/2014/06/25/custom-fields-nav-menu-items/) to not wait for a core hook and simply add the hook ourselves. If all plugin and theme authors use the same hook, we can make our plugins play together.
+[Shazdeh](https://profiles.wordpress.org/shazdeh/) had the genius idea to not wait for a core hook and simply add the hook ourselves. If all plugin and theme authors use the same hook, we can make our plugins play together.
 
-Therefore, as of version 1.6 I am modifying my admin walker to *only* adding the following line (right after the description input):
+Therefore, as of version 1.6 I am modifying my admin nav menu Walker to *only* adding the following lines (right after the description input):
 
 `
 <?php 
-// This is the added section
+// Place this in your admin nav menu Walker
+do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
+// end added section 
+?>
+` 
+
+**Ask your conflicting plugin/theme's author to add this code to his plugin or theme and our plugins will become compatible.**
+
+= <a name="patch"></a>Patching Your Plugin/Theme =
+
+Should you wish to attempt this patch yourself, you can modify your conflicting plugin/theme's admin menu Walker class. **Reminder: I do not provide support for fixing your plugin/theme. If you aren't comfortable with the following instructions, contact the developer of the conflicting plugin/theme!**
+
+1. Find the class that extends the `Walker_Nav_Menu`. As a hint, it is filtering `wp_edit_nav_menu_walker` and you might even be getting a warning about it from Nav Menu Roles. Example: 
+
+`
+add_filter( 'wp_edit_nav_menu_walker', 'sample_edit_nav_menu_walker');
+function sample_edit_nav_menu_walker( $walker ) {
+    return 'Walker_Nav_Menu_Edit_Roles'; // this is the class name
+}
+`
+
+2. Find the file for the extending class. In my plugin this is in a file located at `inc/class.Walker_Nav_Menu_Edit_Roles.php`. I can't know *where* this file is in your plugin/theme. Please don't ask me, but here's what the beginning of that class will look like:
+
+`class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {}`
+
+Note that the class name is the same as the class name you found in step 1.
+
+3. Find the `start_el()` method
+
+In that file you will eventually see a class method that looks like:
+
+`function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {`
+
+4. Paste my action hook somewhere in this method!
+
+In Nav Menu Roles, I have placed the hook directly after the description, ex:
+
+`
+<p class="field-description description description-wide">
+  <label for="edit-menu-item-description-<?php echo $item_id; ?>">
+    <?php _e( 'Description' ); ?><br />
+    <textarea id="edit-menu-item-description-<?php echo $item_id; ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo $item_id; ?>]"><?php echo esc_html( $item->description ); // textarea_escaped ?></textarea>
+    <span class="description"><?php _e('The description will be displayed in the menu if the current theme supports it.'); ?></span>
+  </label>
+</p>
+
+<?php 
+// Add this directly after the description paragraph in the start_el() method
 do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
 // end added section 
 ?>
 `
-
-I am then adding my fields to this hook. Ask your conflicting plugin/theme's author to do the same and our plugins should become compatible. 
 
 = Workaround #2 =
 
