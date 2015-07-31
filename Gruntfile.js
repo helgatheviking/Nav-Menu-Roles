@@ -55,9 +55,11 @@ module.exports = function(grunt) {
 					'!Gruntfile.js',
 					'!package.json',
           			'!gitcreds.json',
+          			'!.gitcreds',
           			'!.transifexrc',
 					'!.gitignore',
 					'!.gitmodules',
+					'!sftp-config.json',
 					'!**.sublime-workspace',
 					'!**.sublime-project',
 					'!deploy.sh',
@@ -223,7 +225,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('test', ['jshint', 'addtextdomain']);
 
-	grunt.registerTask('build', ['test', 'newer:uglify', 'makepot', 'newer:po2mo', 'wp_readme_to_markdown', 'clean', 'copy']);
+	grunt.registerTask('build', ['test', 'replace', 'newer:uglify', 'makepot', 'newer:po2mo', 'wp_readme_to_markdown', 'clean', 'copy']);
 
 
 // bump version numbers 
