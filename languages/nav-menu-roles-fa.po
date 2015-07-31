@@ -1,20 +1,20 @@
 # Copyright (C) 2015 Nav Menu Roles
 # This file is distributed under the same license as the Nav Menu Roles package.
 # Translators:
-# Björn Sennbrink <konsult@sennbrink.se>, 2014
+# Zahed Alfak <tamass4116@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Nav Menu Roles\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
 "POT-Creation-Date: 2015-04-30 07:17:10+00:00\n"
-"PO-Revision-Date: 2015-04-30 07:38+0000\n"
-"Last-Translator: Kathy Darling <helgatheviking@gmail.com>\n"
-"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/nav-menu-roles/language/sv_SE/)\n"
+"PO-Revision-Date: 2015-05-07 20:17+0000\n"
+"Last-Translator: Zahed Alfak <tamass4116@gmail.com>\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/nav-menu-roles/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sv_SE\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fa\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: inc/class.Nav_Menu_Roles_Import.php:106
 #: inc/class.Nav_Menu_Roles_Import.php:115
@@ -22,182 +22,182 @@ msgstr ""
 #: inc/class.Nav_Menu_Roles_Import.php:165
 #: inc/class.Nav_Menu_Roles_Import.php:174
 msgid "Sorry, there has been an error."
-msgstr "Tyvärr, något gick fel."
+msgstr "با عرض پوزش، خطایی رخ داده است."
 
 #: inc/class.Nav_Menu_Roles_Import.php:107
 msgid "The file does not exist, please try again."
-msgstr "Filen finns inte, vänligen försök igen."
+msgstr "فایل وجود ندارد، لطفا دوباره سعی کنید."
 
 #: inc/class.Nav_Menu_Roles_Import.php:146
 msgid "All done."
-msgstr "Allt klart."
+msgstr "تمام شد."
 
 #: inc/class.Nav_Menu_Roles_Import.php:146
 msgid "Have fun!"
-msgstr "Ha det så trevligt!"
+msgstr "خوش بگذره!"
 
 #: inc/class.Nav_Menu_Roles_Import.php:166
 msgid ""
 "The export file could not be found at <code>%s</code>. It is likely that "
 "this was caused by a permissions problem."
-msgstr "Exportfilen kunde inte hittas vid <code>%s</code>. Troligen beror detta på ett behörighetsproblem."
+msgstr "ر"
 
 #: inc/class.Nav_Menu_Roles_Import.php:182
 msgid ""
 "This WXR file (version %s) may not be supported by this version of the "
 "importer. Please consider updating."
-msgstr "Den här WXR-filen (version %s) saknas det kanske stöd för i den här versionen av importfunktionen. Vänligen överväg att uppdatera."
+msgstr ""
 
 #: inc/class.Nav_Menu_Roles_Import.php:250
 msgid "Import Nav Menu Roles"
-msgstr "Importera Nav Meny-roller"
+msgstr "نقش منوی واردات ناو"
 
 #: inc/class.Nav_Menu_Roles_Import.php:257
 msgid ""
 "A new version of this importer is available. Please update to version %s to "
 "ensure compatibility with newer export files."
-msgstr "En ny version av den här importversionen finns tillgänglig. Vänligen uppdatera till version %s för att säkra kompatibilitet med nyare exportfiler. "
+msgstr ""
 
 #: inc/class.Nav_Menu_Roles_Import.php:272
 msgid ""
 "Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll "
 "import the Nav Menu Roles and any other missing post meta for the Nav Menu "
 "items."
-msgstr "Återuppladda din normala WordPress eXtended RSS-fil (WXR) och vi kommer att importera Nav Menu-rollerna och all annan saknad postmeta för menyvalen i Nav Menu."
+msgstr ""
 
 #: inc/class.Nav_Menu_Roles_Import.php:273
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
-msgstr "Välj en WXR-fil (.xml) att ladda upp, klicka på Ladda upp och importera."
+msgstr ""
 
 #. translators: %s: title of menu item which is invalid
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:87
 msgid "%s (Invalid)"
-msgstr "%s (Ogiltig)"
+msgstr "٪s (نامعتبر)"
 
 #. translators: %s: title of menu item in draft status
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:91
 msgid "%s (Pending)"
-msgstr "%s (Väntande)"
+msgstr "٪s (در انتظار)"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:104
 msgid "sub item"
-msgstr "under-val"
+msgstr "زیرمنو"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:119
 msgid "Move up"
-msgstr "Flytta upp"
+msgstr "حرکت به بالا"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:132
 msgid "Move down"
-msgstr "Flytta ner"
+msgstr "حرکت به پایین"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:134
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:136
 msgid "Edit Menu Item"
-msgstr "Redigera menyval"
+msgstr "ویرایش آیتم های منو"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:145
 msgid "URL"
-msgstr "URL"
+msgstr "آدرس"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:152
 msgid "Navigation Label"
-msgstr "Menyvalsnamn"
+msgstr "برچسب ناوبری"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:158
 msgid "Title Attribute"
-msgstr "Titelattribut"
+msgstr "عنوان صفت"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:165
 msgid "Open link in a new window/tab"
-msgstr "Öpnna länk i nytt fönster/ny tabb"
+msgstr "باز کردن پیوند در پنجره جدید / تب"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:170
 msgid "CSS Classes (optional)"
-msgstr "CSS-klasser (valfritt)"
+msgstr "کلاس های سی اس اس (اختیاری)"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:176
 msgid "Link Relationship (XFN)"
-msgstr "Relationslänk (XFN)"
+msgstr "رابطه لینک (XFN)"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:182
 msgid "Description"
-msgstr "Beskrivning"
+msgstr "توضیحات"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:184
 msgid ""
 "The description will be displayed in the menu if the current theme supports "
 "it."
-msgstr "Beskrivningen visas i menyn om nuvarande tema har stöd för det."
+msgstr "توضیحات منو داده خواهد شد اگر تم مورد نظر را پشتیبانی کند ."
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:196
 msgid "Move"
-msgstr "Flytta"
+msgstr "انتقال"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:197
 msgid "Up one"
-msgstr "Upp en"
+msgstr "بالا"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:198
 msgid "Down one"
-msgstr "Ner en"
+msgstr "پایین"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:201
 msgid "To the top"
-msgstr "Till toppen"
+msgstr "به بالا"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:208
 msgid "Original: %s"
-msgstr "Original: %s"
+msgstr "اصلی :"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:221
 msgid "Remove"
-msgstr "Ta bort"
+msgstr "حذف"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:222
 msgid "Cancel"
-msgstr "Avbryt"
+msgstr "لغو"
 
 #: nav-menu-roles.php:76 nav-menu-roles.php:85
 msgid "Cheatin&#8217; huh?"
-msgstr "Fuskar du&#8217; ?"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Nav Menu Roles"
-msgstr "Nav Menu Roles"
+msgstr "قوانین منوی ناوبری"
 
 #: nav-menu-roles.php:163
 msgid ""
 "Import %snav menu roles%s and other menu item meta skipped by the default "
 "importer"
-msgstr "Importera %nav menu-roller%s och annan menyvalsmeta som hoppades över av standardimporten"
+msgstr ""
 
 #: nav-menu-roles.php:219
 msgid ""
 "Nav Menu Roles has detected a possible conflict with the following functions"
 " or classes: %1$s. Please see the %2$sFAQ%3$s for more information and "
 "possible resolution. | %4$sHide Notice%3$s"
-msgstr "Nav Menu Roles har upptäckt en möjlig konflikt med följande funktioner eller klasser: %s1$s. Var god se %2$sFAQ%3$s för mer information och en möjlig lösning.  | %4$sDölj notis%3$s"
+msgstr ""
 
 #: nav-menu-roles.php:316
 msgid "Display Mode"
-msgstr "Synlighet"
+msgstr "حالت نمایش"
 
 #: nav-menu-roles.php:324
 msgid "Logged In Users"
-msgstr "Inloggade användare"
+msgstr "کاربران وارد شده"
 
 #: nav-menu-roles.php:331
 msgid "Logged Out Users"
-msgstr "Ej inloggade användare"
+msgstr "کاربران از سیستم خارج شده"
 
 #: nav-menu-roles.php:338
 msgid "Everyone"
-msgstr ""
+msgstr "همه"
 
 #: nav-menu-roles.php:345
 msgid "Limit logged in users to specific roles"
-msgstr ""
+msgstr "محدود کردن کاربر به قوانین خاص"
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.kathyisawesome.com/449/nav-menu-roles/"
@@ -205,7 +205,7 @@ msgstr "http://www.kathyisawesome.com/449/nav-menu-roles/"
 
 #. Description of the plugin/theme
 msgid "Hide custom menu items based on user roles"
-msgstr "Dölj anpassade menyval baserat på användarroller"
+msgstr ""
 
 #. Author of the plugin/theme
 msgid "Kathy Darling"

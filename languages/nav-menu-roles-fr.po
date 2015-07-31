@@ -1,4 +1,4 @@
-# Copyright (C) 2014 Nav Menu Roles
+# Copyright (C) 2015 Nav Menu Roles
 # This file is distributed under the same license as the Nav Menu Roles package.
 # Translators:
 # Philippe GILLES <petilabo@gmail.com>, 2014
@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nav Menu Roles\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2014-06-26 15:17:58+00:00\n"
-"PO-Revision-Date: 2014-08-03 20:59+0000\n"
-"Last-Translator: Philippe GILLES <petilabo@gmail.com>\n"
+"POT-Creation-Date: 2015-04-30 07:17:10+00:00\n"
+"PO-Revision-Date: 2015-04-30 07:38+0000\n"
+"Last-Translator: Kathy Darling <helgatheviking@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/nav-menu-roles/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,56 +16,56 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: inc/class.Nav_Menu_Roles_Import.php:100
-#: inc/class.Nav_Menu_Roles_Import.php:109
-#: inc/class.Nav_Menu_Roles_Import.php:155
-#: inc/class.Nav_Menu_Roles_Import.php:159
-#: inc/class.Nav_Menu_Roles_Import.php:168
+#: inc/class.Nav_Menu_Roles_Import.php:106
+#: inc/class.Nav_Menu_Roles_Import.php:115
+#: inc/class.Nav_Menu_Roles_Import.php:161
+#: inc/class.Nav_Menu_Roles_Import.php:165
+#: inc/class.Nav_Menu_Roles_Import.php:174
 msgid "Sorry, there has been an error."
 msgstr "Désolé, une erreur est survenue."
 
-#: inc/class.Nav_Menu_Roles_Import.php:101
+#: inc/class.Nav_Menu_Roles_Import.php:107
 msgid "The file does not exist, please try again."
 msgstr "Ce fichier n'existe pas, veuillez essayer à nouveau."
 
-#: inc/class.Nav_Menu_Roles_Import.php:140
+#: inc/class.Nav_Menu_Roles_Import.php:146
 msgid "All done."
 msgstr "C'est fait."
 
-#: inc/class.Nav_Menu_Roles_Import.php:140
+#: inc/class.Nav_Menu_Roles_Import.php:146
 msgid "Have fun!"
 msgstr "Amusez-vous bien !"
 
-#: inc/class.Nav_Menu_Roles_Import.php:160
+#: inc/class.Nav_Menu_Roles_Import.php:166
 msgid ""
 "The export file could not be found at <code>%s</code>. It is likely that "
 "this was caused by a permissions problem."
 msgstr "Impossible d'accéder au fichier d'export dans <code>%s</code>. Il s'agit probablement d'un problème de permissions."
 
-#: inc/class.Nav_Menu_Roles_Import.php:176
+#: inc/class.Nav_Menu_Roles_Import.php:182
 msgid ""
 "This WXR file (version %s) may not be supported by this version of the "
 "importer. Please consider updating."
 msgstr "Ce fichier WXR (version %s) pourrait ne pas être supporté par cette version de l'importateur. Il est recommandé de procéder à une mise à jour."
 
-#: inc/class.Nav_Menu_Roles_Import.php:244
+#: inc/class.Nav_Menu_Roles_Import.php:250
 msgid "Import Nav Menu Roles"
 msgstr "Importer les Nav Menu Roles"
 
-#: inc/class.Nav_Menu_Roles_Import.php:251
+#: inc/class.Nav_Menu_Roles_Import.php:257
 msgid ""
 "A new version of this importer is available. Please update to version %s to "
 "ensure compatibility with newer export files."
 msgstr "Une nouvelle version de cet importateur est disponible. Veuillez installer la version %s pour garantir la compatibilité avec les fichiers d'export plus récents."
 
-#: inc/class.Nav_Menu_Roles_Import.php:266
+#: inc/class.Nav_Menu_Roles_Import.php:272
 msgid ""
 "Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll "
 "import the Nav Menu Roles and any other missing post meta for the Nav Menu "
 "items."
 msgstr "Veuillez charger une nouvelle fois le fichier WordPress eXtended RSS (WXR), afin d'importer les Nav Menu Roles ainsi que toutes les données meta manquantes dans les éléments de menu."
 
-#: inc/class.Nav_Menu_Roles_Import.php:267
+#: inc/class.Nav_Menu_Roles_Import.php:273
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
 msgstr "Sélectionnez le fichier WXR (.xml) à charger, cliquez sur le bouton \"Choisir un fichier\", puis procédez à l'importation."
 
@@ -179,25 +179,25 @@ msgid ""
 "possible resolution. | %4$sHide Notice%3$s"
 msgstr "Nav Menu Roles a détecté un possible conflit avec les fonctions ou classes suivantes : %1$s. Veuillez consulter la %2$sFAQ%3$s pour plus d'informations et des solutions possibles. | %4$sMasquer cet avertissement%3$s"
 
-#: nav-menu-roles.php:289
+#: nav-menu-roles.php:316
 msgid "Display Mode"
 msgstr "Mode d'affichage"
 
-#: nav-menu-roles.php:297
-msgid "Logged Out Users"
-msgstr "Utilisateurs déconnectés"
-
-#: nav-menu-roles.php:304
+#: nav-menu-roles.php:324
 msgid "Logged In Users"
 msgstr "Utilisateurs connectés"
 
-#: nav-menu-roles.php:311
-msgid "By Role"
-msgstr "Par rôle"
+#: nav-menu-roles.php:331
+msgid "Logged Out Users"
+msgstr "Utilisateurs déconnectés"
 
-#: nav-menu-roles.php:318
-msgid "Access Role"
-msgstr "Rôles autorisés"
+#: nav-menu-roles.php:338
+msgid "Everyone"
+msgstr ""
+
+#: nav-menu-roles.php:345
+msgid "Limit logged in users to specific roles"
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.kathyisawesome.com/449/nav-menu-roles/"

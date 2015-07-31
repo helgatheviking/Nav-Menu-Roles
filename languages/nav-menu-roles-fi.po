@@ -1,4 +1,4 @@
-# Copyright (C) 2014 Nav Menu Roles
+# Copyright (C) 2015 Nav Menu Roles
 # This file is distributed under the same license as the Nav Menu Roles package.
 # Translators:
 # timoleinio <tjlein@gmail.com>, 2014
@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nav Menu Roles\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2014-06-26 15:17:58+00:00\n"
-"PO-Revision-Date: 2014-12-26 14:36+0000\n"
-"Last-Translator: timoleinio <tjlein@gmail.com>\n"
+"POT-Creation-Date: 2015-04-30 07:17:10+00:00\n"
+"PO-Revision-Date: 2015-04-30 07:38+0000\n"
+"Last-Translator: Kathy Darling <helgatheviking@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/nav-menu-roles/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,56 +16,56 @@ msgstr ""
 "Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/class.Nav_Menu_Roles_Import.php:100
-#: inc/class.Nav_Menu_Roles_Import.php:109
-#: inc/class.Nav_Menu_Roles_Import.php:155
-#: inc/class.Nav_Menu_Roles_Import.php:159
-#: inc/class.Nav_Menu_Roles_Import.php:168
+#: inc/class.Nav_Menu_Roles_Import.php:106
+#: inc/class.Nav_Menu_Roles_Import.php:115
+#: inc/class.Nav_Menu_Roles_Import.php:161
+#: inc/class.Nav_Menu_Roles_Import.php:165
+#: inc/class.Nav_Menu_Roles_Import.php:174
 msgid "Sorry, there has been an error."
 msgstr "Virhe tapahtui."
 
-#: inc/class.Nav_Menu_Roles_Import.php:101
+#: inc/class.Nav_Menu_Roles_Import.php:107
 msgid "The file does not exist, please try again."
 msgstr "Tiedostoa ei ole olemassa, yritä uudelleen."
 
-#: inc/class.Nav_Menu_Roles_Import.php:140
+#: inc/class.Nav_Menu_Roles_Import.php:146
 msgid "All done."
 msgstr "Valmista."
 
-#: inc/class.Nav_Menu_Roles_Import.php:140
+#: inc/class.Nav_Menu_Roles_Import.php:146
 msgid "Have fun!"
 msgstr "Pidä hauskaa!"
 
-#: inc/class.Nav_Menu_Roles_Import.php:160
+#: inc/class.Nav_Menu_Roles_Import.php:166
 msgid ""
 "The export file could not be found at <code>%s</code>. It is likely that "
 "this was caused by a permissions problem."
 msgstr "Vientitiedosta ei löytynyt <code>%s</code>. On todennäköistä, että kyseessä on käyttöoikeusongelma."
 
-#: inc/class.Nav_Menu_Roles_Import.php:176
+#: inc/class.Nav_Menu_Roles_Import.php:182
 msgid ""
 "This WXR file (version %s) may not be supported by this version of the "
 "importer. Please consider updating."
 msgstr "Tuontityökalun tämä versio ei välttämättä tue WXR-tiedostoa (versio %s). Harkitse työkalun päivitystä."
 
-#: inc/class.Nav_Menu_Roles_Import.php:244
+#: inc/class.Nav_Menu_Roles_Import.php:250
 msgid "Import Nav Menu Roles"
 msgstr "Tuo valikkorooleja"
 
-#: inc/class.Nav_Menu_Roles_Import.php:251
+#: inc/class.Nav_Menu_Roles_Import.php:257
 msgid ""
 "A new version of this importer is available. Please update to version %s to "
 "ensure compatibility with newer export files."
 msgstr "Tuontityökalusta on uusi versio. Ole hyvä ja päivitä versioon %s varmistaaksesi yhteensopivuus uusien vientitiedostojen kanssa."
 
-#: inc/class.Nav_Menu_Roles_Import.php:266
+#: inc/class.Nav_Menu_Roles_Import.php:272
 msgid ""
 "Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll "
 "import the Nav Menu Roles and any other missing post meta for the Nav Menu "
 "items."
 msgstr "Lataa WordPressin eXtended RSS (WXR) -tiedosto ja tuomme valikkoroolit."
 
-#: inc/class.Nav_Menu_Roles_Import.php:267
+#: inc/class.Nav_Menu_Roles_Import.php:273
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
 msgstr "Valitse ladattava WXR (.xml) -tiedosto ja klikkaa Tuo tiedosto -nappia."
 
@@ -179,25 +179,25 @@ msgid ""
 "possible resolution. | %4$sHide Notice%3$s"
 msgstr "Nav Menu Roles on havainnut mahdollisen ongelman seuraavan funktion tai luokan kanssa: %1$s. Katso %2$sFAQ%3$s siitä, miten mahdollisesti voit asian korjata. | %4$sPiilota ilmoitus%3$s"
 
-#: nav-menu-roles.php:289
+#: nav-menu-roles.php:316
 msgid "Display Mode"
 msgstr "Näytä"
 
-#: nav-menu-roles.php:297
-msgid "Logged Out Users"
-msgstr "Kirjautumaton käyttäjä"
-
-#: nav-menu-roles.php:304
+#: nav-menu-roles.php:324
 msgid "Logged In Users"
 msgstr "Kirjautunut käyttäjä"
 
-#: nav-menu-roles.php:311
-msgid "By Role"
-msgstr "Roolin mukaan"
+#: nav-menu-roles.php:331
+msgid "Logged Out Users"
+msgstr "Kirjautumaton käyttäjä"
 
-#: nav-menu-roles.php:318
-msgid "Access Role"
-msgstr "Käyttäjärooli"
+#: nav-menu-roles.php:338
+msgid "Everyone"
+msgstr ""
+
+#: nav-menu-roles.php:345
+msgid "Limit logged in users to specific roles"
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.kathyisawesome.com/449/nav-menu-roles/"

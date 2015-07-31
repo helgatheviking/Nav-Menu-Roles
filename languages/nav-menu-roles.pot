@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Nav Menu Roles package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Nav Menu Roles 1.6.5\n"
+"Project-Id-Version: Nav Menu Roles 1.7.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2015-04-30 07:17:10+00:00\n"
+"POT-Creation-Date: 2015-07-31 01:01:52+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -154,7 +154,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: nav-menu-roles.php:76 nav-menu-roles.php:85
+#: nav-menu-roles.php:82 nav-menu-roles.php:91
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
@@ -162,36 +162,36 @@ msgstr ""
 msgid "Nav Menu Roles"
 msgstr ""
 
-#: nav-menu-roles.php:163
+#: nav-menu-roles.php:169
 msgid ""
 "Import %snav menu roles%s and other menu item meta skipped by the default "
 "importer"
 msgstr ""
 
-#: nav-menu-roles.php:219
+#: nav-menu-roles.php:225
 msgid ""
 "Nav Menu Roles has detected a possible conflict with the following "
 "functions or classes: %1$s. Please see the %2$sFAQ%3$s for more information "
 "and possible resolution. | %4$sHide Notice%3$s"
 msgstr ""
 
-#: nav-menu-roles.php:316
+#: nav-menu-roles.php:322
 msgid "Display Mode"
 msgstr ""
 
-#: nav-menu-roles.php:324
+#: nav-menu-roles.php:330
 msgid "Logged In Users"
 msgstr ""
 
-#: nav-menu-roles.php:331
+#: nav-menu-roles.php:337
 msgid "Logged Out Users"
 msgstr ""
 
-#: nav-menu-roles.php:338
+#: nav-menu-roles.php:344
 msgid "Everyone"
 msgstr ""
 
-#: nav-menu-roles.php:345
+#: nav-menu-roles.php:351
 msgid "Limit logged in users to specific roles"
 msgstr ""
 
