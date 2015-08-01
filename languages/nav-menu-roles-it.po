@@ -1,13 +1,14 @@
 # Copyright (C) 2015 Nav Menu Roles
 # This file is distributed under the same license as the Nav Menu Roles package.
 # Translators:
+# Davide Pantè <d.pante@sododesign.it>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Nav Menu Roles\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2015-04-30 07:17:10+00:00\n"
-"PO-Revision-Date: 2015-04-30 07:38+0000\n"
-"Last-Translator: Kathy Darling <helgatheviking@gmail.com>\n"
+"POT-Creation-Date: 2015-07-31 01:01:52+00:00\n"
+"PO-Revision-Date: 2015-08-01 01:01+0000\n"
+"Last-Translator: Davide Pantè <d.pante@sododesign.it>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/nav-menu-roles/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,195 +22,195 @@ msgstr ""
 #: inc/class.Nav_Menu_Roles_Import.php:165
 #: inc/class.Nav_Menu_Roles_Import.php:174
 msgid "Sorry, there has been an error."
-msgstr ""
+msgstr "Siamo spiacenti, si è verificato un errore."
 
 #: inc/class.Nav_Menu_Roles_Import.php:107
 msgid "The file does not exist, please try again."
-msgstr ""
+msgstr "Il file non esiste, si prega di riprovare."
 
 #: inc/class.Nav_Menu_Roles_Import.php:146
 msgid "All done."
-msgstr ""
+msgstr "Finito."
 
 #: inc/class.Nav_Menu_Roles_Import.php:146
 msgid "Have fun!"
-msgstr ""
+msgstr "Divertirti!"
 
 #: inc/class.Nav_Menu_Roles_Import.php:166
 msgid ""
 "The export file could not be found at <code>%s</code>. It is likely that "
 "this was caused by a permissions problem."
-msgstr ""
+msgstr "Il file di esportazione non è stato trovato in <code>%s</code>. E' probabile che questo è stato causato da un problema di autorizzazioni."
 
 #: inc/class.Nav_Menu_Roles_Import.php:182
 msgid ""
 "This WXR file (version %s) may not be supported by this version of the "
 "importer. Please consider updating."
-msgstr ""
+msgstr "Questo file WXR (versione %s) potrebbe non essere supportato da questa versione dell'importatore. Si prega di prendere in considerazione l'aggiornamento."
 
 #: inc/class.Nav_Menu_Roles_Import.php:250
 msgid "Import Nav Menu Roles"
-msgstr ""
+msgstr "Importa Nav Menu Roles"
 
 #: inc/class.Nav_Menu_Roles_Import.php:257
 msgid ""
 "A new version of this importer is available. Please update to version %s to "
 "ensure compatibility with newer export files."
-msgstr ""
+msgstr "Una nuova versione di questo importatore è disponibile. Si prega di aggiornare alla versione %s per garantire la compatibilità con i file di esportazione più recenti."
 
 #: inc/class.Nav_Menu_Roles_Import.php:272
 msgid ""
 "Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll "
 "import the Nav Menu Roles and any other missing post meta for the Nav Menu "
 "items."
-msgstr ""
+msgstr "Ri-caricare il tuo file normale WordPress eXtended RSS (WXR) e noi&#8217;ll importiamo i ruoli del Nav Menu Roles e qualsiasi altro post meta mancante per le voci del Nav Menu."
 
 #: inc/class.Nav_Menu_Roles_Import.php:273
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
-msgstr ""
+msgstr "Scegliere un file WXR (.xml) per caricare, quindi fare clic su Carica file e importa."
 
 #. translators: %s: title of menu item which is invalid
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:87
 msgid "%s (Invalid)"
-msgstr ""
+msgstr "%s (Non valido)"
 
 #. translators: %s: title of menu item in draft status
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:91
 msgid "%s (Pending)"
-msgstr ""
+msgstr "%s (In attesa)"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:104
 msgid "sub item"
-msgstr ""
+msgstr "elementi secondari"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:119
 msgid "Move up"
-msgstr ""
+msgstr "Sposta su"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:132
 msgid "Move down"
-msgstr ""
+msgstr "Sposta giù"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:134
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:136
 msgid "Edit Menu Item"
-msgstr ""
+msgstr "Modifica Elemento Menu"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:145
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:152
 msgid "Navigation Label"
-msgstr ""
+msgstr "Etichetta Navigazione"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:158
 msgid "Title Attribute"
-msgstr ""
+msgstr "Attributo Titolo"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:165
 msgid "Open link in a new window/tab"
-msgstr ""
+msgstr "Apri link in una nuova scheda/finestra"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:170
 msgid "CSS Classes (optional)"
-msgstr ""
+msgstr "Classe CSS (opzionale)"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:176
 msgid "Link Relationship (XFN)"
-msgstr ""
+msgstr "Relazioni Link (XFN)"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:182
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:184
 msgid ""
 "The description will be displayed in the menu if the current theme supports "
 "it."
-msgstr ""
+msgstr "La descrizione sarà visualizzata nel menu se il tema corrente la supporta."
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:196
 msgid "Move"
-msgstr ""
+msgstr "Muovi"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:197
 msgid "Up one"
-msgstr ""
+msgstr "Su di uno"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:198
 msgid "Down one"
-msgstr ""
+msgstr "Giù di uno"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:201
 msgid "To the top"
-msgstr ""
+msgstr "Verso l'alto"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:208
 msgid "Original: %s"
-msgstr ""
+msgstr "Originale: %s"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:221
 msgid "Remove"
-msgstr ""
+msgstr "Rimuovi"
 
 #: inc/class.Walker_Nav_Menu_Edit_Roles.php:222
 msgid "Cancel"
-msgstr ""
+msgstr "Cancella"
 
-#: nav-menu-roles.php:76 nav-menu-roles.php:85
+#: nav-menu-roles.php:82 nav-menu-roles.php:91
 msgid "Cheatin&#8217; huh?"
-msgstr ""
+msgstr "Cheatin&#8217; huh?"
 
 #. Plugin Name of the plugin/theme
 msgid "Nav Menu Roles"
-msgstr ""
+msgstr "Nav Menu Roles"
 
-#: nav-menu-roles.php:163
+#: nav-menu-roles.php:169
 msgid ""
 "Import %snav menu roles%s and other menu item meta skipped by the default "
 "importer"
-msgstr ""
+msgstr "Importa %sNav Menu Roles%s e altra voce di menu meta ignorato dall'importatore di default"
 
-#: nav-menu-roles.php:219
+#: nav-menu-roles.php:225
 msgid ""
 "Nav Menu Roles has detected a possible conflict with the following functions"
 " or classes: %1$s. Please see the %2$sFAQ%3$s for more information and "
 "possible resolution. | %4$sHide Notice%3$s"
-msgstr ""
+msgstr "Nav Menu Roles ha rilevato un possibile conflitto con le seguenti funzioni o classi: %1$s. Si prega di consultare le %2$sFAQ%3$s Per ulteriori informazioni e possibili risoluzioni. | %4$sNascondi Notizia%3$s"
 
-#: nav-menu-roles.php:316
+#: nav-menu-roles.php:322
 msgid "Display Mode"
-msgstr ""
+msgstr "Modalità Display"
 
-#: nav-menu-roles.php:324
+#: nav-menu-roles.php:330
 msgid "Logged In Users"
-msgstr ""
+msgstr "Utenti connessi"
 
-#: nav-menu-roles.php:331
+#: nav-menu-roles.php:337
 msgid "Logged Out Users"
-msgstr ""
+msgstr "Utenti disconnessi"
 
-#: nav-menu-roles.php:338
+#: nav-menu-roles.php:344
 msgid "Everyone"
-msgstr ""
+msgstr "Tutti"
 
-#: nav-menu-roles.php:345
+#: nav-menu-roles.php:351
 msgid "Limit logged in users to specific roles"
-msgstr ""
+msgstr "Limite a utenti registrato con ruoli specifici"
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.kathyisawesome.com/449/nav-menu-roles/"
-msgstr ""
+msgstr "http://www.kathyisawesome.com/449/nav-menu-roles/"
 
 #. Description of the plugin/theme
 msgid "Hide custom menu items based on user roles"
-msgstr ""
+msgstr "Nascondi le voci di menu personalizzati basati su ruoli utente"
 
 #. Author of the plugin/theme
 msgid "Kathy Darling"
-msgstr ""
+msgstr "Kathy Darling"
 
 #. Author URI of the plugin/theme
 msgid "http://www.kathyisawesome.com"
-msgstr ""
+msgstr "http://www.kathyisawesome.com"

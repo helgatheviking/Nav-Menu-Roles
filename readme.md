@@ -5,7 +5,7 @@
 **Tags:** menu, menus, nav menu, nav menus  
 **Requires at least:** 3.8  
 **Tested up to:** 4.2  
-**Stable tag:** 1.7.1  
+**Stable tag:** 1.7.2  
 **License:** GPLv3  
 
 Hide custom menu items based on user roles
@@ -207,9 +207,11 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 
 ## Changelog ##
 
+### 1.7.2###
+* add Italian language. props @sododesign
+
 ### 1.7.1 ###
 * Updated FAQ with patch instructions for conflicting plugins/themes
-* add Italian language. props @sododesign
 * add Portugeuse language. props @brunobarros
 
 ### 1.7.0 ###
