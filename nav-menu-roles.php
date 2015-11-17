@@ -97,7 +97,7 @@ class Nav_Menu_Roles {
 	* @return Nav_Menu_Roles
 	* @since  1.0
 	*/
-	function __construct(){
+	public function __construct(){
 
 		// Admin functions
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -141,7 +141,7 @@ class Nav_Menu_Roles {
 	* @access public
 	* @return void
 	*/
-	function admin_init() {
+	public function admin_init() {
 		include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
 
 		// Register Importer
@@ -159,7 +159,7 @@ class Nav_Menu_Roles {
 	* @access private
 	* @return void
 	*/
-	function register_importer(){
+	public function register_importer(){
 
 		include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Nav_Menu_Roles_Import.php');
 
@@ -181,7 +181,7 @@ class Nav_Menu_Roles {
 	* @since 1.0
 	*/
 
-	function load_text_domain() {
+	public function load_text_domain() {
 		load_plugin_textdomain( 'nav-menu-roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
@@ -190,7 +190,7 @@ class Nav_Menu_Roles {
 	* Display a Notice if plugin conflicts with another
 	* @since 1.5
 	*/
-	function admin_notice() {
+	public function admin_notice() {
 		global $pagenow, $wp_filter;
 
 		// quit early if not on the menus page
@@ -244,7 +244,7 @@ class Nav_Menu_Roles {
 	* Allow the notice to be dismissable
 	* @since 1.6
 	*/
-	function nag_ignore() {
+	public function nag_ignore() {
 		global $current_user;
 		$user_id = $current_user->ID;
 		/* If user clicks to ignore the notice, add that to their user meta */
@@ -257,7 +257,7 @@ class Nav_Menu_Roles {
 	* Delete the transient when a plugin is activated or deactivated
 	* @since 1.5
 	*/
-	function delete_transient() {
+	public function delete_transient() {
 		delete_transient( 'nav_menu_roles_conflicts' );
 	}
 
@@ -266,7 +266,7 @@ class Nav_Menu_Roles {
 	* Add docu link
 	* @since 1.7.3
 	*/
-	function add_action_links ( $links ) {
+	public function add_action_links( $links ) {
 		 $new_link = array(
 		 	sprintf( '<a href="https://wordpress.org/plugins/nav-menu-roles/faq/#conflict">%s</a>', __( 'FAQ', 'nav-menu-roles' ) ),
 		 );
@@ -277,7 +277,7 @@ class Nav_Menu_Roles {
 	* Override the Admin Menu Walker
 	* @since 1.0
 	*/
-	function edit_nav_menu_walker( $walker ) {
+	public function edit_nav_menu_walker( $walker ) {
 		return 'Walker_Nav_Menu_Edit_Roles';
 	}
 
@@ -289,7 +289,7 @@ class Nav_Menu_Roles {
 	* @params array $args 
 	* @since 1.6.0
 	*/
-	function custom_fields( $item_id, $item, $depth, $args ) {
+	public function custom_fields( $item_id, $item, $depth, $args ) {
 		global $wp_roles;
 
 		/**
@@ -396,7 +396,7 @@ class Nav_Menu_Roles {
 	* @since 1.4
 	* 
 	*/
-	function enqueue_scripts( $hook ){
+	public function enqueue_scripts( $hook ){
 		if ( $hook == 'nav-menus.php' ){
 			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js' , __FILE__ ), array( 'jquery' ), $this->version, true );
@@ -408,7 +408,7 @@ class Nav_Menu_Roles {
 	* @return string
 	* @since 1.0
 	*/
-	function nav_update( $menu_id, $menu_item_db_id ) {
+	public function nav_update( $menu_id, $menu_item_db_id ) {
 		global $wp_roles;
 
 		$allowed_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
@@ -442,7 +442,7 @@ class Nav_Menu_Roles {
 	* is be passed to Walker_Nav_Menu_Edit_Custom
 	* @since 1.0
 	*/
-	function setup_nav_item( $menu_item ) {
+	public function setup_nav_item( $menu_item ) {
 
 		$roles = get_post_meta( $menu_item->ID, '_nav_menu_role', true );
 
@@ -458,7 +458,7 @@ class Nav_Menu_Roles {
 	* Thanks to Evan Stein @vanpop http://vanpop.com/
 	* @since 1.2
 	*/
-	function exclude_menu_items( $items ) {
+	public function exclude_menu_items( $items ) {
 
 		$hide_children_of = array();
 
