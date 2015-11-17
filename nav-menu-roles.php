@@ -193,8 +193,8 @@ class Nav_Menu_Roles {
 	public function admin_notice() {
 		global $pagenow, $wp_filter;
 
-		// quit early if not on the menus page
-		if( ! in_array( $pagenow, array( 'nav-menus.php', 'plugins.php' ) ) ){
+		// quit early if not on the menus page, or if not an admin
+		if( ! in_array( $pagenow, array( 'nav-menus.php', 'plugins.php' ) ) || ! current_user_can( 'manage_options' ) ){
 			return;
 		}
 
