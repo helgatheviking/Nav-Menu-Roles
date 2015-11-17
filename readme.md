@@ -8,7 +8,7 @@
 **Stable tag:** 1.7.2  
 **License:** GPLv3  
 
-Hide custom menu items based on user roles
+Hide custom menu items based on user roles. PLEASE READ THE [FAQ](#conflict) IF YOU ARE NOT SEEING THE SETTINGS. 
 
 ## Description ##
 

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Nav Menu Roles
 Plugin URI: http://www.kathyisawesome.com/449/nav-menu-roles/
-Description: Hide custom menu items based on user roles
+Description: Hide custom menu items based on user roles. PLEASE READ THE [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/#conflict) IF YOU ARE NOT SEEING THE SETTINGS.
 Version: 1.7.2
 Author: Kathy Darling
 Author URI: http://www.kathyisawesome.com
