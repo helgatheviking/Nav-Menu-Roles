@@ -31,7 +31,7 @@ In WordPress menu items and pages are completely separate entities. Nav Menu Rol
 
 Support is handled in the [WordPress forums](http://wordpress.org/support/plugin/radio-button-for-taxonomies). Please note that support is limited and does not cover any custom implementation of the plugin. Before posting, please read the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/). Also, please verify the problem with other plugins disabled and while using a default theme. 
 
-Please report any bugs, errors, warnings, code problems to [Github](https://github.com/helgatheviking/Radio-Buttons-for-Taxonomies/issues)
+Please report any bugs, errors, warnings, code problems to [Github](https://github.com/helgatheviking/Nav-Menu-Roles/issues)
 
 ## Installation ##
 
