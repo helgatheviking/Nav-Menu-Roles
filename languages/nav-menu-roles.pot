@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Nav Menu Roles package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Nav Menu Roles 1.7.1\n"
+"Project-Id-Version: Nav Menu Roles 1.7.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2015-07-31 01:01:52+00:00\n"
+"POT-Creation-Date: 2015-11-17 12:54:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -162,36 +162,40 @@ msgstr ""
 msgid "Nav Menu Roles"
 msgstr ""
 
-#: nav-menu-roles.php:169
+#: nav-menu-roles.php:172
 msgid ""
 "Import %snav menu roles%s and other menu item meta skipped by the default "
 "importer"
 msgstr ""
 
-#: nav-menu-roles.php:225
+#: nav-menu-roles.php:228
 msgid ""
 "Nav Menu Roles has detected a possible conflict with the following "
-"functions or classes: %1$s. Please see the %2$sFAQ%3$s for more information "
-"and possible resolution. | %4$sHide Notice%3$s"
+"functions or classes: %1$s. Please direct the author of the conflicting "
+"theme or plugin to the %2$sFAQ%3$s for a solution. | %4$sHide Notice%3$s"
 msgstr ""
 
-#: nav-menu-roles.php:322
+#: nav-menu-roles.php:271
+msgid "FAQ"
+msgstr ""
+
+#: nav-menu-roles.php:336
 msgid "Display Mode"
 msgstr ""
 
-#: nav-menu-roles.php:330
+#: nav-menu-roles.php:344
 msgid "Logged In Users"
 msgstr ""
 
-#: nav-menu-roles.php:337
+#: nav-menu-roles.php:351
 msgid "Logged Out Users"
 msgstr ""
 
-#: nav-menu-roles.php:344
+#: nav-menu-roles.php:358
 msgid "Everyone"
 msgstr ""
 
-#: nav-menu-roles.php:351
+#: nav-menu-roles.php:365
 msgid "Limit logged in users to specific roles"
 msgstr ""
 
@@ -200,7 +204,10 @@ msgid "http://www.kathyisawesome.com/449/nav-menu-roles/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Hide custom menu items based on user roles"
+msgid ""
+"Hide custom menu items based on user roles. PLEASE READ THE "
+"[FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/#conflict) IF YOU ARE "
+"NOT SEEING THE SETTINGS."
 msgstr ""
 
 #. Author of the plugin/theme

@@ -5,7 +5,7 @@ Donate link: https://inspirepay.com/pay/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: GPLv3
 
 Hide custom menu items based on user roles. PLEASE READ THE [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/#conflict) IF YOU ARE NOT SEEING THE SETTINGS.
@@ -205,7 +205,10 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 
 == Changelog ==
 
-= 1.7.2=
+= 1.7.3 =
+* update readme, update error notice, add more links to the FAQ
+
+= 1.7.2 =
 * add Italian language. props @sododesign
 
 = 1.7.1 =
