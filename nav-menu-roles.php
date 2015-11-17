@@ -110,6 +110,9 @@ class Nav_Menu_Roles {
 		add_action( 'activated_plugin', array( $this, 'delete_transient' ) );
 		add_action( 'deactivated_plugin', array( $this, 'delete_transient' ) );
 
+		// add FAQ link to plugin 
+		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
+
 		// switch the admin walker
 		add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
 
@@ -258,6 +261,17 @@ class Nav_Menu_Roles {
 		delete_transient( 'nav_menu_roles_conflicts' );
 	}
 
+
+	/**
+	* Add docu link
+	* @since 1.7.3
+	*/
+	function add_action_links ( $links ) {
+		 $new_link = array(
+		 	sprintf( '<a href="https://wordpress.org/plugins/nav-menu-roles/faq/#conflict">%s</a>', __( 'FAQ', 'nav-menu-roles' ) ),
+		 );
+		return array_merge( $links, $new_link );
+	}
 
 	/**
 	* Override the Admin Menu Walker
