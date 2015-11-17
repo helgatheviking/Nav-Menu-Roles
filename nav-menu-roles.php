@@ -223,9 +223,9 @@ class Nav_Menu_Roles {
 
 			if ( ! get_user_meta( $user_id, 'nmr_ignore_notice' ) ) {
 
-				echo '<div class="updated">
+				echo '<div class="error">
 				<p>';
-				printf ( __( 'Nav Menu Roles has detected a possible conflict with the following functions or classes: %1$s. Please see the %2$sFAQ%3$s for more information and possible resolution. | %4$sHide Notice%3$s', 'nav-menu-roles' ),
+				printf ( __( 'Nav Menu Roles has detected a possible conflict with the following functions or classes: %1$s. Please direct the author of the conflicting theme or plugin to the %2$sFAQ%3$s for a solution. | %4$sHide Notice%3$s', 'nav-menu-roles' ),
 				'<code>' . implode( $conflicts, ', ' ) . '</code>',
 				'<a href="http://wordpress.org/plugins/nav-menu-roles/faq#conflict" target="_blank">',
 				'</a>',
