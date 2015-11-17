@@ -24,14 +24,14 @@ In WordPress menu items and pages are completely separate entities. Nav Menu Rol
 
 1. Go to Appearance > Menus
 1. Edit the menu items accordingly.  First select whether you'd like to display the item to all logged in users, all logged out users or to customize by role.
-1. If you chose customize by role, then you you can check the boxes next to the roles you'd like to restrict visibility to.
+1. If you chose customize by role, then you can check the boxes next to the roles you'd like to restrict visibility to.
 1. If you choose 'By Role' and don't check any boxes, the item will be visible to everyone like normal.
 
 = Support =
 
-Support is handled in the [WordPress forums](http://wordpress.org/support/plugin/radio-button-for-taxonomies). Please note that support is limited and does not cover any custom implementation of the plugin. Before posting, please read the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/). Also, please verify the problem with other plugins disabled and while using a default theme. 
+Support is handled in the [WordPress forums](https://wordpress.org/support/plugin/nav-menu-roles). Please note that support is limited and does not cover any custom implementation of the plugin. Before posting, please read the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/). Also, please verify the problem with other plugins disabled and while using a default theme. 
 
-Please report any bugs, errors, warnings, code problems to [Github](https://github.com/helgatheviking/Radio-Buttons-for-Taxonomies/issues)
+Please report any bugs, errors, warnings, code problems to [Github](https://github.com/helgatheviking/nav-menu-roles/issues)
 
 == Installation ==
 
@@ -47,7 +47,7 @@ Please report any bugs, errors, warnings, code problems to [Github](https://gith
 
 == Frequently Asked Questions ==
 
-= <a name="conflict"></a>I don't see the Nav Menu Roles options in the admin menu items?  =
+= <a id="conflict"></a>I don't see the Nav Menu Roles options in the admin menu items?  =
 
 This is because you have another plugin (or theme) that is also trying to alter the same code that creates the Menu section in the admin.  
 
@@ -65,7 +65,7 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 8. Jupiter Theme
 
 
-= <a name="compatibility"></a>Workaround #1 =
+= <a id="compatibility"></a>Workaround #1 =
 [Shazdeh](https://profiles.wordpress.org/shazdeh/) had the genius idea to not wait for a core hook and simply add the hook ourselves. If all plugin and theme authors use the same hook, we can make our plugins play together.
 
 Therefore, as of version 1.6 I am modifying my admin nav menu Walker to *only* adding the following lines (right after the description input):
@@ -80,7 +80,7 @@ do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
 
 **Ask your conflicting plugin/theme's author to add this code to his plugin or theme and our plugins will become compatible.**
 
-= <a name="patch"></a>Patching Your Plugin/Theme =
+= <a id="patch"></a>Patching Your Plugin/Theme =
 
 Should you wish to attempt this patch yourself, you can modify your conflicting plugin/theme's admin menu Walker class. **Reminder: I do not provide support for fixing your plugin/theme. If you aren't comfortable with the following instructions, contact the developer of the conflicting plugin/theme!**
 
@@ -135,7 +135,7 @@ There are apparently a few membership plugins out there that *don't* use traditi
 
 Here's an example where I've added a new pseudo role, creatively called "new-role".  The first function adds it to the menu item admin screen. The second function is pretty generic and won't actually do anything because you need to supply your own logic based on the plugin you are using.  Nav Menu Roles will save the new "role" info and add it to the item in an array to the `$item->roles` variable.
 
-= <a name="new-role"></a>Adding a new "role"  =
+= <a id="new-role"></a>Adding a new "role"  =
 
 `
 /*
