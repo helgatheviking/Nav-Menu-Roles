@@ -44,7 +44,7 @@ Please report any bugs, errors, warnings, code problems to [Github](https://gith
 ## Screenshots ##
 
 ### 1. Show the new options for the menu items in the admin menu customizer ###
-![Show the new options for the menu items in the admin menu customizer](http://plugins.svn.wordpress.org/nav-menu-roles/assets/screenshot-1.png)
+![Show the new options for the menu items in the admin menu customizer](http://tinyurl.com/qg7bd4c)
 
 ## Frequently Asked Questions ##
 
