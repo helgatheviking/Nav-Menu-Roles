@@ -1,7 +1,7 @@
 # Nav Menu Roles #
 
 **Contributors:** helgatheviking  
-**Donate link:** https://inspirepay.com/pay/helgatheviking  
+**Donate link:** http://paypal.me/helgatheviking
 **Tags:** menu, menus, nav menu, nav menus  
 **Requires at least:** 3.8  
 **Tested up to:** 4.2  
