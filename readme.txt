@@ -8,7 +8,7 @@ Requires at least: 3.8.0
 Tested up to: 4.4.0
 License: GPLv3
 
-Hide custom menu items based on user roles. PLEASE READ THE [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/#conflict) IF YOU ARE NOT SEEING THE SETTINGS.
+Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
 
 == Description ==
 
