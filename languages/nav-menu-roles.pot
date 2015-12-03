@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nav Menu Roles 1.7.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2015-11-17 12:54:54+00:00\n"
+"POT-Creation-Date: 2015-12-03 17:22:49+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -196,7 +196,7 @@ msgid "Everyone"
 msgstr ""
 
 #: nav-menu-roles.php:365
-msgid "Limit logged in users to specific roles"
+msgid "Restrict menu item to a minimum role"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
