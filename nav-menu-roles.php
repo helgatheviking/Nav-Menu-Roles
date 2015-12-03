@@ -362,7 +362,7 @@ class Nav_Menu_Roles {
 		</div>
 
 		<div class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0;">
-		    <span class="description"><?php _e( "Limit logged in users to specific roles", 'nav-menu-roles' ); ?></span>
+		    <span class="description"><?php _e( "Restrict menu item to a minimum role", 'nav-menu-roles' ); ?></span>
 		    <br />
 
 		    <?php
