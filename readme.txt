@@ -61,8 +61,7 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 4. Suffusion theme
 5. BeTheme
 6. Yith Menu
-7. Kleo Theme
-8. Jupiter Theme
+7. Jupiter Theme
 
 
 = <a id="compatibility"></a>Workaround #1 =
