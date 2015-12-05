@@ -204,6 +204,10 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 
 == Changelog ==
 
+= 1.7.4 =
+* Change language in metabox to try to explain min caps versus strict role checking
+* keep tweaking the FAQ
+
 = 1.7.3 =
 * update readme, update error notice, add more links to the FAQ
 
