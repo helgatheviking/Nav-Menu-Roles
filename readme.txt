@@ -24,7 +24,7 @@ In WordPress menu items and pages are completely separate entities. Nav Menu Rol
 
 1. Go to Appearance > Menus
 1. Edit the menu items accordingly.  First select whether you'd like to display the item to all logged in users, all logged out users or to customize by role.
-1. If you chose customize by role, then you can check the boxes next to the roles you'd like to restrict visibility to.
+1. If you chose customize by role, keep in mind that the role doesn't limit the item strictly to that role, but to everyone who has that role's capability. For example: an item set to "Subscriber" will be visible by Subscribers *and* by admins. Think of this more as a minimum role required to see an item. 
 1. If you choose 'By Role' and don't check any boxes, the item will be visible to everyone like normal.
 
 = Support =
