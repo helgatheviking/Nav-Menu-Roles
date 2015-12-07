@@ -3,9 +3,9 @@
 Contributors: helgatheviking
 Donate link: https://www.paypal.me/helgatheviking
 Tags: menu, menus, nav menu, nav menus
-Requires at least: 3.8.0
+Requires at least: 4.4.0
 Tested up to: 4.4.0
-Stable tag: 1.7.4
+Stable tag: 1.7.5
 License: GPLv3
 
 Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
@@ -203,6 +203,9 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 == Changelog ==
+
+= 1.7.5 =
+* Update Walker_Nav_Menu_Edit_Roles to mimic Walker_Nav_Menu in WordPress 4.4
 
 = 1.7.4 =
 * Change language in metabox to try to explain min caps versus strict role checking
