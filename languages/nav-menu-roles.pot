@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Nav Menu Roles package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Nav Menu Roles 1.7.4\n"
+"Project-Id-Version: Nav Menu Roles 1.7.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2015-12-05 04:33:21+00:00\n"
+"POT-Creation-Date: 2015-12-07 20:08:21+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -65,92 +65,92 @@ msgstr ""
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:87
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:95
 #. translators: %s: title of menu item which is invalid
 msgid "%s (Invalid)"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:91
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:99
 #. translators: %s: title of menu item in draft status
 msgid "%s (Pending)"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:104
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:112
 msgid "sub item"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:119
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:127
 msgid "Move up"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:132
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:140
 msgid "Move down"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:134
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:136
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:142
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:144
 msgid "Edit Menu Item"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:145
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:153
 msgid "URL"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:152
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:160
 msgid "Navigation Label"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:158
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:166
 msgid "Title Attribute"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:165
-msgid "Open link in a new window/tab"
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:173
+msgid "Open link in a new tab"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:170
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:178
 msgid "CSS Classes (optional)"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:176
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:184
 msgid "Link Relationship (XFN)"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:182
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:190
 msgid "Description"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:184
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:192
 msgid ""
 "The description will be displayed in the menu if the current theme supports "
 "it."
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:196
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:204
 msgid "Move"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:197
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:205
 msgid "Up one"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:198
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:206
 msgid "Down one"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:201
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:209
 msgid "To the top"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:208
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:216
 msgid "Original: %s"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:221
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:229
 msgid "Remove"
 msgstr ""
 
-#: inc/class.Walker_Nav_Menu_Edit_Roles.php:222
+#: inc/class.Walker_Nav_Menu_Edit_Roles.php:230
 msgid "Cancel"
 msgstr ""
 
