@@ -328,6 +328,9 @@ class Nav_Menu_Roles {
 		// the specific roles to check
 		$checked_roles = is_array( $roles ) ? $roles : false;
 
+		// whether to display the role checkboxes
+		$hidden = $logged_in_out == 'in' ? '' : 'display: none;';
+
 		?>
 
 		<input type="hidden" name="nav-menu-role-nonce" value="<?php echo wp_create_nonce( 'nav-menu-nonce-name' ); ?>" />
@@ -361,7 +364,7 @@ class Nav_Menu_Roles {
 
 		</div>
 
-		<div class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0;">
+		<div class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0; <?php echo $hidden;?>">
 		    <span class="description"><?php _e( "Restrict menu item to a minimum role", 'nav-menu-roles' ); ?></span>
 		    <br />
 
