@@ -6,7 +6,6 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-    	gitcreds: grunt.file.readJSON('.gitcreds'),
 		uglify: {
 			options: {
 				compress: {
@@ -145,36 +144,7 @@ module.exports = function(grunt) {
 				compare: '==',
 			},
 		},
-
-		// # version bump, commit, tag & push in git
-		release: {
-			options: {
-				push: true,
-				github: {
-					repo: '<%= pkg.repository.url %>', //put your user/repo here
-					usernameVar: '<%= gitcreds.username %>', //ENVIRONMENT VARIABLE that contains Github username 
-					passwordVar: '<%= gitcreds.password %>' //ENVIRONMENT VARIABLE that contains Github password
-				}
-			}
-		},
-
-		bump: {
-		    options: {
-		      files: ['package.json','nav-menu-roles.php', 'readme.md', 'readme.txt'],
-		      updateConfigs: ['pkg'],
-		      commit: false,
-		      commitMessage: 'Release v%VERSION%',
-		      commitFiles: ['nav-menu-roles.php', 'readme.md', 'readme.txt'],
-		      createTag: false,
-		      tagName: 'v%VERSION%',
-		      tagMessage: 'Version %VERSION%',
-		      push: false,
-		      pushTo: 'upstream',
-		      gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
-		      globalReplace: false
-		    }
-		  },
-		
+	
 		// bump version numbers
 		replace: {
 			Version: {
