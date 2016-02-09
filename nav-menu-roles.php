@@ -48,7 +48,7 @@ class Nav_Menu_Roles {
 	* @constant string donate url
 	* @since 1.5
 	*/
-	CONST DONATE_URL = "https://inspirepay.com/pay/helgatheviking";
+	CONST DONATE_URL = "https://inspirepay.com/pay/helgatheviking/10";
 
 	/**
 	* @constant string version number
@@ -110,7 +110,7 @@ class Nav_Menu_Roles {
 		add_action( 'activated_plugin', array( $this, 'delete_transient' ) );
 		add_action( 'deactivated_plugin', array( $this, 'delete_transient' ) );
 
-		// add FAQ link to plugin 
+		// add FAQ and Donate link to plugin 
 		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
 
 		// switch the admin walker
@@ -275,11 +275,11 @@ class Nav_Menu_Roles {
 	* @since 1.7.3
 	*/
 	public function add_action_links( $links ) {
-		 $new_link = array(
-		 	sprintf( '<a href="https://wordpress.org/plugins/nav-menu-roles/faq/#conflict">%s</a>', __( 'FAQ', 'nav-menu-roles' ) ),
-		 );
-		return array_merge( $links, $new_link );
+		$links[] = sprintf( '<a href="https://wordpress.org/plugins/nav-menu-roles/faq/#conflict">%s</a>', __( 'FAQ', 'nav-menu-roles' ) );
+		$links[] = '<a href="' . self::DONATE_URL . '" target="_blank">' . __( 'Donate', 'nav-menu-roles' ) . '</a>';
+		return $links;
 	}
+
 
 	/**
 	* Override the Admin Menu Walker
