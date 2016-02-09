@@ -133,6 +133,9 @@ class Nav_Menu_Roles {
 			add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items' ) );
 		}
 
+		// upgrade routine
+		add_action( 'plugins_loaded', array( $this, 'maybe_upgrade' ) );
+
 	}
 
 	/**
@@ -567,6 +570,23 @@ class Nav_Menu_Roles {
 	    }
 
 	    return $hooks;
+	}
+
+
+	/**
+	* Maybe upgrade
+	*
+	* @access public
+	* @return void
+	*/
+	public function maybe_upgrade() {
+		$db_version = get_option( 'nav_menu_roles_db_version', false );
+		
+		// 1.7.7 upgrade: changed the debug notice so the old transient is invalid
+		if ( $db_version === false || version_compare( '1.7.7', $db_version, '<' ) ) {
+			$this->delete_transient();
+		    update_option( 'nav_menu_roles_db_version', self::VERSION );
+		} 
 	}
 
 } // end class
