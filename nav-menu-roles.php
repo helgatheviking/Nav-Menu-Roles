@@ -202,7 +202,6 @@ class Nav_Menu_Roles {
 		if ( false === ( $conflicts = get_transient( 'nav_menu_roles_conflicts' ) ) ) {
 
 			// It wasn't there, so regenerate the data and save the transient
-
 			$filters = self::list_hooks( 'wp_edit_nav_menu_walker' );
 
 			foreach( $filters as $filter ){ 
@@ -215,10 +214,10 @@ class Nav_Menu_Roles {
 				}
 
 				$conflicts[] = sprintf( '<code>%s</code> on line %s', $file, $filter['line'] );;
-
-					
 										
 			}
+
+			set_transient( 'nav_menu_roles_conflicts', $conflicts );	
 
 		}
 
