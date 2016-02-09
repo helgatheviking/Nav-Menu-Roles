@@ -45,16 +45,16 @@ class Nav_Menu_Roles {
 	protected static $_instance = null;
 
 	/**
-	* @var string donate url
+	* @constant string donate url
 	* @since 1.5
 	*/
-	public static $donate_url = "https://inspirepay.com/pay/helgatheviking";
+	CONST DONATE_URL = "https://inspirepay.com/pay/helgatheviking";
 
 	/**
-	* @var string version number
+	* @constant string version number
 	* @since 1.7.1
 	*/
-	public $version = '1.7.6';
+	CONST VERSION = '1.7.6';
 
 	/**
 	* Main Nav Menu Roles Instance
@@ -407,7 +407,7 @@ class Nav_Menu_Roles {
 	public function enqueue_scripts( $hook ){
 		if ( $hook == 'nav-menus.php' ){
 			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js' , __FILE__ ), array( 'jquery' ), $this->version, true );
+			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js' , __FILE__ ), array( 'jquery' ), self::VERSION, true );
 		}
 	}
 
