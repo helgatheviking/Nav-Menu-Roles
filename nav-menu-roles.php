@@ -202,19 +202,25 @@ class Nav_Menu_Roles {
 		if ( false === ( $conflicts = get_transient( 'nav_menu_roles_conflicts' ) ) ) {
 
 			// It wasn't there, so regenerate the data and save the transient
-			global $wp_filter;
 
-			$filters = is_array( $wp_filter['wp_edit_nav_menu_walker'] ) ? array_shift( $wp_filter['wp_edit_nav_menu_walker'] ) : array();
+			$filters = self::list_hooks( 'wp_edit_nav_menu_walker' );
 
-			foreach( $filters as $filter ){
+			foreach( $filters as $filter ){ 
+
+				$file = str_replace( WP_CONTENT_DIR, '', $filter['file'] );
+
 				// we expect to see NVR so collect everything else
-				if( ! is_a( $filter['function'][0], 'Nav_Menu_Roles') ) {
-					$conflicts[] = is_object( $filter['function'][0] ) ? get_class( $filter['function'][0] ) : $filter['function'][0];
+				if( is_array( $filter['function'] ) && $filter['function'][0] == 'Nav_Menu_Roles' ){
+					continue;
 				}
 
-			}
-		}
+				$conflicts[] = sprintf( '<code>%s</code> on line %s', $file, $filter['line'] );;
 
+					
+										
+			}
+
+		}
 
 		// Check Transient for conflicts and show error
 		if ( ! empty ( $conflicts ) ) {
@@ -225,8 +231,8 @@ class Nav_Menu_Roles {
 
 				echo '<div class="error">
 				<p>';
-				printf ( __( 'Nav Menu Roles has detected a possible conflict with the following functions or classes: %1$s. Please direct the author of the conflicting theme or plugin to the %2$sFAQ%3$s for a solution. | %4$sHide Notice%3$s', 'nav-menu-roles' ),
-				'<code>' . implode( $conflicts, ', ' ) . '</code>',
+				printf ( __( 'Nav Menu Roles has detected a possible conflict in the following locations: %1$s. Please direct the author of the conflicting theme or plugin to the %2$sFAQ%3$s for a solution. | %4$sHide Notice%3$s', 'nav-menu-roles' ),
+				implode( $conflicts, ', ' ),
 				'<a href="http://wordpress.org/plugins/nav-menu-roles/faq#conflict" target="_blank">',
 				'</a>',
 				'<a href="?nmr_nag_ignore=0">' );
@@ -513,7 +519,56 @@ class Nav_Menu_Roles {
 		}
 
 		return $items;
-}
+	}
+
+
+	/**
+	* Even fancier debug info
+	* @props @Danijel http://stackoverflow.com/a/26680808/383847
+	* @since 1.7.7
+	*/
+	public static function list_hooks( $hook = '' ) {
+	    global $wp_filter;
+
+	    $hooks = isset( $wp_filter[$hook] ) ? $wp_filter[$hook] : array();  
+	    $hooks = call_user_func_array( 'array_merge', $hooks );
+
+	    foreach( $hooks as &$item ) {
+	        // function name as string or static class method eg. 'Foo::Bar'
+	        if ( is_string( $item['function'] ) ) { 
+	            $ref = strpos( $item['function'], '::' ) ? new ReflectionClass( strstr( $item['function'], '::', true ) ) : new ReflectionFunction( $item['function'] );
+	            $item['file'] = $ref->getFileName();
+	            $item['line'] = get_class( $ref ) == 'ReflectionFunction' 
+	                ? $ref->getStartLine() 
+	                : $ref->getMethod( substr( $item['function'], strpos( $item['function'], '::' ) + 2 ) )->getStartLine();
+
+	        // array( object, method ), array( string object, method ), array( string object, string 'parent::method' )
+	        } elseif ( is_array( $item['function'] ) ) {
+
+	            $ref = new ReflectionClass( $item['function'][0] );
+
+	            // $item['function'][0] is a reference to existing object
+	            $item['function'] = array(
+	                is_object( $item['function'][0] ) ? get_class( $item['function'][0] ) : $item['function'][0],
+	                $item['function'][1]
+	            );
+	            $item['file'] = $ref->getFileName();
+	            $item['line'] = strpos( $item['function'][1], '::' )
+	                ? $ref->getParentClass()->getMethod( substr( $item['function'][1], strpos( $item['function'][1], '::' ) + 2 ) )->getStartLine()
+	                : $ref->getMethod( $item['function'][1] )->getStartLine();
+
+	        // closures
+	        } elseif ( is_callable( $item['function'] ) ) {     
+	            $ref = new ReflectionFunction( $item['function'] );         
+	            $item['function'] = get_class( $item['function'] );
+	            $item['file'] = $ref->getFileName();
+	            $item['line'] = $ref->getStartLine();
+
+	        }       
+	    }
+
+	    return $hooks;
+	}
 
 } // end class
 
