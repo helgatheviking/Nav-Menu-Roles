@@ -5,16 +5,16 @@
 **Tags:** menu, menus, nav menu, nav menus  
 **Requires at least:** 4.4.0  
 **Tested up to:** 4.4.0  
-**Stable tag: 1.7.7
+**Stable tag:** 1.7.8    
 **License:** GPLv3  
 
-Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
+Hide custom menu items based on user roles. PLEASE READ THE [FAQ](#frequently-asked-questions) IF YOU ARE NOT SEEING THE SETTINGS.
 
 ## Description ##
 
 This plugin lets you hide custom menu items based on user roles.  So if you have a link in the menu that you only want to show to logged in users, certain types of users, or even only to logged out users, this plugin is for you.
 
-Nav Menu Roles is very flexible. In addition to standard user roles, you can customize the functionality by adding your own check boxes with custom labels using the `nav_menu_roles` filter and then using the `nav_menu_roles_item_visibility` filter to check against whatever criteria you need. You can check against any user meta values (like capabilities) and any custom attributes added by other plugins. See the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/#new-role).
+Nav Menu Roles is very flexible. In addition to standard user roles, you can customize the functionality by adding your own check boxes with custom labels using the `nav_menu_roles` filter and then using the `nav_menu_roles_item_visibility` filter to check against whatever criteria you need. You can check against any user meta values (like capabilities) and any custom attributes added by other plugins. See the [FAQ](#im-using-xyz-membership-plugin-and-i-dont-see-its-levels).
 
 ### IMPORTANT NOTE ###
 
@@ -49,7 +49,7 @@ Please report any bugs, errors, warnings, code problems to [Github](https://gith
 
 ## Frequently Asked Questions ##
 
-= <a id="conflict"></a>I don't see the Nav Menu Roles options in the admin menu items?  =
+# I don't see the Nav Menu Roles options in the admin menu items?  #
 
 This is because you have another plugin (or theme) that is also trying to alter the same code that creates the Menu section in the admin.  
 
@@ -66,33 +66,33 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 7. Jupiter Theme
 
 
-= <a id="compatibility"></a>Workaround #1 =
+# Workaround #1 #
 [Shazdeh](https://profiles.wordpress.org/shazdeh/) had the genius idea to not wait for a core hook and simply add the hook ourselves. If all plugin and theme authors use the same hook, we can make our plugins play together.
 
 Therefore, as of version 1.6 I am modifying my admin nav menu Walker to *only* adding the following lines (right after the description input):
 
-`
+```
 <?php 
 // Place this in your admin nav menu Walker
 do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
 // end added section 
 ?>
-` 
+```
 
 **Ask your conflicting plugin/theme's author to add this code to his plugin or theme and our plugins will become compatible.**
 
-= <a id="patch"></a>Patching Your Plugin/Theme =
+# Patching Your Plugin/Theme #
 
 **Should you wish to attempt this patch yourself, you can modify your conflicting plugin/theme's admin menu Walker class. **Reminder:** I do not provide support for fixing your plugin/theme. If you aren't comfortable with the following instructions, contact the developer of the conflicting plugin/theme!**  
 
 1. Find the class that extends the `Walker_Nav_Menu`. As a hint, it is filtering `wp_edit_nav_menu_walker` and you might even be getting a warning about it from Nav Menu Roles. Example: 
 
-`
+```
 add_filter( 'wp_edit_nav_menu_walker', 'sample_edit_nav_menu_walker');
 function sample_edit_nav_menu_walker( $walker ) {
     return 'Walker_Nav_Menu_Edit_Roles'; // this is the class name
 }
-`
+```
 
 2. Find the file for the extending class. In my plugin this is in a file located at `inc/class.Walker_Nav_Menu_Edit_Roles.php`. I can't know *where* this file is in your plugin/theme. Please don't ask me, but here's what the beginning of that class will look like:
 
@@ -110,7 +110,7 @@ In that file you will eventually see a class method that looks like:
 
 In Nav Menu Roles, I have placed the hook directly after the description, ex:
 
-`
+```
 <p class="field-description description description-wide">
   <label for="edit-menu-item-description-<?php echo $item_id; ?>">
     <?php _e( 'Description' ); ?><br />
@@ -124,7 +124,7 @@ In Nav Menu Roles, I have placed the hook directly after the description, ex:
 do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
 // end added section 
 ?>
-`
+```
 
 ### Workaround #2 ###
 
@@ -136,9 +136,9 @@ There are apparently a few membership plugins out there that *don't* use traditi
 
 Here's an example where I've added a new pseudo role, creatively called "new-role".  The first function adds it to the menu item admin screen. The second function is pretty generic and won't actually do anything because you need to supply your own logic based on the plugin you are using.  Nav Menu Roles will save the new "role" info and add it to the item in an array to the `$item->roles` variable.
 
-= <a id="new-role"></a>Adding a new "role"  =
+# Adding a new "role" #
 
-`
+```
 /*
  * Add custom roles to Nav Menu Roles menu list
 ** * param:** $roles an array of all available roles, by default is global $wp_roles   
@@ -149,13 +149,13 @@ function kia_new_roles( $roles ){
   return $roles;
 }
 add_filter( 'nav_menu_roles', 'kia_new_roles' );
-`
+```
 
 Note, if you want to add a WordPress capability the above is literally all you need. Because Nav Menu Roles checks whether a role has permission to view the menu item using `current_user_can($role) you do not need to right a custom callback for the `nav_menu_roles_item_visibility` filter.
 
 In case you *do* need to check your visibility status against something very custom, here is how you'd go about it:
 
-`
+```
 /*
  * Change visibilty of each menu item
 ** * param:** $visible boolean  
@@ -174,7 +174,7 @@ function kia_item_visibility( $visible, $item ){
   return $visible;
 }
 add_filter( 'nav_menu_roles_item_visibility', 'kia_item_visibility', 10, 2 );
-`
+```
 
 Note that you have to generate your own if/then logic. I can't provide free support for custom integration with another plugin. You may [contact me](http://kathyisawesome.com/contact) to discuss hiring me, or I would suggest using a plugin that supports WordPress' roles, such as Justin Tadlock's [Members](http://wordpress.org/plugins/members).
 
@@ -186,9 +186,9 @@ Therefore, if you have no items to display, WordPress will end up displaying ALL
 
 If you don't want this, you must set the fallback argument to be a null string.
 
-`
+```
 wp_nav_menu( array( 'theme_location' => 'primary-menu', 'fallback_cb' => '' ) );
-`
+```
 
 ### What happened to my menu roles on import/export? ###
 
@@ -204,100 +204,3 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. Use the same .xml file and perform a second import
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
-## Changelog ##
-
-### 1.7.6 ###
-* tweak CSS to initially hide checkboxes on newly added menu items (defaults to "Everyone" so roles should not appear)
-
-### 1.7.5 ###
-* Update Walker_Nav_Menu_Edit_Roles to mimic Walker_Nav_Menu in WordPress 4.4
-
-### 1.7.4 ###
-* Change language in metabox to try to explain min caps versus strict role checking
-* keep tweaking the FAQ
-
-### 1.7.3 ###
-* update readme, update error notice, add more links to the FAQ
-
-### 1.7.2 ###
-* add Italian language. props @sododesign
-
-### 1.7.1 ###
-* Updated FAQ with patch instructions for conflicting plugins/themes
-* add Portugeuse language. props @brunobarros
-
-### 1.7.0 ###
-* adjust admin UI to be more user-friendly. Options are now: show to everyone, show to logged out users, and show to logged in users (optionally, logged in users by specific role)
-
-### 1.6.5 ###
-* add Guajarati language. props @rohilmistry93
-
-### 1.6.4 ###
-* more language issues -> sync svn+git version numbers
-
-### 1.6.3 ###
-* Try again to add languages. Where'd they all go?
-
-### 1.6.2 ###
-* Add French translation. Props @Philippe Gilles
-
-### 1.6.1 ###
-* Update list of conflits
-* Don't display radio buttons if no roles - allows for granular permissions control
-
-### 1.6.0 ###
-* Feature: Hiding a parent menu item will automatically hide all its children
-* Feature: Add compatibility with Menu Item Visibility Control plugin and any plugin/theme that is willing to add its inputs via the `wp_nav_menu_item_custom_fields` hook. See the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/#compatibility) to make our plugins compatible.
-
-### 1.5.1 ###
-* Hopefully fix missing nav-menu-roles.min.js SVN issue
-
-### 1.5.0 ###
-* Switch to instance of plugin
-* Add notice when conflicting plugins are detected 
-* Remove some extraneous parameters
-* Add Spanish translation thanks to @deskarrada
-
-### 1.4.1 ###
-* update to WP 3.8 version of Walker_Nav_Menu_Edit (prolly not any different from 3.7.1)
-* minor CSS adjustment to admin menu items
-* checked against WP 3.8
-
-### 1.4 ###
-* Add to FAQ
-* add JS flair to admin menu items
-* update to WP 3.7.1 version of Walker_Nav_Menu_Edit
-
-### 1.3.5 ###
-* Add nav_menu_roles_item_visibility filter to work with plugins that don't use traditional roles
-
-### 1.3.4 ###
-* Update admin language thanks to @hassanhamm
-* Add Arabic translation thanks to @hassanhamm
-
-### 1.3.3 ###
-* Fix Nav_Menu_Roles_Import not found error
-
-### 1.3.2 ###
-* Stupid comment error causing save issues
-
-### 1.3.1 ###
-* SVN failure to include importer files!
-
-### 1.3 ###
-* Added custom importer
-
-### 1.2 ###
-* Major fix for theme's that use their own custom Walkers, thanks to Evan Stein @vanpop http://vanpop.com/
-* Instead of a custom nav Walker, menu items are controlled through the wp_get_nav_menu_items filter
-* Remove the custom nav Walker code
-
-### 1.1.1 ###
-* Fix link to plugin site
-* Fix labels in admin Walker
-
-### 1.1 ###
-* Clean up debug messages
-
-### 1.0 ###
-* Initial release
