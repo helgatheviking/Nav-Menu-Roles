@@ -105,10 +105,6 @@ class Nav_Menu_Roles {
 		// load the textdomain
 		add_action( 'plugins_loaded', array( $this, 'load_text_domain' ) );
 
-		// add a notice that NMR is conflicting with another plugin
-		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
-		add_action( 'activated_plugin', array( $this, 'delete_transient' ) );
-		add_action( 'deactivated_plugin', array( $this, 'delete_transient' ) );
 
 		// add FAQ and Donate link to plugin 
 		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
@@ -150,8 +146,6 @@ class Nav_Menu_Roles {
 		// Register Importer
 		$this->register_importer();
 
-		// save user notice
-		$this->nag_ignore();
 	}
 
 
@@ -192,80 +186,29 @@ class Nav_Menu_Roles {
 	/**
 	* Display a Notice if plugin conflicts with another
 	* @since 1.5
+	* @deprecated will removed in 2.0
 	*/
 	public function admin_notice() {
-		global $pagenow, $wp_filter;
-
-		// quit early if not on the menus page, or if not an admin
-		if( ! in_array( $pagenow, array( 'nav-menus.php', 'plugins.php' ) ) || ! current_user_can( 'manage_options' ) ){
-			return;
-		}
-
-		// Get any existing copy of our transient data
-		if ( false === ( $conflicts = get_transient( 'nav_menu_roles_conflicts' ) ) ) {
-
-			// It wasn't there, so regenerate the data and save the transient
-			$filters = self::list_hooks( 'wp_edit_nav_menu_walker' );
-
-			foreach( $filters as $filter ){ 
-
-				$file = str_replace( WP_CONTENT_DIR, '', $filter['file'] );
-
-				// we expect to see NVR so collect everything else
-				if( is_array( $filter['function'] ) && $filter['function'][0] == 'Nav_Menu_Roles' ){
-					continue;
-				}
-
-				$conflicts[] = sprintf( '<code>%s</code> on line %s', $file, $filter['line'] );;
-										
-			}
-
-			set_transient( 'nav_menu_roles_conflicts', $conflicts );	
-
-		}
-
-		// Check Transient for conflicts and show error
-		if ( ! empty ( $conflicts ) ) {
-			global $current_user ;
-			$user_id = $current_user->ID;
-
-			if ( ! get_user_meta( $user_id, 'nmr_ignore_notice' ) ) {
-
-				echo '<div class="error">
-				<p>';
-				printf ( __( 'Nav Menu Roles has detected a possible conflict in the following locations: %1$s. Please direct the author of the conflicting theme or plugin to the %2$sFAQ%3$s for a solution. | %4$sHide Notice%3$s', 'nav-menu-roles' ),
-				implode( $conflicts, ', ' ),
-				'<a href="http://wordpress.org/plugins/nav-menu-roles/faq#conflict" target="_blank">',
-				'</a>',
-				'<a href="?nmr_nag_ignore=0">' );
-				echo '</p>
-				</div>';
-
-			}
-
-		}
-		
+		_deprecated_function( __METHOD__, '1.7.8' );
 	}
 
 
 	/**
 	* Allow the notice to be dismissable
 	* @since 1.6
+	* @deprecated will removed in 2.0
 	*/
 	public function nag_ignore() {
-		global $current_user;
-		$user_id = $current_user->ID;
-		/* If user clicks to ignore the notice, add that to their user meta */
-		if ( isset($_GET['nmr_nag_ignore']) && '0' == $_GET['nmr_nag_ignore'] ) {
-			add_user_meta( $user_id, 'nmr_ignore_notice', 'true', true );
-		}
+		_deprecated_function( __METHOD__, '1.7.8' );
 	}
 
 	/**
 	* Delete the transient when a plugin is activated or deactivated
 	* @since 1.5
+	* @deprecated will removed in 2.0
 	*/
 	public function delete_transient() {
+		_deprecated_function( __METHOD__, '1.7.8' );
 		delete_transient( 'nav_menu_roles_conflicts' );
 	}
 
@@ -525,55 +468,6 @@ class Nav_Menu_Roles {
 
 
 	/**
-	* Even fancier debug info
-	* @props @Danijel http://stackoverflow.com/a/26680808/383847
-	* @since 1.7.7
-	*/
-	public static function list_hooks( $hook = '' ) {
-	    global $wp_filter;
-
-	    $hooks = isset( $wp_filter[$hook] ) ? $wp_filter[$hook] : array();  
-	    $hooks = call_user_func_array( 'array_merge', $hooks );
-
-	    foreach( $hooks as &$item ) {
-	        // function name as string or static class method eg. 'Foo::Bar'
-	        if ( is_string( $item['function'] ) ) { 
-	            $ref = strpos( $item['function'], '::' ) ? new ReflectionClass( strstr( $item['function'], '::', true ) ) : new ReflectionFunction( $item['function'] );
-	            $item['file'] = $ref->getFileName();
-	            $item['line'] = get_class( $ref ) == 'ReflectionFunction' 
-	                ? $ref->getStartLine() 
-	                : $ref->getMethod( substr( $item['function'], strpos( $item['function'], '::' ) + 2 ) )->getStartLine();
-
-	        // array( object, method ), array( string object, method ), array( string object, string 'parent::method' )
-	        } elseif ( is_array( $item['function'] ) ) {
-
-	            $ref = new ReflectionClass( $item['function'][0] );
-
-	            // $item['function'][0] is a reference to existing object
-	            $item['function'] = array(
-	                is_object( $item['function'][0] ) ? get_class( $item['function'][0] ) : $item['function'][0],
-	                $item['function'][1]
-	            );
-	            $item['file'] = $ref->getFileName();
-	            $item['line'] = strpos( $item['function'][1], '::' )
-	                ? $ref->getParentClass()->getMethod( substr( $item['function'][1], strpos( $item['function'][1], '::' ) + 2 ) )->getStartLine()
-	                : $ref->getMethod( $item['function'][1] )->getStartLine();
-
-	        // closures
-	        } elseif ( is_callable( $item['function'] ) ) {     
-	            $ref = new ReflectionFunction( $item['function'] );         
-	            $item['function'] = get_class( $item['function'] );
-	            $item['file'] = $ref->getFileName();
-	            $item['line'] = $ref->getStartLine();
-
-	        }       
-	    }
-
-	    return $hooks;
-	}
-
-
-	/**
 	* Maybe upgrade
 	*
 	* @access public
@@ -584,7 +478,6 @@ class Nav_Menu_Roles {
 		
 		// 1.7.7 upgrade: changed the debug notice so the old transient is invalid
 		if ( $db_version === false || version_compare( '1.7.7', $db_version, '<' ) ) {
-			$this->delete_transient();
 		    update_option( 'nav_menu_roles_db_version', self::VERSION );
 		} 
 	}
