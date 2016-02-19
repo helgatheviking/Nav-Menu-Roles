@@ -155,6 +155,10 @@ module.exports = function(grunt) {
 				],
 				overwrite: true,
 				replacements: [
+					{ 
+						from: /\*\*Stable tag:\*\* '.*.'/m,
+						to: "*Stable tag:* '<%= pkg.version %>'"
+					},
 					{
 						from: /Stable tag:.*$/m,
 						to: "Stable tag: <%= pkg.version %>"

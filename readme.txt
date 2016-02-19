@@ -5,7 +5,7 @@ Donate link: https://www.paypal.me/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 4.4.0
 Tested up to: 4.4.0
-Stable tag: 1.7.8
+Stable tag: 1.7.9
 License: GPLv3
 
 Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
@@ -205,6 +205,9 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 == Changelog ==
+
+= 1.7.9 = 
+* revert priority of walker back to default because themes are not actually using the hook to add their own fields. sadface. 
 
 = 1.7.8 = 
 * remove all admin notices
