@@ -140,7 +140,8 @@ class Nav_Menu_Roles {
 	* @return void
 	*/
 	public function admin_init() {
-		include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
+		if( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) )
+		    include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
 
 		// Register Importer
 		$this->register_importer();
