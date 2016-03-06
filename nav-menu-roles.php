@@ -156,12 +156,10 @@ class Nav_Menu_Roles {
 	* @return void
 	*/
 	public function register_importer(){
-
-		include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Nav_Menu_Roles_Import.php');
-
 		// Register the new importer
 		if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
 
+			include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Nav_Menu_Roles_Import.php');
 			// Register the custom importer we've created.
 			$roles_import = new Nav_Menu_Roles_Import();
 
