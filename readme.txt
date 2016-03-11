@@ -85,30 +85,22 @@ Should you wish to attempt this patch yourself, you can modify your conflicting 
 
 **Reminder: I do not provide support for fixing your plugin/theme. If you aren't comfortable with the following instructions, contact the developer of the conflicting plugin/theme!**
 
-1. Find the class that extends the `Walker_Nav_Menu`. As a hint, it is filtering `wp_edit_nav_menu_walker` and you might even be getting a warning about it from Nav Menu Roles. Example: 
+  1\. Find the class that extends the `Walker_Nav_Menu`. The fastest way to do this is to search your whole plugin/theme folder for `extends Walker_Nav_Menu`. When you find the file that contains this text you willl know which file you need to edit. Once you find it here's what the beginning of that class will look like:
 
-`
-add_filter( 'wp_edit_nav_menu_walker', 'sample_edit_nav_menu_walker');
-function sample_edit_nav_menu_walker( $walker ) {
-    return 'Walker_Nav_Menu_Edit_Roles'; // this is the class name
-}
-`
+`class YOUR_THEME_CUSTOM_WALKER extends Walker_Nav_Menu {}`
 
-2. Find the file for the extending class. In my plugin this is in a file located at `inc/class.Walker_Nav_Menu_Edit_Roles.php`. I can't know *where* this file is in your plugin/theme. Please don't ask me, but here's what the beginning of that class will look like:
-
-`class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {}`
-
-Note that the class name is the same as the class name you found in step 1.
-
-3. Find the `start_el()` method
+  2\. Find the `start_el()` method
 
 In that file you will eventually see a class method that looks like:
 
-`function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {`
+`function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+  // some stuff truncated for brevity
+}
+`
 
-4. Paste my action hook somewhere in this method!
+  3\. Paste my action hook somewhere in this method!
 
-In Nav Menu Roles, I have placed the hook directly after the description, ex:
+In Nav Menu Roles, I have placed the hook directly after the description, like so:
 
 `
 <p class="field-description description description-wide">
