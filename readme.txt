@@ -4,7 +4,7 @@ Contributors: helgatheviking
 Donate link: https://www.paypal.me/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 4.5.0
-Tested up to: 4.5.0
+Tested up to: 4.5.1
 Stable tag: 1.8.0
 License: GPLv3
 
