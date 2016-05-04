@@ -382,7 +382,7 @@ class Nav_Menu_Roles {
 			}
 			if ( ! empty ( $custom_roles ) ) $saved_data = $custom_roles;
 		} else if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {
-			$saved_data = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
+			$saved_data = sanitize_text_field( $_POST['nav-menu-logged-in-out'][$menu_item_db_id] );
 		} 
 
 		if ( $saved_data ) {
