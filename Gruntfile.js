@@ -156,20 +156,24 @@ module.exports = function(grunt) {
 				overwrite: true,
 				replacements: [
 					{ 
-						from: /\*\*Stable tag:\*\* '.*.'/m,
-						to: "*Stable tag:* '<%= pkg.version %>'"
+						from: /\*\*Stable tag:\*\* .*/,
+						to: "**Stable tag:** <%= pkg.version %>  "
 					},
 					{
-						from: /Stable tag:.*$/m,
+						from: /Stable tag: .*/,
 						to: "Stable tag: <%= pkg.version %>"
 					},
 					{ 
-						from: /Version:.*$/m,
+						from: /Version:.\d+(\.\d+)+/,
 						to: "Version: <%= pkg.version %>"
 					},
 					{ 
-						from: /public \$version = \'.*.'/m,
-						to: "public $version = '<%= pkg.version %>'"
+						from: /public \$version = \'.*/,
+						to: "public $version = '<%= pkg.version %>';"
+					},
+					{
+						from: /CONST VERSION = \'.*/,
+						to: "CONST VERSION = '<%= pkg.version %>';"
 					}
 				]
 			}
