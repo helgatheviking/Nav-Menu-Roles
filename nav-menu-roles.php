@@ -140,10 +140,16 @@ class Nav_Menu_Roles {
 	* @return void
 	*/
 	public function admin_init() {
-		if( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) )
-		{
-		    include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
+
+		if( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ){
+			global $wp_version;
+		    if ( version_compare( $wp_version, '4.5.0', '>=' ) ){
+				include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles_4.5.php');
+			} else {
+				include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
+			}
         }
+
 		// Register Importer
 		$this->register_importer();
 

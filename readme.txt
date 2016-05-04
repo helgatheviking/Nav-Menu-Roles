@@ -3,8 +3,8 @@
 Contributors: helgatheviking
 Donate link: https://www.paypal.me/helgatheviking
 Tags: menu, menus, nav menu, nav menus
-Requires at least: 4.4.0
-Tested up to: 4.4.0
+Requires at least: 4.5.0
+Tested up to: 4.5.0
 Stable tag: 1.7.9
 License: GPLv3
 
@@ -62,6 +62,7 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 5. BeTheme
 6. Yith Menu
 7. Jupiter Theme
+8. iMedica
 
 
 = <a id="compatibility"></a>Workaround #1 =
