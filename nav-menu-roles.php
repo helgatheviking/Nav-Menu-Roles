@@ -54,7 +54,7 @@ class Nav_Menu_Roles {
 	* @constant string version number
 	* @since 1.7.1
 	*/
-	CONST VERSION = '1.7.6';
+	CONST VERSION = '1.8.0'
 
 	/**
 	* Main Nav Menu Roles Instance
