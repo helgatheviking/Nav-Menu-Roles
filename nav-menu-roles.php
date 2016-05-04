@@ -101,11 +101,11 @@ class Nav_Menu_Roles {
 
 		// Admin functions
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		
+
 		// load the textdomain
 		add_action( 'plugins_loaded', array( $this, 'load_text_domain' ) );
 
-		// add FAQ and Donate link to plugin 
+		// add FAQ and Donate link to plugin
 		add_filter( 'plugin_row_meta', array( $this, 'add_action_links' ), 10, 4 );
 
 		// switch the admin walker
@@ -140,8 +140,10 @@ class Nav_Menu_Roles {
 	* @return void
 	*/
 	public function admin_init() {
-		include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
-
+		if( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) )
+		{
+		    include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
+        }
 		// Register Importer
 		$this->register_importer();
 
@@ -156,12 +158,10 @@ class Nav_Menu_Roles {
 	* @return void
 	*/
 	public function register_importer(){
-
-		include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Nav_Menu_Roles_Import.php');
-
 		// Register the new importer
 		if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
 
+			include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Nav_Menu_Roles_Import.php');
 			// Register the custom importer we've created.
 			$roles_import = new Nav_Menu_Roles_Import();
 
@@ -237,8 +237,8 @@ class Nav_Menu_Roles {
 	/**
 	* Add fields to hook added in Walker
 	* This will allow us to play nicely with any other plugin that is adding the same hook
-	* @params obj $item - the menu item 
-	* @params array $args 
+	* @params obj $item - the menu item
+	* @params array $args
 	* @since 1.6.0
 	*/
 	public function custom_fields( $item_id, $item, $depth, $args ) {
@@ -327,7 +327,7 @@ class Nav_Menu_Roles {
 
 		        /* If the role has been selected, make sure it's checked. */
 		        $checked = checked( true, ( is_array( $checked_roles ) && in_array( $role, $checked_roles ) ), false );
-		        
+
 		        ?>
 
 		        <div class="role-input-holder" style="float: left; width: 33.3%; margin: 2px 0;">
@@ -341,7 +341,7 @@ class Nav_Menu_Roles {
 
 		</div>
 
-		<?php 
+		<?php
 	}
 
 
@@ -349,7 +349,7 @@ class Nav_Menu_Roles {
 	* Save the roles as menu item meta
 	* @return null
 	* @since 1.4
-	* 
+	*
 	*/
 	public function enqueue_scripts( $hook ){
 		if ( $hook == 'nav-menus.php' ){
@@ -383,7 +383,7 @@ class Nav_Menu_Roles {
 			if ( ! empty ( $custom_roles ) ) $saved_data = $custom_roles;
 		} else if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {
 			$saved_data = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
-		} 
+		}
 
 		if ( $saved_data ) {
 			update_post_meta( $menu_item_db_id, '_nav_menu_role', $saved_data );
@@ -443,7 +443,7 @@ class Nav_Menu_Roles {
 						$visible = false;
 						if ( is_array( $item->roles ) && ! empty( $item->roles ) ) {
 							foreach ( $item->roles as $role ) {
-								if ( current_user_can( $role ) ) 
+								if ( current_user_can( $role ) )
 									$visible = true;
 							}
 						}
@@ -458,7 +458,7 @@ class Nav_Menu_Roles {
 
 			// unset non-visible item
 			if ( ! $visible ) {
-				$hide_children_of[] = $item->ID; // store ID of item 
+				$hide_children_of[] = $item->ID; // store ID of item
 				unset( $items[$key] ) ;
 			}
 
@@ -476,11 +476,11 @@ class Nav_Menu_Roles {
 	*/
 	public function maybe_upgrade() {
 		$db_version = get_option( 'nav_menu_roles_db_version', false );
-		
+
 		// 1.7.7 upgrade: changed the debug notice so the old transient is invalid
 		if ( $db_version === false || version_compare( '1.7.7', $db_version, '<' ) ) {
 		    update_option( 'nav_menu_roles_db_version', self::VERSION );
-		} 
+		}
 	}
 
 } // end class
