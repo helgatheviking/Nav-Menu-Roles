@@ -61,7 +61,8 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 5. BeTheme
 6. Yith Menu
 7. Jupiter Theme
-8. iMedica
+8. iMedica theme
+9. Prostyler EVO theme
 
 
 = <a id="compatibility"></a>Workaround #1 =
