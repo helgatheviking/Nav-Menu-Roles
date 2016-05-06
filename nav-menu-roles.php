@@ -386,7 +386,7 @@ class Nav_Menu_Roles {
 			$custom_roles = array();
 			
 			// only save allowed roles
-			foreach( $_POST['nav-menu-role'][$menu_item_db_id] as $role ) {
+			foreach( (array) $_POST['nav-menu-role'][$menu_item_db_id] as $role ) {
 				if ( array_key_exists ( $role, $allowed_roles ) ) {
 					$custom_roles[] = $role;
 				}
