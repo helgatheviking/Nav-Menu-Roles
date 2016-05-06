@@ -375,19 +375,26 @@ class Nav_Menu_Roles {
 		$allowed_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
 
 		// verify this came from our screen and with proper authorization.
-		if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['nav-menu-role-nonce'], 'nav-menu-nonce-name' ) )
+		if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['nav-menu-role-nonce'], 'nav-menu-nonce-name' ) ){
 			return;
-
+		}
+		
 		$saved_data = false;
 
 		if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && $_POST['nav-menu-logged-in-out'][$menu_item_db_id] == 'in' && ! empty ( $_POST['nav-menu-role'][$menu_item_db_id] ) ) {
+			
 			$custom_roles = array();
+			
 			// only save allowed roles
 			foreach( $_POST['nav-menu-role'][$menu_item_db_id] as $role ) {
-				if ( array_key_exists ( $role, $allowed_roles ) ) $custom_roles[] = $role;
+				if ( array_key_exists ( $role, $allowed_roles ) ) {
+					$custom_roles[] = $role;
+				}
 			}
-			if ( ! empty ( $custom_roles ) ) $saved_data = $custom_roles;
-		} else if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {
+			if ( ! empty ( $custom_roles ) ) {
+				$saved_data = $custom_roles;
+			}
+		} else if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  ) && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {
 			$saved_data = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
 		}
 
