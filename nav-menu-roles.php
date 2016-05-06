@@ -327,6 +327,8 @@ class Nav_Menu_Roles {
 		    <br />
 
 		    <?php
+		    
+		    $i = 1;
 
 		    /* Loop through each of the available roles. */
 		    foreach ( $display_roles as $role => $name ) {
@@ -337,9 +339,10 @@ class Nav_Menu_Roles {
 		        ?>
 
 		        <div class="role-input-holder" style="float: left; width: 33.3%; margin: 2px 0;">
-		        <input type="checkbox" name="nav-menu-role[<?php echo $item->ID ;?>][<?php echo $role; ?>]" id="nav_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>" <?php echo $checked; ?> value="<?php echo $role; ?>" />
+		        <input type="checkbox" name="nav-menu-role[<?php echo $item->ID ;?>][<?php echo $i; ?>]" id="nav_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>" <?php echo $checked; ?> value="<?php echo $role; ?>" />
 		        <label for="nav_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>">
 		        <?php echo esc_html( $name ); ?>
+		        <?php $i++; ?>
 		        </label>
 		        </div>
 
