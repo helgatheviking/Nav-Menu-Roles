@@ -106,7 +106,7 @@ class Nav_Menu_Roles {
 		add_action( 'plugins_loaded', array( $this, 'load_text_domain' ) );
 
 		// add FAQ and Donate link to plugin
-		add_filter( 'plugin_row_meta', array( $this, 'add_action_links' ), 10, 4 );
+		add_filter( 'plugin_row_meta', array( $this, 'add_action_links' ), 10, 2 );
 
 		// switch the admin walker
 		add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
@@ -222,7 +222,7 @@ class Nav_Menu_Roles {
 	* Add docu link
 	* @since 1.7.3
 	*/
-	public function add_action_links( $plugin_meta, $plugin_file, $plugin_data, $status ) {
+	public function add_action_links( $plugin_meta, $plugin_file ) {
 		if( $plugin_file == plugin_basename(__FILE__) ){
 			$plugin_meta[] = sprintf( '<a class="dashicons-before dashicons-welcome-learn-more" href="https://wordpress.org/plugins/nav-menu-roles/faq/#conflict">%s</a>', __( 'FAQ', 'nav-menu-roles' ) );
 			$plugin_meta[] = '<a class="dashicons-before dashicons-awards" href="' . self::DONATE_URL . '" target="_blank">' . __( 'Donate', 'nav-menu-roles' ) . '</a>';
