@@ -246,7 +246,6 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 	// Display import page title
 	function header() {
 		echo '<div class="wrap">';
-		screen_icon();
 		echo '<h2>' . __( 'Import Nav Menu Roles', 'nav-menu-roles' ) . '</h2>';
 
 		$updates = get_plugin_updates();
