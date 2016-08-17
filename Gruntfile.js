@@ -205,12 +205,6 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('build', ['test', 'replace', 'newer:uglify', 'makepot', 'newer:po2mo', 'wp_readme_to_markdown', 'clean', 'copy']);
 
-
-// bump version numbers 
-// grunt release		1.4.1 -> 1.4.2
-// grunt release:minor	1.4.1 -> 1.5.0
-// grint release:major	1.4.1 -> 2.0.0
-
-	grunt.registerTask('deploy', ['checkbranch:master', 'checkrepo:deploy', 'build', 'release', 'wp_deploy', 'clean']);
+	grunt.registerTask('deploy', ['checkbranch:master', 'checkrepo:deploy', 'build', 'wp_deploy', 'clean']);
 
 };
