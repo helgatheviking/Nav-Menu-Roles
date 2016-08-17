@@ -4,8 +4,8 @@ Contributors: helgatheviking
 Donate link: https://www.paypal.me/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 4.5.0
-Stable tag: 1.8.2
 Tested up to: 4.6.0
+Stable tag: 1.8.3
 License: GPLv3
 
 Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
@@ -198,6 +198,9 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 == Changelog ==
+
+= 1.8.3 = 
+* Remove deprecated screen_icon()
 
 = 1.8.2 = 
 * Reduce number of parameters passed to `add_action_links` filter
