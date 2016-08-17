@@ -126,8 +126,8 @@ module.exports = function(grunt) {
 				tag: {
 					eq: '<%= pkg.version %>', // Check if highest repo tag is equal to pkg.version
 				},
-				tagged: false, // Check if last repo commit (HEAD) is not tagged
-				clean: true, // Check if the repo working directory is clean
+				tagged: true, // Check if last repo commit (HEAD) is not tagged
+				clean: false, // Check if the repo working directory is clean
 			}
 		},
 
@@ -187,6 +187,7 @@ module.exports = function(grunt) {
 					plugin_slug: '<%= pkg.name %>',
 					build_dir: 'build/',
 					assets_dir: 'wp-assets/'
+					tmp_dir: 'D:/tmp/',
 				},
 			}
 		},
@@ -203,8 +204,8 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('test', ['jshint', 'addtextdomain']);
 
-	grunt.registerTask('build', ['test', 'replace', 'newer:uglify', 'makepot', 'newer:po2mo', 'wp_readme_to_markdown', 'clean', 'copy']);
+	grunt.registerTask('build', ['test', 'replace', 'newer:uglify', 'clean', 'copy']);
 
-	grunt.registerTask('deploy', ['checkbranch:master', 'checkrepo:deploy', 'build', 'wp_deploy', 'clean']);
+	grunt.registerTask('deploy', ['build', 'checkbranch', 'checkrepo', 'wp_deploy', 'clean']);
 
 };
