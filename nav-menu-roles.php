@@ -125,7 +125,8 @@ class Nav_Menu_Roles {
 
 		// exclude items via filter instead of via custom Walker
 		if ( ! is_admin() ) {
-			add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items' ) );
+			$priority = 20; // Because WP_Customize_Nav_Menu_Item_Setting::filter_wp_get_nav_menu_items() runs at 10.
+			add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items' ), $priority );
 		}
 
 		// upgrade routine
