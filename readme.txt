@@ -54,7 +54,7 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 
 **A non-exhaustive list of known conflicts:**
 
-1. UberMenu 2.x Mega Menus plugin
+1. UberMenu 2.x Mega Menus plugin (UberMenu 3.x supports NMR!)
 2. Add Descendants As Submenu Items plugin
 3. Navception plugin
 4. Suffusion theme
@@ -63,6 +63,7 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 7. Jupiter Theme
 8. iMedica theme
 9. Prostyler EVO theme
+10. Mega Main Plugin
 
 
 = <a id="compatibility"></a>Workaround #1 =
