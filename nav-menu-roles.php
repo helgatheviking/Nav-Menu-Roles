@@ -6,7 +6,7 @@ Description: Hide custom menu items based on user roles.
 Version: 1.8.3
 Author: Kathy Darling
 Author URI: http://www.kathyisawesome.com
-License: GPL2
+License: GPL-3.0
 Text Domain: nav-menu-roles
 
 Copyright 2014 Kathy Darling(email: kathy.darling@gmail.com)
