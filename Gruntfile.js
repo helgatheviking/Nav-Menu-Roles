@@ -102,16 +102,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		transifex: {
-			'nav-menu-roles': {
-				options: {
-					targetDir: "languages",     
-					mode: "file",
-					filename : "_resource_-_lang_.po",
-				}
-			}
-		},
-
 		// Create .mo files for existing .po
 		po2mo: {
 			files: {
