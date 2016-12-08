@@ -14,7 +14,7 @@ Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT S
 
 This plugin lets you hide custom menu items based on user roles.  So if you have a link in the menu that you only want to show to logged in users, certain types of users, or even only to logged out users, this plugin is for you.
 
-Nav Menu Roles is very flexible. In addition to standard user roles, you can customize the functionality by adding your own check boxes with custom labels using the `nav_menu_roles` filter and then using the `nav_menu_roles_item_visibility` filter to check against whatever criteria you need. You can check against any user meta values (like capabilities) and any custom attributes added by other plugins. See the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/#new-role).
+Nav Menu Roles is very flexible. In addition to standard user roles, you can customize the functionality by adding your own check boxes with custom labels using the `nav_menu_roles` filter and then using the `nav_menu_roles_item_visibility` filter to check against whatever criteria you need. You can check against any user meta values (like capabilities) and any custom attributes added by other plugins.
 
 = IMPORTANT NOTE =
 
@@ -46,7 +46,7 @@ Please report any bugs, errors, warnings, code problems to [Github](https://gith
 
 == Frequently Asked Questions ==
 
-= <a id="conflict"></a>I don't see the Nav Menu Roles options in the admin menu items?  =
+= I don't see the Nav Menu Roles options in the admin menu items?  =
 
 This is because you have another plugin (or theme) that is also trying to alter the same code that creates the Menu section in the admin.  
 
@@ -66,7 +66,7 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 10. Mega Main Plugin
 
 
-= <a id="compatibility"></a>Workaround #1 =
+= Workaround #1 =
 [Shazdeh](https://profiles.wordpress.org/shazdeh/) had the genius idea to not wait for a core hook and simply add the hook ourselves. If all plugin and theme authors use the same hook, we can make our plugins play together.
 
 Therefore, as of version 1.6 I am modifying my admin nav menu Walker to *only* adding the following lines (right after the description input):
@@ -81,7 +81,7 @@ do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
 
 **Ask your conflicting plugin/theme's author to add this code to his plugin or theme and our plugins will become compatible.**
 
-= <a id="patch"></a>Patching Your Plugin/Theme =
+= Instructions for Patching Your Plugin/Theme =
 
 Should you wish to attempt this patch yourself, you can modify your conflicting plugin/theme's admin menu Walker class. 
 
@@ -134,7 +134,7 @@ There are apparently a few membership plugins out there that *don't* use traditi
 
 Here's an example where I've added a new pseudo role, creatively called "new-role".  The first function adds it to the menu item admin screen. The second function is pretty generic and won't actually do anything because you need to supply your own logic based on the plugin you are using.  Nav Menu Roles will save the new "role" info and add it to the item in an array to the `$item->roles` variable.
 
-= <a id="new-role"></a>Adding a new "role" =
+= Adding a new "role" =
 
 `
 /*
