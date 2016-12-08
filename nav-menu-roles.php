@@ -142,15 +142,6 @@ class Nav_Menu_Roles {
 	*/
 	public function admin_init() {
 
-		if( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ){
-			global $wp_version;
-		    if ( version_compare( $wp_version, '4.5.0', '>=' ) ){
-				include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles_4.5.php');
-			} else {
-				include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
-			}
-        }
-
 		// Register Importer
 		$this->register_importer();
 
@@ -237,6 +228,16 @@ class Nav_Menu_Roles {
 	* @since 1.0
 	*/
 	public function edit_nav_menu_walker( $walker ) {
+		if( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ){
+			global $wp_version;
+		    if ( version_compare( $wp_version, '4.7', '>=' ) ){
+				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles_4.7.php');
+			} else if ( version_compare( $wp_version, '4.5', '>=' ) ){
+				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles_4.5.php');
+			} else {
+				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
+			}
+        }
 		return 'Walker_Nav_Menu_Edit_Roles';
 	}
 
