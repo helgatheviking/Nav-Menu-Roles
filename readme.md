@@ -3,9 +3,9 @@
 **Contributors:** helgatheviking  
 **Donate link:** https://www.paypal.me/helgatheviking  
 **Tags:** menu, menus, nav menu, nav menus  
-**Stable tag:** 1.8.5  
 **Requires at least:** 4.5.0  
 **Tested up to:** 4.7.0  
+**Stable tag:** 1.8.6  
 **License:** GPLv3  
 
 Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.

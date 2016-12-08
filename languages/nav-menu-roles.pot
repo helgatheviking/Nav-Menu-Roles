@@ -1,10 +1,10 @@
 # Copyright (C) 2016 Kathy Darling
-# This file is distributed under the GPL2.
+# This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Nav Menu Roles 1.8.3\n"
+"Project-Id-Version: Nav Menu Roles 1.8.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2016-08-17 02:50:28+00:00\n"
+"POT-Creation-Date: 2016-12-08 18:08:13+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -191,37 +191,37 @@ msgstr ""
 msgid "Nav Menu Roles"
 msgstr ""
 
-#: nav-menu-roles.php:174
+#: nav-menu-roles.php:166
 msgid ""
 "Import %snav menu roles%s and other menu item meta skipped by the default "
 "importer"
 msgstr ""
 
-#: nav-menu-roles.php:227
+#: nav-menu-roles.php:219
 msgid "FAQ"
 msgstr ""
 
-#: nav-menu-roles.php:228
+#: nav-menu-roles.php:220
 msgid "Donate"
 msgstr ""
 
-#: nav-menu-roles.php:297
+#: nav-menu-roles.php:299
 msgid "Display Mode"
 msgstr ""
 
-#: nav-menu-roles.php:305
+#: nav-menu-roles.php:307
 msgid "Logged In Users"
 msgstr ""
 
-#: nav-menu-roles.php:312
+#: nav-menu-roles.php:314
 msgid "Logged Out Users"
 msgstr ""
 
-#: nav-menu-roles.php:319
+#: nav-menu-roles.php:321
 msgid "Everyone"
 msgstr ""
 
-#: nav-menu-roles.php:326
+#: nav-menu-roles.php:328
 msgid "Restrict menu item to a minimum role"
 msgstr ""
 
