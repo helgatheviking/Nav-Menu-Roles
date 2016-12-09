@@ -9,7 +9,7 @@
  * @since 1.8.6
  * @uses Walker_Nav_Menu_Edit
  */
-class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu_Edit {
+class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 
     /**
      * Start the element output.
