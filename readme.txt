@@ -1,6 +1,6 @@
 === Nav Menu Roles ===
 
-Contributors: helgatheviking
+Contributors: helgatheviking, deviodigital
 Donate link: https://www.paypal.me/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 4.5.0
