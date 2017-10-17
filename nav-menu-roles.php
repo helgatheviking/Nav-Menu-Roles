@@ -329,7 +329,7 @@ class Nav_Menu_Roles {
 		    <br />
 
 		    <?php
-		    
+
 		    $i = 1;
 
 		    /* Loop through each of the available roles. */
@@ -426,11 +426,16 @@ class Nav_Menu_Roles {
 	}
 
 	/**
-	* Exclude menu items via wp_get_nav_menu_items filter
-	* this fixes plugin's incompatibility with theme's that use their own custom Walker
-	* Thanks to Evan Stein @vanpop http://vanpop.com/
-	* @since 1.2
-	*/
+	 * Exclude menu items via wp_get_nav_menu_items filter
+	 * this fixes plugin's incompatibility with theme's that use their own custom Walker
+	 * Thanks to Evan Stein @vanpop http://vanpop.com/
+	 *
+	 * @since 1.2
+	 *
+	 * @since 1.9.0 Fix #27 Multisite compatibility
+	 * @author @open-dsi https://www.open-dsi.fr/
+	 * @link https://wordpress.org/support/topic/multisite-430/ Thanks to @fiech
+	 */
 	public function exclude_menu_items( $items ) {
 
 		$hide_children_of = array();
@@ -452,10 +457,26 @@ class Nav_Menu_Roles {
 				// check all logged in, all logged out, or role
 				switch( $item->roles ) {
 					case 'in' :
-					$visible = is_user_logged_in() ? true : false;
+						/**
+						 * Multisite compatibility.
+						 *
+						 * For the logged in condition to work,
+						 * the user has to be a logged in member of the current blog
+						 * or be a logged in super user.
+						 */
+					    $visible = is_user_member_of_blog() || is_super_admin() ? true : false;
 						break;
 					case 'out' :
-					$visible = ! is_user_logged_in() ? true : false;
+						/**
+						 * Multisite compatibility.
+						 *
+						 * For the logged out condition to work,
+						 * the user has to be either logged out
+						 * or not be a member of the current blog.
+						 * But they also may not be a super admin,
+						 * because logged in super admins should see the internal stuff, not the external.
+						 */
+					    $visible = ! is_user_member_of_blog() && ! is_super_admin() ? true : false;
 						break;
 					default:
 						$visible = false;
