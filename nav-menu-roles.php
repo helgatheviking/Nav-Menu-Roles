@@ -432,9 +432,8 @@ class Nav_Menu_Roles {
 	 *
 	 * @since 1.2
 	 *
-	 * @since 1.9.0 Fix #27 Multisite compatibility
-	 * @author @open-dsi https://www.open-dsi.fr/
-	 * @link https://wordpress.org/support/topic/multisite-430/ Thanks to @fiech
+	 * Multisite compatibility added in 1.9.0
+	 * by @open-dsi https://www.open-dsi.fr/ with props to @fiech
 	 */
 	public function exclude_menu_items( $items ) {
 
