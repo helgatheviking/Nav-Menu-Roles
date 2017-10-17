@@ -464,7 +464,7 @@ class Nav_Menu_Roles {
 						 * the user has to be a logged in member of the current blog
 						 * or be a logged in super user.
 						 */
-					    $visible = is_user_member_of_blog() || is_super_admin() ? true : false;
+						$visible = is_user_member_of_blog() || is_super_admin() ? true : false;
 						break;
 					case 'out' :
 						/**
@@ -476,7 +476,7 @@ class Nav_Menu_Roles {
 						 * But they also may not be a super admin,
 						 * because logged in super admins should see the internal stuff, not the external.
 						 */
-					    $visible = ! is_user_member_of_blog() && ! is_super_admin() ? true : false;
+						$visible = ! is_user_member_of_blog() && ! is_super_admin() ? true : false;
 						break;
 					default:
 						$visible = false;
