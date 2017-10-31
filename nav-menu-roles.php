@@ -48,7 +48,7 @@ class Nav_Menu_Roles {
 	* @constant string donate url
 	* @since 1.5
 	*/
-	CONST DONATE_URL = "https://inspirepay.com/pay/helgatheviking/10";
+	CONST DONATE_URL = "https://paypal.me/helgatheviking/20";
 
 	/**
 	* @constant string version number
