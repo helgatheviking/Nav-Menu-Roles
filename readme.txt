@@ -202,6 +202,10 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. Use the same .xml file and perform a second import
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
+= Is Nav Menu Roles compatible with WPML ? =
+
+Yes, but manually. WPML developers have informed me that the meta data for nav menu items is **not** synced by WPML, meaning that menus copied into a new language will not bring their custom Nav Menu Roles settings. However, if you manually reconfigure the settings, the new language menu will work as expected.
+
 == Changelog ==
 
 = 1.8.5 =
