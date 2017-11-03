@@ -52,7 +52,7 @@ class Nav_Menu_Roles {
 
 	/**
 	* @constant string version number
-	* @since 1.7.1
+	* @since 1.7.0
 	*/
 	CONST VERSION = '1.9.0';
 
@@ -212,6 +212,8 @@ class Nav_Menu_Roles {
 
 	/**
 	* Add docu link
+	* @param array $plugin_meta
+	* @param string $plugin_file
 	* @since 1.7.3
 	*/
 	public function add_action_links( $plugin_meta, $plugin_file ) {
