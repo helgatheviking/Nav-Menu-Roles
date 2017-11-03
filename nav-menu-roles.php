@@ -103,7 +103,7 @@ class Nav_Menu_Roles {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
 		// load the textdomain
-		add_action( 'plugins_loaded', array( $this, 'load_text_domain' ) );
+		add_action( 'init', array( $this, 'load_text_domain' ) );
 
 		// add FAQ and Donate link to plugin
 		add_filter( 'plugin_row_meta', array( $this, 'add_action_links' ), 10, 2 );
