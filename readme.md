@@ -142,7 +142,7 @@ Here's an example where I've added a new pseudo role, creatively called "new-rol
 	add_filter( 'nav_menu_roles', 'kia_new_roles' );
 
 
-Note, if you want to add a WordPress capability the above is literally all you need. Because Nav Menu Roles checks whether a role has permission to view the menu item using `current_user_can($role) you do not need to right a custom callback for the `nav_menu_roles_item_visibility` filter.
+Note, if you want to add a WordPress capability the above is literally all you need. Because Nav Menu Roles checks whether a role has permission to view the menu item using `current_user_can($role)` you do not need to right a custom callback for the `nav_menu_roles_item_visibility` filter.
 
 In case you *do* need to check your visibility status against something very custom, here is how you'd go about it:
 
