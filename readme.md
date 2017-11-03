@@ -1,7 +1,7 @@
 # Nav Menu Roles #
 
 **Contributors:** helgatheviking  
-**Donate link:** https://www.paypal.me/helgatheviking/20  
+**Donate link:** https://www.paypal.me/kathyisawesome/20  
 **Tags:** menu, menus, nav menu, nav menus  
 **Requires at least:** 4.5.0  
 **Tested up to:** 4.8.3  
