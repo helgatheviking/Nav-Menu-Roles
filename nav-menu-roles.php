@@ -48,7 +48,7 @@ class Nav_Menu_Roles {
 	* @constant string donate url
 	* @since 1.9.1
 	*/
-	CONST DONATE_URL = "https://paypal.me/kathyisawesome/20";
+	CONST DONATE_URL = "https://www.youcaring.com/wnt-residency";
 
 	/**
 	* @constant string version number
