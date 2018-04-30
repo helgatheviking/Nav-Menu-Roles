@@ -5,7 +5,7 @@
 **Tags:** menu, menus, nav menu, nav menus  
 **Requires at least:** 4.5.0  
 **Tested up to:** 4.8.3  
-**Stable tag:** 1.9.1  
+**Stable tag:** 1.9.2  
 **License:** GPLv3  
 
 Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
