@@ -441,65 +441,70 @@ class Nav_Menu_Roles {
 
 		$hide_children_of = array();
 
-		// Iterate over the items to search and destroy
-		foreach ( $items as $key => $item ) {
+		if( ! empty( $items ) ) {
 
-			$visible = true;
+			// Iterate over the items to search and destroy
+			foreach ( $items as $key => $item ) {
 
-			// hide any item that is the child of a hidden item
-			if( in_array( $item->menu_item_parent, $hide_children_of ) ){
-				$visible = false;
-				$hide_children_of[] = $item->ID; // for nested menus
-			}
+				$visible = true;
 
-			// check any item that has NMR roles set
-			if( $visible && isset( $item->roles ) ) {
-
-				// check all logged in, all logged out, or role
-				switch( $item->roles ) {
-					case 'in' :
-						/**
-						 * Multisite compatibility.
-						 *
-						 * For the logged in condition to work,
-						 * the user has to be a logged in member of the current blog
-						 * or be a logged in super user.
-						 */
-						$visible = is_user_member_of_blog() || is_super_admin() ? true : false;
-						break;
-					case 'out' :
-						/**
-						 * Multisite compatibility.
-						 *
-						 * For the logged out condition to work,
-						 * the user has to be either logged out
-						 * or not be a member of the current blog.
-						 * But they also may not be a super admin,
-						 * because logged in super admins should see the internal stuff, not the external.
-						 */
-						$visible = ! is_user_member_of_blog() && ! is_super_admin() ? true : false;
-						break;
-					default:
-						$visible = false;
-						if ( is_array( $item->roles ) && ! empty( $item->roles ) ) {
-							foreach ( $item->roles as $role ) {
-								if ( current_user_can( $role ) )
-									$visible = true;
-							}
-						}
-
-						break;
+				// hide any item that is the child of a hidden item
+				if( in_array( $item->menu_item_parent, $hide_children_of ) ){
+					$visible = false;
+					$hide_children_of[] = $item->ID; // for nested menus
 				}
 
-			}
+				// check any item that has NMR roles set
+				if( $visible && isset( $item->roles ) ) {
 
-			// add filter to work with plugins that don't use traditional roles
-			$visible = apply_filters( 'nav_menu_roles_item_visibility', $visible, $item );
+					// check all logged in, all logged out, or role
+					switch( $item->roles ) {
+						case 'in' :
+							/**
+							 * Multisite compatibility.
+							 *
+							 * For the logged in condition to work,
+							 * the user has to be a logged in member of the current blog
+							 * or be a logged in super user.
+							 */
+							$visible = is_user_member_of_blog() || is_super_admin() ? true : false;
+							break;
+						case 'out' :
+							/**
+							 * Multisite compatibility.
+							 *
+							 * For the logged out condition to work,
+							 * the user has to be either logged out
+							 * or not be a member of the current blog.
+							 * But they also may not be a super admin,
+							 * because logged in super admins should see the internal stuff, not the external.
+							 */
+							$visible = ! is_user_member_of_blog() && ! is_super_admin() ? true : false;
+							break;
+						default:
+							$visible = false;
+							if ( is_array( $item->roles ) && ! empty( $item->roles ) ) {
+								foreach ( $item->roles as $role ) {
+									if ( current_user_can( $role ) ) {
+										$visible = true;
+									}
+								}
+							}
 
-			// unset non-visible item
-			if ( ! $visible ) {
-				$hide_children_of[] = $item->ID; // store ID of item
-				unset( $items[$key] ) ;
+							break;
+					}
+
+				}
+
+				// add filter to work with plugins that don't use traditional roles
+				$visible = apply_filters( 'nav_menu_roles_item_visibility', $visible, $item );
+
+				// unset non-visible item
+				if ( ! $visible ) {
+					$hide_children_of[] = $item->ID; // store ID of item
+					unset( $items[$key] ) ;
+				}
+
 			}
 
 		}
