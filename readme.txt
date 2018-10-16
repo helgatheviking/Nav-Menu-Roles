@@ -136,6 +136,8 @@ Here's an example where I've added a new pseudo role, creatively called "new-rol
 
 = Adding a new "role" =
 
+The roles in NMR are filterable distinct from the global `$wp_roles`. This allows for compatibility to be added between plugins that don't use the core roles to determine access, like some membership plugins. 
+
 `
 /*
  * Add custom roles to Nav Menu Roles menu list
@@ -175,6 +177,34 @@ add_filter( 'nav_menu_roles_item_visibility', 'kia_item_visibility', 10, 2 );
 `
 
 Note that you have to generate your own if/then logic. I can't provide free support for custom integration with another plugin. You may [contact me](http://kathyisawesome.com/contact) to discuss hiring me, or I would suggest using a plugin that supports WordPress' roles, such as Justin Tadlock's [Members](http://wordpress.org/plugins/members).
+
+
+= Existing Compatibility Plugins =
+
+1. [Wishlists Memberships](https://github.com/helgatheviking/nav-menu-roles-wishlists-memberships)
+2. [WooCommerce Memberships](https://github.com/helgatheviking/nav-menu-roles-woocommerce-memberships)
+
+If your membership plugin is not listed here, you may be able to use the above bridge plugins as a template. Scroll down to the bottom of the main plugin file and you will see a section for "Helper Functions". If you modify the 3 wrapper functions according to your membership plugin's logic, the rest of the plugin should handle the integration with Nav Menu Roles.
+
+= Sort the roles alphabetically =
+
+Add the following snippet to your theme's `functions.php` file:
+
+`
+/*
+ * Sort the NMR roles
+ * @param: $roles an array of all available roles with ID=>Name
+ * @return: array
+ */
+function kia_sort_roles( $roles ){
+  if( is_admin() ) {
+    $array_lowercase = array_map( 'strtolower', $roles );
+    array_multisort( $array_lowercase, SORT_ASC, SORT_STRING, $roles );
+    return $roles;
+  }
+}
+add_filter( 'nav_menu_roles', 'kia_sort_roles' );
+`
 
 = The menu exploded? Why are all my pages displaying for logged out users? =
 
