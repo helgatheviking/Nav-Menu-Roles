@@ -79,7 +79,7 @@ class Nav_Menu_Roles {
 	* @since 1.5
 	*/
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' , 'nav-menu-roles'), '1.5' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cloning this object is forbidden.' , 'nav-menu-roles'), '1.5' );
 	}
 
 	/**
@@ -88,7 +88,7 @@ class Nav_Menu_Roles {
 	* @since 1.5
 	*/
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' , 'nav-menu-roles'), '1.5' );
+		_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.' , 'nav-menu-roles'), '1.5' );
 	}
 
 	/**
