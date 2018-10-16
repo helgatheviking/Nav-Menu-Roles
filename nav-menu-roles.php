@@ -99,37 +99,37 @@ class Nav_Menu_Roles {
 	*/
 	public function __construct(){
 
-		// Admin functions
+		// Admin functions.
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
-		// load the textdomain
+		// Load the textdomain.
 		add_action( 'init', array( $this, 'load_text_domain' ) );
 
-		// add FAQ and Donate link to plugin
+		// Add FAQ and Donate link to plugin.
 		add_filter( 'plugin_row_meta', array( $this, 'add_action_links' ), 10, 2 );
 
-		// switch the admin walker
+		// Switch the admin walker.
 		add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
 
-		// add new fields via hook
+		// Add new fields via hook.
 		add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'custom_fields' ), 10, 4 );
 
-		// add some JS
+		// Add some JS.
 		add_action( 'admin_enqueue_scripts' , array( $this, 'enqueue_scripts' ) );
 
-		// save the menu item meta
+		// Save the menu item meta.
 		add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 2 );
 
-		// add meta to menu item
+		// Add meta to menu item.
 		add_filter( 'wp_setup_nav_menu_item', array( $this, 'setup_nav_item' ) );
 
-		// exclude items via filter instead of via custom Walker
+		// Exclude items via filter instead of via custom Walker.
 		if ( ! is_admin() ) {
 			$priority = 20; // Because WP_Customize_Nav_Menu_Item_Setting::filter_wp_get_nav_menu_items() runs at 10.
 			add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items' ), $priority );
 		}
 
-		// upgrade routine
+		// Upgrade routine.
 		add_action( 'plugins_loaded', array( $this, 'maybe_upgrade' ) );
 
 	}
