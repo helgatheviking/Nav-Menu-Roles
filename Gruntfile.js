@@ -49,6 +49,7 @@ module.exports = function(grunt) {
                     "!**.md",
                     "!Gruntfile.js",
                     "!package.json",
+                    "!package-lock.json",
                     "!gitcreds.json",
                     "!.gitcreds",
                     "!.transifexrc",
@@ -139,7 +140,7 @@ module.exports = function(grunt) {
                     plugin_slug: "<%= pkg.name %>",
                     build_dir: "build/",
                     assets_dir: "wp-assets/",
-                    tmp_dir: "D:/tmp/"
+                    tmp_dir: "C:/Temp/"
                 }
             }
         }
@@ -157,6 +158,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask("build", ["test", "replace", "newer:uglify", "clean", "copy"]);
 
-    grunt.registerTask("deploy", ["build", "checkbranch", "checkrepo", "wp_deploy", "clean"]);
+    grunt.registerTask("deploy", ["build", "wp_deploy", "clean"]);
 
 };
