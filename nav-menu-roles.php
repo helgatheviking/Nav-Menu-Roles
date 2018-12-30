@@ -456,7 +456,6 @@ class Nav_Menu_Roles {
 				// Hide any item that is the child of a hidden item.
 				if( isset( $item->menu_item_parent ) && in_array( $item->menu_item_parent, $hide_children_of ) ){
 					$visible = false;
-					$hide_children_of[] = $item->ID; // for nested menus
 				}
 
 				// check any item that has NMR roles set
