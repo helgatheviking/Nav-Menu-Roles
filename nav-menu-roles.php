@@ -419,10 +419,13 @@ class Nav_Menu_Roles {
 	*/
 	public function setup_nav_item( $menu_item ) {
 
-		$roles = get_post_meta( $menu_item->ID, '_nav_menu_role', true );
+		if( is_object( $menu_item ) && isset( $menu_item->ID ) ) {
 
-		if ( ! empty( $roles ) ) {
-			$menu_item->roles = $roles;
+			$roles = get_post_meta( $menu_item->ID, '_nav_menu_role', true );
+
+			if ( ! empty( $roles ) ) {
+				$menu_item->roles = $roles;
+			}
 		}
 		return $menu_item;
 	}
@@ -450,8 +453,8 @@ class Nav_Menu_Roles {
 
 				$visible = true;
 
-				// hide any item that is the child of a hidden item
-				if( in_array( $item->menu_item_parent, $hide_children_of ) ){
+				// Hide any item that is the child of a hidden item.
+				if( isset( $item->menu_item_parent ) && in_array( $item->menu_item_parent, $hide_children_of ) ){
 					$visible = false;
 					$hide_children_of[] = $item->ID; // for nested menus
 				}
@@ -503,7 +506,9 @@ class Nav_Menu_Roles {
 
 				// unset non-visible item
 				if ( ! $visible ) {
-					$hide_children_of[] = $item->ID; // store ID of item
+					if( isset( $item->ID ) ) {
+						$hide_children_of[] = $item->ID; // Store ID of item.
+					}
 					unset( $items[$key] ) ;
 				}
 
