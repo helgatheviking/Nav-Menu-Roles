@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA02110-1301USA
 */
 
 
-// don't load directly
+// Don't load directly.
 if ( ! function_exists( 'is_admin' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
@@ -79,7 +79,7 @@ class Nav_Menu_Roles {
 	* @since 1.5
 	*/
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cloning this object is forbidden.' , 'nav-menu-roles'), '1.5' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cloning this object is forbidden.' , 'nav-menu-roles' ), '1.5' );
 	}
 
 	/**
@@ -88,7 +88,7 @@ class Nav_Menu_Roles {
 	* @since 1.5
 	*/
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.' , 'nav-menu-roles'), '1.5' );
+		_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.' , 'nav-menu-roles' ), '1.5' );
 	}
 
 	/**
@@ -142,7 +142,7 @@ class Nav_Menu_Roles {
 	*/
 	public function admin_init() {
 
-		// Register Importer
+		// Register Importer.
 		$this->register_importer();
 
 	}
@@ -156,14 +156,14 @@ class Nav_Menu_Roles {
 	* @return void
 	*/
 	public function register_importer(){
-		// Register the new importer
+		// Register the new importer.
 		if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
 
 			include_once( plugin_dir_path( __FILE__ ) . 'inc/class.Nav_Menu_Roles_Import.php');
 			// Register the custom importer we've created.
 			$roles_import = new Nav_Menu_Roles_Import();
 
-			register_importer('nav_menu_roles', __('Nav Menu Roles', 'nav-menu-roles'), sprintf( __('Import %snav menu roles%s and other menu item meta skipped by the default importer', 'nav-menu-roles'), '<strong>', '</strong>'), array( $roles_import, 'dispatch' ) );
+			register_importer( 'nav_menu_roles', __( 'Nav Menu Roles', 'nav-menu-roles' ), sprintf( __( 'Import %snav menu roles%s and other menu item meta skipped by the default importer', 'nav-menu-roles' ), '<strong>', '</strong>' ), array( $roles_import, 'dispatch' ) );
 
 		}
 
@@ -171,10 +171,9 @@ class Nav_Menu_Roles {
 
 	/**
 	* Make Plugin Translation-ready
-	* CALLBACK FUNCTION FOR:  add_action( 'plugins_loaded', array( $this,'load_text_domain'));
+	* 
 	* @since 1.0
 	*/
-
 	public function load_text_domain() {
 		load_plugin_textdomain( 'nav-menu-roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
@@ -182,6 +181,7 @@ class Nav_Menu_Roles {
 
 	/**
 	* Display a Notice if plugin conflicts with another
+	* 
 	* @since 1.5
 	* @deprecated will removed in 2.0
 	*/
@@ -192,6 +192,7 @@ class Nav_Menu_Roles {
 
 	/**
 	* Allow the notice to be dismissable
+	* 
 	* @since 1.6
 	* @deprecated will removed in 2.0
 	*/
@@ -201,6 +202,7 @@ class Nav_Menu_Roles {
 
 	/**
 	* Delete the transient when a plugin is activated or deactivated
+	* 
 	* @since 1.5
 	* @deprecated will removed in 2.0
 	*/
@@ -212,9 +214,10 @@ class Nav_Menu_Roles {
 
 	/**
 	* Add docu link
+	*
+	* @since 1.7.3
 	* @param array $plugin_meta
 	* @param string $plugin_file
-	* @since 1.7.3
 	*/
 	public function add_action_links( $plugin_meta, $plugin_file ) {
 		if( $plugin_file == plugin_basename(__FILE__) ){
@@ -227,17 +230,18 @@ class Nav_Menu_Roles {
 
 	/**
 	* Override the Admin Menu Walker
+	* 
 	* @since 1.0
 	*/
 	public function edit_nav_menu_walker( $walker ) {
 		if( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ){
 			global $wp_version;
 		    if ( version_compare( $wp_version, '4.7', '>=' ) ){
-				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles_4.7.php');
+				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles_4.7.php' );
 			} else if ( version_compare( $wp_version, '4.5', '>=' ) ){
-				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles_4.5.php');
+				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles_4.5.php' );
 			} else {
-				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php');
+				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php' );
 			}
         }
 		return 'Walker_Nav_Menu_Edit_Roles';
@@ -262,7 +266,6 @@ class Nav_Menu_Roles {
 		*/
 		$display_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names, $item );
 
-
 		/**
 		* If no roles are being used, don't display the role selection radio buttons at all.
 		* Unless something deliberately removes the WordPress roles from this list, nothing will
@@ -277,20 +280,20 @@ class Nav_Menu_Roles {
 		/* Get the roles saved for the post. */
 		$roles = get_post_meta( $item->ID, '_nav_menu_role', true );
 
-		// by default nothing is checked (will match "everyone" radio)
+		// By default nothing is checked (will match "everyone" radio).
 		$logged_in_out = '';
 
-		// specific roles are saved as an array, so "in" or an array equals "in" is checked
+		// Specific roles are saved as an array, so "in" or an array equals "in" is checked.
 		if( is_array( $roles ) || $roles == 'in' ){
 			$logged_in_out = 'in';
 		} else if ( $roles == 'out' ){
 			$logged_in_out = 'out';
 		}
 
-		// the specific roles to check
+		// The specific roles to check.
 		$checked_roles = is_array( $roles ) ? $roles : false;
 
-		// whether to display the role checkboxes
+		// Whether to display the role checkboxes.
 		$hidden = $logged_in_out == 'in' ? '' : 'display: none;';
 
 		?>
@@ -360,9 +363,9 @@ class Nav_Menu_Roles {
 
 	/**
 	* Save the roles as menu item meta
-	* @return null
+	* 
 	* @since 1.4
-	*
+	* @return null
 	*/
 	public function enqueue_scripts( $hook ){
 		if ( $hook == 'nav-menus.php' ){
@@ -373,15 +376,16 @@ class Nav_Menu_Roles {
 
 	/**
 	* Save the roles as menu item meta
-	* @return string
+	* 
 	* @since 1.0
+	* @return string	
 	*/
 	public function nav_update( $menu_id, $menu_item_db_id ) {
 		global $wp_roles;
 
 		$allowed_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
 
-		// verify this came from our screen and with proper authorization.
+		// Verify this came from our screen and with proper authorization.
 		if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['nav-menu-role-nonce'], 'nav-menu-nonce-name' ) ){
 			return;
 		}
@@ -392,7 +396,7 @@ class Nav_Menu_Roles {
 			
 			$custom_roles = array();
 			
-			// only save allowed roles
+			// Only save allowed roles.
 			foreach( (array) $_POST['nav-menu-role'][$menu_item_db_id] as $role ) {
 				if ( array_key_exists ( $role, $allowed_roles ) ) {
 					$custom_roles[] = $role;
@@ -415,6 +419,7 @@ class Nav_Menu_Roles {
 	/**
 	* Adds value of new field to $item object
 	* is be passed to Walker_Nav_Menu_Edit_Custom
+	* 
 	* @since 1.0
 	*/
 	public function setup_nav_item( $menu_item ) {
@@ -448,7 +453,7 @@ class Nav_Menu_Roles {
 
 		if( ! empty( $items ) ) {
 
-			// Iterate over the items to search and destroy
+			// Iterate over the items to search and destroy.
 			foreach ( $items as $key => $item ) {
 
 				$visible = true;
@@ -458,10 +463,10 @@ class Nav_Menu_Roles {
 					$visible = false;
 				}
 
-				// check any item that has NMR roles set
+				// Check any item that has NMR roles set.
 				if( $visible && isset( $item->roles ) ) {
 
-					// check all logged in, all logged out, or role
+					// Check all logged in, all logged out, or role.
 					switch( $item->roles ) {
 						case 'in' :
 							/**
@@ -500,13 +505,19 @@ class Nav_Menu_Roles {
 
 				}
 
-				// add filter to work with plugins that don't use traditional roles
+				/*
+				 * Filter: nav_menu_roles_item_visibility
+				 * Add filter to work with plugins that don't use traditional roles
+				 *
+				 * @param bool $visible
+				 * @param object $item
+				 */ 
 				$visible = apply_filters( 'nav_menu_roles_item_visibility', $visible, $item );
 
-				// unset non-visible item
+				// Unset non-visible item.
 				if ( ! $visible ) {
 					if( isset( $item->ID ) ) {
-						$hide_children_of[] = $item->ID; // Store ID of item.
+						$hide_children_of[] = $item->ID; // Store ID of item to hide it's children.
 					}
 					unset( $items[$key] ) ;
 				}
@@ -528,7 +539,7 @@ class Nav_Menu_Roles {
 	public function maybe_upgrade() {
 		$db_version = get_option( 'nav_menu_roles_db_version', false );
 
-		// 1.7.7 upgrade: changed the debug notice so the old transient is invalid
+		// 1.7.7 upgrade: changed the debug notice so the old transient is invalid.
 		if ( $db_version === false || version_compare( '1.7.7', $db_version, '<' ) ) {
 		    update_option( 'nav_menu_roles_db_version', self::VERSION );
 		}
@@ -540,7 +551,7 @@ endif; // class_exists check
 
 
 /**
-* Launch the whole plugin
+ * Launch the whole plugin
  * Returns the main instance of Nav Menu Roles to prevent the need to use globals.
  *
  * @since  1.5
