@@ -434,6 +434,8 @@ class Nav_Menu_Roles {
 	 *
 	 * @since 1.2
 	 *
+	 * @param  WP_Post[] array of Nav Menu Post objects
+	 *
 	 * Multisite compatibility added in 1.9.0
 	 * by @open-dsi https://www.open-dsi.fr/ with props to @fiech
 	 */
