@@ -430,6 +430,27 @@ class Nav_Menu_Roles {
 
 			if ( ! empty( $roles ) ) {
 				$menu_item->roles = $roles;
+
+				// Add the NMR roles as CSS info.
+				$new_classes = array();
+
+				switch( $roles ) {
+					case 'in' :
+						$new_classes[] = 'nmr-logged-in';
+						break;
+					case 'out' :
+						$new_classes[] = 'nmr-logged-out';
+						break;
+					default:
+						if ( is_array( $item->roles ) && ! empty( $item->roles ) ) {
+							foreach ( $item->roles as $role ) {
+								$new_classes[] = 'nmr-' . $role;
+							}
+						}
+						break;
+				}
+
+				$menu_item->classes = array_merge( $menu_item->classes, $new_classes );
 			}
 		}
 		return $menu_item;
