@@ -238,6 +238,9 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 
 == Changelog ==
 
+= 1.9.5 = 
+* Fix: PHP Notice:  Undefined variable $item
+
 = 1.9.4 = 
 * Add the NMR roles as css classes to the menu output
 * Improve menu editor role checkbox list UX, by making list items full-width. Props @lkraav
