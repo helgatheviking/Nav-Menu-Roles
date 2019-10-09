@@ -442,8 +442,8 @@ class Nav_Menu_Roles {
 						$new_classes[] = 'nmr-logged-out';
 						break;
 					default:
-						if ( is_array( $item->roles ) && ! empty( $item->roles ) ) {
-							foreach ( $item->roles as $role ) {
+						if ( is_array( $menu_item->roles ) && ! empty( $menu_item->roles ) ) {
+							foreach ( $menu_item->roles as $role ) {
 								$new_classes[] = 'nmr-' . $role;
 							}
 						}
