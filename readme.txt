@@ -238,6 +238,9 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 
 == Changelog ==
 
+= 1.10.0 = 
+* Fix: My hook made it into core for WP5.4!! Can finally stop overriding the admin menu Walker.
+
 = 1.9.5 = 
 * Fix: PHP Notice:  Undefined variable $item
 
