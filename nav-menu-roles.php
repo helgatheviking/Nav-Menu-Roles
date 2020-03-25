@@ -519,6 +519,7 @@ class Nav_Menu_Roles {
 								foreach ( $item->roles as $role ) {
 									if ( current_user_can( $role ) ) {
 										$visible = true;
+										break;
 									}
 								}
 							}
