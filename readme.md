@@ -4,7 +4,7 @@
 **Donate link:** https://www.youcaring.com/wnt-residency  
 **Tags:** menu, menus, nav menu, nav menus  
 **Requires at least:** 4.5.0  
-**Tested up to:** 5.0.2  
+**Tested up to:** 5.4.0  
 **Stable tag:** 1.9.5  
 **License:** GPLv3  
 
