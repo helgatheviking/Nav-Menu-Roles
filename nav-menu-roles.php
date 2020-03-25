@@ -9,7 +9,7 @@ Author URI: http://www.kathyisawesome.com
 License: GPL-3.0
 Text Domain: nav-menu-roles
 
-Copyright 2017 Kathy Darling(email: kathy@kathyisawesome.com)
+Copyright 2020 Kathy Darling
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
