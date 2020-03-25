@@ -109,7 +109,7 @@ class Nav_Menu_Roles {
 		add_filter( 'plugin_row_meta', array( $this, 'add_action_links' ), 10, 2 );
 
 		// Maybe switch the admin walker.
-		if( ! self::is_wp_gte( '5.4.0' ) ) {
+		if( ! self::is_wp_gte( '5.4' ) ) {
 			add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
 		}
 
@@ -576,9 +576,9 @@ class Nav_Menu_Roles {
 	* @param  string $version - A WordPress version to compare against current version.
 	* @return boolean
 	*/
-	public static function is_wp_gte( $version = '5.4.0' ) {
+	public static function is_wp_gte( $version = '5.4' ) {
 		global $wp_version;
-		return version_compare( $wp_version, $version, '>=' ) ? true : false;
+		return version_compare( strtolower( $wp_version ), strtolower( $version ), '>=' );
 	}
 
 } // end class
