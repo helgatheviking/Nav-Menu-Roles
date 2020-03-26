@@ -9,3 +9,4 @@ sftp-config.json
 *.sublime-workspace
 *.sublime-project
 *.transifexrc
+*.afdesign

@@ -3,13 +3,13 @@
 Plugin Name: Nav Menu Roles
 Plugin URI: http://www.kathyisawesome.com/449/nav-menu-roles/
 Description: Hide custom menu items based on user roles.
-Version: 1.9.5
+Version: 1.10.0
 Author: Kathy Darling
 Author URI: http://www.kathyisawesome.com
 License: GPL-3.0
 Text Domain: nav-menu-roles
 
-Copyright 2017 Kathy Darling(email: kathy@kathyisawesome.com)
+Copyright 2020 Kathy Darling
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
@@ -54,7 +54,7 @@ class Nav_Menu_Roles {
 	* @constant string version number
 	* @since 1.7.0
 	*/
-	CONST VERSION = '1.9.5';
+	CONST VERSION = '1.10.0';
 
 	/**
 	* Main Nav Menu Roles Instance
@@ -108,8 +108,10 @@ class Nav_Menu_Roles {
 		// Add FAQ and Donate link to plugin.
 		add_filter( 'plugin_row_meta', array( $this, 'add_action_links' ), 10, 2 );
 
-		// Switch the admin walker.
-		add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
+		// Maybe switch the admin walker.
+		if( ! self::is_wp_gte( '5.4' ) ) {
+			add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
+		}
 
 		// Add new fields via hook.
 		add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'custom_fields' ), 10, 4 );
@@ -234,11 +236,11 @@ class Nav_Menu_Roles {
 	* @since 1.0
 	*/
 	public function edit_nav_menu_walker( $walker ) {
-		if( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ){
-			global $wp_version;
-		    if ( version_compare( $wp_version, '4.7', '>=' ) ){
+		if( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ) {
+
+		    if ( self::is_wp_gte( '4.7' ) ) {
 				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles_4.7.php' );
-			} else if ( version_compare( $wp_version, '4.5', '>=' ) ){
+			} else if ( self::is_wp_gte( '4.5' ) ) {
 				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles_4.5.php' );
 			} else {
 				require_once( plugin_dir_path( __FILE__ ) . 'inc/class.Walker_Nav_Menu_Edit_Roles.php' );
@@ -517,6 +519,7 @@ class Nav_Menu_Roles {
 								foreach ( $item->roles as $role ) {
 									if ( current_user_can( $role ) ) {
 										$visible = true;
+										break;
 									}
 								}
 							}
@@ -564,6 +567,18 @@ class Nav_Menu_Roles {
 		if ( $db_version === false || version_compare( '1.7.7', $db_version, '<' ) ) {
 		    update_option( 'nav_menu_roles_db_version', self::VERSION );
 		}
+	}
+
+	/**
+	* Test WordPress version
+	*
+	* @access public
+	* @param  string $version - A WordPress version to compare against current version.
+	* @return boolean
+	*/
+	public static function is_wp_gte( $version = '5.4' ) {
+		global $wp_version;
+		return version_compare( strtolower( $wp_version ), strtolower( $version ), '>=' );
 	}
 
 } // end class

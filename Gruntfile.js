@@ -59,7 +59,8 @@ module.exports = function(grunt) {
                     "!**.sublime-workspace",
                     "!**.sublime-project",
                     "!deploy.sh",
-                    "!**/*~"
+                    "!**/*~",
+                    '!.afdesign',
                 ],
                 dest: "build/"
             }

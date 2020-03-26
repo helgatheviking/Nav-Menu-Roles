@@ -1,11 +1,11 @@
 # Nav Menu Roles #
 
 **Contributors:** helgatheviking  
-**Donate link:** https://www.youcaring.com/wnt-residency  
+**Donate link:** https://www.paypal.com/fundraiser/charity/1451316 
 **Tags:** menu, menus, nav menu, nav menus  
 **Requires at least:** 4.5.0  
-**Tested up to:** 5.0.2  
-**Stable tag:** 1.9.5  
+**Tested up to:** 5.4.0  
+**Stable tag:** 1.10.0  
 **License:** GPLv3  
 
 Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
