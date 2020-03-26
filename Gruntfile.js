@@ -61,6 +61,7 @@ module.exports = function(grunt) {
                     "!deploy.sh",
                     "!**/*~",
                     '!.afdesign',
+                    '!assets/**',
                 ],
                 dest: "build/"
             }
