@@ -134,18 +134,6 @@ module.exports = function(grunt) {
           }
         },
 
-        // # Deploy to WordPress
-        wp_deploy: {
-            deploy: {
-                options: {
-                    svn_user: "<%= pkg.author %>",
-                    plugin_slug: "<%= pkg.name %>",
-                    build_dir: "build/",
-                    assets_dir: "wp-assets/",
-                    tmp_dir: "C:/Temp/"
-                }
-            }
-        }
     });
 
     // makepot and addtextdomain tasks
@@ -159,7 +147,5 @@ module.exports = function(grunt) {
     grunt.registerTask("test", ["jshint", "addtextdomain"]);
 
     grunt.registerTask("build", ["test", "replace", "newer:uglify", "clean", "copy"]);
-
-    grunt.registerTask("deploy", ["build", "wp_deploy", "clean"]);
 
 };
