@@ -1,0 +1,14 @@
+/.wordpress-org
+/.git
+/.github
+/node_modules
+/build
+
+*.sublime-project
+*.afdesign
+
+.distignore
+.gitignore
+Gruntfile.js
+package.json
+readme.md
