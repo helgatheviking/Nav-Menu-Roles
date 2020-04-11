@@ -3,6 +3,9 @@ on:
   push:
     branches:
     - master
+    paths:
+    - '.wordpress.org/**'
+    - 'readme.txt'
 jobs:
   master:
     name: Push to master
