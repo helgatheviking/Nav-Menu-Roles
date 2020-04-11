@@ -1,0 +1,21 @@
+name: Deploy to WordPress.org
+on:
+  push:
+    tags:
+    - "*"
+    tags-ignore:
+    - 'v*-alpha*'
+    - 'v*-beta*'
+    - 'v*-rc*'
+jobs:
+  tag:
+    name: New tag
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: WordPress Plugin Deploy
+      uses: 10up/actions-wordpress/dotorg-plugin-deploy@master
+      env:
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+        SLUG: nav-menu-roles
