@@ -1,8 +1,6 @@
 name: Deploy to WordPress.org
 on:
   push:
-    tags:
-    - "*"
     tags-ignore:
     - 'v*-alpha*'
     - 'v*-beta*'
