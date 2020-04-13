@@ -11,4 +11,5 @@
 .gitignore
 Gruntfile.js
 package.json
+package-lock.json
 readme.md
