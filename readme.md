@@ -1,10 +1,11 @@
 # Nav Menu Roles #
 
 **Contributors:** helgatheviking  
-**Donate link:** https://www.paypal.com/fundraiser/charity/1451316 
+**Donate link:** https://www.paypal.com/fundraiser/charity/1451316  
 **Tags:** menu, menus, nav menu, nav menus  
 **Requires at least:** 4.5.0  
 **Tested up to:** 5.4.0  
+**Requires PHP:** 5.3.2  
 **Stable tag:** 1.10.1  
 **License:** GPLv3  
 
