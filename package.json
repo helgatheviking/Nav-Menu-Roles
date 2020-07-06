@@ -1,7 +1,7 @@
 {
   "title": "Nav Menu Roles",
   "name": "nav-menu-roles",
-  "version": "1.10.1",
+  "version": "1.10.2",
   "description": "Hide menu items based on user roles",
   "main": "Gruntfile.js",
   "license": "GPL-3.0",
@@ -14,7 +14,7 @@
   },
   "author": "helgatheviking",
   "devDependencies": {
-    "grunt": "^1.1.0",
+    "grunt": "^1.2.0",
     "grunt-contrib-clean": "~2.0.0",
     "grunt-contrib-copy": "~1.0.0",
     "grunt-contrib-jshint": "~2.1.0",
