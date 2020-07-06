@@ -454,7 +454,7 @@ class Nav_Menu_Roles {
 
 				// Only apply classes on front-end.
 				if( ! is_admin() ) {
-					$menu_item->classes = array_unique( array_merge( $menu_item->classes, $new_classes ) );
+					$menu_item->classes = array_unique( array_merge( (array) $menu_item->classes, (array) $new_classes ) );
 				}
 			}
 		}

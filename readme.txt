@@ -239,6 +239,10 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 
 == Changelog ==
 
+
+= 1.10.2 = 
+* Fix:  Strict array typecasting for nav menu classes.
+
 = 1.10.1 = 
 * Fix:  Only auto-apply classes on front-end. Prevents appending duplicate classes on each save.
 
