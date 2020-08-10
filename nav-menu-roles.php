@@ -365,29 +365,29 @@ class Nav_Menu_Roles {
 		<input type="hidden" name="nav-menu-role-nonce" value="<?php echo wp_create_nonce( 'nav-menu-nonce-name' ); ?>" />
 
 		<fieldset class="field-nav_menu_role nav_menu_logged_in_out_field description-wide" style="margin: 5px 0;">
-		    <legend class="description"><?php _e( "Display Mode", 'nav-menu-roles' ); ?></legend>
+		    <legend class="description"><?php esc_html_e( "Display Mode", 'nav-menu-roles' ); ?></legend>
 
-		    <input type="hidden" class="nav-menu-id" value="<?php echo $item->ID ;?>" />
+		    <input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
 
-		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
-		        <?php _e( 'Logged In Users', 'nav-menu-roles'); ?>   
-		    <label for="nav_menu_logged_in-for-<?php echo $item->ID ;?>" style="<?php echo esc_attr( $float ); width: 35%;">
+		    <label for="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ) ;?>" style="<?php echo esc_attr( $float ); width: 35%;">
+		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ) ;?>]" id="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ) ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
+		        <?php esc_html_e( 'Logged In Users', 'nav-menu-roles'); ?>   
 		    </label>
 		
-				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
-				<?php _e( 'Logged Out Users', 'nav-menu-roles'); ?>	       
-		    <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>" style="<?php echo esc_attr( $float ); width: 35%;">
+		    <label for="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID ) ;?>" style="<?php echo esc_attr( $float ); width: 35%;">
+				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ) ;?>]" id="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID ) ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
+				<?php esc_html_e( 'Logged Out Users', 'nav-menu-roles'); ?>	       
 			</label>
 
-		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_by_role-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" />
-		        <?php _e( 'Everyone', 'nav-menu-roles'); ?>
-			<label for="nav_menu_by_role-for-<?php echo $item->ID ;?>" style="<?php echo esc_attr( $float ); width: 30%;">
+			<label for="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ) ;?>" style="<?php echo esc_attr( $float ); width: 30%;">
+		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ) ;?>]" id="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ) ;?>" <?php checked( '', $logged_in_out ); ?> value="" />
+		        <?php esc_html_e( 'Everyone', 'nav-menu-roles'); ?>
 			</label>
 
 		</fieldset>
 
 		<fieldset class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0; <?php echo $hidden;?>">
-		    <legend class="description"><?php _e( "Restrict menu item to a minimum role", 'nav-menu-roles' ); ?></legend>
+		    <legend class="description"><?php esc_html_e( "Restrict menu item to a minimum role", 'nav-menu-roles' ); ?></legend>
 		    <br />
 
 		    <?php
