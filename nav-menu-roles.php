@@ -97,7 +97,7 @@ class Nav_Menu_Roles {
 	* @return Nav_Menu_Roles
 	* @since  1.0
 	*/
-	public function __construct(){
+	public function __construct() {
 
 		// Admin functions.
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -160,7 +160,7 @@ class Nav_Menu_Roles {
 	* @access private
 	* @return void
 	*/
-	public function register_importer(){
+	public function register_importer() {
 		// Register the new importer.
 		if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
 
@@ -282,7 +282,7 @@ class Nav_Menu_Roles {
 	* @param string $plugin_file
 	*/
 	public function add_action_links( $plugin_meta, $plugin_file ) {
-		if( $plugin_file == plugin_basename(__FILE__) ){
+		if( $plugin_file == plugin_basename(__FILE__) ) {
 			$plugin_meta[] = sprintf( '<a class="dashicons-before dashicons-welcome-learn-more" href="https://wordpress.org/plugins/nav-menu-roles/faq/#conflict">%s</a>', __( 'FAQ', 'nav-menu-roles' ) );
 			$plugin_meta[] = '<a class="dashicons-before dashicons-admin-generic" href="' . self::DONATE_URL . '" target="_blank">' . __( 'Donate', 'nav-menu-roles' ) . '</a>';
 		}
@@ -346,9 +346,9 @@ class Nav_Menu_Roles {
 		$logged_in_out = '';
 
 		// Specific roles are saved as an array, so "in" or an array equals "in" is checked.
-		if( is_array( $roles ) || $roles == 'in' ){
+		if( is_array( $roles ) || $roles == 'in' ) {
 			$logged_in_out = 'in';
-		} else if ( $roles == 'out' ){
+		} else if ( $roles == 'out' ) {
 			$logged_in_out = 'out';
 		}
 
@@ -424,13 +424,12 @@ class Nav_Menu_Roles {
 
 
 	/**
-	* Save the roles as menu item meta
+	* Load the scripts on the menu page.
 	* 
 	* @since 1.4
-	* @return null
 	*/
-	public function enqueue_scripts( $hook ){
-		if ( $hook == 'nav-menus.php' ){
+	public function enqueue_scripts( $hook ) {
+		if ( $hook == 'nav-menus.php' ) {
 			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js' , __FILE__ ), array( 'jquery' ), self::VERSION, true );
 		}
@@ -531,7 +530,7 @@ class Nav_Menu_Roles {
 				$visible = true;
 
 				// Hide any item that is the child of a hidden item.
-				if( isset( $item->menu_item_parent ) && in_array( $item->menu_item_parent, $hide_children_of ) ){
+				if( isset( $item->menu_item_parent ) && in_array( $item->menu_item_parent, $hide_children_of ) ) {
 					$visible = false;
 				}
 
