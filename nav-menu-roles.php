@@ -358,6 +358,8 @@ class Nav_Menu_Roles {
 		// Whether to display the role checkboxes.
 		$hidden = $logged_in_out == 'in' ? '' : 'display: none;';
 
+		$float = is_rtl() ? 'float:"right";' : 'float:"left";';
+
 		?>
 
 		<input type="hidden" name="nav-menu-role-nonce" value="<?php echo wp_create_nonce( 'nav-menu-nonce-name' ); ?>" />
@@ -367,19 +369,19 @@ class Nav_Menu_Roles {
 
 		    <input type="hidden" class="nav-menu-id" value="<?php echo $item->ID ;?>" />
 
-		    <label for="nav_menu_logged_in-for-<?php echo $item->ID ;?>" style="float: left; width: 35%;">
 		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
 		        <?php _e( 'Logged In Users', 'nav-menu-roles'); ?>   
+		    <label for="nav_menu_logged_in-for-<?php echo $item->ID ;?>" style="<?php echo esc_attr( $float ); width: 35%;">
 		    </label>
 		
-		    <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>" style="float: left; width: 35%;">
 				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
 				<?php _e( 'Logged Out Users', 'nav-menu-roles'); ?>	       
+		    <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>" style="<?php echo esc_attr( $float ); width: 35%;">
 			</label>
 
-			<label for="nav_menu_by_role-for-<?php echo $item->ID ;?>" style="float: left; width: 30%;">
 		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_by_role-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" />
 		        <?php _e( 'Everyone', 'nav-menu-roles'); ?>
+			<label for="nav_menu_by_role-for-<?php echo $item->ID ;?>" style="<?php echo esc_attr( $float ); width: 30%;">
 			</label>
 
 		</fieldset>
