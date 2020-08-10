@@ -105,6 +105,9 @@ class Nav_Menu_Roles {
 		// Load the textdomain.
 		add_action( 'init', array( $this, 'load_text_domain' ) );
 
+		// Register the meta key.
+		add_action( 'init', array( $this, 'register_meta' ) );
+
 		// Add FAQ and Donate link to plugin.
 		add_filter( 'plugin_row_meta', array( $this, 'add_action_links' ), 10, 2 );
 
@@ -180,6 +183,63 @@ class Nav_Menu_Roles {
 		load_plugin_textdomain( 'nav-menu-roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
+	/**
+	 * Register the meta keys for nav menus.
+	 * 
+	 * @since 2.0
+	 */
+	public function register_meta() {
+		register_meta(
+			'post',
+			'_nav_menu_role',
+			array (
+				'object_subtype'    => 'nav_menu_item',
+				'type'              => 'mixed',
+				'sanitize_callback' => array( $this, 'sanitize_meta' ),
+			),
+		);
+	}
+
+	/**
+	 * Sanitize the meta.
+	 *
+	 * @param  mixed  $meta_value The meta value.
+	 * @param  string $meta_key   The meta key.
+	 * @param  string $meta_type  The meta type.
+	 *
+	 * @return mixed              The meta value.
+	 * 
+	 * @since 2.0
+	 */
+	public function sanitize_meta( $meta_value, $meta_key, $meta_type ) {
+		global $wp_roles;
+
+		$clean = '';
+		
+		if ( is_array( $meta_value ) ) {
+
+			$clean = array();	
+
+			/**
+			* Pass the menu item to the filter function.
+			* This change is suggested as it allows the use of information from the menu item (and
+			* by extension the target object) to further customize what filters appear during menu
+			* construction.
+			*/
+			$allowed_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
+	
+			// Only save allowed roles.
+			foreach( $meta_value as $role ) {
+				if ( array_key_exists ( $role, $allowed_roles ) ) {
+					$clean[] = $role;
+				}
+			}
+		} elseif ( in_array( $meta_value, array( 'in', 'out' ) ) ) {
+			$clean = $meta_value;
+		}
+
+		return $clean;
+	}
 
 	/**
 	* Display a Notice if plugin conflicts with another
@@ -383,36 +443,22 @@ class Nav_Menu_Roles {
 	* @return string	
 	*/
 	public function nav_update( $menu_id, $menu_item_db_id ) {
-		global $wp_roles;
-
-		$allowed_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
 
 		// Verify this came from our screen and with proper authorization.
-		if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['nav-menu-role-nonce'], 'nav-menu-nonce-name' ) ){
+		if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['nav-menu-role-nonce'], 'nav-menu-nonce-name' ) ) {
 			return;
 		}
 		
-		$saved_data = false;
+		if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  ) ) {
 
-		if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  )  && $_POST['nav-menu-logged-in-out'][$menu_item_db_id] == 'in' && ! empty ( $_POST['nav-menu-role'][$menu_item_db_id] ) ) {
-			
-			$custom_roles = array();
-			
-			// Only save allowed roles.
-			foreach( (array) $_POST['nav-menu-role'][$menu_item_db_id] as $role ) {
-				if ( array_key_exists ( $role, $allowed_roles ) ) {
-					$custom_roles[] = $role;
-				}
+			if ( 'in' === $_POST['nav-menu-logged-in-out'][$menu_item_db_id] && ! empty ( $_POST['nav-menu-role'][$menu_item_db_id] ) ) {
+				$meta = $_POST['nav-menu-role'][$menu_item_db_id];
+			} else {
+				$meta = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
 			}
-			if ( ! empty ( $custom_roles ) ) {
-				$saved_data = $custom_roles;
-			}
-		} else if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  ) && in_array( $_POST['nav-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out' ) ) ) {
-			$saved_data = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
-		}
 
-		if ( $saved_data ) {
-			update_post_meta( $menu_item_db_id, '_nav_menu_role', $saved_data );
+			update_post_meta( $menu_item_db_id, '_nav_menu_role', $meta ); // Sanitization handled by $this->sanitize_meta().
+			
 		} else {
 			delete_post_meta( $menu_item_db_id, '_nav_menu_role' );
 		}
