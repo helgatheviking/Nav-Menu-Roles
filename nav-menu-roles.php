@@ -81,7 +81,7 @@ class Nav_Menu_Roles {
 	 * @since 1.5
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cloning this object is forbidden.' , 'nav-menu-roles' ), '1.5' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cloning this object is forbidden.', 'nav-menu-roles' ), '1.5' );
 	}
 
 	/**
@@ -90,7 +90,7 @@ class Nav_Menu_Roles {
 	 * @since 1.5
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.' , 'nav-menu-roles' ), '1.5' );
+		_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'nav-menu-roles' ), '1.5' );
 	}
 
 	/**
@@ -124,7 +124,7 @@ class Nav_Menu_Roles {
 		add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'custom_fields' ), 10, 4 );
 
 		// Add some JS.
-		add_action( 'admin_enqueue_scripts' , array( $this, 'enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		// Save the menu item meta.
 		add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 2 );
@@ -422,7 +422,7 @@ class Nav_Menu_Roles {
 	public function enqueue_scripts( $hook ) {
 		if ( $hook == 'nav-menus.php' ) {
 			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js' , __FILE__ ), array( 'jquery' ), self::VERSION, true );
+			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js', __FILE__ ), array( 'jquery' ), self::VERSION, true );
 		}
 	}
 
