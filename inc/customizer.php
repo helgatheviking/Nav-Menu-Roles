@@ -80,8 +80,8 @@ function customizer_custom_fields() {
 }
 
 /**
-* Load the customizer scripts which extends nav menu item controls.
-*/
+ * Load the customizer scripts which extends nav menu item controls.
+ */
 function customizer_scripts() {
 	wp_enqueue_script(
 		'customize-nav-menu-roles',
@@ -166,8 +166,8 @@ function customizer_preview( WP_Customize_Manager $wp_customize ) {
 }
 
 /**
-* Set up saving.
-*/
+ * Set up saving.
+ */
 function customizer_save( WP_Customize_Manager $wp_customize ) {
 	foreach ( $wp_customize->settings() as $setting ) {
 		if ( $setting instanceof WP_Customize_Nav_Menu_Item_Setting && $setting->check_capabilities() ) {
