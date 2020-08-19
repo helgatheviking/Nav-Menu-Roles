@@ -168,7 +168,7 @@ class Nav_Menu_Roles {
 		// Register the new importer.
 		if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
 
-			include_once( plugin_dir_path( __FILE__ ) . 'inc/class-nav-menu-roles-import.php');
+			include_once( plugin_dir_path( __FILE__ ) . 'inc/class-nav-menu-roles-import.php' );
 			// Register the custom importer we've created.
 			$roles_import = new Nav_Menu_Roles_Import();
 
@@ -281,7 +281,7 @@ class Nav_Menu_Roles {
 	 * @param string $plugin_file
 	 */
 	public function add_action_links( $plugin_meta, $plugin_file ) {
-		if ( $plugin_file == plugin_basename(__FILE__) ) {
+		if ( $plugin_file == plugin_basename( __FILE__ ) ) {
 			$plugin_meta[] = sprintf( '<a class="dashicons-before dashicons-welcome-learn-more" href="https://wordpress.org/plugins/nav-menu-roles/faq/#conflict">%s</a>', __( 'FAQ', 'nav-menu-roles' ) );
 			$plugin_meta[] = '<a class="dashicons-before dashicons-admin-generic" href="' . self::DONATE_URL . '" target="_blank">' . __( 'Donate', 'nav-menu-roles' ) . '</a>';
 		}
@@ -368,19 +368,19 @@ class Nav_Menu_Roles {
 
 			<input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
 
-			<label for="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ) ;?>" style="<?php echo esc_attr( $float );?> width: 35%;">
-				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ) ;?>]" id="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ) ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
-				<?php esc_html_e( 'Logged In Users', 'nav-menu-roles'); ?>   
+			<label for="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID );?>" style="<?php echo esc_attr( $float );?> width: 35%;">
+				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID );?>]" id="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID );?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
+				<?php esc_html_e( 'Logged In Users', 'nav-menu-roles' ); ?>   
 			</label>
 		
-			<label for="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID ) ;?>" style="<?php echo esc_attr( $float );?> width: 35%;">
-				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ) ;?>]" id="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID ) ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
-				<?php esc_html_e( 'Logged Out Users', 'nav-menu-roles'); ?>	       
+			<label for="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID );?>" style="<?php echo esc_attr( $float );?> width: 35%;">
+				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID );?>]" id="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID );?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
+				<?php esc_html_e( 'Logged Out Users', 'nav-menu-roles' ); ?>	       
 			</label>
 
-			<label for="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ) ;?>" style="<?php echo esc_attr( $float );?> width: 30%;">
-				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ) ;?>]" id="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ) ;?>" <?php checked( '', $logged_in_out ); ?> value="" />
-				<?php esc_html_e( 'Everyone', 'nav-menu-roles'); ?>
+			<label for="nav_menu_by_role-for-<?php echo esc_attr( $item->ID );?>" style="<?php echo esc_attr( $float );?> width: 30%;">
+				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID );?>]" id="nav_menu_by_role-for-<?php echo esc_attr( $item->ID );?>" <?php checked( '', $logged_in_out ); ?> value="" />
+				<?php esc_html_e( 'Everyone', 'nav-menu-roles' ); ?>
 			</label>
 
 		</fieldset>
@@ -400,8 +400,8 @@ class Nav_Menu_Roles {
 				$checked = checked( true, ( is_array( $checked_roles ) && in_array( $role, $checked_roles ) ), false );
 				?>
 
-				<label for="nav_menu_role-<?php echo $role; ?>-for-<?php echo esc_attr( $item->ID ) ;?>" style="display: block; margin: 2px 0;">
-					<input type="checkbox" name="nav-menu-role[<?php echo esc_attr( $item->ID ) ;?>][<?php echo $i; ?>]" id="nav_menu_role-<?php echo $role; ?>-for-<?php echo esc_attr( $item->ID ) ;?>" <?php echo $checked; ?> value="<?php echo esc_attr( $role ); ?>" />
+				<label for="nav_menu_role-<?php echo $role; ?>-for-<?php echo esc_attr( $item->ID );?>" style="display: block; margin: 2px 0;">
+					<input type="checkbox" name="nav-menu-role[<?php echo esc_attr( $item->ID );?>][<?php echo $i; ?>]" id="nav_menu_role-<?php echo $role; ?>-for-<?php echo esc_attr( $item->ID );?>" <?php echo $checked; ?> value="<?php echo esc_attr( $role ); ?>" />
 					<?php echo esc_html( $name ); ?>
 					<?php $i++; ?>
 				</label>
@@ -439,9 +439,9 @@ class Nav_Menu_Roles {
 			return;
 		}
 
-		if ( isset( $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ]  ) ) {
+		if ( isset( $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] ) ) {
 
-			if ( 'in' === $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] && ! empty ( $_POST['nav-menu-role'][ $menu_item_db_id ] ) ) {
+			if ( 'in' === $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] && ! empty( $_POST['nav-menu-role'][ $menu_item_db_id ] ) ) {
 				$meta = $_POST['nav-menu-role'][ $menu_item_db_id ];
 			} else {
 				$meta = $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ];
@@ -582,7 +582,7 @@ class Nav_Menu_Roles {
 					if ( isset( $item->ID ) ) {
 						$hide_children_of[] = $item->ID; // Store ID of item to hide it's children.
 					}
-					unset( $items[ $key ] ) ;
+					unset( $items[ $key ] );
 				}
 
 			}

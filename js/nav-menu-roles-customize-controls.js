@@ -1,13 +1,18 @@
 ( function ( api ) {
 
 	// Augment each menu item control once it is added and embedded.
-	api.control.bind( 'add', ( control ) => {
+	api.control.bind(
+        'add',
+        ( control ) => {
 		if ( control.extended( api.Menus.MenuItemControl ) ) {
-			control.deferred.embedded.done( () => {
+			control.deferred.embedded.done(
+                () => {
 				extendControl( control );
-			} );
+                } 
+            );
 		}
-	} );
+        } 
+    );
 
 	/**
 	 * Extend the control with roles information.
@@ -22,21 +27,31 @@
 		updateControlFields( control );
 
 		// Update the UI state when the setting changes programmatically.
-		control.setting.bind( () => {
+		control.setting.bind(
+            () => {
 			updateControlFields( control );
-		} );
+            } 
+        );
 
 		// Update the setting when the inputs are modified.
-		control.authFieldset.find( 'input' ).on( 'click', function () {
+		control.authFieldset.find( 'input' ).on(
+            'click',
+            function () {
 			setSettingRoles( control.setting, this.value );
-		} );
-		control.rolesFieldset.find( 'input' ).on( 'click', function () {
+            } 
+        );
+		control.rolesFieldset.find( 'input' ).on(
+            'click',
+            function () {
 			const checkedRoles = [];
-			control.rolesFieldset.find( ':checked' ).each( function () {
-				checkedRoles.push( this.value );
-			} );
+			control.rolesFieldset.find( ':checked' ).each(
+                function () {
+                checkedRoles.push( this.value );
+                } 
+            );
 			setSettingRoles( control.setting, checkedRoles.length === 0 ? 'in' : checkedRoles );
-		} );
+            } 
+        );
 	}
 
 	/**
@@ -72,8 +87,10 @@
 
 		authRadio.prop( 'checked', true );
 
-		control.rolesFieldset.find( 'input[type=checkbox]' ).each( function () {
-			this.checked = checkedRoles.includes( this.value );
-		} );
+		control.rolesFieldset.find( 'input[type=checkbox]' ).each(
+            function () {
+            this.checked = checkedRoles.includes( this.value );
+            } 
+        );
 	}
 })( wp.customize );

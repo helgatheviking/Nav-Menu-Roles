@@ -1,11 +1,12 @@
 module.exports = function(grunt) {
 
 	// load most all grunt tasks
-	require("load-grunt-tasks")(grunt);
+	require( "load-grunt-tasks" )( grunt );
 
 	// Project configuration.
-	grunt.initConfig({
-		pkg: grunt.file.readJSON("package.json"),
+	grunt.initConfig(
+        {
+		pkg: grunt.file.readJSON( "package.json" ),
 		uglify: {
 			options: {
 				compress: {
@@ -26,7 +27,7 @@ module.exports = function(grunt) {
 		},
 		jshint: {
 			options: {
-				reporter: require("jshint-stylish")
+				reporter: require( "jshint-stylish" )
 			},
 			all: ["js/*.js", "!js/*.min.js"]
 		},
@@ -134,18 +135,19 @@ module.exports = function(grunt) {
 			}
 		},
 
-	});
+        }
+    );
 
 	// makepot and addtextdomain tasks
-	grunt.loadNpmTasks("grunt-wp-i18n");
+	grunt.loadNpmTasks( "grunt-wp-i18n" );
 
 	// Default task(s).
-	grunt.registerTask("default", ["jshint", "uglify"]);
+	grunt.registerTask( "default", ["jshint", "uglify"] );
 
-	grunt.registerTask("docs", ["wp_readme_to_markdown"]);
+	grunt.registerTask( "docs", ["wp_readme_to_markdown"] );
 
-	grunt.registerTask("test", ["jshint", "addtextdomain"]);
+	grunt.registerTask( "test", ["jshint", "addtextdomain"] );
 
-	grunt.registerTask("build", ["test", "replace", "newer:uglify", "clean", "copy"]);
+	grunt.registerTask( "build", ["test", "replace", "newer:uglify", "clean", "copy"] );
 
 };

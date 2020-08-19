@@ -99,7 +99,7 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 		} elseif ( isset( $item->post_status ) && 'draft' == $item->post_status ) {
 			$classes[] = 'pending';
 			/* translators: %s: title of menu item in draft status */
-			$title = sprintf( __('%s (Pending)', 'nav-menu-roles'), $item->title );
+			$title = sprintf( __( '%s (Pending)', 'nav-menu-roles' ), $item->title );
 		}
 
 		$title = ( ! isset( $item->label ) || '' == $item->label ) ? $title : $item->label;
@@ -109,7 +109,7 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 			$submenu_text = 'style="display: none;"';
 
 		?>
-		<li id="menu-item-<?php echo $item_id; ?>" class="<?php echo implode(' ', $classes ); ?>">
+		<li id="menu-item-<?php echo $item_id; ?>" class="<?php echo implode( ' ', $classes ); ?>">
 			<div class="menu-item-bar">
 				<div class="menu-item-handle">
 					<span class="item-title"><span class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span class="is-submenu" <?php echo $submenu_text; ?>><?php _e( 'sub item', 'nav-menu-roles' ); ?></span></span>
@@ -123,10 +123,10 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 											'action' => 'move-up-menu-item',
 											'menu-item' => $item_id,
 										),
-										remove_query_arg($removed_args, admin_url( 'nav-menus.php' ) )
+										remove_query_arg( $removed_args, admin_url( 'nav-menus.php' ) )
 									),
 									'move-menu_item'
-									 );
+                                );
 										?>" class="item-move-up" aria-label="<?php esc_attr_e( 'Move up', 'nav-menu-roles' ) ?>">&#8593;</a>
 							|
 							<a href="<?php
@@ -136,10 +136,10 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 											'action' => 'move-down-menu-item',
 											'menu-item' => $item_id,
 										),
-										remove_query_arg($removed_args, admin_url( 'nav-menus.php' ) )
+										remove_query_arg( $removed_args, admin_url( 'nav-menus.php' ) )
 									),
 									'move-menu_item'
-									 );
+                                );
 										?>" class="item-move-down" aria-label="<?php esc_attr_e( 'Move down', 'nav-menu-roles' ) ?>">&#8595;</a>
 						</span>
 						<a class="item-edit" id="edit-<?php echo $item_id; ?>" href="<?php
@@ -179,7 +179,7 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 				<p class="field-css-classes description description-thin">
 					<label for="edit-menu-item-classes-<?php echo $item_id; ?>">
 						<?php _e( 'CSS Classes (optional)', 'nav-menu-roles' ); ?><br />
-						<input type="text" id="edit-menu-item-classes-<?php echo $item_id; ?>" class="widefat code edit-menu-item-classes" name="menu-item-classes[<?php echo $item_id; ?>]" value="<?php echo esc_attr( implode(' ', $item->classes ) ); ?>" />
+						<input type="text" id="edit-menu-item-classes-<?php echo $item_id; ?>" class="widefat code edit-menu-item-classes" name="menu-item-classes[<?php echo $item_id; ?>]" value="<?php echo esc_attr( implode( ' ', $item->classes ) ); ?>" />
 					</label>
 				</p>
 				<p class="field-xfn description description-thin">
@@ -192,7 +192,7 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 					<label for="edit-menu-item-description-<?php echo $item_id; ?>">
 						<?php _e( 'Description', 'nav-menu-roles' ); ?><br />
 						<textarea id="edit-menu-item-description-<?php echo $item_id; ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo $item_id; ?>]"><?php echo esc_html( $item->description ); // textarea_escaped ?></textarea>
-						<span class="description"><?php _e('The description will be displayed in the menu if the current theme supports it.', 'nav-menu-roles'); ?></span>
+						<span class="description"><?php _e( 'The description will be displayed in the menu if the current theme supports it.', 'nav-menu-roles' ); ?></span>
 					</label>
 				</p>
 
@@ -216,7 +216,7 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 				<div class="menu-item-actions description-wide submitbox">
 					<?php if ( 'custom' != $item->type && $original_title !== false ) : ?>
 						<p class="link-to-original">
-							<?php printf( __('Original: %s', 'nav-menu-roles'), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
+							<?php printf( __( 'Original: %s', 'nav-menu-roles' ), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
 						</p>
 					<?php endif; ?>
 					<a class="item-delete submitdelete deletion" id="delete-<?php echo $item_id; ?>" href="<?php
@@ -229,8 +229,8 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 							admin_url( 'nav-menus.php' )
 						),
 						'delete-menu_item_' . $item_id
-																										   ); ?>"><?php _e( 'Remove', 'nav-menu-roles' ); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="<?php echo esc_url( add_query_arg( array( 'edit-menu-item' => $item_id, 'cancel' => time() ), admin_url( 'nav-menus.php' ) ) );
-?>#menu-item-settings-<?php echo $item_id; ?>"><?php _e('Cancel', 'nav-menu-roles'); ?></a>
+                    ); ?>"><?php _e( 'Remove', 'nav-menu-roles' ); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="<?php echo esc_url( add_query_arg( array( 'edit-menu-item' => $item_id, 'cancel' => time() ), admin_url( 'nav-menus.php' ) ) );
+?>#menu-item-settings-<?php echo $item_id; ?>"><?php _e( 'Cancel', 'nav-menu-roles' ); ?></a>
 				</div>
 
 				<input class="menu-item-data-db-id" type="hidden" name="menu-item-db-id[<?php echo $item_id; ?>]" value="<?php echo $item_id; ?>" />
