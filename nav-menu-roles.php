@@ -50,13 +50,13 @@ class Nav_Menu_Roles {
 	* @constant string donate url
 	* @since 1.9.1
 	*/
-	CONST DONATE_URL = 'https://www.paypal.com/fundraiser/charity/1451316';
+	const DONATE_URL = 'https://www.paypal.com/fundraiser/charity/1451316';
 
 	/**
 	* @constant string version number
 	* @since 1.7.0
 	*/
-	CONST VERSION = '1.10.2';
+	const VERSION = '1.10.2';
 
 	/**
 	 * Main Nav Menu Roles Instance
