@@ -230,15 +230,15 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 					<a class="item-delete submitdelete deletion" id="delete-<?php echo $item_id; ?>" href="
 																					   <?php
 																						echo wp_nonce_url(
-                                                                                            add_query_arg(
-                                                                                                array(
+																							add_query_arg(
+																								array(
 																									'action' => 'delete-menu-item',
 																									'menu-item' => $item_id,
-                                                                                                ),
-                                                                                                admin_url( 'nav-menus.php' )
-                                                                                            ),
-                                                                                            'delete-menu_item_' . $item_id
-                                                                                        );
+																								),
+																								admin_url( 'nav-menus.php' )
+																							),
+																							'delete-menu_item_' . $item_id
+																						);
 																						?>
 					"><?php _e( 'Remove', 'nav-menu-roles' ); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="
 					<?php

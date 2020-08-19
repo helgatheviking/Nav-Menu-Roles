@@ -4,13 +4,13 @@
 	api.control.bind(
 		'add',
 		( control ) => {
-        if ( control.extended( api.Menus.MenuItemControl ) ) {
-            control.deferred.embedded.done(
-                () => {
-                extendControl( control );
-                }
-            );
-        }
+		if ( control.extended( api.Menus.MenuItemControl ) ) {
+			control.deferred.embedded.done(
+				() => {
+				extendControl( control );
+				}
+			);
+		}
 		}
 	);
 
@@ -29,7 +29,7 @@
 		// Update the UI state when the setting changes programmatically.
 		control.setting.bind(
 			() => {
-            updateControlFields( control );
+			updateControlFields( control );
 			}
 		);
 
@@ -45,9 +45,9 @@
 			function () {
 				const checkedRoles = [];
 				control.rolesFieldset.find( ':checked' ).each(
-                    function () {
-                        checkedRoles.push( this.value );
-                    }
+					function () {
+						checkedRoles.push( this.value );
+					}
 				);
 				setSettingRoles( control.setting, checkedRoles.length === 0 ? 'in' : checkedRoles );
 			}
