@@ -203,15 +203,13 @@ class Nav_Menu_Roles {
 	/**
 	 * Sanitize the meta.
 	 *
+	 * @since 2.0.0
+	 * 
 	 * @param  mixed  $meta_value The meta value.
-	 * @param  string $meta_key   The meta key.
-	 * @param  string $meta_type  The meta type.
-	 *
 	 * @return mixed              The meta value.
 	 * 
-	 * @since 2.0
 	 */
-	public function sanitize_meta( $meta_value, $meta_key, $meta_type ) {
+	public function sanitize_meta( $meta_value ) {
 		global $wp_roles;
 
 		$clean = '';
