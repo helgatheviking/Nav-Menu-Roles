@@ -86,7 +86,7 @@ function customizer_scripts() {
 	wp_enqueue_script(
 		'customize-nav-menu-roles',
 		plugin_dir_url( __DIR__ ) . '/js/nav-menu-roles-customize-controls.js',
-		[ 'customize-nav-menus' ],
+		array( 'customize-nav-menus' ),
 		\Nav_Menu_Roles::VERSION,
 		true
 	);
@@ -129,7 +129,7 @@ function preview_nav_menu_setting_postmeta( WP_Customize_Nav_Menu_Item_Setting $
 		'get_post_metadata',
 		static function ( $value, $object_id, $meta_key ) use ( $setting, $roles ) {
 			if ( $object_id === $setting->post_id && '_nav_menu_role' === $meta_key ) {
-				return [ $roles ];
+				return array( $roles );
 			}
 			return $value;
 		},
