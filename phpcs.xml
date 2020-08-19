@@ -1,14 +1,81 @@
 <?xml version="1.0"?>
-<ruleset name="VikingCodingStyle">
-    <description>Coding Style for Nav-Menu-Roles plugin.</description>
+<ruleset name="KathyIsAwesome-CS">
+	<description>Kathy is Awesome Coding Standard</description>
 
-    <rule ref="WordPress-Core">
-        <!-- TODO Use strict comparisions! -->
-        <exclude name="WordPress.PHP.StrictComparisons"/>
-        <!-- TODO Tell translators what is up! -->
-        <exclude name="WordPress.WP.I18n"/>
-    </rule>
+	<file>.</file>
+    
+    <!-- Exclude paths -->
+    <exclude-pattern>*/.git/*</exclude-pattern>
+    <exclude-pattern>*/.github/*</exclude-pattern>
+    <exclude-pattern>*/.wordpress-org/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
 
-    <file>./nav-menu-roles.php</file>
-    <file>./inc/</file>
+	<!-- Show progress. -->
+	<arg value="ps"/>
+
+	<!-- Strip the filepaths down to the relevant bit. -->
+	<arg name="basepath" value="./"/>
+
+	<!-- Check up to 8 files simultanously. -->
+	<arg name="parallel" value="8"/>
+
+    <!-- Configs -->
+	<config name="minimum_supported_wp_version" value="4.7" />
+	<config name="testVersion" value="5.6-" />
+
+	<!--
+	#############################################################################
+	SET THE BASIC RULES
+	Use the WordPress Coding Standards and PHPCompatibilityWP.
+	https://github.com/WordPress/WordPress-Coding-Standards
+	https://github.com/PHPCompatibility/PHPCompatibilityWP
+	#############################################################################
+	-->
+
+	<!-- Use the WordPress ruleset for code style, documentation and basic QA checks. -->
+	<rule ref="WordPress">
+		<!-- Linting is done via PHP-Parallel-Lint instead. -->
+		<exclude name="Generic.PHP.Syntax"/>
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+		<exclude name="Generic.Commenting.DocComment"/>
+	</rule>
+
+	<!-- Error prevention: Ensure no git conflicts make it into the code base. -->
+	<!-- PHPCS 3.4.0: This sniff will be added to WPCS 2.x in due time and can then be removed from this ruleset. -->
+	<rule ref="Generic.VersionControl.GitMergeConflict"/>
+
+	<!-- CS: no space between an increment/decrement operator and the variable it applies to. -->
+	<!-- PHPCS 3.4.0: This sniff will be added to WPCS 2.x in due time and can then be removed from this ruleset. -->
+	<rule ref="Generic.WhiteSpace.IncrementDecrementSpacing"/>
+
+	<!--
+	#############################################################################
+	SNIFF SPECIFIC CONFIGURATION
+	https://github.com/WordPress/WordPress-Coding-Standards/wiki/Customizable-sniff-properties
+	#############################################################################
+	-->
+
+	<!-- Set the minimum supported WP version. This is used by several sniffs. -->
+	<config name="minimum_supported_wp_version" value="4.5"/>
+	
+	<!-- Verify that all gettext calls use the correct text domain. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="nav-menu-roles"/>
+			</property>
+		</properties>
+	</rule>
+
+    <!-- Rules -->
+	<rule ref="WordPress-Extra">
+		<!-- Let git deal with checking files in/out with valid EOL characters. -->
+		<exclude name="Generic.Files.LineEndings.InvalidEOLChar" />
+		<!-- Temporarily ignore comment blocks. -->
+		<exclude name="Squiz.Commenting.FunctionComment" />
+		<!-- Ignore variable prefixing. -->
+		<exclude name="WordPress.NamingConventions.PrefixAllGlobals" />
+	</rule>
+
 </ruleset>
