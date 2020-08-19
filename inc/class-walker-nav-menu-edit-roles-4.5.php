@@ -222,7 +222,7 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 				</p>
 
 				<div class="menu-item-actions description-wide submitbox">
-					<?php if ( 'custom' != $item->type && $original_title !== false ) : ?>
+					<?php if ( 'custom' !== $item->type && false !== $original_title ) : ?>
 						<p class="link-to-original">
 							<?php printf( __( 'Original: %s', 'nav-menu-roles' ), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
 						</p>

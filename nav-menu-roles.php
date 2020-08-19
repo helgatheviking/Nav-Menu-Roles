@@ -281,7 +281,7 @@ class Nav_Menu_Roles {
 	 * @param string $plugin_file
 	 */
 	public function add_action_links( $plugin_meta, $plugin_file ) {
-		if ( $plugin_file == plugin_basename( __FILE__ ) ) {
+		if ( plugin_basename( __FILE__ ) === $plugin_file ) {
 			$plugin_meta[] = sprintf( '<a class="dashicons-before dashicons-welcome-learn-more" href="https://wordpress.org/plugins/nav-menu-roles/faq/#conflict">%s</a>', __( 'FAQ', 'nav-menu-roles' ) );
 			$plugin_meta[] = '<a class="dashicons-before dashicons-admin-generic" href="' . self::DONATE_URL . '" target="_blank">' . __( 'Donate', 'nav-menu-roles' ) . '</a>';
 		}
@@ -347,9 +347,9 @@ class Nav_Menu_Roles {
 		$logged_in_out = '';
 
 		// Specific roles are saved as an array, so "in" or an array equals "in" is checked.
-		if ( is_array( $roles ) || $roles == 'in' ) {
+		if ( is_array( $roles ) || 'in' === $roles ) {
 			$logged_in_out = 'in';
-		} else if ( $roles == 'out' ) {
+		} else if ( 'out' === $roles ) {
 			$logged_in_out = 'out';
 		}
 
@@ -357,7 +357,7 @@ class Nav_Menu_Roles {
 		$checked_roles = is_array( $roles ) ? $roles : false;
 
 		// Whether to display the role checkboxes.
-		$hidden = $logged_in_out == 'in' ? '' : 'display: none;';
+		$hidden = 'in' === $logged_in_out ? '' : 'display: none;';
 
 		$float = is_rtl() ? 'float:"right";' : 'float:"left";';
 
@@ -422,7 +422,7 @@ class Nav_Menu_Roles {
 	 * @since 1.4
 	 */
 	public function enqueue_scripts( $hook ) {
-		if ( $hook == 'nav-menus.php' ) {
+		if ( 'nav-menus.php' === $hook ) {
 			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js', __FILE__ ), array( 'jquery' ), self::VERSION, true );
 		}
@@ -602,7 +602,7 @@ class Nav_Menu_Roles {
 		$db_version = get_option( 'nav_menu_roles_db_version', false );
 
 		// 1.7.7 upgrade: changed the debug notice so the old transient is invalid.
-		if ( $db_version === false || version_compare( '1.7.7', $db_version, '<' ) ) {
+		if ( false === $db_version || version_compare( '1.7.7', $db_version, '<' ) ) {
 			update_option( 'nav_menu_roles_db_version', self::VERSION );
 		}
 	}
