@@ -473,10 +473,10 @@ class Nav_Menu_Roles {
 				$new_classes = array();
 
 				switch ( $roles ) {
-					case 'in' :
+					case 'in':
 						$new_classes[] = 'nmr-logged-in';
 						break;
-					case 'out' :
+					case 'out':
 						$new_classes[] = 'nmr-logged-out';
 						break;
 					default:
@@ -530,7 +530,7 @@ class Nav_Menu_Roles {
 
 					// Check all logged in, all logged out, or role.
 					switch ( $item->roles ) {
-						case 'in' :
+						case 'in':
 							/**
 							 * Multisite compatibility.
 							 *
@@ -540,7 +540,7 @@ class Nav_Menu_Roles {
 							 */
 							$visible = is_user_member_of_blog() || is_super_admin() ? true : false;
 							break;
-						case 'out' :
+						case 'out':
 							/**
 							 * Multisite compatibility.
 							 *
