@@ -295,14 +295,14 @@ class Nav_Menu_Roles {
 	public function edit_nav_menu_walker( $walker ) {
 		if( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ) {
 
-		    if ( self::is_wp_gte( '4.7' ) ) {
+			if ( self::is_wp_gte( '4.7' ) ) {
 				require_once( plugin_dir_path( __FILE__ ) . 'inc/class-walker-nav-menu-edit-roles-4.7.php' );
 			} else if ( self::is_wp_gte( '4.5' ) ) {
 				require_once( plugin_dir_path( __FILE__ ) . 'inc/class-walker-nav-menu-edit-roles-4.5.php' );
 			} else {
 				require_once( plugin_dir_path( __FILE__ ) . 'inc/class-walker-nav-menu-edit-roles.php' );
 			}
-        }
+		}
 		return 'Walker_Nav_Menu_Edit_Roles';
 	}
 
@@ -362,47 +362,47 @@ class Nav_Menu_Roles {
 		<input type="hidden" name="nav-menu-role-nonce" value="<?php echo wp_create_nonce( 'nav-menu-nonce-name' ); ?>" />
 
 		<fieldset class="field-nav_menu_role nav_menu_logged_in_out_field description-wide" style="margin: 5px 0;">
-		    <legend class="description"><?php esc_html_e( "Display Mode", 'nav-menu-roles' ); ?></legend>
+			<legend class="description"><?php esc_html_e( "Display Mode", 'nav-menu-roles' ); ?></legend>
 
-		    <input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
+			<input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
 
-		    <label for="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ) ;?>" style="<?php echo esc_attr( $float );?> width: 35%;">
-		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ) ;?>]" id="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ) ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
-		        <?php esc_html_e( 'Logged In Users', 'nav-menu-roles'); ?>   
-		    </label>
+			<label for="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ) ;?>" style="<?php echo esc_attr( $float );?> width: 35%;">
+				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ) ;?>]" id="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ) ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
+				<?php esc_html_e( 'Logged In Users', 'nav-menu-roles'); ?>   
+			</label>
 		
-		    <label for="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID ) ;?>" style="<?php echo esc_attr( $float );?> width: 35%;">
+			<label for="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID ) ;?>" style="<?php echo esc_attr( $float );?> width: 35%;">
 				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ) ;?>]" id="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID ) ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
 				<?php esc_html_e( 'Logged Out Users', 'nav-menu-roles'); ?>	       
 			</label>
 
 			<label for="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ) ;?>" style="<?php echo esc_attr( $float );?> width: 30%;">
-		        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ) ;?>]" id="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ) ;?>" <?php checked( '', $logged_in_out ); ?> value="" />
-		        <?php esc_html_e( 'Everyone', 'nav-menu-roles'); ?>
+				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ) ;?>]" id="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ) ;?>" <?php checked( '', $logged_in_out ); ?> value="" />
+				<?php esc_html_e( 'Everyone', 'nav-menu-roles'); ?>
 			</label>
 
 		</fieldset>
 
 		<fieldset class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0; <?php echo $hidden;?>">
-		    <legend class="description"><?php esc_html_e( "Restrict menu item to a minimum role", 'nav-menu-roles' ); ?></legend>
-		    <br />
+			<legend class="description"><?php esc_html_e( "Restrict menu item to a minimum role", 'nav-menu-roles' ); ?></legend>
+			<br />
 
-		    <?php
+			<?php
 
-		    $i = 1;
+			$i = 1;
 
-		    /* Loop through each of the available roles. */
-		    foreach ( $display_roles as $role => $name ) {
+			/* Loop through each of the available roles. */
+			foreach ( $display_roles as $role => $name ) {
 
-		        /* If the role has been selected, make sure it's checked. */
-		        $checked = checked( true, ( is_array( $checked_roles ) && in_array( $role, $checked_roles ) ), false );
-		        ?>
+				/* If the role has been selected, make sure it's checked. */
+				$checked = checked( true, ( is_array( $checked_roles ) && in_array( $role, $checked_roles ) ), false );
+				?>
 
-		        <label for="nav_menu_role-<?php echo $role; ?>-for-<?php echo esc_attr( $item->ID ) ;?>" style="display: block; margin: 2px 0;">
-		        	<input type="checkbox" name="nav-menu-role[<?php echo esc_attr( $item->ID ) ;?>][<?php echo $i; ?>]" id="nav_menu_role-<?php echo $role; ?>-for-<?php echo esc_attr( $item->ID ) ;?>" <?php echo $checked; ?> value="<?php echo esc_attr( $role ); ?>" />
-		        	<?php echo esc_html( $name ); ?>
+				<label for="nav_menu_role-<?php echo $role; ?>-for-<?php echo esc_attr( $item->ID ) ;?>" style="display: block; margin: 2px 0;">
+					<input type="checkbox" name="nav-menu-role[<?php echo esc_attr( $item->ID ) ;?>][<?php echo $i; ?>]" id="nav_menu_role-<?php echo $role; ?>-for-<?php echo esc_attr( $item->ID ) ;?>" <?php echo $checked; ?> value="<?php echo esc_attr( $role ); ?>" />
+					<?php echo esc_html( $name ); ?>
 					<?php $i++; ?>
-		        </label>
+				</label>
 
 		<?php } ?>
 
@@ -602,7 +602,7 @@ class Nav_Menu_Roles {
 
 		// 1.7.7 upgrade: changed the debug notice so the old transient is invalid.
 		if ( $db_version === false || version_compare( '1.7.7', $db_version, '<' ) ) {
-		    update_option( 'nav_menu_roles_db_version', self::VERSION );
+			update_option( 'nav_menu_roles_db_version', self::VERSION );
 		}
 	}
 
