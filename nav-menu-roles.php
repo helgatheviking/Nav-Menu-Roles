@@ -33,8 +33,10 @@ if ( ! function_exists( 'is_admin' ) ) {
 	exit();
 }
 
-
-if ( ! class_exists( "Nav_Menu_Roles" ) ) :
+// Quit if this exists already.
+if ( class_exists( 'Nav_Menu_Roles' ) ) {
+	return;
+}
 
 class Nav_Menu_Roles {
 
@@ -619,9 +621,6 @@ class Nav_Menu_Roles {
 	}
 
 } // end class
-
-endif; // class_exists check
-
 
 /**
  * Launch the whole plugin
