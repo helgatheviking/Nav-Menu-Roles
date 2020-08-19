@@ -127,7 +127,7 @@ class Nav_Menu_Roles {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		// Save the menu item meta.
-		add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update'), 10, 2 );
+		add_action( 'wp_update_nav_menu_item', array( $this, 'nav_update' ), 10, 2 );
 
 		// Add meta to menu item.
 		add_filter( 'wp_setup_nav_menu_item', array( $this, 'setup_nav_item' ) );
@@ -196,7 +196,7 @@ class Nav_Menu_Roles {
 		register_meta(
 			'post',
 			'_nav_menu_role',
-			array (
+			array(
 				'object_subtype'    => 'nav_menu_item',
 				'type'              => 'mixed',
 				'sanitize_callback' => array( $this, 'sanitize_meta' ),

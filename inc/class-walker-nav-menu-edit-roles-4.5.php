@@ -242,7 +242,10 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 																						?>
 					"><?php _e( 'Remove', 'nav-menu-roles' ); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="
 					<?php
-					echo esc_url( add_query_arg( array( 'edit-menu-item' => $item_id, 'cancel' => time() ), admin_url( 'nav-menus.php' ) ) );
+					echo esc_url( add_query_arg( array(
+'edit-menu-item' => $item_id,
+'cancel' => time()
+), admin_url( 'nav-menus.php' ) ) );
 					?>
 #menu-item-settings-<?php echo $item_id; ?>"><?php _e( 'Cancel', 'nav-menu-roles' ); ?></a>
 				</div>
