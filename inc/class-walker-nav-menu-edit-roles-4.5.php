@@ -128,7 +128,7 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 									),
 									'move-menu_item'
                                 );
-										?>
+							?>
                                         " class="item-move-up" aria-label="<?php esc_attr_e( 'Move up', 'nav-menu-roles' ); ?>">&#8593;</a>
 							|
 							<a href="
@@ -143,13 +143,13 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 									),
 									'move-menu_item'
                                 );
-										?>
+							?>
                                         " class="item-move-down" aria-label="<?php esc_attr_e( 'Move down', 'nav-menu-roles' ); ?>">&#8595;</a>
 						</span>
 						<a class="item-edit" id="edit-<?php echo $item_id; ?>" href="
                                                                  <?php
-							echo ( isset( $_GET['edit-menu-item'] ) && $item_id == $_GET['edit-menu-item'] ) ? admin_url( 'nav-menus.php' ) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, admin_url( 'nav-menus.php#menu-item-settings-' . $item_id ) ) );
-						?>
+																	echo ( isset( $_GET['edit-menu-item'] ) && $item_id == $_GET['edit-menu-item'] ) ? admin_url( 'nav-menus.php' ) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, admin_url( 'nav-menus.php#menu-item-settings-' . $item_id ) ) );
+																	?>
                         " aria-label="<?php esc_attr_e( 'Edit menu item', 'nav-menu-roles' ); ?>"><?php _e( 'Edit', 'nav-menu-roles' ); ?></a>
 					</span>
 				</div>
@@ -227,21 +227,21 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 					<?php endif; ?>
 					<a class="item-delete submitdelete deletion" id="delete-<?php echo $item_id; ?>" href="
                                                                                        <?php
-					echo wp_nonce_url(
-						add_query_arg(
-							array(
-								'action' => 'delete-menu-item',
-								'menu-item' => $item_id,
-							),
-							admin_url( 'nav-menus.php' )
-						),
-						'delete-menu_item_' . $item_id
-                    ); 
-                    ?>
+																						echo wp_nonce_url(
+																						add_query_arg(
+																						array(
+																						'action' => 'delete-menu-item',
+																						'menu-item' => $item_id,
+																						),
+																						admin_url( 'nav-menus.php' )
+																						),
+																						'delete-menu_item_' . $item_id
+																					   );
+																						?>
                     "><?php _e( 'Remove', 'nav-menu-roles' ); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="
-                    <?php 
-echo esc_url( add_query_arg( array( 'edit-menu-item' => $item_id, 'cancel' => time() ), admin_url( 'nav-menus.php' ) ) );
-?>
+                    <?php
+					echo esc_url( add_query_arg( array( 'edit-menu-item' => $item_id, 'cancel' => time() ), admin_url( 'nav-menus.php' ) ) );
+					?>
 #menu-item-settings-<?php echo $item_id; ?>"><?php _e( 'Cancel', 'nav-menu-roles' ); ?></a>
 				</div>
 

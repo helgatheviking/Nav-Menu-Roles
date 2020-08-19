@@ -6,41 +6,41 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig(
         {
-		pkg: grunt.file.readJSON( "package.json" ),
-		uglify: {
-			options: {
-				compress: {
-					global_defs: {
-						"EO_SCRIPT_DEBUG": false
+			pkg: grunt.file.readJSON( "package.json" ),
+			uglify: {
+				options: {
+					compress: {
+						global_defs: {
+							"EO_SCRIPT_DEBUG": false
+						},
+						dead_code: true
 					},
-					dead_code: true
+					banner: '/*! <%= pkg.name %> <%= pkg.version %> */\n'
 				},
-				banner: '/*! <%= pkg.name %> <%= pkg.version %> */\n'
+				build: {
+					files: [{
+						expand: true, // Enable dynamic expansion.
+						src: ['js/*.js', '!js/*.min.js'], // Actual pattern(s) to match.
+						ext: '.min.js', // Dest filepaths will have this extension.
+					}, ]
+				}
 			},
-			build: {
-				files: [{
-					expand: true, // Enable dynamic expansion.
-					src: ['js/*.js', '!js/*.min.js'], // Actual pattern(s) to match.
-					ext: '.min.js', // Dest filepaths will have this extension.
-				}, ]
-			}
-		},
-		jshint: {
-			options: {
-				reporter: require( "jshint-stylish" )
+			jshint: {
+				options: {
+					reporter: require( "jshint-stylish" )
+				},
+				all: ["js/*.js", "!js/*.min.js"]
 			},
-			all: ["js/*.js", "!js/*.min.js"]
-		},
 
-		// Remove the build directory files
-		clean: {
-			main: ["build/**"]
-		},
+			// Remove the build directory files
+			clean: {
+				main: ["build/**"]
+			},
 
-		// Copy the plugin into the build directory
-		copy: {
-			main: {
-				src: [
+			// Copy the plugin into the build directory
+			copy: {
+				main: {
+					src: [
 					"**",
 					"!node_modules/**",
 					"!build/**",
@@ -63,77 +63,77 @@ module.exports = function(grunt) {
 					"!**/*~",
 					'!.afdesign',
 					'!assets/**',
-				],
-				dest: "build/"
-			}
-		},
-
-		// Generate git readme from readme.txt
-		wp_readme_to_markdown: {
-			convert: {
-				files: {
-					"readme.md": "readme.txt"
+					],
+					dest: "build/"
 				}
-			}
-		},
+			},
 
-		// # Internationalization
-
-		// Add text domain
-		addtextdomain: {
-			textdomain: "<%= pkg.name %>",
-			target: {
-				files: {
-					src: ["*.php", "**/*.php", "!node_modules/**", "!build/**"]
+			// Generate git readme from readme.txt
+			wp_readme_to_markdown: {
+				convert: {
+					files: {
+						"readme.md": "readme.txt"
+					}
 				}
-			}
-		},
+			},
 
-		// Generate .pot file
-		makepot: {
-			target: {
-				options: {
-					domainPath: "/languages", // Where to save the POT file.
-					exclude: ["build/.*", "svn/.*"], // List of files or directories to ignore.
-					mainFile: "<%= pkg.name %>.php", // Main project file.
-					potFilename: "<%= pkg.name %>.pot", // Name of the POT file.
-					type: "wp-plugin" // Type of project (wp-plugin or wp-theme).
+			// # Internationalization
+
+			// Add text domain
+			addtextdomain: {
+				textdomain: "<%= pkg.name %>",
+				target: {
+					files: {
+						src: ["*.php", "**/*.php", "!node_modules/**", "!build/**"]
+					}
 				}
-			}
-		},
+			},
 
-		// bump version numbers
-		replace: {
-			version: {
-				src: [
-				"readme.txt",
-				"readme.md",
-				"<%= pkg.name %>.php"
-				],
-				overwrite: true,
-				replacements: [
+			// Generate .pot file
+			makepot: {
+				target: {
+					options: {
+						domainPath: "/languages", // Where to save the POT file.
+						exclude: ["build/.*", "svn/.*"], // List of files or directories to ignore.
+						mainFile: "<%= pkg.name %>.php", // Main project file.
+						potFilename: "<%= pkg.name %>.pot", // Name of the POT file.
+						type: "wp-plugin" // Type of project (wp-plugin or wp-theme).
+					}
+				}
+			},
+
+			// bump version numbers
+			replace: {
+				version: {
+					src: [
+					"readme.txt",
+					"readme.md",
+					"<%= pkg.name %>.php"
+					],
+					overwrite: true,
+					replacements: [
 					{
 						from: /\*\*Stable tag:\*\* .*/,
 						to: "**Stable tag:** <%= pkg.version %>  "
-				},
+					},
 					{
 						from: /Stable tag: .*/,
 						to: "Stable tag: <%= pkg.version %>"
-				},
+					},
 					{
 						from: /Version:.*/,
 						to: "Version: <%= pkg.version %>"
-				},
+					},
 					{
 						from: /public \$version .*/,
 						to: "public $version = '<%= pkg.version %>';"
-				},
+					},
 					{
 						from: /CONST VERSION = \'.*/,
 						to: "CONST VERSION = '<%= pkg.version %>';"
-				}]
-			}
-		},
+					}]
+				}
+			},
 
         }
     );

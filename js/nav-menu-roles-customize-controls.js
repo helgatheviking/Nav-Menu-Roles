@@ -4,14 +4,14 @@
 	api.control.bind(
         'add',
         ( control ) => {
-		if ( control.extended( api.Menus.MenuItemControl ) ) {
-			control.deferred.embedded.done(
+			if ( control.extended( api.Menus.MenuItemControl ) ) {
+				control.deferred.embedded.done(
                 () => {
-				extendControl( control );
-                } 
-            );
-		}
-        } 
+					extendControl( control );
+					}
+				);
+			}
+        }
     );
 
 	/**
@@ -29,28 +29,28 @@
 		// Update the UI state when the setting changes programmatically.
 		control.setting.bind(
             () => {
-			updateControlFields( control );
-            } 
+				updateControlFields( control );
+            }
         );
 
 		// Update the setting when the inputs are modified.
 		control.authFieldset.find( 'input' ).on(
             'click',
             function () {
-			setSettingRoles( control.setting, this.value );
-            } 
+				setSettingRoles( control.setting, this.value );
+            }
         );
 		control.rolesFieldset.find( 'input' ).on(
             'click',
             function () {
-			const checkedRoles = [];
-			control.rolesFieldset.find( ':checked' ).each(
+				const checkedRoles = [];
+				control.rolesFieldset.find( ':checked' ).each(
                 function () {
-                checkedRoles.push( this.value );
-                } 
-            );
-			setSettingRoles( control.setting, checkedRoles.length === 0 ? 'in' : checkedRoles );
-            } 
+					checkedRoles.push( this.value );
+                }
+				);
+				setSettingRoles( control.setting, checkedRoles.length === 0 ? 'in' : checkedRoles );
+            }
         );
 	}
 
@@ -89,8 +89,8 @@
 
 		control.rolesFieldset.find( 'input[type=checkbox]' ).each(
             function () {
-            this.checked = checkedRoles.includes( this.value );
-            } 
+				this.checked = checkedRoles.includes( this.value );
+            }
         );
 	}
 })( wp.customize );
