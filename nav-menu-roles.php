@@ -172,7 +172,7 @@ class Nav_Menu_Roles {
 			// Register the custom importer we've created.
 			$roles_import = new Nav_Menu_Roles_Import();
 
-			register_importer( 'nav_menu_roles', __( 'Nav Menu Roles', 'nav-menu-roles' ), sprintf( __( 'Import %snav menu roles%s and other menu item meta skipped by the default importer', 'nav-menu-roles' ), '<strong>', '</strong>' ), array( $roles_import, 'dispatch' ) );
+			register_importer( 'nav_menu_roles', __( 'Nav Menu Roles', 'nav-menu-roles' ), __( 'Import <strong>nav menu roles</strong> and other menu item meta skipped by the default importer', 'nav-menu-roles' ), array( $roles_import, 'dispatch' ) );
 
 		}
 
