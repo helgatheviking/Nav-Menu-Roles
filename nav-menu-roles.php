@@ -439,12 +439,12 @@ class Nav_Menu_Roles {
 			return;
 		}
 
-		if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  ) ) {
+		if ( isset( $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ]  ) ) {
 
-			if ( 'in' === $_POST['nav-menu-logged-in-out'][$menu_item_db_id] && ! empty ( $_POST['nav-menu-role'][$menu_item_db_id] ) ) {
-				$meta = $_POST['nav-menu-role'][$menu_item_db_id];
+			if ( 'in' === $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] && ! empty ( $_POST['nav-menu-role'][ $menu_item_db_id ] ) ) {
+				$meta = $_POST['nav-menu-role'][ $menu_item_db_id ];
 			} else {
-				$meta = $_POST['nav-menu-logged-in-out'][$menu_item_db_id];
+				$meta = $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ];
 			}
 
 			update_post_meta( $menu_item_db_id, '_nav_menu_role', $meta ); // Sanitization handled by $this->sanitize_meta().
@@ -582,7 +582,7 @@ class Nav_Menu_Roles {
 					if ( isset( $item->ID ) ) {
 						$hide_children_of[] = $item->ID; // Store ID of item to hide it's children.
 					}
-					unset( $items[$key] ) ;
+					unset( $items[ $key ] ) ;
 				}
 
 			}
