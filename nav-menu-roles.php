@@ -50,7 +50,7 @@ class Nav_Menu_Roles {
 	* @constant string donate url
 	* @since 1.9.1
 	*/
-	CONST DONATE_URL = "https://www.paypal.com/fundraiser/charity/1451316";
+	CONST DONATE_URL = 'https://www.paypal.com/fundraiser/charity/1451316';
 
 	/**
 	* @constant string version number
@@ -364,7 +364,7 @@ class Nav_Menu_Roles {
 		<input type="hidden" name="nav-menu-role-nonce" value="<?php echo wp_create_nonce( 'nav-menu-nonce-name' ); ?>" />
 
 		<fieldset class="field-nav_menu_role nav_menu_logged_in_out_field description-wide" style="margin: 5px 0;">
-			<legend class="description"><?php esc_html_e( "Display Mode", 'nav-menu-roles' ); ?></legend>
+			<legend class="description"><?php esc_html_e( 'Display Mode', 'nav-menu-roles' ); ?></legend>
 
 			<input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
 
@@ -386,7 +386,7 @@ class Nav_Menu_Roles {
 		</fieldset>
 
 		<fieldset class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0; <?php echo $hidden; ?>">
-			<legend class="description"><?php esc_html_e( "Restrict menu item to a minimum role", 'nav-menu-roles' ); ?></legend>
+			<legend class="description"><?php esc_html_e( 'Restrict menu item to a minimum role', 'nav-menu-roles' ); ?></legend>
 			<br />
 
 			<?php
