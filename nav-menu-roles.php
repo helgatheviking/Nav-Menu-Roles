@@ -116,7 +116,7 @@ class Nav_Menu_Roles {
 		add_filter( 'plugin_row_meta', array( $this, 'add_action_links' ), 10, 2 );
 
 		// Maybe switch the admin walker.
-		if( ! self::is_wp_gte( '5.4' ) ) {
+		if ( ! self::is_wp_gte( '5.4' ) ) {
 			add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
 		}
 
@@ -281,7 +281,7 @@ class Nav_Menu_Roles {
      * @param string $plugin_file
      */
 	public function add_action_links( $plugin_meta, $plugin_file ) {
-		if( $plugin_file == plugin_basename(__FILE__) ) {
+		if ( $plugin_file == plugin_basename(__FILE__) ) {
 			$plugin_meta[] = sprintf( '<a class="dashicons-before dashicons-welcome-learn-more" href="https://wordpress.org/plugins/nav-menu-roles/faq/#conflict">%s</a>', __( 'FAQ', 'nav-menu-roles' ) );
 			$plugin_meta[] = '<a class="dashicons-before dashicons-admin-generic" href="' . self::DONATE_URL . '" target="_blank">' . __( 'Donate', 'nav-menu-roles' ) . '</a>';
 		}
@@ -295,7 +295,7 @@ class Nav_Menu_Roles {
      * @since 1.0
      */
 	public function edit_nav_menu_walker( $walker ) {
-		if( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ) {
+		if ( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ) {
 
 			if ( self::is_wp_gte( '4.7' ) ) {
 				require_once( plugin_dir_path( __FILE__ ) . 'inc/class-walker-nav-menu-edit-roles-4.7.php' );
@@ -336,7 +336,7 @@ class Nav_Menu_Roles {
 		* permissions to the menu from accidentally removing all restrictions from a menu item to
 		* which they do not have access.
 		*/
-		if( ! $display_roles ) return;
+		if ( ! $display_roles ) return;
 
 		/* Get the roles saved for the post. */
 		$roles = get_post_meta( $item->ID, '_nav_menu_role', true );
@@ -345,7 +345,7 @@ class Nav_Menu_Roles {
 		$logged_in_out = '';
 
 		// Specific roles are saved as an array, so "in" or an array equals "in" is checked.
-		if( is_array( $roles ) || $roles == 'in' ) {
+		if ( is_array( $roles ) || $roles == 'in' ) {
 			$logged_in_out = 'in';
 		} else if ( $roles == 'out' ) {
 			$logged_in_out = 'out';
@@ -462,7 +462,7 @@ class Nav_Menu_Roles {
      */
 	public function setup_nav_item( $menu_item ) {
 
-		if( is_object( $menu_item ) && isset( $menu_item->ID ) ) {
+		if ( is_object( $menu_item ) && isset( $menu_item->ID ) ) {
 
 			$roles = get_post_meta( $menu_item->ID, '_nav_menu_role', true );
 
@@ -472,7 +472,7 @@ class Nav_Menu_Roles {
 				// Add the NMR roles as CSS info.
 				$new_classes = array();
 
-				switch( $roles ) {
+				switch ( $roles ) {
 					case 'in' :
 						$new_classes[] = 'nmr-logged-in';
 						break;
@@ -489,7 +489,7 @@ class Nav_Menu_Roles {
 				}
 
 				// Only apply classes on front-end.
-				if( ! is_admin() ) {
+				if ( ! is_admin() ) {
 					$menu_item->classes = array_unique( array_merge( (array) $menu_item->classes, (array) $new_classes ) );
 				}
 			}
@@ -513,7 +513,7 @@ class Nav_Menu_Roles {
 
 		$hide_children_of = array();
 
-		if( ! empty( $items ) ) {
+		if ( ! empty( $items ) ) {
 
 			// Iterate over the items to search and destroy.
 			foreach ( $items as $key => $item ) {
@@ -521,15 +521,15 @@ class Nav_Menu_Roles {
 				$visible = true;
 
 				// Hide any item that is the child of a hidden item.
-				if( isset( $item->menu_item_parent ) && in_array( $item->menu_item_parent, $hide_children_of ) ) {
+				if ( isset( $item->menu_item_parent ) && in_array( $item->menu_item_parent, $hide_children_of ) ) {
 					$visible = false;
 				}
 
 				// Check any item that has NMR roles set.
-				if( $visible && isset( $item->roles ) ) {
+				if ( $visible && isset( $item->roles ) ) {
 
 					// Check all logged in, all logged out, or role.
-					switch( $item->roles ) {
+					switch ( $item->roles ) {
 						case 'in' :
 							/**
 							 * Multisite compatibility.
@@ -579,7 +579,7 @@ class Nav_Menu_Roles {
 
 				// Unset non-visible item.
 				if ( ! $visible ) {
-					if( isset( $item->ID ) ) {
+					if ( isset( $item->ID ) ) {
 						$hide_children_of[] = $item->ID; // Store ID of item to hide it's children.
 					}
 					unset( $items[$key] ) ;
