@@ -229,11 +229,8 @@ class Nav_Menu_Roles {
 			$allowed_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
 	
 			// Only save allowed roles.
-			foreach( $meta_value as $role ) {
-				if ( array_key_exists ( $role, $allowed_roles ) ) {
-					$clean[] = $role;
-				}
-			}
+			$clean = array_intersect( $meta_value, array_keys( $allowed_roles ) );
+
 		} elseif ( in_array( $meta_value, array( 'in', 'out' ) ) ) {
 			$clean = $meta_value;
 		}
