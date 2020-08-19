@@ -336,7 +336,8 @@ class Nav_Menu_Roles {
 		* permissions to the menu from accidentally removing all restrictions from a menu item to
 		* which they do not have access.
 		*/
-		if ( ! $display_roles ) { return;
+		if ( ! $display_roles ) {
+			return;
 		}
 
 		/* Get the roles saved for the post. */
