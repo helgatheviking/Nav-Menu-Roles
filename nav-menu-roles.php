@@ -564,9 +564,8 @@ class Nav_Menu_Roles {
 							}
 
 							break;
-					}
-
-				}
+					}				
+}
 
 				/*
 				 * Filter: nav_menu_roles_item_visibility
@@ -583,11 +582,9 @@ class Nav_Menu_Roles {
 						$hide_children_of[] = $item->ID; // Store ID of item to hide it's children.
 					}
 					unset( $items[ $key ] );
-				}
-
-			}
-
-		}
+				}			
+}		
+}
 
 		return $items;
 	}
