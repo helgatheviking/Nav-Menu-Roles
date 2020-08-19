@@ -4,6 +4,7 @@ temp/
 build/
 svn/
 wp-assets/
+vendor/
 deploy.sh
 sftp-config.json
 *.sublime-workspace
@@ -11,3 +12,4 @@ sftp-config.json
 *.transifexrc
 *.afdesign
 package-lock.json
+composer.lock
