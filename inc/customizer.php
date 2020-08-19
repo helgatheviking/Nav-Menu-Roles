@@ -4,7 +4,7 @@
  *
  * @since 2.0.0
  * @link  https://wordpress.stackexchange.com/questions/372493/add-settings-to-menu-items-in-the-customizer
- * 
+ *
  */
 namespace Customize_Nav_Menu_Roles;
 

@@ -119,11 +119,11 @@ module.exports = function(grunt) {
 						from: /Stable tag: .*/,
 						to: "Stable tag: <%= pkg.version %>"
 				},
-					{ 
+					{
 						from: /Version:.*/,
 						to: "Version: <%= pkg.version %>"
 				},
-					{ 
+					{
 						from: /public \$version .*/,
 						to: "public $version = '<%= pkg.version %>';"
 				},

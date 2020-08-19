@@ -180,7 +180,7 @@ class Nav_Menu_Roles {
 
 	/**
      * Make Plugin Translation-ready
-     * 
+     *
      * @since 1.0
      */
 	public function load_text_domain() {
@@ -189,7 +189,7 @@ class Nav_Menu_Roles {
 
 	/**
 	 * Register the meta keys for nav menus.
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function register_meta() {
@@ -208,19 +208,19 @@ class Nav_Menu_Roles {
 	 * Sanitize the meta.
 	 *
 	 * @since 2.0.0
-	 * 
+	 *
 	 * @param  mixed  $meta_value The meta value.
 	 * @return mixed              The meta value.
-	 * 
+	 *
 	 */
 	public function sanitize_meta( $meta_value ) {
 		global $wp_roles;
 
 		$clean = '';
-		
+
 		if ( is_array( $meta_value ) ) {
 
-			$clean = array();	
+			$clean = array();
 
 			/**
 			* Pass the menu item to the filter function.
@@ -229,7 +229,7 @@ class Nav_Menu_Roles {
 			* construction.
 			*/
 			$allowed_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
-	
+
 			// Only save allowed roles.
 			$clean = array_intersect( $meta_value, array_keys( $allowed_roles ) );
 
@@ -242,7 +242,7 @@ class Nav_Menu_Roles {
 
 	/**
      * Display a Notice if plugin conflicts with another
-     * 
+     *
      * @since 1.5
      * @deprecated will removed in 2.0
      */
@@ -253,7 +253,7 @@ class Nav_Menu_Roles {
 
 	/**
      * Allow the notice to be dismissable
-     * 
+     *
      * @since 1.6
      * @deprecated will removed in 2.0
      */
@@ -263,7 +263,7 @@ class Nav_Menu_Roles {
 
 	/**
      * Delete the transient when a plugin is activated or deactivated
-     * 
+     *
      * @since 1.5
      * @deprecated will removed in 2.0
      */
@@ -291,7 +291,7 @@ class Nav_Menu_Roles {
 
 	/**
      * Override the Admin Menu Walker
-     * 
+     *
      * @since 1.0
      */
 	public function edit_nav_menu_walker( $walker ) {
@@ -416,7 +416,7 @@ class Nav_Menu_Roles {
 
 	/**
      * Load the scripts on the menu page.
-     * 
+     *
      * @since 1.4
      */
 	public function enqueue_scripts( $hook ) {
@@ -428,9 +428,9 @@ class Nav_Menu_Roles {
 
 	/**
      * Save the roles as menu item meta
-     * 
+     *
      * @since 1.0
-     * @return string	
+     * @return string
      */
 	public function nav_update( $menu_id, $menu_item_db_id ) {
 
@@ -438,7 +438,7 @@ class Nav_Menu_Roles {
 		if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['nav-menu-role-nonce'], 'nav-menu-nonce-name' ) ) {
 			return;
 		}
-		
+
 		if ( isset( $_POST['nav-menu-logged-in-out'][$menu_item_db_id]  ) ) {
 
 			if ( 'in' === $_POST['nav-menu-logged-in-out'][$menu_item_db_id] && ! empty ( $_POST['nav-menu-role'][$menu_item_db_id] ) ) {
@@ -448,7 +448,7 @@ class Nav_Menu_Roles {
 			}
 
 			update_post_meta( $menu_item_db_id, '_nav_menu_role', $meta ); // Sanitization handled by $this->sanitize_meta().
-			
+
 		} else {
 			delete_post_meta( $menu_item_db_id, '_nav_menu_role' );
 		}
@@ -457,7 +457,7 @@ class Nav_Menu_Roles {
 	/**
      * Adds value of new field to $item object
      * is be passed to Walker_Nav_Menu_Edit_Custom
-     * 
+     *
      * @since 1.0
      */
 	public function setup_nav_item( $menu_item ) {
@@ -574,7 +574,7 @@ class Nav_Menu_Roles {
 				 *
 				 * @param bool $visible
 				 * @param object $item
-				 */ 
+				 */
 				$visible = apply_filters( 'nav_menu_roles_item_visibility', $visible, $item );
 
 				// Unset non-visible item.

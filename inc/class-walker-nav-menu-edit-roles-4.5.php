@@ -196,10 +196,10 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 					</label>
 				</p>
 
-				<?php 
+				<?php
 				// This is the added section
 				do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
-				// end added section 
+				// end added section
 				?>
 
 				<p class="field-move hide-if-no-js description description-wide">

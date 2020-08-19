@@ -1,6 +1,6 @@
 ;(function($) {
 
-	$( '.nav_menu_logged_in_out_field' ).each(function(i) { 
+	$( '.nav_menu_logged_in_out_field' ).each(function(i) {
 
 		var $field = $(this);
 
@@ -22,6 +22,5 @@
 			$(this).parentsUntil( '.nav_menu_logged_in_out' ).next( '.nav_menu_role_field' ).slideUp();
 		}
 	});
-
 
 })(jQuery);
