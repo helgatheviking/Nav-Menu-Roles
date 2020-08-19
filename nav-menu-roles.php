@@ -337,7 +337,7 @@ class Nav_Menu_Roles {
 		* which they do not have access.
 		*/
 		if ( ! $display_roles ) { return;
-        }
+		}
 
 		/* Get the roles saved for the post. */
 		$roles = get_post_meta( $item->ID, '_nav_menu_role', true );

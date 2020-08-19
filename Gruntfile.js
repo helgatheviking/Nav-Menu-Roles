@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
 	// Project configuration.
 	grunt.initConfig(
-        {
+		{
 			pkg: grunt.file.readJSON( "package.json" ),
 			uglify: {
 				options: {
@@ -135,8 +135,8 @@ module.exports = function(grunt) {
 				}
 			},
 
-        }
-    );
+		}
+	);
 
 	// makepot and addtextdomain tasks
 	grunt.loadNpmTasks( "grunt-wp-i18n" );

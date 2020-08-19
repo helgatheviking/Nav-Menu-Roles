@@ -2,17 +2,17 @@
 
 	// Augment each menu item control once it is added and embedded.
 	api.control.bind(
-        'add',
-        ( control ) => {
+		'add',
+		( control ) => {
 			if ( control.extended( api.Menus.MenuItemControl ) ) {
 				control.deferred.embedded.done(
-                () => {
+				() => {
 					extendControl( control );
 					}
 				);
 			}
-        }
-    );
+		}
+	);
 
 	/**
 	 * Extend the control with roles information.
@@ -28,30 +28,30 @@
 
 		// Update the UI state when the setting changes programmatically.
 		control.setting.bind(
-            () => {
+			() => {
 				updateControlFields( control );
-            }
-        );
+			}
+		);
 
 		// Update the setting when the inputs are modified.
 		control.authFieldset.find( 'input' ).on(
-            'click',
-            function () {
+			'click',
+			function () {
 				setSettingRoles( control.setting, this.value );
-            }
-        );
+			}
+		);
 		control.rolesFieldset.find( 'input' ).on(
-            'click',
-            function () {
+			'click',
+			function () {
 				const checkedRoles = [];
 				control.rolesFieldset.find( ':checked' ).each(
-                function () {
+				function () {
 					checkedRoles.push( this.value );
-                }
+				}
 				);
 				setSettingRoles( control.setting, checkedRoles.length === 0 ? 'in' : checkedRoles );
-            }
-        );
+			}
+		);
 	}
 
 	/**
@@ -88,9 +88,9 @@
 		authRadio.prop( 'checked', true );
 
 		control.rolesFieldset.find( 'input[type=checkbox]' ).each(
-            function () {
+			function () {
 				this.checked = checkedRoles.includes( this.value );
-            }
-        );
+			}
+		);
 	}
 })( wp.customize );
