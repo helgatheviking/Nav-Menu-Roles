@@ -99,6 +99,8 @@ class Nav_Menu_Roles {
 	*/
 	public function __construct() {
 
+		require_once( 'inc/customizer.php' );
+
 		// Admin functions.
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
