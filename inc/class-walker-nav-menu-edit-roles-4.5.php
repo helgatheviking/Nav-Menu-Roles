@@ -232,8 +232,8 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 																						echo wp_nonce_url(
                                                                                             add_query_arg(
                                                                                                 array(
-                                                                                                'action' => 'delete-menu-item',
-                                                                                                'menu-item' => $item_id,
+																									'action' => 'delete-menu-item',
+																									'menu-item' => $item_id,
                                                                                                 ),
                                                                                                 admin_url( 'nav-menus.php' )
                                                                                             ),
