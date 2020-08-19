@@ -83,7 +83,7 @@
 
 		control.rolesFieldset.toggle( 'in' === radioValue );
 
-		const authRadio = control.authFieldset.find( `input[type=radio][value="${ radioValue }"]` );
+		const authRadio = control.authFieldset.find( `input[type = radio][value = "${ radioValue }"]` );
 
 		authRadio.prop( 'checked', true );
 
