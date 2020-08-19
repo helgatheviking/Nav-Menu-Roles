@@ -49,27 +49,27 @@ function customizer_custom_fields() {
 
 	?>
 	<fieldset class="nav_menu_role_authentication">
-		<legend class="customize-control-title"><?php _e( 'Display Mode', 'nav-menu-roles' ); ?></legend>
+		<legend class="customize-control-title"><?php esc_html_e( 'Display Mode', 'nav-menu-roles' ); ?></legend>
 
 		<label for="edit-menu-item-role_logged_in-{{ data.menu_item_id }}">
 			<input type="radio" id="edit-menu-item-role_logged_in-{{ data.menu_item_id }}" value="in" name="menu-item-role-{{ data.menu_item_id }}" />
-			<?php _e( 'Logged In Users', 'nav-menu-roles' ); ?><br/>
+			<?php esc_html_e( 'Logged In Users', 'nav-menu-roles' ); ?><br/>
 		</label>
 		<label for="edit-menu-item-role_logged_out-{{ data.menu_item_id }}">
 			<input type="radio" id="edit-menu-item-role_logged_out-{{ data.menu_item_id }}" value="out" name="menu-item-role-{{ data.menu_item_id }}" />
-			<?php _e( 'Logged Out Users', 'nav-menu-roles' ); ?><br/>
+			<?php esc_html_e( 'Logged Out Users', 'nav-menu-roles' ); ?><br/>
 		</label>
 		<label for="edit-menu-item-role_everyone-{{ data.menu_item_id }}">
 			<input type="radio" id="edit-menu-item-role_everyone-{{ data.menu_item_id }}" value="" name="menu-item-role-{{ data.menu_item_id }}" />
-			<?php _e( 'Everyone', 'nav-menu-roles' ); ?><br/>
+			<?php esc_html_e( 'Everyone', 'nav-menu-roles' ); ?><br/>
 		</label>
 	</fieldset>
 
 	<fieldset class="nav_menu_roles">
-		<legend class="customize-control-title"><?php _e( 'Restrict menu item to minimum role', 'nav-menu-roles' ); ?></legend>
+		<legend class="customize-control-title"><?php esc_html_e( 'Restrict menu item to minimum role', 'nav-menu-roles' ); ?></legend>
 
 		<?php foreach ( $display_roles as $role => $name ) : ?>
-			<label for="edit-menu-item-role_<?php echo $role; ?>-{{ data.menu_item_id }}">
+			<label for="edit-menu-item-role_<?php echo esc_attr( $role ); ?>-{{ data.menu_item_id }}">
 				<input type="checkbox" id="edit-menu-item-role_<?php echo esc_attr( $role ); ?>-{{ data.menu_item_id }}" class="edit-menu-item-role" value="<?php echo esc_attr( $role ); ?>" />
 				<?php echo esc_html( $name ); ?><br/>
 			</label>

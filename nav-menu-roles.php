@@ -81,7 +81,7 @@ class Nav_Menu_Roles {
 	 * @since 1.5
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cloning this object is forbidden.', 'nav-menu-roles' ), '1.5' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cloning this object is forbidden.', 'nav-menu-roles' ), '1.5' );
 	}
 
 	/**
@@ -90,7 +90,7 @@ class Nav_Menu_Roles {
 	 * @since 1.5
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'nav-menu-roles' ), '1.5' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Unserializing instances of this class is forbidden.', 'nav-menu-roles' ), '1.5' );
 	}
 
 	/**
@@ -363,7 +363,7 @@ class Nav_Menu_Roles {
 
 		?>
 
-		<input type="hidden" name="nav-menu-role-nonce" value="<?php echo wp_create_nonce( 'nav-menu-nonce-name' ); ?>" />
+		<input type="hidden" name="nav-menu-role-nonce" value="<?php echo esc_attr( wp_create_nonce( 'nav-menu-nonce-name' ) ); ?>" />
 
 		<fieldset class="field-nav_menu_role nav_menu_logged_in_out_field description-wide" style="margin: 5px 0;">
 			<legend class="description"><?php esc_html_e( 'Display Mode', 'nav-menu-roles' ); ?></legend>
@@ -387,7 +387,7 @@ class Nav_Menu_Roles {
 
 		</fieldset>
 
-		<fieldset class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0; <?php echo $hidden; ?>">
+		<fieldset class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0; <?php echo esc_attr( $hidden ); ?>">
 			<legend class="description"><?php esc_html_e( 'Restrict menu item to a minimum role', 'nav-menu-roles' ); ?></legend>
 			<br />
 
@@ -402,8 +402,8 @@ class Nav_Menu_Roles {
 				$checked = checked( true, ( is_array( $checked_roles ) && in_array( $role, $checked_roles ) ), false );
 				?>
 
-				<label for="nav_menu_role-<?php echo $role; ?>-for-<?php echo esc_attr( $item->ID ); ?>" style="display: block; margin: 2px 0;">
-					<input type="checkbox" name="nav-menu-role[<?php echo esc_attr( $item->ID ); ?>][<?php echo $i; ?>]" id="nav_menu_role-<?php echo $role; ?>-for-<?php echo esc_attr( $item->ID ); ?>" <?php echo $checked; ?> value="<?php echo esc_attr( $role ); ?>" />
+				<label for="nav_menu_role-<?php echo esc_attr( $role ); ?>-for-<?php echo esc_attr( $item->ID ); ?>" style="display: block; margin: 2px 0;">
+					<input type="checkbox" name="nav-menu-role[<?php echo esc_attr( $item->ID ); ?>][<?php echo esc_attr( $i ); ?>]" id="nav_menu_role-<?php echo esc_attr( $role ); ?>-for-<?php echo esc_attr( $item->ID ); ?>" <?php echo esc_attr( $checked ); ?> value="<?php echo esc_attr( $role ); ?>" />
 					<?php echo esc_html( $name ); ?>
 					<?php $i++; ?>
 				</label>

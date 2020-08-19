@@ -10,6 +10,8 @@
  * @since 1.0
  * @since WordPress 4.5.0
  * @uses Walker_Nav_Menu_Edit
+ *
+ * @phpcs:disable WordPress.Security.EscapeOutput
  */
 
 class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {

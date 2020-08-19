@@ -104,8 +104,8 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		 */
 		function import_start( $file ) {
 			if ( ! is_file( $file ) ) {
-				echo '<p><strong>' . __( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
-				echo __( 'The file does not exist, please try again.', 'nav-menu-roles' ) . '</p>';
+				echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
+				echo esc_html__( 'The file does not exist, please try again.', 'nav-menu-roles' ) . '</p>';
 				$this->footer();
 				die();
 			}
@@ -113,7 +113,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 			$import_data = $this->parse( $file );
 
 			if ( is_wp_error( $import_data ) ) {
-				echo '<p><strong>' . __( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
+				echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
 				echo esc_html( $import_data->get_error_message() ) . '</p>';
 				$this->footer();
 				die();
@@ -144,7 +144,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 			wp_defer_term_counting( false );
 			wp_defer_comment_counting( false );
 
-			echo '<p>' . __( 'All done.', 'nav-menu-roles' ) . ' <a href="' . admin_url() . '">' . __( 'Have fun!', 'nav-menu-roles' ) . '</a>' . '</p>';
+			echo '<p>' . esc_html__( 'All done.', 'nav-menu-roles' ) . ' <a href="' . esc_url( admin_url() ) . '">' . esc_html__( 'Have fun!', 'nav-menu-roles' ) . '</a>' . '</p>';
 
 			do_action( 'import_end' );
 		}
@@ -159,12 +159,13 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 			$file = wp_import_handle_upload();
 
 			if ( isset( $file['error'] ) ) {
-				echo '<p><strong>' . __( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
+				echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
 				echo esc_html( $file['error'] ) . '</p>';
 				return false;
 			} elseif ( ! file_exists( $file['file'] ) ) {
-				echo '<p><strong>' . __( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
-				printf( __( 'The export file could not be found at <code>%s</code>. It is likely that this was caused by a permissions problem.', 'nav-menu-roles' ), esc_html( $file['file'] ) );
+				echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( esc_html__( __( 'The export file could not be found at %s. It is likely that this was caused by a permissions problem.', 'nav-menu-roles' ) ), '<code>' . esc_html( $file['file'] ) . '</code>' );
 				echo '</p>';
 				return false;
 			}
@@ -172,7 +173,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 			$this->id    = (int) $file['id'];
 			$import_data = $this->parse( $file['file'] );
 			if ( is_wp_error( $import_data ) ) {
-				echo '<p><strong>' . __( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
+				echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
 				echo esc_html( $import_data->get_error_message() ) . '</p>';
 				return false;
 			}
@@ -180,7 +181,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 			$this->version = $import_data['version'];
 			if ( $this->version > $this->max_wxr_version ) {
 				echo '<div class="error"><p><strong>';
-				printf( __( 'This WXR file (version %s) may not be supported by this version of the importer. Please consider updating.', 'nav-menu-roles' ), esc_html( $import_data['version'] ) );
+				printf( esc_html__( 'This WXR file (version %s) may not be supported by this version of the importer. Please consider updating.', 'nav-menu-roles' ), esc_html( $import_data['version'] ) );
 				echo '</strong></p></div>';
 			}
 
@@ -248,14 +249,14 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		// Display import page title
 		function header() {
 			echo '<div class="wrap">';
-			echo '<h2>' . __( 'Import Nav Menu Roles', 'nav-menu-roles' ) . '</h2>';
+			echo '<h2>' . esc_html__( 'Import Nav Menu Roles', 'nav-menu-roles' ) . '</h2>';
 
 			$updates  = get_plugin_updates();
 			$basename = plugin_basename( __FILE__ );
 			if ( isset( $updates[ $basename ] ) ) {
 				$update = $updates[ $basename ];
 				echo '<div class="error"><p><strong>';
-				printf( __( 'A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files.', 'nav-menu-roles' ), $update->update->new_version );
+				printf( esc_html__( 'A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files.', 'nav-menu-roles' ), esc_html( $update->update->new_version ) );
 				echo '</strong></p></div>';
 			}
 		}
@@ -270,8 +271,8 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		 */
 		function greet() {
 			echo '<div class="narrow">';
-			echo '<p>' . __( 'Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll import the Nav Menu Roles and any other missing post meta for the Nav Menu items.', 'nav-menu-roles' ) . '</p>';
-			echo '<p>' . __( 'Choose a WXR (.xml) file to upload, then click Upload file and import.', 'nav-menu-roles' ) . '</p>';
+			echo '<p>' . esc_html__( 'Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll import the Nav Menu Roles and any other missing post meta for the Nav Menu items.', 'nav-menu-roles' ) . '</p>';
+			echo '<p>' . esc_html__( 'Choose a WXR (.xml) file to upload, then click Upload file and import.', 'nav-menu-roles' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=nav_menu_roles&amp;step=1' );
 			echo '</div>';
 		}
