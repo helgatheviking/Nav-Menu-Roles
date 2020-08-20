@@ -4,13 +4,13 @@
 	api.control.bind(
 		'add',
 		( control ) => {
-		if ( control.extended( api.Menus.MenuItemControl ) ) {
-			control.deferred.embedded.done(
+			if ( control.extended( api.Menus.MenuItemControl ) ) {
+				control.deferred.embedded.done(
 				() => {
-				extendControl( control );
-				}
-			);
-		}
+					extendControl( control );
+					}
+				);
+			}
 		}
 	);
 
@@ -29,7 +29,7 @@
 		// Update the UI state when the setting changes programmatically.
 		control.setting.bind(
 			() => {
-			updateControlFields( control );
+				updateControlFields( control );
 			}
 		);
 
