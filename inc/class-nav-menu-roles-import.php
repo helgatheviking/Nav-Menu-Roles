@@ -165,7 +165,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 			} elseif ( ! file_exists( $file['file'] ) ) {
 				echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				printf( esc_html__( __( 'The export file could not be found at %s. It is likely that this was caused by a permissions problem.', 'nav-menu-roles' ) ), '<code>' . esc_html( $file['file'] ) . '</code>' );
+				printf( esc_html__( 'The export file could not be found at %s. It is likely that this was caused by a permissions problem.', 'nav-menu-roles' ), '<code>' . esc_html( $file['file'] ) . '</code>' );
 				echo '</p>';
 				return false;
 			}
