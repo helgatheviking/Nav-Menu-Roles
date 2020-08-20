@@ -1,4 +1,6 @@
 <?php
+// phpcs:ignoreFile
+
 /**
  * Custom Walker for Nav Menu Editor
  * Add wp_nav_menu_item_custom_fields hook
@@ -8,8 +10,6 @@
  * @package Nav Menu Roles
  * @since 1.8.6
  * @uses Walker_Nav_Menu_Edit
- * 
- * @phpcs:disable WordPress.Security.EscapeOutput
  */
 class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu_Edit {
 
