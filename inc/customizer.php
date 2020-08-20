@@ -3,9 +3,11 @@
  * Nav Menu Roles - Customizer
  *
  * @since 2.0.0
+ * @package Nav Menu Roles\Includes
  * @link  https://wordpress.stackexchange.com/questions/372493/add-settings-to-menu-items-in-the-customizer
  *
  */
+
 namespace Customize_Nav_Menu_Roles;
 
 use WP_Customize_Manager;

@@ -1,3 +1,9 @@
+/**
+ * Customizer scripts.
+ *
+ * @package Nav Menu Roles
+ */
+
 ( function ( api ) {
 
 	// Augment each menu item control once it is added and embedded.

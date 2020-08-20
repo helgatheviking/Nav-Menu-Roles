@@ -1,5 +1,10 @@
-module.exports = function(grunt) {
+/**
+ * Build tasks.
+ *
+ * @package Nav Menu Roles
+ */
 
+module.exports = function(grunt) {
 	// load most all grunt tasks
 	require( "load-grunt-tasks" )( grunt );
 

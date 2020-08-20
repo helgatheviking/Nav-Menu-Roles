@@ -2,8 +2,12 @@
 /**
  * Nav Menu Roles Importer - import menu item meta
  *
- * @author      Kathy Darling
- * @since       1.3
+ * Create HTML list of nav menu input items.
+ * Copied from Walker_Nav_Menu_Edit class in core /wp-admin/includes/nav-menu.php
+ *
+ * @package Nav Menu Roles\Classes
+ * @since 1.3
+ *
  */
 
 // Exit if accessed directly
@@ -30,6 +34,9 @@ if ( ! class_exists( 'WP_Importer' ) ) {
 	}
 }
 
+/**
+ * Nav Menu Roles Importer class
+ */
 if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) ) {
 	class Nav_Menu_Roles_Import extends WP_Importer {
 
