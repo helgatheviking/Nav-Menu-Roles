@@ -1,41 +1,59 @@
 {
-  "title": "Nav Menu Roles",
-  "name": "nav-menu-roles",
-  "version": "1.10.2",
-  "description": "Hide menu items based on user roles",
-  "main": "Gruntfile.js",
-  "license": "GPL-3.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/helgatheviking/nav-menu-roles"
-  },
-  "bugs": {
-    "url": "https://github.com/helgatheviking/nav-menu-roles/issues"
-  },
-  "author": "helgatheviking",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.1.0",
-    "babel-preset-react": "^6.24.1",
-    "clean-webpack-plugin": "^3.0.0",
-    "grunt": "^1.3.0",
-    "grunt-contrib-clean": "~2.0.0",
-    "grunt-contrib-copy": "~1.0.0",
-    "grunt-contrib-jshint": "~2.1.0",
-    "grunt-contrib-uglify": "~4.0.1",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-newer": "~1.3.0",
-    "grunt-text-replace": "^0.4.0",
-    "grunt-webpack": "^4.0.2",
-    "grunt-wp-i18n": "~1.0.3",
-    "grunt-wp-readme-to-markdown": "~2.0.1",
-    "html-webpack-plugin": "^4.3.0",
-    "jshint-stylish": "~2.2.1",
-    "load-grunt-tasks": "~5.1.0",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.1.2"
-  }
+	"title": "Nav Menu Roles",
+	"name": "nav-menu-roles",
+	"version": "1.10.2",
+	"description": "Hide menu items based on user roles",
+	"main": "Gruntfile.js",
+	"license": "GPL-3.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/helgatheviking/nav-menu-roles"
+	},
+	"bugs": {
+		"url": "https://github.com/helgatheviking/nav-menu-roles/issues"
+	},
+	"scripts": {
+		"build": "webpack --config webpack.prod.js",
+		"start": "webpack-dev-server --config webpack.dev.js",
+		"test": "jest ./test"
+	},
+	"author": "helgatheviking",
+	"devDependencies": {
+		"@babel/cli": "^7.10.5",
+		"@babel/core": "^7.11.4",
+		"@babel/preset-env": "^7.11.0",
+		"@babel/preset-es2015": "^7.0.0-beta.53",
+		"@babel/preset-react": "^7.10.4",
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^8.1.0",
+		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"clean-webpack-plugin": "^3.0.0",
+		"grunt": "^1.3.0",
+		"grunt-contrib-clean": "~2.0.0",
+		"grunt-contrib-connect": "^3.0.0",
+		"grunt-contrib-copy": "~1.0.0",
+		"grunt-contrib-jshint": "~2.1.0",
+		"grunt-contrib-uglify": "~4.0.1",
+		"grunt-contrib-watch": "^1.1.0",
+		"grunt-newer": "~1.3.0",
+		"grunt-text-replace": "^0.4.0",
+		"grunt-webpack": "^4.0.2",
+		"grunt-wp-i18n": "~1.0.3",
+		"grunt-wp-readme-to-markdown": "~2.0.1",
+		"html-webpack-plugin": "^4.3.0",
+		"install": "^0.13.0",
+		"jshint-stylish": "~2.2.1",
+		"load-grunt-tasks": "~5.1.0",
+		"npm": "^6.14.8",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"webpack": "^4.44.1",
+		"webpack-cli": "^3.3.12",
+		"webpack-dev-server": "^3.11.0",
+		"webpack-merge": "^5.1.2"
+	},
+	"dependencies": {}
 }
