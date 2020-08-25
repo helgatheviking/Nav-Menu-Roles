@@ -419,8 +419,7 @@ class Nav_Menu_Roles {
 	 */
 	public function enqueue_scripts( $hook ) {
 		if ( 'nav-menus.php' === $hook ) {
-			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js', __FILE__ ), array( 'jquery' ), self::VERSION, true );
+			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/dist/roles.js', __FILE__ ), array( 'jquery', 'wp-polyfill' ), self::VERSION, true );
 		}
 	}
 

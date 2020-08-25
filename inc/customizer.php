@@ -87,8 +87,8 @@ function customizer_custom_fields() {
 function customizer_scripts() {
 	wp_enqueue_script(
 		'customize-nav-menu-roles',
-		plugin_dir_url( __DIR__ ) . '/js/nav-menu-roles-customize-controls.js',
-		array( 'customize-nav-menus' ),
+		plugin_dir_url( __DIR__ ) . '/js/dist/customize.js',
+		array( 'customize-nav-menus', 'wp-polyfill' ),
 		\Nav_Menu_Roles::VERSION,
 		true
 	);

@@ -13,3 +13,5 @@ sftp-config.json
 *.afdesign
 package-lock.json
 composer.lock
+*.js.map
+*.asset.php

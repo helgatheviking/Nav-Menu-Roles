@@ -14,6 +14,7 @@
   },
   "author": "helgatheviking",
   "devDependencies": {
+    "@wordpress/scripts": "^12.1.1",
     "grunt": "^1.2.0",
     "grunt-contrib-clean": "~2.0.0",
     "grunt-contrib-copy": "~1.0.0",
@@ -26,5 +27,12 @@
     "grunt-wp-readme-to-markdown": "~2.0.1",
     "jshint-stylish": "~2.2.1",
     "load-grunt-tasks": "~5.1.0"
+  },
+  "scripts": {
+        "build": "wp-scripts build --config webpack.config.js",
+        "format:js": "wp-scripts format-js",
+        "lint:js": "wp-scripts lint-js",
+        "lint:pkg-json": "wp-scripts lint-pkg-json",
+        "start": "wp-scripts start --config webpack.config.js"
   }
 }
