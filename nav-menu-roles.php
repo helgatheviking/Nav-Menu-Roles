@@ -1,41 +1,37 @@
 <?php
-/*
-Plugin Name: Nav Menu Roles
-Plugin URI: http://www.kathyisawesome.com/449/nav-menu-roles/
-Description: Hide custom menu items based on user roles.
-Version: 1.10.2
-Author: Kathy Darling
-Author URI: http://www.kathyisawesome.com
-License: GPL-3.0
-Text Domain: nav-menu-roles
-
-Copyright 2020 Kathy Darling
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as
-published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA02110-1301USA
-*/
-
+/**
+ * Plugin Name: Nav Menu Roles
+ * Plugin URI: http://www.kathyisawesome.com/449/nav-menu-roles/
+ * Description: Hide custom menu items based on user roles.
+ * Version: 1.10.2
+ * Author: Kathy Darling
+ * Author URI: http://www.kathyisawesome.com
+ * License: GPL-3.0
+ * Text Domain: nav-menu-roles
+ *
+ * Copyright 2020 Kathy Darling
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License, version 2, as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA02110-1301USA
+ *
+ * @package Nav Menu Roles
+ */
 
 // Don't load directly.
 if ( ! function_exists( 'is_admin' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
 	exit();
-}
-
-// Quit if this exists already.
-if ( class_exists( 'Nav_Menu_Roles' ) ) {
-	return;
 }
 
 class Nav_Menu_Roles {
@@ -423,8 +419,7 @@ class Nav_Menu_Roles {
 	 */
 	public function enqueue_scripts( $hook ) {
 		if ( 'nav-menus.php' === $hook ) {
-			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js', __FILE__ ), array( 'jquery' ), self::VERSION, true );
+			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/dist/roles.js', __FILE__ ), array( 'jquery', 'wp-polyfill' ), self::VERSION, true );
 		}
 	}
 

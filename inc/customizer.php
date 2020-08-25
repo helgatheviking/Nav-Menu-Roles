@@ -3,9 +3,11 @@
  * Nav Menu Roles - Customizer
  *
  * @since 2.0.0
+ * @package Nav Menu Roles\Includes
  * @link  https://wordpress.stackexchange.com/questions/372493/add-settings-to-menu-items-in-the-customizer
  *
  */
+
 namespace Customize_Nav_Menu_Roles;
 
 use WP_Customize_Manager;
@@ -85,8 +87,8 @@ function customizer_custom_fields() {
 function customizer_scripts() {
 	wp_enqueue_script(
 		'customize-nav-menu-roles',
-		plugin_dir_url( __DIR__ ) . '/js/nav-menu-roles-customize-controls.js',
-		array( 'customize-nav-menus' ),
+		plugin_dir_url( __DIR__ ) . '/js/dist/customize.js',
+		array( 'customize-nav-menus', 'wp-polyfill' ),
 		\Nav_Menu_Roles::VERSION,
 		true
 	);

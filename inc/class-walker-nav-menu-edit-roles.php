@@ -1,14 +1,26 @@
 <?php
-
 /**
  * Navigation Menu API: (Modifed) Walker_Nav_Menu_Edit class
  *
  * Create HTML list of nav menu input items.
  * Copied from Walker_Nav_Menu_Edit class in core /wp-admin/includes/nav-menu.php
  *
- * @package nav-menu-roles
+ * @package Nav Menu Roles\Classes
  * @since 1.0
- * @since WordPress 4.4.0
+ *
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Custom Walker Class
+ *
+ * Create HTML list of nav menu input items.
+ * Copied from Walker_Nav_Menu_Edit class in core /wp-admin/includes/nav-menu.php
+ *
+ * @since 1.0
  * @uses Walker_Nav_Menu
  *
  * @phpcs:disable WordPress.Security.EscapeOutput

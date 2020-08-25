@@ -1,5 +1,10 @@
-module.exports = function(grunt) {
+/**
+ * Build tasks.
+ *
+ * @package Nav Menu Roles
+ */
 
+module.exports = function(grunt) {
 	// load most all grunt tasks
 	require( "load-grunt-tasks" )( grunt );
 
@@ -148,6 +153,6 @@ module.exports = function(grunt) {
 
 	grunt.registerTask( "test", ["jshint", "addtextdomain"] );
 
-	grunt.registerTask( "build", ["test", "replace", "newer:uglify", "clean", "copy"] );
+	grunt.registerTask( "build", ["test", "replace", "newer:uglify", "makepot"] );
 
 };
