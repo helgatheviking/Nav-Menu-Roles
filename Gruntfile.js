@@ -153,6 +153,6 @@ module.exports = function(grunt) {
 
 	grunt.registerTask( "test", ["jshint", "addtextdomain"] );
 
-	grunt.registerTask( "build", ["test", "replace", "newer:uglify", "clean", "copy"] );
+	grunt.registerTask( "build", ["test", "replace", "newer:uglify", "makepot"] );
 
 };
