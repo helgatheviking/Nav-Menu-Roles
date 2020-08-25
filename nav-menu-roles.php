@@ -34,11 +34,6 @@ if ( ! function_exists( 'is_admin' ) ) {
 	exit();
 }
 
-// Quit if this exists already.
-if ( class_exists( 'Nav_Menu_Roles' ) ) {
-	return;
-}
-
 class Nav_Menu_Roles {
 
 	/**
