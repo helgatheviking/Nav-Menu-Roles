@@ -1,6 +1,9 @@
-;/**
+;
+/**
  * Nav Menu Roles main JavaScript.
- */(function( $ ) {
+ */
+
+(function( $ ) {
 
 	$( '.nav_menu_logged_in_out_field' ).each(
 		function( i ) {
