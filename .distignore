@@ -3,6 +3,8 @@
 /.github
 /node_modules
 /build
+/vendor
+/src
 
 *.sublime-project
 *.afdesign
@@ -13,3 +15,10 @@ Gruntfile.js
 package.json
 package-lock.json
 readme.md
+composer.lock
+webpack.common.js
+webpack.dev.js
+webpack.prod.js
+phpcs.xml
+.jshintrc
+.babelrc

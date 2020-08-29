@@ -6,7 +6,7 @@ Tags: menu, menus, nav menu, nav menus
 Requires at least: 4.5.0
 Tested up to: 5.4.0
 Requires PHP: 5.3.2
-Stable tag: 1.10.2
+Stable tag: 2.0.0
 License: GPLv3
 
 Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
@@ -248,6 +248,8 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 
 == Changelog ==
 
+= 2.0.0 = 
+* New: Customizer support! props @westonruter!
 
 = 1.10.2 = 
 * Fix:  Strict array typecasting for nav menu classes.

@@ -1,151 +1,166 @@
-module.exports = function(grunt) {
+const webpackDev  = require( "./webpack.dev.js" );
+const webpackProd = require( "./webpack.prod.js" );
+const path        = require( "path" );
+var webpack       = require( "webpack" );
 
-    // load most all grunt tasks
-    require("load-grunt-tasks")(grunt);
+module.exports = function (grunt) {
+	// load most all grunt tasks
+	require( "load-grunt-tasks" )( grunt );
 
-    // Project configuration.
-    grunt.initConfig({
-        pkg: grunt.file.readJSON("package.json"),
-        uglify: {
-            options: {
-                compress: {
-                    global_defs: {
-                        "EO_SCRIPT_DEBUG": false
-                    },
-                    dead_code: true
-                },
-                banner: '/*! <%= pkg.name %> <%= pkg.version %> */\n'
-            },
-            build: {
-                files: [{
-                    expand: true, // Enable dynamic expansion.
-                    src: ['js/*.js', '!js/*.min.js'], // Actual pattern(s) to match.
-                    ext: '.min.js', // Dest filepaths will have this extension.
-                }, ]
-            }
-        },
-        jshint: {
-            options: {
-                reporter: require("jshint-stylish")
-            },
-            all: ["js/*.js", "!js/*.min.js"]
-        },
+	// Project configuration.
+	grunt.initConfig(
+		{
+			pkg: grunt.file.readJSON( "package.json" ),
+			jshint: {
+				options: {
+					reporter: require( "jshint-stylish" ),
+					jshintrc: true,
+				},
+				all: ["src/js/*.js", "!src/js/*.min.js"],
+			},
 
-        // Remove the build directory files
-        clean: {
-            main: ["build/**"]
-        },
+			// Remove the build directory files
+			clean: {
+				main: ["build/**"],
+			},
 
-        // Copy the plugin into the build directory
-        copy: {
-            main: {
-                src: [
-                    "**",
-                    "!node_modules/**",
-                    "!build/**",
-                    "!svn/**",
-                    "!wp-assets/**",
-                    "!.git/**",
-                    "!**.md",
-                    "!Gruntfile.js",
-                    "!package.json",
-                    "!package-lock.json",
-                    "!gitcreds.json",
-                    "!.gitcreds",
-                    "!.transifexrc",
-                    "!.gitignore",
-                    "!.gitmodules",
-                    "!sftp-config.json",
-                    "!**.sublime-workspace",
-                    "!**.sublime-project",
-                    "!deploy.sh",
-                    "!**/*~",
-                    '!.afdesign',
-                    '!assets/**',
-                ],
-                dest: "build/"
-            }
-        },
+			webpack: {
+				prod: webpackProd,
+				dev: webpackDev
+			},
+			watch: {
+				options: {
+					livereload: true,
+				},
+				js: {
+					files: ["src/js/**/*.js"],
+					tasks: ["webpack:dev"],
+					options: {
+						interrupt: true,
+					},
+				},
+			},
 
-        // Generate git readme from readme.txt
-        wp_readme_to_markdown: {
-            convert: {
-                files: {
-                    "readme.md": "readme.txt"
-                }
-            }
-        },
+			// Copy the plugin into the build directory
+			copy: {
+				main: {
+					src: [
+					"**",
+					"!node_modules/**",
+					"!build/**",
+					"!svn/**",
+					"!wp-assets/**",
+					"!.git/**",
+					"!**.md",
+					"!Gruntfile.js",
+					"!package.json",
+					"!package-lock.json",
+					"!gitcreds.json",
+					"!.gitcreds",
+					"!.transifexrc",
+					"!.gitignore",
+					"!.gitmodules",
+					"!sftp-config.json",
+					"!**.sublime-workspace",
+					"!**.sublime-project",
+					"!deploy.sh",
+					"!**/*~",
+					"!.afdesign",
+					"!assets/**",
+					],
+					dest: "build/",
+				},
+			},
 
-        // # Internationalization
+			// Generate git readme from readme.txt
+			wp_readme_to_markdown: {
+				convert: {
+					files: {
+						"readme.md": "readme.txt",
+					},
+				},
+			},
 
-        // Add text domain
-        addtextdomain: {
-            textdomain: "<%= pkg.name %>",
-            target: {
-                files: {
-                    src: ["*.php", "**/*.php", "!node_modules/**", "!build/**"]
-                }
-            }
-        },
+			// # Internationalization
 
-        // Generate .pot file
-        makepot: {
-            target: {
-                options: {
-                    domainPath: "/languages", // Where to save the POT file.
-                    exclude: ["build/.*", "svn/.*"], // List of files or directories to ignore.
-                    mainFile: "<%= pkg.name %>.php", // Main project file.
-                    potFilename: "<%= pkg.name %>.pot", // Name of the POT file.
-                    type: "wp-plugin" // Type of project (wp-plugin or wp-theme).
-                }
-            }
-        },
+			// Add text domain
+			addtextdomain: {
+				textdomain: "<%= pkg.name %>",
+				target: {
+					files: {
+						src: ["*.php", "**/*.php", "!node_modules/**", "!build/**"],
+					},
+				},
+			},
 
-        // bump version numbers
-        replace: {
-          version: {
-            src: [
-                "readme.txt",
-                "readme.md",
-                "<%= pkg.name %>.php"
-                ],
-            overwrite: true,
-            replacements: [
-                    {
-                        from: /\*\*Stable tag:\*\* .*/,
-                        to: "**Stable tag:** <%= pkg.version %>  "
-                    },
-                    {
-                        from: /Stable tag: .*/,
-                        to: "Stable tag: <%= pkg.version %>"
-                    },
-                    { 
-                        from: /Version:.*/,
-                        to: "Version: <%= pkg.version %>"
-                    },
-                    { 
-                        from: /public \$version .*/,
-                        to: "public $version = '<%= pkg.version %>';"
-                    },
-                    {
-                        from: /CONST VERSION = \'.*/,
-                        to: "CONST VERSION = '<%= pkg.version %>';"
-                    }]
-          }
-        },
+			// Generate .pot file
+			makepot: {
+				target: {
+					options: {
+						domainPath: "/languages", // Where to save the POT file.
+						exclude: ["build/.*", "svn/.*"], // List of files or directories to ignore.
+						mainFile: "<%= pkg.name %>.php", // Main project file.
+						potFilename: "<%= pkg.name %>.pot", // Name of the POT file.
+						type: "wp-plugin", // Type of project (wp-plugin or wp-theme).
+					},
+				},
+			},
 
-    });
+			// bump version numbers
+			replace: {
+				version: {
+					src: ["readme.txt", "readme.md", "<%= pkg.name %>.php"],
+					overwrite: true,
+					replacements: [
+					{
+						from: /\*\*Stable tag:\*\* .*/,
+						to: "**Stable tag:** <%= pkg.version %>  ",
+					},
+					{
+						from: /Stable tag: .*/,
+						to: "Stable tag: <%= pkg.version %>",
+					},
+					{
+						from: /Version:.*/,
+						to: "Version: <%= pkg.version %>",
+					},
+					{
+						from: /public \$version .*/,
+						to: "public $version = '<%= pkg.version %>';",
+					},
+					{
+						from: /CONST VERSION = \'.*/,
+						to: "CONST VERSION = '<%= pkg.version %>';",
+					},
+					],
+				},
+			},
+		}
+	);
 
-    // makepot and addtextdomain tasks
-    grunt.loadNpmTasks("grunt-wp-i18n");
+	// makepot and addtextdomain tasks
+	grunt.loadNpmTasks( "grunt-wp-i18n" );
 
-    // Default task(s).
-    grunt.registerTask("default", ["jshint", "uglify"]);
+	grunt.loadNpmTasks( "grunt-webpack" );
 
-    grunt.registerTask("docs", ["wp_readme_to_markdown"]);
+	grunt.loadNpmTasks( "grunt-contrib-watch" );
 
-    grunt.registerTask("test", ["jshint", "addtextdomain"]);
+	grunt.loadNpmTasks( "grunt-contrib-connect" );
 
-    grunt.registerTask("build", ["test", "replace", "newer:uglify", "clean", "copy"]);
+	// Default task(s).
+	grunt.registerTask( "default", ["jshint"] );
 
+	grunt.registerTask( "docs", ["wp_readme_to_markdown"] );
+
+	grunt.registerTask( "test", ["jshint", "addtextdomain"] );
+
+	grunt.registerTask(
+		"build",
+		[
+		"test",
+		"replace",
+		"webpack:prod",
+		"makepot"
+		]
+	);
 };
