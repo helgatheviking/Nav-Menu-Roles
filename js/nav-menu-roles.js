@@ -1,4 +1,3 @@
-;
 /**
  * Nav Menu Roles main JavaScript.
  */
