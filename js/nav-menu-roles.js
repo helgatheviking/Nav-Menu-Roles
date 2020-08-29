@@ -1,7 +1,11 @@
-;(function($) {
+/**
+ * Nav Menu Roles main JavaScript.
+ */
+
+(function( $ ) {
 
 	$( '.nav_menu_logged_in_out_field' ).each(
-		function(i) {
+		function( i ) {
 
 			var $field = $( this );
 

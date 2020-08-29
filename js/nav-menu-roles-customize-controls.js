@@ -1,3 +1,7 @@
+/**
+ * Nav Menu Roles customizer JavaScript.
+ */
+
 ( function ( api ) {
 
 	// Augment each menu item control once it is added and embedded.
