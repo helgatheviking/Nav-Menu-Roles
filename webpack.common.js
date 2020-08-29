@@ -3,13 +3,13 @@ const path = require("path");
 
 module.exports = {
 	entry: {
-		customize: "./js/nav-menu-roles-customize-controls.js",
-		roles: "./js/nav-menu-roles.js",
+		customize: "./src/js/nav-menu-roles-customize-controls.js",
+		roles: "./src/js/nav-menu-roles.js",
 	},
 	devtool: "source-map",
 	output: {
 		filename: "[name].js",
-		path: path.resolve("./build/js"),
+		path: path.resolve("./dist/js"),
 	},
 	module: {
 		rules: [

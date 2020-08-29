@@ -420,7 +420,7 @@ class Nav_Menu_Roles {
 	 */
 	public function enqueue_scripts( $hook ) {
 		if ( 'nav-menus.php' === $hook ) {
-			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'build/js/roles.js', __FILE__ ), array( 'jquery' ), self::VERSION, true );
+			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'dist/js/roles.js', __FILE__ ), array( 'jquery' ), self::VERSION, true );
 		}
 	}
 

@@ -4,6 +4,7 @@
 /node_modules
 /build
 /vendor
+/src
 
 *.sublime-project
 *.afdesign

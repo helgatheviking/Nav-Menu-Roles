@@ -87,7 +87,7 @@ function customizer_custom_fields() {
 function customizer_scripts() {
 	wp_enqueue_script(
 		'customize-nav-menu-roles',
-		plugins_url( 'build/js/customize.js', dirname( __FILE__ ) ),
+		plugins_url( 'dist/js/customize.js', dirname( __FILE__ ) ),
 		array( 'customize-nav-menus' ),
 		\Nav_Menu_Roles::VERSION,
 		true

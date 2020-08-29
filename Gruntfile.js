@@ -15,7 +15,7 @@ module.exports = function (grunt) {
                 reporter: require("jshint-stylish"),
                 jshintrc: true,
 			},
-			all: ["js/*.js", "!js/*.min.js"],
+			all: ["src/js/*.js", "!src/js/*.min.js"],
 		},
 
 		// Remove the build directory files
@@ -32,8 +32,8 @@ module.exports = function (grunt) {
 				livereload: true,
 			},
 			js: {
-				files: ["js/**/*.js"],
 				tasks: ["webpack"],
+				files: ["src/js/**/*.js"],
 				options: {
 					interrupt: true,
 				},
