@@ -34,10 +34,6 @@ if ( ! function_exists( 'is_admin' ) ) {
 	exit();
 }
 
-// Quit if this exists already.
-if ( class_exists( 'Nav_Menu_Roles' ) ) {
-	return;
-}
 
 class Nav_Menu_Roles {
 
@@ -201,7 +197,7 @@ class Nav_Menu_Roles {
 				'object_subtype'    => 'nav_menu_item',
 				'type'              => 'mixed',
 				'sanitize_callback' => array( $this, 'sanitize_meta' ),
-			),
+			)
 		);
 	}
 
@@ -424,8 +420,7 @@ class Nav_Menu_Roles {
 	 */
 	public function enqueue_scripts( $hook ) {
 		if ( 'nav-menus.php' === $hook ) {
-			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'js/nav-menu-roles' . $suffix . '.js', __FILE__ ), array( 'jquery' ), self::VERSION, true );
+			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'build/js/roles.js', __FILE__ ), array( 'jquery' ), self::VERSION, true );
 		}
 	}
 
@@ -632,6 +627,10 @@ class Nav_Menu_Roles {
 function Nav_Menu_Roles() {
 	return Nav_Menu_Roles::instance();
 }
+
+add_action( 'plugins_loaded', function() {
+	Nav_Menu_Roles();
+} );
 
 // Global for backwards compatibility.
 $GLOBALS['Nav_Menu_Roles'] = Nav_Menu_Roles();
