@@ -11,3 +11,4 @@ sftp-config.json
 *.transifexrc
 *.afdesign
 package-lock.json
+vendor/
