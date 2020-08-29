@@ -49,9 +49,12 @@ Please report any bugs, errors, warnings, code problems to [Github](https://gith
 
 = I don't see the Nav Menu Roles options in the admin menu items?  =
 
-This is because you have another plugin (or theme) that is also trying to alter the same code that creates the Menu section in the admin.  
+This is likely due to a conflict with another plugin (or theme).
 
-WordPress does not have sufficient hooks in this area of the admin and until they do plugins are forced to replace everything via custom admin menu Walker, of which there can be only one. There's a [trac ticket](http://core.trac.wordpress.org/ticket/18584) for this, but it has been around a while. 
+As of WordPress 5.4 the `wp_nav_menu_item_custom_fields` hook has been added to WordPress core.
+
+Nav Menu Roles is therefore attaching directly to this hook without needing to replace the custom Admin Menu Walker, of which there can still be only one.  If the Walker is replaced by a theme/plugin and the core hook is not included, then Nav Menu Roles cannot add it's fields.
+
 
 **A non-exhaustive list of known conflicts:**
 
@@ -70,17 +73,21 @@ WordPress does not have sufficient hooks in this area of the admin and until the
 = Workaround #1 =
 [Shazdeh](https://profiles.wordpress.org/shazdeh/) had the genius idea to not wait for a core hook and simply add the hook ourselves. If all plugin and theme authors use the same hook, we can make our plugins play together.
 
-Therefore, as of version 1.6 I am modifying my admin nav menu Walker to *only* adding the following lines (right after the description input):
+Prior to WordPress 5.4, I used this idea and modified my admin nav menu Walker to *only* adding the following lines (right after the description input):
 
 `
 <?php 
 // Place this in your admin nav menu Walker
-do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
+do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args, $id );
 // end added section 
 ?>
 ` 
 
-**Ask your conflicting plugin/theme's author to add this code to his plugin or theme and our plugins will become compatible.**
+Since WordPress 5.4, I no longer replace the Walker at all and would advise other plugins and themes to do the same.
+
+But for those that still are, they definitely need to include the now-core hook.
+
+**Ask your conflicting plugin/theme's author to add this code to their plugin or theme and our plugins will become compatible.**
 
 = Instructions for Patching Your Plugin/Theme =
 
@@ -101,7 +108,7 @@ In that file you will eventually see a class method that looks like:
 }
 `
 
-  3\. Paste my action hook somewhere in this method!
+  3\. Paste the action hook somewhere in this method!
 
 In Nav Menu Roles, I have placed the hook directly after the description, like so:
 
@@ -116,7 +123,7 @@ In Nav Menu Roles, I have placed the hook directly after the description, like s
 
 <?php 
 // Add this directly after the description paragraph in the start_el() method
-do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
+do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args, $id );
 // end added section 
 ?>
 `
@@ -126,6 +133,8 @@ do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
 As a workaround, you can switch to a default theme (or disable the conflicting plugin), edit the Nav Menu Roles, for each menu item, then revert to your original theme/ reenable the conflicting plugin. The front-end functionality of Nav Menu Roles will still work. 
 
 = Workaround #3 =
+
+Only works with WordPress less than 5.4.
 
 Download and install this [tiny plugin](https://gist.github.com/helgatheviking/d00f9c033a4b0aab0f69cf50d7dcd89c). Activate it when you need to make the NMR options appear and then disable it when you are done editing. 
 
