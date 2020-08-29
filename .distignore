@@ -16,3 +16,9 @@ package.json
 package-lock.json
 readme.md
 composer.lock
+webpack.common.js
+webpack.dev.js
+webpack.prod.js
+phpcs.xml
+.jshintrc
+.babelrc
