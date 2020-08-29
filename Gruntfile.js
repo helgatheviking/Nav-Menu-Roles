@@ -24,16 +24,16 @@ module.exports = function (grunt) {
 		},
 
 		webpack: {
-			myConfig:
-				process.env.NODE_ENV === "production" ? webpackProd : webpackDev,
+	      prod: webpackProd,
+	      dev: webpackDev
 		},
 		watch: {
 			options: {
 				livereload: true,
 			},
 			js: {
-				tasks: ["webpack"],
 				files: ["src/js/**/*.js"],
+				tasks: ["webpack:dev"],
 				options: {
 					interrupt: true,
 				},
@@ -155,9 +155,7 @@ module.exports = function (grunt) {
 	grunt.registerTask("build", [
 		"test",
 		"replace",
-		"clean",
-		"copy",
-		"webpack",
-		"watch",
+		"webpack:prod",
+		"makepot"
 	]);
 };
