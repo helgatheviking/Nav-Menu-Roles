@@ -1,5 +1,9 @@
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const path = require("path");
+/**
+ * Shared builds.
+ */
+
+const { CleanWebpackPlugin } = require( "clean-webpack-plugin" );
+const path                   = require( "path" );
 
 module.exports = {
 	entry: {
@@ -9,7 +13,7 @@ module.exports = {
 	devtool: "source-map",
 	output: {
 		filename: "[name].js",
-		path: path.resolve("./dist/js"),
+		path: path.resolve( "./dist/js" ),
 	},
 	module: {
 		rules: [
@@ -21,27 +25,27 @@ module.exports = {
 					presets: ["@babel/preset-env"],
 					plugins: ["@babel/proposal-class-properties"],
 				},
-			},
+		},
 			{
 				test: /\.s(a|c)ss$/,
 				use: [
 					{
 						loader: "style-loader",
-					},
+				},
 					{
 						loader: "babel-loader",
 						options: {
 							presets: ["@babel/preset-env"],
 						},
-					},
+				},
 					{
 						loader: "css-loader",
-					},
+				},
 					{
 						loader: "sass-loader",
-					},
+				},
 				],
-			},
+		},
 		],
 	},
 	plugins: [new CleanWebpackPlugin()],

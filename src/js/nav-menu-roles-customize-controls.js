@@ -26,7 +26,7 @@
 	 * @param {wp.customize.Menus.MenuItemControl} control
 	 */
 	function extendControl( control ) {
-		control.authFieldset = control.container.find( '.nav_menu_role_authentication' );
+		control.authFieldset  = control.container.find( '.nav_menu_role_authentication' );
 		control.rolesFieldset = control.container.find( '.nav_menu_roles' );
 
 		// Set the initial UI state.
@@ -84,7 +84,7 @@
 	function updateControlFields( control ) {
 		const roles = control.setting().roles || '';
 
-		const radioValue = _.isArray( roles ) ? 'in' : roles;
+		const radioValue   = _.isArray( roles ) ? 'in' : roles;
 		const checkedRoles = _.isArray( roles ) ? roles : [];
 
 		control.rolesFieldset.toggle( 'in' === radioValue );

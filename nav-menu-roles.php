@@ -34,7 +34,9 @@ if ( ! function_exists( 'is_admin' ) ) {
 	exit();
 }
 
-
+/**
+ * Nav Menu Roles class
+ */
 class Nav_Menu_Roles {
 
 	/**
@@ -98,7 +100,7 @@ class Nav_Menu_Roles {
 	 */
 	public function __construct() {
 
-		require_once( 'inc/customizer.php' );
+		require_once 'inc/customizer.php';
 
 		// Admin functions.
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -165,7 +167,7 @@ class Nav_Menu_Roles {
 		// Register the new importer.
 		if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
 
-			include_once( plugin_dir_path( __FILE__ ) . 'inc/class-nav-menu-roles-import.php' );
+			include_once plugin_dir_path( __FILE__ ) . 'inc/class-nav-menu-roles-import.php';
 			// Register the custom importer we've created.
 			$roles_import = new Nav_Menu_Roles_Import();
 
@@ -295,11 +297,11 @@ class Nav_Menu_Roles {
 		if ( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ) {
 
 			if ( self::is_wp_gte( '4.7' ) ) {
-				require_once( plugin_dir_path( __FILE__ ) . 'inc/class-walker-nav-menu-edit-roles-4.7.php' );
-			} else if ( self::is_wp_gte( '4.5' ) ) {
-				require_once( plugin_dir_path( __FILE__ ) . 'inc/class-walker-nav-menu-edit-roles-4.5.php' );
+				require_once plugin_dir_path( __FILE__ ) . 'inc/class-walker-nav-menu-edit-roles-4.7.php';
+			} elseif ( self::is_wp_gte( '4.5' ) ) {
+				require_once plugin_dir_path( __FILE__ ) . 'inc/class-walker-nav-menu-edit-roles-4.5.php';
 			} else {
-				require_once( plugin_dir_path( __FILE__ ) . 'inc/class-walker-nav-menu-edit-roles.php' );
+				require_once plugin_dir_path( __FILE__ ) . 'inc/class-walker-nav-menu-edit-roles.php';
 			}
 		}
 		return 'Walker_Nav_Menu_Edit_Roles';
@@ -346,7 +348,7 @@ class Nav_Menu_Roles {
 		// Specific roles are saved as an array, so "in" or an array equals "in" is checked.
 		if ( is_array( $roles ) || 'in' === $roles ) {
 			$logged_in_out = 'in';
-		} else if ( 'out' === $roles ) {
+		} elseif ( 'out' === $roles ) {
 			$logged_in_out = 'out';
 		}
 
@@ -433,16 +435,16 @@ class Nav_Menu_Roles {
 	public function nav_update( $menu_id, $menu_item_db_id ) {
 
 		// Verify this came from our screen and with proper authorization.
-		if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['nav-menu-role-nonce'], 'nav-menu-nonce-name' ) ) {
+		if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nav-menu-role-nonce'] ), 'nav-menu-nonce-name' ) ) {
 			return;
 		}
 
 		if ( isset( $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] ) ) {
 
 			if ( 'in' === $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] && ! empty( $_POST['nav-menu-role'][ $menu_item_db_id ] ) ) {
-				$meta = $_POST['nav-menu-role'][ $menu_item_db_id ];
+				$meta = wp_unslash( $_POST['nav-menu-role'][ $menu_item_db_id ] );
 			} else {
-				$meta = $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ];
+				$meta = wp_unslash( $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] );
 			}
 
 			update_post_meta( $menu_item_db_id, '_nav_menu_role', $meta ); // Sanitization handled by $this->sanitize_meta().
@@ -624,13 +626,11 @@ class Nav_Menu_Roles {
  * @since  1.5
  * @return Nav_Menu_Roles
  */
-function Nav_Menu_Roles() {
+function nav_menu_roles() {
 	return Nav_Menu_Roles::instance();
 }
 
-add_action( 'plugins_loaded', function() {
-	Nav_Menu_Roles();
-} );
+add_action( 'plugins_loaded', 'nav_menu_roles' );
 
 // Global for backwards compatibility.
 $GLOBALS['Nav_Menu_Roles'] = Nav_Menu_Roles();

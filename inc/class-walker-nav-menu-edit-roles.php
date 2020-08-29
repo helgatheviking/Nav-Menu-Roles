@@ -25,7 +25,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @phpcs:disable WordPress.Security.EscapeOutput
  */
-
 class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 	/**
 	 * Starts the list before the elements are added.
