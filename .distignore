@@ -15,6 +15,7 @@ Gruntfile.js
 package.json
 package-lock.json
 readme.md
+composer.json
 composer.lock
 webpack.common.js
 webpack.dev.js
