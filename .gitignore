@@ -1,15 +1,26 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE and local environment
+*.afdesign
 *.gitcreds
-node_modules/
-temp/
-build/
-svn/
-wp-assets/
-vendor/
-deploy.sh
-sftp-config.json
 *.sublime-workspace
 *.sublime-project
 *.transifexrc
-*.afdesign
+
+# Packages
 package-lock.json
+node_modules/
 composer.lock
+vendor/
+
+# Application
+temp/
+
+# Distribution
+sftp-config.json
+deploy.sh
+build/
+svn/
+wp-assets/
