@@ -45,6 +45,9 @@ function customizer_custom_fields() {
 	 */
 	$display_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
 
+	// Alpha sort roles by label.
+	asort( $display_roles );
+
 	if ( ! $display_roles ) {
 		return;
 	}
