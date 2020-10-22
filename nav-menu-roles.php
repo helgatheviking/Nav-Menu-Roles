@@ -326,6 +326,9 @@ class Nav_Menu_Roles {
 		*/
 		$display_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names, $item );
 
+		// Alpha sort roles by label.
+		asort( $wp_roles->role_names );
+
 		/**
 		* If no roles are being used, don't display the role selection radio buttons at all.
 		* Unless something deliberately removes the WordPress roles from this list, nothing will
