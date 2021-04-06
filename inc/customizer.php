@@ -24,7 +24,9 @@ add_action( 'wp_nav_menu_item_custom_fields_customize_template', __NAMESPACE__ .
 add_action( 'customize_controls_enqueue_scripts', __NAMESPACE__ . '\customizer_scripts' );
 
 // Workaround for previewing changes.
-add_action( 'customize_register', __NAMESPACE__ . '\customizer_preview', 1000 );
+if ( \Nav_Menu_Roles::is_wp_gte( '4.9' ) ) {
+	add_action( 'customize_register', __NAMESPACE__ . '\customizer_preview', 1000 );
+}
 
 // Workaround for saving changes.
 add_action( 'customize_save_after', __NAMESPACE__ . '\customizer_save' );

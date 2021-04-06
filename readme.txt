@@ -247,6 +247,9 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 
 == Changelog ==
 
+= 2.0.2 = 
+* Fix: PHP Fatal error: Uncaught Error: Call to undefined method WP_Customize_Manager::settings_previewed(). settings_previewed() does not exist until WordPress 3.9.0+.
+
 = 2.0.1 = 
 * Tweak: Alphabetically sort role names.
 
