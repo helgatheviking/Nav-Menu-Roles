@@ -2,9 +2,9 @@
 # This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Nav Menu Roles 2.0.1\n"
+"Project-Id-Version: Nav Menu Roles 2.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/nav-menu-roles\n"
-"POT-Creation-Date: 2021-03-18 01:56:18+00:00\n"
+"POT-Creation-Date: 2021-04-06 13:20:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -183,23 +183,23 @@ msgstr ""
 msgid "Edit Menu Item"
 msgstr ""
 
-#: inc/customizer.php:57 nav-menu-roles.php:371
+#: inc/customizer.php:59 nav-menu-roles.php:371
 msgid "Display Mode"
 msgstr ""
 
-#: inc/customizer.php:61 nav-menu-roles.php:377
+#: inc/customizer.php:63 nav-menu-roles.php:377
 msgid "Logged In Users"
 msgstr ""
 
-#: inc/customizer.php:65 nav-menu-roles.php:382
+#: inc/customizer.php:67 nav-menu-roles.php:382
 msgid "Logged Out Users"
 msgstr ""
 
-#: inc/customizer.php:69 nav-menu-roles.php:387
+#: inc/customizer.php:71 nav-menu-roles.php:387
 msgid "Everyone"
 msgstr ""
 
-#: inc/customizer.php:74
+#: inc/customizer.php:76
 msgid "Restrict menu item to minimum role"
 msgstr ""
 
