@@ -221,10 +221,28 @@ If every item in your menu is configured to display to logged in users (either a
 
 Therefore, if you have no items to display, WordPress will end up displaying ALL your pages!!
 
-If you don't want this, you must set the fallback argument to be a null string.
+If you don't want this, you must set the fallback argument to be a null string. 
 
 `
 wp_nav_menu( array( 'theme_location' => 'primary-menu', 'fallback_cb' => '' ) );
+`
+
+You must do this for every effected instance of `wp_nav_menu()` in your theme templates. It is not possible for me to tell you where they are located, but `header.php` is a very common location for the main menu.
+
+Alternatively, you could do this universally by adding the following snippet to your child theme's *function.php* file or by adding it via the [Code Snippets](https://wordpress.org/plugins/code-snippets/) plugin:
+
+`
+/**
+ * Disables the fallback page menu for all menus
+ *
+ * @param array $args Array of wp_nav_menu() arguments.
+ * @return array
+ */
+function kia_nav_menu_args( $args ) {
+  $args['fallback_cb'] = '';
+  return $args;
+}
+add_filter( 'wp_nav_menu_args', 'kia_nav_menu_args' );
 `
 
 = What happened to my menu roles on import/export? =
