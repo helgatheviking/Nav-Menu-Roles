@@ -1,7 +1,7 @@
 <?php
 /**
  * Nav Menu Roles main
- * 
+ *
  * @since 1.0.0
  * @version 2.1.0
  */
@@ -22,7 +22,7 @@ class Nav_Menu_Roles {
 	 */
 	protected static $_instance = null;
 
-    /**
+	/**
 	 * @var string Path to main plugin file.
 	 * @since 2.1.0
 	 */
@@ -83,7 +83,7 @@ class Nav_Menu_Roles {
 	 */
 	public function __construct( $file ) {
 
-        $this->main_file = $file;
+		$this->main_file = $file;
 
 		require_once plugin_dir_path( __FILE__ ) . 'customizer.php';
 

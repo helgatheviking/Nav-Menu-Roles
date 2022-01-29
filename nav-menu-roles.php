@@ -47,7 +47,7 @@ if ( ! class_exists( 'Nav_Menu_Roles' ) ) {
 	 * @return Nav_Menu_Roles
 	 */
 	function nav_menu_roles() {
-		$instance = Nav_Menu_Roles::instance(  __FILE__ );
+		$instance = Nav_Menu_Roles::instance( __FILE__ );
 
 		// Global for backwards compatibility.
 		$GLOBALS['Nav_Menu_Roles'] = $instance;
