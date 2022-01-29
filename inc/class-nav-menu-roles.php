@@ -395,7 +395,7 @@ class Nav_Menu_Roles {
 		</fieldset>
 
 		<fieldset class="field-nav_menu_role nav_menu_logged_in_out_field description-wide" style="margin: 5px 0;">
-			<legend class="description"><?php esc_html_e( 'For target audience', 'nav-menu-roles' ); ?></legend>
+			<legend class="description"><?php esc_html_e( 'Target audience', 'nav-menu-roles' ); ?></legend>
 
 			<input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
 
@@ -417,7 +417,7 @@ class Nav_Menu_Roles {
 		</fieldset>
 
 		<fieldset class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0; <?php echo esc_attr( $hidden ); ?>">
-			<legend class="description"><?php esc_html_e( 'For target role', 'nav-menu-roles' ); ?></legend>
+			<legend class="description"><?php esc_html_e( 'Target role', 'nav-menu-roles' ); ?></legend>
 
 			<?php
 
