@@ -109,7 +109,7 @@ module.exports = function (grunt) {
 			// bump version numbers
 			replace: {
 				version: {
-					src: ["readme.txt", "readme.md", "<%= pkg.name %>.php"],
+					src: ["readme.txt", "readme.md", "<%= pkg.name %>.php", "inc/class-<%= pkg.name %>.php"],
 					overwrite: true,
 					replacements: [
 					{
