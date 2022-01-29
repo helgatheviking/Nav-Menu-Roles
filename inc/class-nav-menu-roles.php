@@ -186,6 +186,15 @@ class Nav_Menu_Roles {
 				'sanitize_callback' => array( $this, 'sanitize_meta' ),
 			)
 		);
+		register_meta(
+			'post',
+			'_nav_menu_role_display_mode',
+			array(
+				'object_subtype'    => 'nav_menu_item',
+				'type'              => 'mixed',
+				'sanitize_callback' => array( $this, 'sanitize_meta_mode' ),
+			)
+		);
 	}
 
 	/**
@@ -222,6 +231,19 @@ class Nav_Menu_Roles {
 		}
 
 		return $clean;
+	}
+
+	/**
+	 * Sanitize the display mode meta.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param  mixed  $meta_value The meta value.
+	 * @return mixed              The meta value.
+	 *
+	 */
+	public function sanitize_meta_mode( $meta_value ) {
+		return 'hide' === $meta_value ? 'hide' : 'show';
 	}
 
 	/**
@@ -327,11 +349,14 @@ class Nav_Menu_Roles {
 			return;
 		}
 
-		/* Get the roles saved for the post. */
+		// Get the roles saved for the post.
 		$roles = get_post_meta( $item->ID, '_nav_menu_role', true );
 
 		// By default nothing is checked (will match "everyone" radio).
 		$logged_in_out = '';
+
+		// Show/Hide items to specific users.
+		$display_mode = 'hide' === get_post_meta( $item->ID, '_nav_menu_role_display_mode', true ) ? 'hide' : 'show';
 
 		// Specific roles are saved as an array, so "in" or an array equals "in" is checked.
 		if ( is_array( $roles ) || 'in' === $roles ) {
@@ -352,8 +377,25 @@ class Nav_Menu_Roles {
 
 		<input type="hidden" name="nav-menu-role-nonce" value="<?php echo esc_attr( wp_create_nonce( 'nav-menu-nonce-name' ) ); ?>" />
 
-		<fieldset class="field-nav_menu_role nav_menu_logged_in_out_field description-wide" style="margin: 5px 0;">
+		<fieldset class="field-nav_menu_role nav_menu_display_mode_field description-wide" style="margin: 5px 0;">
 			<legend class="description"><?php esc_html_e( 'Display Mode', 'nav-menu-roles' ); ?></legend>
+
+			<input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
+
+			<label for="nav_menu_show-for-<?php echo esc_attr( $item->ID ); ?>" style="<?php echo esc_attr( $float ); ?> width: 35%;">
+				<input type="radio" class="nav-menu-display-mode" name="nav-menu-display-mode[<?php echo esc_attr( $item->ID ); ?>]" id="nav_menu_show-for-<?php echo esc_attr( $item->ID ); ?>" <?php checked( 'show', $display_mode ); ?> value="show" />
+				<?php esc_html_e( 'Show', 'nav-menu-roles' ); ?>   
+			</label>
+		
+			<label for="nav_menu_hide-for-<?php echo esc_attr( $item->ID ); ?>" style="<?php echo esc_attr( $float ); ?> width: 35%;">
+				<input type="radio" class="nav-menu-display-mode" name="nav-menu-display-mode[<?php echo esc_attr( $item->ID ); ?>]" id="nav_menu_hide-for-<?php echo esc_attr( $item->ID ); ?>" <?php checked( 'hide', $display_mode ); ?> value="hide" />
+				<?php esc_html_e( 'Hide', 'nav-menu-roles' ); ?>	       
+			</label>
+
+		</fieldset>
+
+		<fieldset class="field-nav_menu_role nav_menu_logged_in_out_field description-wide" style="margin: 5px 0;">
+			<legend class="description"><?php esc_html_e( 'For target audience', 'nav-menu-roles' ); ?></legend>
 
 			<input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
 
@@ -375,8 +417,7 @@ class Nav_Menu_Roles {
 		</fieldset>
 
 		<fieldset class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0; <?php echo esc_attr( $hidden ); ?>">
-			<legend class="description"><?php esc_html_e( 'Restrict menu item to a minimum role', 'nav-menu-roles' ); ?></legend>
-			<br />
+			<legend class="description"><?php esc_html_e( 'For target role', 'nav-menu-roles' ); ?></legend>
 
 			<?php
 
@@ -427,6 +468,12 @@ class Nav_Menu_Roles {
 			return $menu_id;
 		}
 
+		if ( isset( $_POST['nav-menu-display-mode'][ $menu_item_db_id ] ) && 'hide' === wp_unslash( $_POST['nav-menu-display-mode'][ $menu_item_db_id ] ) ) {
+			update_post_meta( $menu_item_db_id, '_nav_menu_role_display_mode', 'hide' );
+		} else {
+			update_post_meta( $menu_item_db_id, '_nav_menu_role_display_mode', 'show' );
+		}
+
 		if ( isset( $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] ) ) {
 
 			if ( 'in' === $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] && ! empty( $_POST['nav-menu-role'][ $menu_item_db_id ] ) ) {
@@ -453,6 +500,8 @@ class Nav_Menu_Roles {
 	public function setup_nav_item( $menu_item ) {
 
 		if ( is_object( $menu_item ) && isset( $menu_item->ID ) ) {
+
+			$menu_item->display_mode = 'hide' === get_post_meta( $menu_item->ID, '_nav_menu_role_display_mode', true ) ? 'hide' : 'show';
 
 			$roles = get_post_meta( $menu_item->ID, '_nav_menu_role', true );
 
@@ -557,6 +606,11 @@ class Nav_Menu_Roles {
 					}
 				}
 
+				// Invert visibility if display mode is "hide".
+				if ( ! empty( $item->display_mode ) && 'hide' === $item->display_mode ) {
+					$visible = ! $visible;
+				}
+
 				/*
 				 * Filter: nav_menu_roles_item_visibility
 				 * Add filter to work with plugins that don't use traditional roles
@@ -607,4 +661,4 @@ class Nav_Menu_Roles {
 		return version_compare( strtolower( $wp_version ), strtolower( $version ), '>=' );
 	}
 
-} // end class
+} // End class.
