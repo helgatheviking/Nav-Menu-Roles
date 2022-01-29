@@ -424,7 +424,7 @@ class Nav_Menu_Roles {
 
 		// Verify this came from our screen and with proper authorization.
 		if ( ! isset( $_POST['nav-menu-role-nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nav-menu-role-nonce'] ), 'nav-menu-nonce-name' ) ) {
-			return;
+			return $menu_id;
 		}
 
 		if ( isset( $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] ) ) {
@@ -440,6 +440,8 @@ class Nav_Menu_Roles {
 		} else {
 			delete_post_meta( $menu_item_db_id, '_nav_menu_role' );
 		}
+
+		return $menu_id;
 	}
 
 	/**
