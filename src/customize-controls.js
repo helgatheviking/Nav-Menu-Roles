@@ -84,6 +84,11 @@
 	function updateControlFields( control ) {
 		const roles = control.setting().roles || '';
 
+		console.debug("roles", roles);
+		console.debug("type", typeof roles);
+		console.debug("is array ", _.isArray( roles ));
+
+
 		const radioValue   = _.isArray( roles ) ? 'in' : roles;
 		const checkedRoles = _.isArray( roles ) ? roles : [];
 

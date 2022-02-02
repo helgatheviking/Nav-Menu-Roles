@@ -90,11 +90,12 @@ function customizer_custom_fields() {
  * Load the customizer scripts which extends nav menu item controls.
  */
 function customizer_scripts() {
+    $script_dependencies = include plugin_dir_path( __DIR__ ) . '/dist/customize-controls.asset.php';
 	wp_enqueue_script(
 		'customize-nav-menu-roles',
-		plugins_url( 'dist/js/customize.js', dirname( __FILE__ ) ),
-		array( 'customize-nav-menus' ),
-		\Nav_Menu_Roles::VERSION,
+		plugins_url( 'dist/customize-controls.js', dirname( __FILE__ ) ),
+		array_merge( array( 'customize-nav-menus' ), $script_dependencies[ 'dependencies' ] ),
+		$script_dependencies[ 'version' ],
 		true
 	);
 }
