@@ -186,7 +186,7 @@ class Nav_Menu_Roles {
 				'sanitize_callback' => array( $this, 'sanitize_meta' ),
 			)
 		);
-		register_meta(
+        register_meta(
 			'post',
 			'_nav_menu_role_display_mode',
 			array(
@@ -233,7 +233,7 @@ class Nav_Menu_Roles {
 		return $clean;
 	}
 
-	/**
+    /**
 	 * Sanitize the display mode meta.
 	 *
 	 * @since 2.1.0
@@ -349,7 +349,7 @@ class Nav_Menu_Roles {
 			return;
 		}
 
-		// Get the roles saved for the post.
+		/* Get the roles saved for the post. */
 		$roles = get_post_meta( $item->ID, '_nav_menu_role', true );
 
 		// By default nothing is checked (will match "everyone" radio).
@@ -468,12 +468,14 @@ class Nav_Menu_Roles {
 			return $menu_id;
 		}
 
-		if ( isset( $_POST['nav-menu-display-mode'][ $menu_item_db_id ] ) && 'hide' === wp_unslash( $_POST['nav-menu-display-mode'][ $menu_item_db_id ] ) ) {
+        // Save display mode.
+        if ( isset( $_POST['nav-menu-display-mode'][ $menu_item_db_id ] ) && 'hide' === wp_unslash( $_POST['nav-menu-display-mode'][ $menu_item_db_id ] ) ) {
 			update_post_meta( $menu_item_db_id, '_nav_menu_role_display_mode', 'hide' );
 		} else {
 			update_post_meta( $menu_item_db_id, '_nav_menu_role_display_mode', 'show' );
 		}
 
+        // Save target/roles.
 		if ( isset( $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] ) ) {
 
 			if ( 'in' === $_POST['nav-menu-logged-in-out'][ $menu_item_db_id ] && ! empty( $_POST['nav-menu-role'][ $menu_item_db_id ] ) ) {
@@ -501,7 +503,7 @@ class Nav_Menu_Roles {
 
 		if ( is_object( $menu_item ) && isset( $menu_item->ID ) ) {
 
-			$menu_item->display_mode = 'hide' === get_post_meta( $menu_item->ID, '_nav_menu_role_display_mode', true ) ? 'hide' : 'show';
+            $menu_item->display_mode = 'hide' === get_post_meta( $menu_item->ID, '_nav_menu_role_display_mode', true ) ? 'hide' : 'show';
 
 			$roles = get_post_meta( $menu_item->ID, '_nav_menu_role', true );
 
@@ -606,7 +608,7 @@ class Nav_Menu_Roles {
 					}
 				}
 
-				// Invert visibility if display mode is "hide".
+                // Invert visibility if display mode is "hide".
 				if ( ! empty( $item->display_mode ) && 'hide' === $item->display_mode ) {
 					$visible = ! $visible;
 				}
