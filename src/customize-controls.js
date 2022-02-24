@@ -26,7 +26,8 @@
 	 * @param {wp.customize.Menus.MenuItemControl} control
 	 */
 	function extendControl( control ) {
-		control.authFieldset  = control.container.find( '.nav_menu_role_authentication' );
+		control.modeFieldset  = control.container.find( '.nav_menu_role_display_mode' );
+        control.authFieldset  = control.container.find( '.nav_menu_role_authentication' );
 		control.rolesFieldset = control.container.find( '.nav_menu_roles' );
 
 		// Set the initial UI state.
@@ -40,7 +41,13 @@
 		);
 
 		// Update the setting when the inputs are modified.
-		control.authFieldset.find( 'input' ).on(
+		control.modeFieldset.find( 'input' ).on(
+			'click',
+			function () {
+				setSettingMode( control.setting, this.value );
+			}
+		);
+        control.authFieldset.find( 'input' ).on(
 			'click',
 			function () {
 				setSettingRoles( control.setting, this.value );
@@ -61,12 +68,32 @@
 	}
 
 	/**
+	 * Extend the setting with display  mode information.
+	 *
+	 * @param {wp.customize.Setting} setting
+	 * @param {string} mode
+	 */
+	function setSettingMode( setting, mode ) {
+
+		setting.set(
+			Object.assign(
+				{},
+				_.clone( setting() ),
+				{ display_mode: mode }
+			)
+		);
+
+	}
+
+	/**
 	 * Extend the setting with roles information.
 	 *
 	 * @param {wp.customize.Setting} setting
 	 * @param {string|Array} roles
 	 */
 	function setSettingRoles( setting, roles ) {
+
+        // NB: { roles } converts the roles variable to object with roles key, { roles: value }
 		setting.set(
 			Object.assign(
 				{},
@@ -74,6 +101,7 @@
 				{ roles }
 			)
 		);
+
 	}
 
 	/**
@@ -84,14 +112,17 @@
 	function updateControlFields( control ) {
 		const roles = control.setting().roles || '';
 
+        const modeValue     = 'hide' === control.setting().display_mode ? 'hide' : 'show';
 		const radioValue   = _.isArray( roles ) ? 'in' : roles;
 		const checkedRoles = _.isArray( roles ) ? roles : [];
 
 		control.rolesFieldset.toggle( 'in' === radioValue );
 
+        const modeRadio = control.modeFieldset.find( `input[type = radio][value = "${ modeValue }"]` );
 		const authRadio = control.authFieldset.find( `input[type = radio][value = "${ radioValue }"]` );
 
-		authRadio.prop( 'checked', true );
+		modeRadio.prop( 'checked', true );
+        authRadio.prop( 'checked', true );
 
 		control.rolesFieldset.find( 'input[type=checkbox]' ).each(
 			function () {
