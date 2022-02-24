@@ -105,12 +105,12 @@ function customizer_custom_fields() {
  * Load the customizer scripts which extends nav menu item controls.
  */
 function customizer_scripts() {
-    $script_dependencies = include plugin_dir_path( __DIR__ ) . '/dist/customize-controls.asset.php';
+	$script_dependencies = include plugin_dir_path( __DIR__ ) . '/dist/customize-controls.asset.php';
 	wp_enqueue_script(
 		'customize-nav-menu-roles',
 		plugins_url( 'dist/customize-controls.js', dirname( __FILE__ ) ),
-		array_merge( array( 'customize-nav-menus' ), $script_dependencies[ 'dependencies' ] ),
-		$script_dependencies[ 'version' ],
+		array_merge( array( 'customize-nav-menus' ), $script_dependencies['dependencies'] ),
+		$script_dependencies['version'],
 		true
 	);
 }
@@ -157,44 +157,44 @@ function get_roles_post_data( WP_Customize_Nav_Menu_Item_Setting $setting ) {
  * @param WP_Customize_Nav_Menu_Item_Setting $setting Setting.
  */
 function preview_nav_menu_setting_postmeta( WP_Customize_Nav_Menu_Item_Setting $setting ) {
-	
-    $mode = get_display_mode_post_data( $setting );
 
-    if ( null !== $mode ) {
+	$mode = get_display_mode_post_data( $setting );
 
-        $mode = Nav_Menu_Roles()->sanitize_meta_mode( $mode );
+	if ( null !== $mode ) {
 
-        add_filter(
-            'get_post_metadata',
-            static function ( $value, $object_id, $meta_key ) use ( $setting, $mode ) {
-                if ( $object_id === $setting->post_id && '_nav_menu_role_display_mode' === $meta_key ) {
-                    return array( $mode );
-                }
-                return $value;
-            },
-            10,
-            3
-        );
+		$mode = Nav_Menu_Roles()->sanitize_meta_mode( $mode );
+
+		add_filter(
+			'get_post_metadata',
+			static function ( $value, $object_id, $meta_key ) use ( $setting, $mode ) {
+				if ( $object_id === $setting->post_id && '_nav_menu_role_display_mode' === $meta_key ) {
+					return array( $mode );
+				}
+				return $value;
+			},
+			10,
+			3
+		);
 
 	}
-    
-    $roles = get_roles_post_data( $setting );
+
+	$roles = get_roles_post_data( $setting );
 
 	if ( null !== $roles ) {
 
-        $roles = Nav_Menu_Roles()->sanitize_meta( $roles );
+		$roles = Nav_Menu_Roles()->sanitize_meta( $roles );
 
-        add_filter(
-            'get_post_metadata',
-            static function ( $value, $object_id, $meta_key ) use ( $setting, $roles ) {
-                if ( $object_id === $setting->post_id && '_nav_menu_role' === $meta_key ) {
-                    return array( $roles );
-                }
-                return $value;
-            },
-            10,
-            3
-        );
+		add_filter(
+			'get_post_metadata',
+			static function ( $value, $object_id, $meta_key ) use ( $setting, $roles ) {
+				if ( $object_id === $setting->post_id && '_nav_menu_role' === $meta_key ) {
+					return array( $roles );
+				}
+				return $value;
+			},
+			10,
+			3
+		);
 
 	}
 
@@ -215,7 +215,7 @@ function save_nav_menu_setting_postmeta( WP_Customize_Nav_Menu_Item_Setting $set
 		update_post_meta( $setting->post_id, '_nav_menu_role_display_mode', $mode );
 	}
 
-    $roles = get_roles_post_data( $setting );
+	$roles = get_roles_post_data( $setting );
 	if ( null !== $roles ) {
 		update_post_meta( $setting->post_id, '_nav_menu_role', $roles );
 	}

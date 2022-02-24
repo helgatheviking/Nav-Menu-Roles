@@ -3,6 +3,7 @@
  *
  * @package Nav Menu Roles
  */
+
 (function($) {
 
 	$( '.nav_menu_logged_in_out_field' ).each(
