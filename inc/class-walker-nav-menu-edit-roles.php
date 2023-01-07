@@ -1,6 +1,6 @@
 <?php
 /**
- * Navigation Menu API: (Modifed) Walker_Nav_Menu_Edit class
+ * Navigation Menu API: (Modified) Walker_Nav_Menu_Edit class
  *
  * Create HTML list of nav menu input items.
  * Copied from Walker_Nav_Menu_Edit class in core /wp-admin/includes/nav-menu.php

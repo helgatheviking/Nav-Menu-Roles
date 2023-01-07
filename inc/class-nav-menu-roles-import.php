@@ -187,7 +187,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 			$this->version = $import_data['version'];
 			if ( $this->version > $this->max_wxr_version ) {
 				echo '<div class="error"><p><strong>';
-				// translators: %s is file verion number.
+				// translators: %s is file version number.
 				printf( esc_html__( 'This WXR file (version %s) may not be supported by this version of the importer. Please consider updating.', 'nav-menu-roles' ), esc_html( $import_data['version'] ) );
 				echo '</strong></p></div>';
 			}

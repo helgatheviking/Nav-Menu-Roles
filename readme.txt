@@ -95,7 +95,7 @@ Should you wish to attempt this patch yourself, you can modify your conflicting 
 
 **Reminder: I do not provide support for fixing your plugin/theme. If you aren't comfortable with the following instructions, contact the developer of the conflicting plugin/theme!**
 
-  1\. Find the class that extends the `Walker_Nav_Menu`. The fastest way to do this is to search your whole plugin/theme folder for `extends Walker_Nav_Menu`. When you find the file that contains this text you willl know which file you need to edit. Once you find it here's what the beginning of that class will look like:
+  1\. Find the class that extends the `Walker_Nav_Menu`. The fastest way to do this is to search your whole plugin/theme folder for `extends Walker_Nav_Menu`. When you find the file that contains this text you will know which file you need to edit. Once you find it here's what the beginning of that class will look like:
 
 `class YOUR_THEME_CUSTOM_WALKER extends Walker_Nav_Menu {}`
 
@@ -130,7 +130,7 @@ do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args, $id
 
 = Workaround #2 =
 
-As a workaround, you can switch to a default theme (or disable the conflicting plugin), edit the Nav Menu Roles, for each menu item, then revert to your original theme/ reenable the conflicting plugin. The front-end functionality of Nav Menu Roles will still work. 
+As a workaround, you can switch to a default theme (or disable the conflicting plugin), edit the Nav Menu Roles, for each menu item, then revert to your original theme/ re-enable the conflicting plugin. The front-end functionality of Nav Menu Roles will still work. 
 
 = Workaround #3 =
 
@@ -174,7 +174,7 @@ In case you *do* need to check your visibility status against something very cus
 
 `
 /*
- * Change visibilty of each menu item
+ * Change visibility of each menu item
  * param: $visible boolean
  * param: $item object, the complete menu object. Nav Menu Roles adds its info to $item->roles
  * $item->roles can be "in" (all logged in), "out" (all logged out) or an array of specific roles
