@@ -6,7 +6,7 @@ Tags: menu, menus, nav menu, nav menus
 Requires at least: 4.5.0
 Tested up to: 6.1.0
 Requires PHP: 5.3.2
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GPLv3
 
 Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
@@ -264,6 +264,9 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 Yes, but manually. WPML developers have informed me that the meta data for nav menu items is **not** synced by WPML, meaning that menus copied into a new language will not bring their custom Nav Menu Roles settings. However, if you manually reconfigure the settings, the new language menu will work as expected.
 
 == Changelog ==
+
+= 2.1.2 = 
+* Fix: Typos.
 
 = 2.1.1 = 
 * Fix: Top-level display of hidden child menu items of hidden parent menu items.
