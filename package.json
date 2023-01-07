@@ -34,6 +34,6 @@
 		"start": "wp-scripts start src/customize-controls.js src/nav-menu-roles.js --output-path=dist",
 		"makepot": "composer run makepot",
 		"release": "grunt build && npm run build && npm run makepot",
-		"zip": "npm run release && grunt zip"
+		"zip": "grunt zip"
 	}
 }
