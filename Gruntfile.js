@@ -1,7 +1,8 @@
-const webpackDev  = require( "./webpack.dev.js" );
-const webpackProd = require( "./webpack.prod.js" );
-const path        = require( "path" );
-var webpack       = require( "webpack" );
+/**
+ * Build automation scripts.
+ *
+ * @package Nav Menu Roles
+ */
 
 module.exports = function (grunt) {
 	// load most all grunt tasks
@@ -22,23 +23,6 @@ module.exports = function (grunt) {
 			// Remove the build directory files
 			clean: {
 				main: ["build/**"],
-			},
-
-			webpack: {
-				prod: webpackProd,
-				dev: webpackDev
-			},
-			watch: {
-				options: {
-					livereload: true,
-				},
-				js: {
-					files: ["src/js/**/*.js"],
-					tasks: ["webpack:dev"],
-					options: {
-						interrupt: true,
-					},
-				},
 			},
 
 			// Copy the plugin into the build directory
@@ -70,6 +54,20 @@ module.exports = function (grunt) {
 					],
 					dest: "build/",
 				},
+			},
+
+			// Make a zipfile.
+			compress: {
+				main: {
+					options: {
+						mode: 'zip',
+						archive: 'deploy/<%= pkg.name %>-<%= pkg.version %>.zip'
+					},
+					expand: true,
+					cwd: 'build/',
+					src: ['**/*'],
+					dest: '/<%= pkg.name %>'
+				}
 			},
 
 			// Generate git readme from readme.txt
@@ -141,12 +139,6 @@ module.exports = function (grunt) {
 	// makepot and addtextdomain tasks
 	grunt.loadNpmTasks( "grunt-wp-i18n" );
 
-	grunt.loadNpmTasks( "grunt-webpack" );
-
-	grunt.loadNpmTasks( "grunt-contrib-watch" );
-
-	grunt.loadNpmTasks( "grunt-contrib-connect" );
-
 	// Default task(s).
 	grunt.registerTask( "default", ["jshint"] );
 
@@ -159,8 +151,16 @@ module.exports = function (grunt) {
 		[
 		"test",
 		"replace",
-		"webpack:prod",
-		"makepot"
 		]
 	);
+
+	grunt.registerTask(
+		'zip',
+		[
+		'clean',
+		'copy',
+		'compress'
+		]
+	);
+
 };

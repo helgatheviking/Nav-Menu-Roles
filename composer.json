@@ -21,11 +21,18 @@
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "wp-cli/i18n-command": "^2.4",
         "wp-coding-standards/wpcs": "^2.3"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "makepot-audit": [
+			"wp --allow-root i18n make-pot . languages/nav-menu-roles.pot --slug=nav-menu-roles --exclude=\".github,.wordpress-org,node_modules,vendor,build,deploy\" --headers=\"Report-Msgid-Bugs-To:https://github.com/helgatheviking/Nav-Menu-Roles/issues/\n\""
+		],
+        "makepot": [
+			"@makepot-audit --skip-audit"
+		],
         "phpcs": [
             "@php ./vendor/bin/phpcs . -s -p -n"
         ],
@@ -38,5 +45,11 @@
             "phpcs": "Analyze code against the WordPress coding standards with PHP_CodeSniffer",
             "phpcb": "Fix coding standards warnings/errors automatically with PHP Code Beautifier"
       }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
+
 }

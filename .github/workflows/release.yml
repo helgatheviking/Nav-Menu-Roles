@@ -1,0 +1,136 @@
+# Add build zip to GitHub releases.
+# Version: 1.2.0
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Release
+
+on:
+  push:
+    tags:
+      # Semver (https://semver.org/) release pattern.
+      - '[0-9]+.[0-9]+.[0-9]+*'
+
+jobs:
+  # Build distribution release.
+  #
+  # Performs the following steps:
+  # - Checks out the repository.
+  # - Sets up PHP with Composer.
+  # - Logs debug information.
+  # - Get Composer Cache Directory.
+  # - Sets up Composer Caching..
+  # - Logs debug information.
+  # - Install Composer dependencies with development dependencies.
+  # - Setup NodeJS.
+  # - Get NPM cache directory.
+  # - Sets up NPM Caching.
+  # - Install NPM dependencies.
+  # - Get release version.
+  # - Check for Alpha release.
+  # - Check for Beta release.
+  # - Check for Release Candidate release.
+  # - Logs debug information.
+  # - Build release:
+  #    - Pre-release.
+  #    - Stable.
+  # - Add package to GitHub releases.
+
+  dist:
+    name: "Build distribution release."
+    runs-on: ubuntu-latest
+    env:
+      release: stable
+    steps:
+
+      - name: "Checks out the repository."
+        uses: "actions/checkout@v3"
+
+      - name: "Sets up PHP with Composer."
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: composer
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "Get Composer Cache Directory."
+        id: composer-cache
+        run: |
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: "Sets up Composer Caching."
+        uses: "actions/cache@v3"
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php-composer-build-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-composer-build-
+
+      - name: "Logs debug information."
+        run: |
+          php --version
+          composer --version
+
+      - name: "Install Composer dependencies with development dependencies."
+        run: |
+          composer install --no-interaction --prefer-dist --no-scripts
+
+      - name: "Setup NodeJS."
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: "Get NPM cache directory."
+        id: npm-cache-dir
+        run: |
+          echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+
+      - name: "Sets up NPM Caching."
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-npm-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-npm-build-
+
+      - name: "Install NPM dependencies."
+        run: npm install
+
+      - name: "Get release version."
+        run: |
+          echo "release_tag=$(node -p -e "require('./package.json').version")" >> $GITHUB_ENV
+
+      - name: "Get release file base name."
+        run: |
+          echo "release_name=$(node -p -e "require('./package.json').name")" >> $GITHUB_ENV
+
+      - name: "Logs debug information."
+        run: |
+          node --version
+          npm --version
+          echo ${{ env.release_tag }}
+          echo ${{ env.release_status }}
+
+      - name: "Build release"
+        run: |
+          npm run release
+
+      - name: WordPress Plugin Deploy
+        id: deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        with:
+          generate-zip: true
+        env:
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SLUG: ${{ env.release_name }}
+
+      - name: Upload release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ${{ steps.deploy.outputs.zip-path }}
+          asset_name: ${{ github.event.repository.name }}-${{ env.release_tag }}.zip
+          asset_content_type: application/zip

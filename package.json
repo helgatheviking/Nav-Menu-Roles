@@ -14,22 +14,26 @@
 	},
 	"author": "helgatheviking",
 	"devDependencies": {
-		"@wordpress/scripts": "^22.0.1",
-		"grunt": "^1.4.1",
-		"grunt-contrib-clean": "~2.0.0",
-		"grunt-contrib-connect": "^3.0.0",
+		"@wordpress/scripts": "^25.1.0",
+		"grunt": "^1.5.3",
+		"grunt-contrib-clean": "~2.0.1",
+		"grunt-contrib-compress": "^2.0.0",
 		"grunt-contrib-copy": "~1.0.0",
 		"grunt-contrib-jshint": "~3.2.0",
-		"grunt-contrib-uglify": "~5.0.1",
-		"grunt-contrib-watch": "^1.1.0",
+		"grunt-contrib-uglify": "~5.2.2",
 		"grunt-newer": "~1.3.0",
 		"grunt-text-replace": "^0.4.0",
 		"grunt-wp-i18n": "~1.0.3",
-		"grunt-wp-readme-to-markdown": "~2.1.0"
+		"grunt-wp-readme-to-markdown": "~2.1.0",
+		"jshint-stylish": "^2.2.1",
+		"load-grunt-tasks": "^5.1.0"
 	},
 	"scripts": {
 		"build": "wp-scripts build src/customize-controls.js src/nav-menu-roles.js --output-path=dist",
 		"build:dev": "wp-scripts build src/customize-controls.js src/nav-menu-roles.js --output-path=dist --node-env=development",
-		"start": "wp-scripts start src/customize-controls.js src/nav-menu-roles.js --output-path=dist"
+		"start": "wp-scripts start src/customize-controls.js src/nav-menu-roles.js --output-path=dist",
+		"makepot": "composer run makepot",
+		"release": "grunt build && npm run build && npm run makepot",
+		"zip": "npm run release && grunt zip"
 	}
 }
