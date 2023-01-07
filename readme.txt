@@ -265,9 +265,11 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 
 == Changelog ==
 
+= 2.1.1 = 
+* Fix: Top-level display of hidden child menu items of hidden parent menu items.
+
 = 2.1.0 = 
 * New: Add support for "hiding" a menu item by role.
-
 
 = 2.0.2 = 
 * Fix: PHP Fatal error: Uncaught Error: Call to undefined method WP_Customize_Manager::settings_previewed(). settings_previewed() does not exist until WordPress 3.9.0+.

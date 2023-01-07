@@ -561,11 +561,13 @@ class Nav_Menu_Roles {
 			// Iterate over the items to search and destroy.
 			foreach ( $items as $key => $item ) {
 
-				$visible = true;
+				$visible         = true;
+				$is_hidden_child = false;
 
 				// Hide any item that is the child of a hidden item.
-				if ( isset( $item->menu_item_parent ) && in_array( $item->menu_item_parent, $hide_children_of ) ) {
-					$visible = false;
+				if ( ! empty( $item->menu_item_parent ) && in_array( $item->menu_item_parent, $hide_children_of ) ) {
+					$visible         = false;
+					$is_hidden_child = true;
 				}
 
 				// Check any item that has NMR roles set.
@@ -610,8 +612,8 @@ class Nav_Menu_Roles {
 					}
 				}
 
-				// Invert visibility if display mode is "hide".
-				if ( ! empty( $item->display_mode ) && 'hide' === $item->display_mode ) {
+				// Invert visibility if display mode is "hide" for items not already hidden as children of hidden parent.
+				if ( ! $is_hidden_child && ! empty( $item->display_mode ) && 'hide' === $item->display_mode ) {
 					$visible = ! $visible;
 				}
 
