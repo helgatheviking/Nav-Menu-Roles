@@ -40,14 +40,14 @@ if ( ! class_exists( 'WP_Importer' ) ) {
 if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) ) {
 	class Nav_Menu_Roles_Import extends WP_Importer {
 
-		var $max_wxr_version = 1.2; // max. supported WXR version
+		public $max_wxr_version = 1.2; // max. supported WXR version
 
-		var $id; // WXR attachment ID
+		public $id; // WXR attachment ID
 
 		// information to import from WXR file
-		var $version;
-		var $posts    = array();
-		var $base_url = '';
+		public $version;
+		public $posts    = array();
+		public $base_url = '';
 
 
 		/**
