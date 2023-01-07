@@ -29,31 +29,6 @@
 
 	<!--
 	#############################################################################
-	SET THE BASIC RULES
-	Use the WordPress Coding Standards and PHPCompatibilityWP.
-	https://github.com/WordPress/WordPress-Coding-Standards
-	https://github.com/PHPCompatibility/PHPCompatibilityWP
-	#############################################################################
-	-->
-
-	<!-- Use the WordPress ruleset for code style, documentation and basic QA checks. -->
-	<rule ref="WordPress">
-		<!-- Linting is done via PHP-Parallel-Lint instead. -->
-		<exclude name="Generic.PHP.Syntax"/>
-		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
-		<exclude name="Generic.Commenting.DocComment"/>
-	</rule>
-
-	<!-- Error prevention: Ensure no git conflicts make it into the code base. -->
-	<!-- PHPCS 3.4.0: This sniff will be added to WPCS 2.x in due time and can then be removed from this ruleset. -->
-	<rule ref="Generic.VersionControl.GitMergeConflict"/>
-
-	<!-- CS: no space between an increment/decrement operator and the variable it applies to. -->
-	<!-- PHPCS 3.4.0: This sniff will be added to WPCS 2.x in due time and can then be removed from this ruleset. -->
-	<rule ref="Generic.WhiteSpace.IncrementDecrementSpacing"/>
-
-	<!--
-	#############################################################################
 	SNIFF SPECIFIC CONFIGURATION
 	https://github.com/WordPress/WordPress-Coding-Standards/wiki/Customizable-sniff-properties
 	#############################################################################

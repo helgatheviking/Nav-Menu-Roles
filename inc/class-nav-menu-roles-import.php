@@ -40,11 +40,10 @@ if ( ! class_exists( 'WP_Importer' ) ) {
 if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) ) {
 	class Nav_Menu_Roles_Import extends WP_Importer {
 
-		public $max_wxr_version = 1.2; // max. supported WXR version
+		public $max_wxr_version = 1.2; // Max. supported WXR version.
+		public $id; // WXR attachment ID.
 
-		public $id; // WXR attachment ID
-
-		// information to import from WXR file
+		// Information to import from WXR file.
 		public $version;
 		public $posts    = array();
 		public $base_url = '';
@@ -151,7 +150,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 			wp_defer_term_counting( false );
 			wp_defer_comment_counting( false );
 
-			echo '<p>' . esc_html__( 'All done.', 'nav-menu-roles' ) . ' <a href="' . esc_url( admin_url() ) . '">' . esc_html__( 'Have fun!', 'nav-menu-roles' ) . '</a>' . '</p>';
+			echo '<p>' . esc_html__( 'All done.', 'nav-menu-roles' ) . ' <a href="' . esc_url( admin_url() ) . '">' . esc_html__( 'Have fun!', 'nav-menu-roles' ) . '</a></p>';
 
 			do_action( 'import_end' );
 		}
