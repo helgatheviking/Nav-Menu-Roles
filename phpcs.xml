@@ -10,6 +10,9 @@
     <exclude-pattern>*/.wordpress-org/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/build/*</exclude-pattern>
+	<exclude-pattern>*/deploy/*</exclude-pattern>
+	<exclude-pattern>*/dist/*</exclude-pattern>
 
 	<!-- Show progress. -->
 	<arg value="ps"/>
