@@ -171,7 +171,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 				return false;
 			} elseif ( ! file_exists( $file['file'] ) ) {
 				echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				// translators: %s is export file name.
 				printf( esc_html__( 'The export file could not be found at %s. It is likely that this was caused by a permissions problem.', 'nav-menu-roles' ), '<code>' . esc_html( $file['file'] ) . '</code>' );
 				echo '</p>';
 				return false;
@@ -188,6 +188,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 			$this->version = $import_data['version'];
 			if ( $this->version > $this->max_wxr_version ) {
 				echo '<div class="error"><p><strong>';
+				// translators: %s is file verion number.
 				printf( esc_html__( 'This WXR file (version %s) may not be supported by this version of the importer. Please consider updating.', 'nav-menu-roles' ), esc_html( $import_data['version'] ) );
 				echo '</strong></p></div>';
 			}
@@ -263,6 +264,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 			if ( isset( $updates[ $basename ] ) ) {
 				$update = $updates[ $basename ];
 				echo '<div class="error"><p><strong>';
+				// translators: %s is importer version number.
 				printf( esc_html__( 'A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files.', 'nav-menu-roles' ), esc_html( $update->update->new_version ) );
 				echo '</strong></p></div>';
 			}

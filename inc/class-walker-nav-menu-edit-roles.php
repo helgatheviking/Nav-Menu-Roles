@@ -229,7 +229,10 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
 				<div class="menu-item-actions description-wide submitbox">
 					<?php if ( 'custom' != $item->type && false !== $original_title ) : ?>
 						<p class="link-to-original">
-							<?php printf( __( 'Original: %s', 'nav-menu-roles' ), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
+							<?php
+							// translators: %s is original menu item title.
+							printf( __( 'Original: %s', 'nav-menu-roles' ), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' );
+							?>
 						</p>
 					<?php endif; ?>
 					<a class="item-delete submitdelete deletion" id="delete-<?php echo $item_id; ?>"
