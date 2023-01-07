@@ -65,7 +65,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		 *
 		 * Manages the three separate stages of the WXR import process
 		 */
-		function dispatch() {
+		public function dispatch() {
 			$this->header();
 
 			$step = empty( $_GET['step'] ) ? 0 : (int) $_GET['step'];
@@ -91,7 +91,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		 *
 		 * @param string $file Path to the WXR file for importing
 		 */
-		function import( $file ) {
+		public function import( $file ) {
 			add_filter( 'import_post_meta_key', array( $this, 'is_valid_meta_key' ) );
 			add_filter( 'http_request_timeout', array( $this, 'bump_request_timeout' ) );
 
@@ -109,7 +109,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		 *
 		 * @param string $file Path to the WXR file for importing
 		 */
-		function import_start( $file ) {
+		public function import_start( $file ) {
 			if ( ! is_file( $file ) ) {
 				echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'nav-menu-roles' ) . '</strong><br />';
 				echo esc_html__( 'The file does not exist, please try again.', 'nav-menu-roles' ) . '</p>';
@@ -139,7 +139,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		/**
 		 * Performs post-import cleanup of files and the cache
 		 */
-		function import_end() {
+		public function import_end() {
 			wp_import_cleanup( $this->id );
 
 			wp_cache_flush();
@@ -162,7 +162,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		 *
 		 * @return bool False if error uploading or invalid file, true otherwise
 		 */
-		function handle_upload() {
+		public function handle_upload() {
 			$file = wp_import_handle_upload();
 
 			if ( isset( $file['error'] ) ) {
@@ -206,7 +206,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		 * is already noted as imported or a post with the same title and date already exists.
 		 * Note that new/updated terms, comments and meta are imported for the last of the above.
 		 */
-		function process_nav_menu_meta() {
+		public function process_nav_menu_meta() {
 			foreach ( $this->posts as $post ) {
 
 				// we only want to deal with the nav_menu_item posts
@@ -249,13 +249,13 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		 * @param string $file Path to WXR file for parsing
 		 * @return array Information gathered from the WXR file
 		 */
-		function parse( $file ) {
+		public function parse( $file ) {
 			$parser = new WXR_Parser();
 			return $parser->parse( $file );
 		}
 
 		// Display import page title
-		function header() {
+		public function header() {
 			echo '<div class="wrap">';
 			echo '<h2>' . esc_html__( 'Import Nav Menu Roles', 'nav-menu-roles' ) . '</h2>';
 
@@ -271,14 +271,14 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		}
 
 		// Close div.wrap
-		function footer() {
+		public function footer() {
 			echo '</div>';
 		}
 
 		/**
 		 * Display introductory text and file upload form
 		 */
-		function greet() {
+		public function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . esc_html__( 'Re-Upload your normal WordPress eXtended RSS (WXR) file and we&#8217;ll import the Nav Menu Roles and any other missing post meta for the Nav Menu items.', 'nav-menu-roles' ) . '</p>';
 			echo '<p>' . esc_html__( 'Choose a WXR (.xml) file to upload, then click Upload file and import.', 'nav-menu-roles' ) . '</p>';
@@ -292,7 +292,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		 * @param string $key The meta key to check
 		 * @return string|bool The key if we do want to import, false if not
 		 */
-		function is_valid_meta_key( $key ) {
+		public function is_valid_meta_key( $key ) {
 			// skip attachment metadata since we'll regenerate it from scratch
 			// skip _edit_lock as not relevant for import
 			if ( in_array( $key, array( '_wp_attached_file', '_wp_attachment_metadata', '_edit_lock' ), true ) ) {
@@ -312,7 +312,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		}
 
 		// return the difference in length between two strings
-		function cmpr_strlen( $a, $b ) {
+		public function cmpr_strlen( $a, $b ) {
 			return strlen( $b ) - strlen( $a );
 		}
 
