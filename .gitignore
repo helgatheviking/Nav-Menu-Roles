@@ -22,5 +22,6 @@ temp/
 sftp-config.json
 deploy.sh
 build/
+deploy/
 svn/
 wp-assets/
