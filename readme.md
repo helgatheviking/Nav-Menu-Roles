@@ -75,13 +75,13 @@ Nav Menu Roles is therefore attaching directly to this hook without needing to r
 
 Prior to WordPress 5.4, I used this idea and modified my admin nav menu Walker to *only* adding the following lines (right after the description input):
 
-`
+```php
 <?php 
 // Place this in your admin nav menu Walker
 do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args, $id );
 // end added section 
 ?>
-` 
+```
 
 Since WordPress 5.4, I no longer replace the Walker at all and would advise other plugins and themes to do the same.
 
@@ -103,15 +103,17 @@ Should you wish to attempt this patch yourself, you can modify your conflicting 
 
 In that file you will eventually see a class method that looks like:
 
-`function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+```php
+function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
   // some stuff truncated for brevity
 }
+```
 
 	  3\. Paste the action hook somewhere in this method!
 	
 	In Nav Menu Roles, I have placed the hook directly after the description, like so:
 	
-
+```html
 <p class="field-description description description-wide">
   <label for="edit-menu-item-description-<?php echo $item_id; ?>">
     <?php _e( 'Description' ); ?><br />
@@ -125,7 +127,7 @@ In that file you will eventually see a class method that looks like:
 do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args, $id );
 // end added section 
 ?>
-`
+```
 
 ### Workaround #2 ###
 
