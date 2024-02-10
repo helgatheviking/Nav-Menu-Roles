@@ -30,9 +30,10 @@
 	},
 	"scripts": {
 		"build": "wp-scripts build",
-		"start": "wp-scripts start",
+		"deploy": "npm release && grunt zip",
 		"makepot": "composer run makepot",
 		"release": "grunt build && npm run build && npm run makepot",
+		"start": "wp-scripts start",
 		"zip": "grunt zip"
 	}
 }
