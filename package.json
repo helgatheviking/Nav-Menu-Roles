@@ -14,8 +14,8 @@
 	},
 	"author": "helgatheviking",
 	"devDependencies": {
-		"@wordpress/scripts": "^25.1.0",
-		"grunt": "^1.5.3",
+		"@wordpress/scripts": "^27.2.0",
+		"grunt": "^1.6.1",
 		"grunt-contrib-clean": "~2.0.1",
 		"grunt-contrib-compress": "^2.0.0",
 		"grunt-contrib-copy": "~1.0.0",
