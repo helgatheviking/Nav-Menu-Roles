@@ -111,9 +111,9 @@ jobs:
           echo ${{ env.release_tag }}
           echo ${{ env.release_status }}
 
-      - name: "Build release"
+      - name: "Build release and ZIP"
         run: |
-          npm run release
+          npm run deploy
 
       - name: WordPress Plugin Deploy
         id: deploy
@@ -122,11 +122,9 @@ jobs:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SLUG: ${{ env.release_name }}
+          BUILD_DIR: ./build
 
       - name: "Attach release asset"
-        run: |
-          npm run zip
-
       - name: "Add package to GitHub releases."
         uses: softprops/action-gh-release@v1
         with:
