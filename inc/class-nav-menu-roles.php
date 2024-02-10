@@ -377,7 +377,7 @@ class Nav_Menu_Roles {
 
 		<input type="hidden" name="nav-menu-role-nonce" value="<?php echo esc_attr( wp_create_nonce( 'nav-menu-nonce-name' ) ); ?>" />
 
-		<fieldset class="field-nav_menu_role nav_menu_display_mode_field description-wide" style="margin: 5px 0;">
+		<fieldset class="field-nav_menu_role nav_menu_display_mode_field">
 			<legend class="description"><?php esc_html_e( 'Display Mode', 'nav-menu-roles' ); ?></legend>
 
 			<input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
@@ -394,7 +394,7 @@ class Nav_Menu_Roles {
 
 		</fieldset>
 
-		<fieldset class="field-nav_menu_role nav_menu_logged_in_out_field description-wide">
+		<fieldset class="field-nav_menu_role nav_menu_logged_in_out_field">
 			<legend class="description"><?php esc_html_e( 'Target audience', 'nav-menu-roles' ); ?></legend>
 
 			<input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
@@ -453,6 +453,30 @@ class Nav_Menu_Roles {
 		if ( 'nav-menus.php' === $hook ) {
 			
 			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'assets/js/nav-menu-roles.js', $this->main_file ), array( 'jquery' ), self::VERSION, true );
+
+			?>
+			<style>
+
+				fieldset.field-nav_menu_role { margin: 0 0 1rem 0; }
+				fieldset.field-nav_menu_role legend { font-weight: bold; margin-bottom: .5rem; }
+				fieldset.nav_menu_display_mode_field > label,
+				fieldset.nav_menu_logged_in_out_field > label {
+					float: left;
+					margin: 0 .5rem 0 0;
+				}
+				fieldset.nav_menu_role_field {
+					column-count: 2;
+				}
+				fieldset.nav_menu_role_field > label {
+					display: block;
+				}
+				.rtl fieldset.nav_menu_display_mode_field > label,
+				.rtl fieldset.nav_menu_logged_in_out_field > label {
+					float: right;
+					margin: 0 0 0 .5rem;
+				}
+			</style>
+			<?php
 		}
 	}
 

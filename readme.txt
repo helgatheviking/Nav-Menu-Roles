@@ -265,6 +265,9 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 
 == Changelog ==
 
+= 2.1.3 = 
+* Fix: RTL layout style.
+
 = 2.1.2 = 
 * Fix: Typos.
 
