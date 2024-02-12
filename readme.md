@@ -6,7 +6,7 @@
 **Requires at least:** 4.5.0  
 **Tested up to:** 6.4.0  
 **Requires PHP:** 5.3.2  
-**Stable tag:** 2.1.2  
+**Stable tag:** 2.1.3-beta.1  
 **License:** GPLv3  
 
 Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
