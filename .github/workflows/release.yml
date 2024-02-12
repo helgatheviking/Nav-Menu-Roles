@@ -124,7 +124,6 @@ jobs:
           SLUG: ${{ env.release_name }}
           BUILD_DIR: ./build
 
-      - name: "Attach release asset"
       - name: "Add package to GitHub releases."
         uses: softprops/action-gh-release@v1
         with:
