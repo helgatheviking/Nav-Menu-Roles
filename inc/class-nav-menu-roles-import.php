@@ -56,7 +56,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		 * @return void
 		 */
 		public function __construct() {
-			$this->import_page = 'woocommerce_tax_rate_csv';
+			$this->import_page = 'nav_menu_items';
 		}
 
 		/**
