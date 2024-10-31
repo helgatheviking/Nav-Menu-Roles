@@ -4,7 +4,7 @@ const path          = require( 'path' );
 module.exports = {
 	...defaultConfig,
 	entry: {
-		'customize-controls': '/src/customize-controls.js',
+		'customizer/controls': '/src/customizer/controls.js',
 		'nav-menu-roles': '/src/nav-menu-roles.js',
 	},
 	output: {
