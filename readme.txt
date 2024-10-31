@@ -1,7 +1,7 @@
 === Nav Menu Roles ===
 
 Contributors: helgatheviking
-Donate link: https://www.paypal.com/fundraiser/charity/1451316
+Donate link: https://paypal.me/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Tested up to: 6.5.0
 Requires PHP: 5.3.2
