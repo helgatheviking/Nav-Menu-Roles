@@ -4,8 +4,8 @@ Contributors: helgatheviking
 Donate link: https://paypal.me/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Tested up to: 6.5.0
-Requires PHP: 5.3.2
 Requires at least: 6.6.0
+Requires PHP: 7.4
 Stable tag: 2.1.3-beta.1
 License: GPLv3
 
@@ -267,6 +267,7 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 == Changelog ==
 
 = 2.1.3 = 
+* Requires: PHP 7.4 and WordPress 6.3
 * Fix: RTL layout style.
 
 = 2.1.2 = 
