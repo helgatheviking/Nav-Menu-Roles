@@ -39,7 +39,6 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu_Edit {
 	/**
 	 * Get custom fields
 	 *
-	 * @access protected
 	 * @since 0.1.0
 	 * @uses do_action() Calls 'menu_item_custom_fields' hook
 	 *

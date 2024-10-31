@@ -1,12 +1,12 @@
 === Nav Menu Roles ===
 
 Contributors: helgatheviking
-Donate link: https://www.paypal.com/fundraiser/charity/1451316
+Donate link: https://paypal.me/helgatheviking
 Tags: menu, menus, nav menu, nav menus
-Requires at least: 4.5.0
-Tested up to: 6.5.0
-Requires PHP: 5.3.2
-Stable tag: 2.1.3-beta.1
+Requires at least: 6.6.0
+Tested up to: 6.7.0
+Requires PHP: 7.4
+Stable tag: 2.1.3
 License: GPLv3
 
 Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
@@ -267,6 +267,7 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 == Changelog ==
 
 = 2.1.3 = 
+* Requires: PHP 7.4 and WordPress 6.3
 * Fix: RTL layout style.
 
 = 2.1.2 = 

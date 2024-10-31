@@ -24,9 +24,7 @@ add_action( 'wp_nav_menu_item_custom_fields_customize_template', __NAMESPACE__ .
 add_action( 'customize_controls_enqueue_scripts', __NAMESPACE__ . '\customizer_scripts' );
 
 // Workaround for previewing changes.
-if ( \Nav_Menu_Roles::is_wp_gte( '4.9' ) ) {
-	add_action( 'customize_register', __NAMESPACE__ . '\customizer_preview', 1000 );
-}
+add_action( 'customize_register', __NAMESPACE__ . '\customizer_preview', 1000 );
 
 // Workaround for saving changes.
 add_action( 'customize_save_after', __NAMESPACE__ . '\customizer_save' );
@@ -105,10 +103,10 @@ function customizer_custom_fields() {
  * Load the customizer scripts which extends nav menu item controls.
  */
 function customizer_scripts() {
-	$script_dependencies = include plugin_dir_path( __DIR__ ) . '/assets/js/customize-controls.asset.php';
+	$script_dependencies = include plugin_dir_path( __DIR__ ) . '/assets/js/customizer/controls.asset.php';
 	wp_enqueue_script(
 		'customize-nav-menu-roles',
-		plugins_url( 'assets/js/customize-controls.js', dirname( __FILE__ ) ),
+		plugins_url( 'assets/js/customizer/controls.js', dirname( __FILE__ ) ),
 		array_merge( array( 'customize-nav-menus' ), $script_dependencies['dependencies'] ),
 		$script_dependencies['version'],
 		true

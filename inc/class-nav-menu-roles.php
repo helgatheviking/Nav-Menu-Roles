@@ -79,7 +79,6 @@ class Nav_Menu_Roles {
 
 	/**
 	 * Nav_Menu_Roles Constructor.
-	 * @access public
 	 * @return Nav_Menu_Roles
 	 * @since  1.0
 	 */
@@ -100,11 +99,6 @@ class Nav_Menu_Roles {
 
 		// Add FAQ and Donate link to plugin.
 		add_filter( 'plugin_row_meta', array( $this, 'add_action_links' ), 10, 2 );
-
-		// Maybe switch the admin walker.
-		if ( ! self::is_wp_gte( '5.4' ) ) {
-			add_filter( 'wp_edit_nav_menu_walker', array( $this, 'edit_nav_menu_walker' ) );
-		}
 
 		// Add new fields via hook.
 		add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'custom_fields' ), 10, 4 );
@@ -131,9 +125,6 @@ class Nav_Menu_Roles {
 
 	/**
 	 * Include the custom admin walker
-	 *
-	 * @access public
-	 * @return void
 	 */
 	public function admin_init() {
 
@@ -146,9 +137,6 @@ class Nav_Menu_Roles {
 	/**
 	 * Register the Importer
 	 * the regular Importer skips post meta for the menu items
-	 *
-	 * @access private
-	 * @return void
 	 */
 	public function register_importer() {
 		// Register the new importer.
@@ -665,9 +653,6 @@ class Nav_Menu_Roles {
 
 	/**
 	 * Maybe upgrade
-	 *
-	 * @access public
-	 * @return void
 	 */
 	public function maybe_upgrade() {
 		$db_version = get_option( 'nav_menu_roles_db_version', false );
@@ -681,7 +666,6 @@ class Nav_Menu_Roles {
 	/**
 	 * Test WordPress version
 	 *
-	 * @access public
 	 * @param  string $version - A WordPress version to compare against current version.
 	 * @return boolean
 	 */
