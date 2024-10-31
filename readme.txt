@@ -3,9 +3,9 @@
 Contributors: helgatheviking
 Donate link: https://www.paypal.com/fundraiser/charity/1451316
 Tags: menu, menus, nav menu, nav menus
-Requires at least: 4.5.0
 Tested up to: 6.5.0
 Requires PHP: 5.3.2
+Requires at least: 6.6.0
 Stable tag: 2.1.3-beta.1
 License: GPLv3
 
