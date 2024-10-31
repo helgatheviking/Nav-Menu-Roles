@@ -3,8 +3,8 @@
 Contributors: helgatheviking
 Donate link: https://paypal.me/helgatheviking
 Tags: menu, menus, nav menu, nav menus
-Tested up to: 6.5.0
 Requires at least: 6.6.0
+Tested up to: 6.7.0
 Requires PHP: 7.4
 Stable tag: 2.1.3-beta.1
 License: GPLv3
