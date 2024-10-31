@@ -52,7 +52,6 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		/**
 		 * __construct function.
 		 *
-		 * @access public
 		 * @return void
 		 */
 		public function __construct() {
