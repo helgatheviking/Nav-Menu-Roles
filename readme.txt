@@ -31,7 +31,7 @@ In WordPress menu items and pages are completely separate entities. Nav Menu Rol
 
 Support is handled in the [WordPress forums](https://wordpress.org/support/plugin/nav-menu-roles). Please note that support is limited and does not cover any custom implementation of the plugin. Before posting, please read the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/). Also, please verify the problem with other plugins disabled and while using a default theme. 
 
-Please report any bugs, errors, warnings, code problems to [Github](https://github.com/helgatheviking/nav-menu-roles/issues)
+Please report any bugs, errors, warnings, code problems to [GitHub](https://github.com/helgatheviking/nav-menu-roles/issues)
 
 == Installation ==
 
@@ -331,7 +331,7 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 * Reduce number of parameters passed to `add_action_links` filter
 
 = 1.8.1 = 
-* Switch input names to use a counter [nav-menu-role][100][1]. For some reason [nav-menu-role][100][] doesn't post an array and hypenated names [nav-menu-role][100][gold-plan] wreak havoc on the save routine. Shouldn't impact anyone not using hyphenated role names. 
+* Switch input names to use a counter [nav-menu-role][100][1]. For some reason [nav-menu-role][100][] doesn't post an array and hyphenated names [nav-menu-role][100][gold-plan] wreak havoc on the save routine. Shouldn't impact anyone not using hyphenated role names. 
 
 = 1.8.0 = 
 * Fix style issue in WordPress 4.5
@@ -363,7 +363,7 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 
 = 1.7.1 =
 * Updated FAQ with patch instructions for conflicting plugins/themes
-* add Portugeuse language. props @brunobarros
+* add Portuguese language. props @brunobarros
 
 = 1.7.0 =
 * adjust admin UI to be more user-friendly. Options are now: show to everyone, show to logged out users, and show to logged in users (optionally, logged in users by specific role)
