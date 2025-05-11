@@ -31,7 +31,7 @@ In WordPress menu items and pages are completely separate entities. Nav Menu Rol
 
 Support is handled in the [WordPress forums](https://wordpress.org/support/plugin/nav-menu-roles). Please note that support is limited and does not cover any custom implementation of the plugin. Before posting, please read the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/). Also, please verify the problem with other plugins disabled and while using a default theme. 
 
-Please report any bugs, errors, warnings, code problems to [Github](https://github.com/helgatheviking/nav-menu-roles/issues)
+Please report any bugs, errors, warnings, code problems to [GitHub](https://github.com/helgatheviking/nav-menu-roles/issues)
 
 ## Installation ##
 
