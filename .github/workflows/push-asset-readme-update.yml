@@ -1,8 +1,12 @@
 name: Plugin asset/readme update
+
 on:
   push:
     branches:
-    - trunk
+      - trunk
+    paths:
+      - readme.txt
+      - assets/**
 jobs:
   trunk:
     name: Push to trunk
