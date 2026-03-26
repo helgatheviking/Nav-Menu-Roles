@@ -111,6 +111,12 @@ jobs:
         run: |
           npm run deploy
 
+      - name: "Add package to GitHub releases."
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: ./deploy/${{ env.release_name }}-${{ env.release_tag }}.zip
+
       - name: WordPress Plugin Deploy
         id: deploy
         uses: 10up/action-wordpress-plugin-deploy@2.3.0
@@ -119,9 +125,3 @@ jobs:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SLUG: ${{ env.release_name }}
           BUILD_DIR: ./build
-
-      - name: "Add package to GitHub releases."
-        uses: softprops/action-gh-release@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          files: ./deploy/${{ env.release_name }}-${{ env.release_tag }}.zip
