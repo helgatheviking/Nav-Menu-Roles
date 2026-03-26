@@ -9,7 +9,7 @@ Requires PHP: 7.4
 Stable tag: 2.1.3
 License: GPLv3
 
-Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
+Hide custom menu items based on user roles.
 
 == Description ==
 
