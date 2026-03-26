@@ -1,55 +1,54 @@
 {
-    "name": "helgatheviking/nav-menu-roles",
-    "description": "WordPress plugin to hide custom menu items based on user roles",
-    "type": "wordpress-plugin",
-    "keywords": [],
-    "license": "LGPL-3.0-or-later",
-    "authors": [
-        {
-            "name": "Kathy Darling",
-            "role": "lead",
-            "homepage": "https://www.kathyisawesome.com"
-        },
-        {
-            "name": "Contributors",
-            "homepage": "https://github.com/helgatheviking/nav-menu-roles/graphs/contributors"
-        }
-    ],
-    "homepage": "https://www.wordpress.org/plugins/nav-menu-roles/",
-    "support": {
-        "source": "https://github.com/helgatheviking/nav-menu-roles"
+  "name": "helgatheviking/nav-menu-roles",
+  "description": "WordPress plugin to hide custom menu items based on user roles",
+  "type": "wordpress-plugin",
+  "keywords": [],
+  "license": "LGPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Kathy Darling",
+      "role": "lead",
+      "homepage": "https://www.kathyisawesome.com"
     },
-    "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-        "wp-cli/i18n-command": "^2.4",
-        "wp-coding-standards/wpcs": "^2.3"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "makepot-audit": [
-			"wp --allow-root i18n make-pot . languages/nav-menu-roles.pot --slug=nav-menu-roles --exclude=\".github,.wordpress-org,node_modules,vendor,build,deploy\" --headers=\"Report-Msgid-Bugs-To:https://github.com/helgatheviking/Nav-Menu-Roles/issues/\n\""
-		],
-        "makepot": [
-			"@makepot-audit --skip-audit"
-		],
-        "phpcs": [
-            "@php ./vendor/bin/phpcs . -s -p -n"
-        ],
-        "phpcb": [
-            "@php ./vendor/bin/phpcbf . -p"
-        ]
-    },
-    "extra": {
-        "scripts-description": {
-            "phpcs": "Analyze code against the WordPress coding standards with PHP_CodeSniffer",
-            "phpcb": "Fix coding standards warnings/errors automatically with PHP Code Beautifier"
-      }
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
+    {
+      "name": "Contributors",
+      "homepage": "https://github.com/helgatheviking/nav-menu-roles/graphs/contributors"
     }
-
+  ],
+  "homepage": "https://www.wordpress.org/plugins/nav-menu-roles/",
+  "support": {
+    "source": "https://github.com/helgatheviking/nav-menu-roles"
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+    "wp-cli/i18n-command": "^2.6",
+    "wp-coding-standards/wpcs": "^2.3"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "makepot-audit": [
+      "wp --allow-root i18n make-pot . languages/nav-menu-roles.pot --slug=nav-menu-roles --exclude=\".github,.wordpress-org,node_modules,vendor,build,deploy\" --headers=\"Report-Msgid-Bugs-To:https://github.com/helgatheviking/Nav-Menu-Roles/issues/\n\""
+    ],
+    "makepot": [
+      "@makepot-audit --skip-audit"
+    ],
+    "phpcs": [
+      "@php ./vendor/bin/phpcs . -s -p -n"
+    ],
+    "phpcb": [
+      "@php ./vendor/bin/phpcbf . -p"
+    ]
+  },
+  "extra": {
+    "scripts-description": {
+      "phpcs": "Analyze code against the WordPress coding standards with PHP_CodeSniffer",
+      "phpcb": "Fix coding standards warnings/errors automatically with PHP Code Beautifier"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
 }
