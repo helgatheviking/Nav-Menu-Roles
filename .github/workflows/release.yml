@@ -1,14 +1,15 @@
 # Add build zip to GitHub releases.
 # Version: 1.2.0
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
-
 name: Release
-
 on:
   push:
     tags:
       # Semver (https://semver.org/) release pattern.
       - '[0-9]+.[0-9]+.[0-9]+*'
+
+permissions:
+  contents: write
 
 jobs:
   # Build distribution release.
@@ -16,9 +17,8 @@ jobs:
   # Performs the following steps:
   # - Checks out the repository.
   # - Sets up PHP with Composer.
-  # - Logs debug information.
   # - Get Composer Cache Directory.
-  # - Sets up Composer Caching..
+  # - Sets up Composer Caching.
   # - Logs debug information.
   # - Install Composer dependencies with development dependencies.
   # - Setup NodeJS.
@@ -26,30 +26,26 @@ jobs:
   # - Sets up NPM Caching.
   # - Install NPM dependencies.
   # - Get release version.
-  # - Check for Alpha release.
-  # - Check for Beta release.
-  # - Check for Release Candidate release.
+  # - Get release file base name.
   # - Logs debug information.
-  # - Build release:
-  #    - Pre-release.
-  #    - Stable.
+  # - Build release and ZIP.
+  # - WordPress Plugin Deploy.
   # - Add package to GitHub releases.
-
   dist:
     name: "Build distribution release."
     runs-on: ubuntu-latest
     env:
       release: stable
     steps:
-
       - name: "Checks out the repository."
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v4"
 
       - name: "Sets up PHP with Composer."
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
           tools: composer
+          coverage: none
         env:
           COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -59,7 +55,7 @@ jobs:
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: "Sets up Composer Caching."
-        uses: "actions/cache@v3"
+        uses: "actions/cache@v4"
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-php-composer-build-${{ hashFiles('**/composer.lock') }}
@@ -76,9 +72,9 @@ jobs:
           composer install --no-interaction --prefer-dist --no-scripts
 
       - name: "Setup NodeJS."
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
 
       - name: "Get NPM cache directory."
         id: npm-cache-dir
@@ -86,7 +82,7 @@ jobs:
           echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
 
       - name: "Sets up NPM Caching."
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.npm-cache-dir.outputs.dir }}
           key: ${{ runner.os }}-node-npm-build-${{ hashFiles('**/package-lock.json') }}
@@ -117,7 +113,7 @@ jobs:
 
       - name: WordPress Plugin Deploy
         id: deploy
-        uses: 10up/action-wordpress-plugin-deploy@stable
+        uses: 10up/action-wordpress-plugin-deploy@2.2.1
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
@@ -125,9 +121,7 @@ jobs:
           BUILD_DIR: ./build
 
       - name: "Add package to GitHub releases."
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           files: ./deploy/${{ env.release_name }}-${{ env.release_tag }}.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
