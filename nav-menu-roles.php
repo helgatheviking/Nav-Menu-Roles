@@ -37,6 +37,10 @@ if ( ! function_exists( 'is_admin' ) ) {
 // Execute when not already loaded.
 if ( ! class_exists( 'Nav_Menu_Roles' ) ) {
 
+	if ( ! defined( 'NAV_MENU_ROLES_PLUGIN_FILE' ) ) {
+		define( 'NAV_MENU_ROLES_PLUGIN_FILE', __FILE__ );
+	}
+
 	require_once dirname( __FILE__ ) . '/inc/class-nav-menu-roles.php';
 
 	/**

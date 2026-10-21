@@ -5,7 +5,7 @@
  * @package Nav Menu Roles
  *
  * @since 1.0.0
- * @version 2.1.0
+ * @version 3.0.0
  */
 
 // Exit if accessed directly
@@ -87,6 +87,7 @@ class Nav_Menu_Roles {
 		$this->main_file = $file;
 
 		require_once plugin_dir_path( __FILE__ ) . 'customizer.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-nav-menu-roles-blocks.php';
 
 		// Admin functions.
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -387,6 +388,11 @@ class Nav_Menu_Roles {
 
 			<input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
 
+			<label for="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ); ?>">
+				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ); ?>]" id="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ); ?>" <?php checked( '', $logged_in_out ); ?> value="" />
+				<?php esc_html_e( 'Everyone', 'nav-menu-roles' ); ?>
+			</label>
+
 			<label for="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ); ?>">
 				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ); ?>]" id="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ); ?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
 				<?php esc_html_e( 'Logged In Users', 'nav-menu-roles' ); ?>   
@@ -395,11 +401,6 @@ class Nav_Menu_Roles {
 			<label for="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID ); ?>">
 				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ); ?>]" id="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID ); ?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
 				<?php esc_html_e( 'Logged Out Users', 'nav-menu-roles' ); ?>	       
-			</label>
-
-			<label for="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ); ?>">
-				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ); ?>]" id="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ); ?>" <?php checked( '', $logged_in_out ); ?> value="" />
-				<?php esc_html_e( 'Everyone', 'nav-menu-roles' ); ?>
 			</label>
 
 		</fieldset>
@@ -440,7 +441,7 @@ class Nav_Menu_Roles {
 	public function enqueue_scripts( $hook ) {
 		if ( 'nav-menus.php' === $hook ) {
 			
-			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'assets/js/nav-menu-roles.js', $this->main_file ), array( 'jquery' ), self::VERSION, true );
+			wp_enqueue_script( 'nav-menu-roles', $this->plugin_url( 'assets/js/nav-menu-roles.js' ), array( 'jquery' ), self::VERSION, true );
 
 			?>
 			<style>
@@ -583,44 +584,7 @@ class Nav_Menu_Roles {
 
 				// Check any item that has NMR roles set.
 				if ( $visible && isset( $item->roles ) ) {
-
-					// Check all logged in, all logged out, or role.
-					switch ( $item->roles ) {
-						case 'in':
-							/**
-							 * Multisite compatibility.
-							 *
-							 * For the logged in condition to work,
-							 * the user has to be a logged in member of the current blog
-							 * or be a logged in super user.
-							 */
-							$visible = is_user_member_of_blog() || is_super_admin() ? true : false;
-							break;
-						case 'out':
-							/**
-							 * Multisite compatibility.
-							 *
-							 * For the logged out condition to work,
-							 * the user has to be either logged out
-							 * or not be a member of the current blog.
-							 * But they also may not be a super admin,
-							 * because logged in super admins should see the internal stuff, not the external.
-							 */
-							$visible = ! is_user_member_of_blog() && ! is_super_admin() ? true : false;
-							break;
-						default:
-							$visible = false;
-							if ( is_array( $item->roles ) && ! empty( $item->roles ) ) {
-								foreach ( $item->roles as $role ) {
-									if ( current_user_can( $role ) ) {
-										$visible = true;
-										break;
-									}
-								}
-							}
-
-							break;
-					}
+					$visible = $this->is_visible_for_roles( $item->roles );
 				}
 
 				// Invert visibility if display mode is "hide" for items not already hidden as children of hidden parent.
@@ -650,6 +614,81 @@ class Nav_Menu_Roles {
 		return $items;
 	}
 
+	/**
+	 * Check whether the current user can see an item restricted to the given roles.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param  mixed $roles 'in', 'out', an array of role keys, or empty for everyone.
+	 * @return bool
+	 */
+	public function is_visible_for_roles( $roles ) {
+
+		if ( empty( $roles ) ) {
+			return true;
+		}
+
+		// Check all logged in, all logged out, or role.
+		switch ( $roles ) {
+			case 'in':
+				/**
+				 * Multisite compatibility.
+				 *
+				 * For the logged in condition to work,
+				 * the user has to be a logged in member of the current blog
+				 * or be a logged in super user.
+				 */
+				return is_user_member_of_blog() || is_super_admin();
+			case 'out':
+				/**
+				 * Multisite compatibility.
+				 *
+				 * For the logged out condition to work,
+				 * the user has to be either logged out
+				 * or not be a member of the current blog.
+				 * But they also may not be a super admin,
+				 * because logged in super admins should see the internal stuff, not the external.
+				 */
+				return ! is_user_member_of_blog() && ! is_super_admin();
+			default:
+				if ( is_array( $roles ) ) {
+					foreach ( $roles as $role ) {
+						if ( current_user_can( $role ) ) {
+							return true;
+						}
+					}
+				}
+				return false;
+		}
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| Helper Functions.
+	|--------------------------------------------------------------------------
+	*/
+
+	/**
+	 * Get the plugin url.
+	 *
+	 * @param string $path Optional path to append to the plugin url. @since 3.0.0.
+	 * @return string
+	 * @since  3.0.0
+	 */
+	public function plugin_url( $path = '' ) {
+		return untrailingslashit( plugins_url( '/', $this->main_file ) ) . ( $path ? '/' . ltrim( $path, '/' ) : '' );
+	}
+
+	/**
+	 * Get the plugin path.
+	 *
+	 * @param string $path Optional path to append to the plugin path. @since 3.0.0.
+	 * @return string
+	 * @since  3.0.0
+	 */
+	public function plugin_path( $path = '' ) {
+		return untrailingslashit( plugin_dir_path( $this->main_file ) ) . ( $path ? '/' . ltrim( $path, '/' ) : '' );
+	}
 
 	/**
 	 * Maybe upgrade
