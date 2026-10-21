@@ -28,7 +28,7 @@
   "prefer-stable": true,
   "scripts": {
     "makepot-audit": [
-      "wp --allow-root i18n make-pot . languages/nav-menu-roles.pot --slug=nav-menu-roles --exclude=\".github,.wordpress-org,node_modules,vendor,build,deploy\" --headers=\"Report-Msgid-Bugs-To:https://github.com/helgatheviking/Nav-Menu-Roles/issues/\n\""
+      "wp --allow-root i18n make-pot . languages/nav-menu-roles.pot --slug=nav-menu-roles --exclude=\".github,.wordpress-org,node_modules,vendor,build,deploy\" --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/helgatheviking/Nav-Menu-Roles/issues/\"}'"
     ],
     "makepot": [
       "@makepot-audit --skip-audit"
