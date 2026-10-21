@@ -20,9 +20,9 @@
     "source": "https://github.com/helgatheviking/nav-menu-roles"
   },
   "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
     "wp-cli/i18n-command": "^2.6",
-    "wp-coding-standards/wpcs": "^2.3"
+    "wp-coding-standards/wpcs": "^3.1"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
