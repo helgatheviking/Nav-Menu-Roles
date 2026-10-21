@@ -29,6 +29,7 @@ jobs:
   # - Get release file base name.
   # - Logs debug information.
   # - Build release and ZIP.
+  # - Extract changelog for release notes.
   # - WordPress Plugin Deploy.
   # - Add package to GitHub releases.
   dist:
@@ -38,7 +39,7 @@ jobs:
       release: stable
     steps:
       - name: "Checks out the repository."
-        uses: "actions/checkout@v4"
+        uses: "actions/checkout@v6"
 
       - name: "Sets up PHP with Composer."
         uses: shivammathur/setup-php@v2
@@ -111,10 +112,27 @@ jobs:
         run: |
           npm run deploy
 
+      - name: "Extract changelog for release notes."
+        run: |
+          awk -v v="${{ env.release_tag }}" '
+            /^== / { if ( p ) exit }
+            /^= [0-9]/ {
+              if ( p ) exit
+              t = $0; gsub( /^= *| *= *$/, "", t )
+              if ( t == v ) { p = 1; next }
+            }
+            p
+          ' readme.txt > release-notes.md
+          if [ ! -s release-notes.md ]; then
+            echo "::warning::No changelog entry found for ${{ env.release_tag }} in readme.txt."
+          fi
+          cat release-notes.md
+
       - name: "Add package to GitHub releases."
         uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          body_path: release-notes.md
           files: ./deploy/${{ env.release_name }}-${{ env.release_tag }}.zip
 
       - name: WordPress Plugin Deploy
