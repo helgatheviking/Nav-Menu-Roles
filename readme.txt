@@ -48,96 +48,25 @@ Please report any bugs, errors, warnings, code problems to [GitHub](https://gith
 
 == Frequently Asked Questions ==
 
-= I don't see the Nav Menu Roles options in the admin menu items?  =
+= I don't see Appearance > Menus. Where are the settings? =
 
-This is likely due to a conflict with another plugin (or theme).
+Block themes, such as Twenty Twenty-Five, use the Navigation block instead of classic menus, so WordPress hides Appearance > Menus.
 
-As of WordPress 5.4 the `wp_nav_menu_item_custom_fields` hook has been added to WordPress core.
+Since version 3.0.0, the Nav Menu Roles settings are in the Site Editor instead:
 
-Nav Menu Roles is therefore attaching directly to this hook without needing to replace the custom Admin Menu Walker, of which there can still be only one.  If the Walker is replaced by a theme/plugin and the core hook is not included, then Nav Menu Roles cannot add it's fields.
+1. Go to Appearance > Editor > Navigation and edit your menu.
+1. Select a link or submenu.
+1. In the block settings sidebar, open the "Nav Menu Roles" panel.
 
+The settings work the same way as for classic menus. Hiding a submenu also hides all of the links inside it. Links generated automatically by the Page List block cannot be restricted.
 
-**A non-exhaustive list of known conflicts:**
+Classic themes still use Appearance > Menus.
 
-1. UberMenu 2.x Mega Menus plugin (UberMenu 3.x supports NMR!)
-2. Add Descendants As Submenu Items plugin
-3. Navception plugin
-4. Suffusion theme
-5. BeTheme
-6. Yith Menu
-7. Jupiter Theme
-8. iMedica theme
-9. Prostyler EVO theme
-10. Mega Main Plugin
+= I don't see the Nav Menu Roles options in Appearance > Menus? =
 
+Nav Menu Roles adds its options through the `wp_nav_menu_item_custom_fields` hook, which has been part of WordPress since 5.4. If a theme or plugin replaces the menu editor's Walker and leaves that hook out, no plugin can add fields there.
 
-= Workaround #1 =
-[Shazdeh](https://profiles.wordpress.org/shazdeh/) had the genius idea to not wait for a core hook and simply add the hook ourselves. If all plugin and theme authors use the same hook, we can make our plugins play together.
-
-Prior to WordPress 5.4, I used this idea and modified my admin nav menu Walker to *only* adding the following lines (right after the description input):
-
-`
-<?php 
-// Place this in your admin nav menu Walker
-do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args, $id );
-// end added section 
-?>
-` 
-
-Since WordPress 5.4, I no longer replace the Walker at all and would advise other plugins and themes to do the same.
-
-But for those that still are, they definitely need to include the now-core hook.
-
-**Ask your conflicting plugin/theme's author to add this code to their plugin or theme and our plugins will become compatible.**
-
-= Instructions for Patching Your Plugin/Theme =
-
-Should you wish to attempt this patch yourself, you can modify your conflicting plugin/theme's admin menu Walker class. 
-
-**Reminder: I do not provide support for fixing your plugin/theme. If you aren't comfortable with the following instructions, contact the developer of the conflicting plugin/theme!**
-
-  1\. Find the class that extends the `Walker_Nav_Menu`. The fastest way to do this is to search your whole plugin/theme folder for `extends Walker_Nav_Menu`. When you find the file that contains this text you will know which file you need to edit. Once you find it here's what the beginning of that class will look like:
-
-`class YOUR_THEME_CUSTOM_WALKER extends Walker_Nav_Menu {}`
-
-  2\. Find the `start_el()` method
-
-In that file you will eventually see a class method that looks like:
-
-`function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-  // some stuff truncated for brevity
-}
-`
-
-  3\. Paste the action hook somewhere in this method!
-
-In Nav Menu Roles, I have placed the hook directly after the description, like so:
-
-`
-<p class="field-description description description-wide">
-  <label for="edit-menu-item-description-<?php echo $item_id; ?>">
-    <?php _e( 'Description' ); ?><br />
-    <textarea id="edit-menu-item-description-<?php echo $item_id; ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo $item_id; ?>]"><?php echo esc_html( $item->description ); // textarea_escaped ?></textarea>
-    <span class="description"><?php _e('The description will be displayed in the menu if the current theme supports it.'); ?></span>
-  </label>
-</p>
-
-<?php 
-// Add this directly after the description paragraph in the start_el() method
-do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args, $id );
-// end added section 
-?>
-`
-
-= Workaround #2 =
-
-As a workaround, you can switch to a default theme (or disable the conflicting plugin), edit the Nav Menu Roles, for each menu item, then revert to your original theme/ re-enable the conflicting plugin. The front-end functionality of Nav Menu Roles will still work. 
-
-= Workaround #3 =
-
-Only works with WordPress less than 5.4.
-
-Download and install this [tiny plugin](https://gist.github.com/helgatheviking/d00f9c033a4b0aab0f69cf50d7dcd89c). Activate it when you need to make the NMR options appear and then disable it when you are done editing. 
+To check, switch to a default theme and disable other plugins one at a time. If you find the conflict, ask its author to include the core `wp_nav_menu_item_custom_fields` hook. Visibility on the front end still works while the options are missing, so you can also switch themes temporarily to edit the settings, then switch back.
 
 = I'm using XYZ Membership plugin and I don't see its "levels"? =
 
