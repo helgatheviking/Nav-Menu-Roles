@@ -1,0 +1,6 @@
+<wpml-config>
+	<custom-fields>
+		<custom-field action="copy-once">_nav_menu_role</custom-field>
+		<custom-field action="copy-once">_nav_menu_role_display_mode</custom-field>
+	</custom-fields>
+</wpml-config>
