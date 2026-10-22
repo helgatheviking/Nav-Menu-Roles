@@ -196,6 +196,11 @@ Yes, but manually. WPML developers have informed me that the meta data for nav m
 
 == Changelog ==
 
+= 3.0.0 =
+* Requires: PHP 7.4 and WordPress 6.6
+* New: Add support for block themes and the Navigation block.
+* New: Add wpml-config.xml
+
 = 2.1.3 = 
 * Requires: PHP 7.4 and WordPress 6.3
 * Fix: RTL layout style.
