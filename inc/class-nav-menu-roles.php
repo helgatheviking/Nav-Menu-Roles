@@ -286,19 +286,14 @@ class Nav_Menu_Roles {
 	 * Override the Admin Menu Walker
 	 *
 	 * @since 1.0
+	 * @deprecated 3.0.0 Fields are added via the core wp_nav_menu_item_custom_fields hook.
+	 *
+	 * @param string $walker The walker class name.
+	 * @return string The unchanged walker class name.
 	 */
 	public function edit_nav_menu_walker( $walker ) {
-		if ( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ) {
-
-			if ( self::is_wp_gte( '4.7' ) ) {
-				require_once plugin_dir_path( __FILE__ ) . 'class-walker-nav-menu-edit-roles-4.7.php';
-			} elseif ( self::is_wp_gte( '4.5' ) ) {
-				require_once plugin_dir_path( __FILE__ ) . 'class-walker-nav-menu-edit-roles-4.5.php';
-			} else {
-				require_once plugin_dir_path( __FILE__ ) . 'class-walker-nav-menu-edit-roles.php';
-			}
-		}
-		return 'Walker_Nav_Menu_Edit_Roles';
+		_deprecated_function( __METHOD__, '3.0.0' );
+		return $walker;
 	}
 
 	/**
@@ -703,10 +698,13 @@ class Nav_Menu_Roles {
 	/**
 	 * Test WordPress version
 	 *
+	 * @deprecated 3.0.0
+	 *
 	 * @param  string $version - A WordPress version to compare against current version.
 	 * @return boolean
 	 */
 	public static function is_wp_gte( $version = '5.4' ) {
+		_deprecated_function( __METHOD__, '3.0.0', 'version_compare()' );
 		global $wp_version;
 		return version_compare( strtolower( $wp_version ), strtolower( $version ), '>=' );
 	}
