@@ -54,7 +54,7 @@ jobs:
           node-version: '24'
 
       - name: "Install NPM dependencies."
-        run: npm install
+        run: npm ci
 
       - name: "Get release version."
         run: |
