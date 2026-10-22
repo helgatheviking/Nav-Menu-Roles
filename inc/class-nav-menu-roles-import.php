@@ -208,7 +208,7 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 			foreach ( $this->posts as $post ) {
 
 				// we only want to deal with the nav_menu_item posts
-				if ( 'nav_menu_item' != $post['post_type'] || ! empty( $post['post_id'] ) ) {
+				if ( 'nav_menu_item' !== $post['post_type'] || ! empty( $post['post_id'] ) ) {
 					continue;
 				}
 
@@ -313,7 +313,5 @@ if ( class_exists( 'WP_Importer' ) && ! class_exists( 'Nav_Menu_Roles_Import' ) 
 		public function cmpr_strlen( $a, $b ) {
 			return strlen( $b ) - strlen( $a );
 		}
-
-
 	} // end class
 } // end if

@@ -41,7 +41,7 @@ if ( ! class_exists( 'Nav_Menu_Roles' ) ) {
 		define( 'NAV_MENU_ROLES_PLUGIN_FILE', __FILE__ );
 	}
 
-	require_once dirname( __FILE__ ) . '/inc/class-nav-menu-roles.php';
+	require_once __DIR__ . '/inc/class-nav-menu-roles.php';
 
 	/**
 	 * Launch the whole plugin

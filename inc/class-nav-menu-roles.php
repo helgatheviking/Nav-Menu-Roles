@@ -22,7 +22,7 @@ class Nav_Menu_Roles {
 	 * @var Nav_Menu_Roles The single instance of the class
 	 * @since 1.5
 	 */
-	protected static $_instance = null;
+	protected static $instance = null;
 
 	/**
 	 * @var string Path to main plugin file.
@@ -53,10 +53,10 @@ class Nav_Menu_Roles {
 	 * @return Nav_Menu_Roles - Main instance
 	 */
 	public static function instance( $file ) {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self( $file );
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self( $file );
 		}
-		return self::$_instance;
+		return self::$instance;
 	}
 
 	/**
@@ -121,17 +121,15 @@ class Nav_Menu_Roles {
 
 		// Upgrade routine.
 		add_action( 'plugins_loaded', array( $this, 'maybe_upgrade' ) );
-
 	}
 
 	/**
-	 * Include the custom admin walker
+	 * Admin init.
 	 */
 	public function admin_init() {
 
 		// Register Importer.
 		$this->register_importer();
-
 	}
 
 
@@ -150,7 +148,6 @@ class Nav_Menu_Roles {
 			register_importer( 'nav_menu_roles', __( 'Nav Menu Roles', 'nav-menu-roles' ), __( 'Import <strong>nav menu roles</strong> and other menu item meta skipped by the default importer', 'nav-menu-roles' ), array( $roles_import, 'dispatch' ) );
 
 		}
-
 	}
 
 	/**
@@ -217,7 +214,7 @@ class Nav_Menu_Roles {
 			// Only save allowed roles.
 			$clean = array_intersect( $meta_value, array_keys( $allowed_roles ) );
 
-		} elseif ( in_array( $meta_value, array( 'in', 'out' ) ) ) {
+		} elseif ( in_array( $meta_value, array( 'in', 'out' ), true ) ) {
 			$clean = $meta_value;
 		}
 
@@ -285,7 +282,6 @@ class Nav_Menu_Roles {
 		return $plugin_meta;
 	}
 
-
 	/**
 	 * Override the Admin Menu Walker
 	 *
@@ -305,15 +301,17 @@ class Nav_Menu_Roles {
 		return 'Walker_Nav_Menu_Edit_Roles';
 	}
 
-
 	/**
-	 * Add fields to hook added in Walker
-	 * This will allow us to play nicely with any other plugin that is adding the same hook
-	 * @params obj $item - the menu item
-	 * @params array $args
+	 * Add fields to the wp_nav_menu_item_custom_fields hook.
+	 *
 	 * @since 1.6.0
+	 *
+	 * @param int      $item_id Menu item ID.
+	 * @param WP_Post  $item    Menu item data object.
+	 * @param int      $depth   Depth of menu item. Not used.
+	 * @param stdClass $args    An object of menu item arguments. Not used.
 	 */
-	public function custom_fields( $item_id, $item, $depth, $args ) {
+	public function custom_fields( $item_id, $item, $depth, $args ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 		global $wp_roles;
 
 		/**
@@ -416,13 +414,13 @@ class Nav_Menu_Roles {
 			foreach ( $display_roles as $role => $name ) {
 
 				/* If the role has been selected, make sure it's checked. */
-				$checked = checked( true, ( is_array( $checked_roles ) && in_array( $role, $checked_roles ) ), false );
+				$checked = checked( true, ( is_array( $checked_roles ) && in_array( (string) $role, $checked_roles, true ) ), false );
 				?>
 
 				<label for="nav_menu_role-<?php echo esc_attr( $role ); ?>-for-<?php echo esc_attr( $item->ID ); ?>">
 					<input type="checkbox" name="nav-menu-role[<?php echo esc_attr( $item->ID ); ?>][<?php echo esc_attr( $i ); ?>]" id="nav_menu_role-<?php echo esc_attr( $role ); ?>-for-<?php echo esc_attr( $item->ID ); ?>" <?php echo esc_attr( $checked ); ?> value="<?php echo esc_attr( $role ); ?>" />
 					<?php echo esc_html( $name ); ?>
-					<?php $i++; ?>
+					<?php ++$i; ?>
 				</label>
 
 		<?php } ?>
@@ -440,7 +438,7 @@ class Nav_Menu_Roles {
 	 */
 	public function enqueue_scripts( $hook ) {
 		if ( 'nav-menus.php' === $hook ) {
-			
+
 			wp_enqueue_script( 'nav-menu-roles', $this->plugin_url( 'assets/js/nav-menu-roles.js' ), array( 'jquery' ), self::VERSION, true );
 
 			?>
@@ -577,7 +575,7 @@ class Nav_Menu_Roles {
 				$is_hidden_child = false;
 
 				// Hide any item that is the child of a hidden item.
-				if ( ! empty( $item->menu_item_parent ) && in_array( $item->menu_item_parent, $hide_children_of ) ) {
+				if ( ! empty( $item->menu_item_parent ) && in_array( (int) $item->menu_item_parent, $hide_children_of, true ) ) {
 					$visible         = false;
 					$is_hidden_child = true;
 				}
@@ -604,7 +602,7 @@ class Nav_Menu_Roles {
 				// Unset non-visible item.
 				if ( ! $visible ) {
 					if ( isset( $item->ID ) ) {
-						$hide_children_of[] = $item->ID; // Store ID of item to hide it's children.
+						$hide_children_of[] = (int) $item->ID; // Store ID of item to hide it's children.
 					}
 					unset( $items[ $key ] );
 				}
@@ -712,5 +710,4 @@ class Nav_Menu_Roles {
 		global $wp_version;
 		return version_compare( strtolower( $wp_version ), strtolower( $version ), '>=' );
 	}
-
 } // End class.
