@@ -147,6 +147,21 @@ module.exports = function (grunt) {
 					},
 					],
 				},
+				// Only the project's own version, not the versions of its dependencies.
+				lock: {
+					src: ["package-lock.json"],
+					overwrite: true,
+					replacements: [
+					{
+						from: /^(\{\s*"name": "[^"]+",\s*"version": )"[^"]*"/,
+						to: '$1"<%= pkg.version %>"',
+					},
+					{
+						from: /("": \{\s*"name": "[^"]+",\s*"version": )"[^"]*"/,
+						to: '$1"<%= pkg.version %>"',
+					},
+					],
+				},
 			},
 		}
 	);
