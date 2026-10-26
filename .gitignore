@@ -10,7 +10,6 @@ Thumbs.db
 *.transifexrc
 
 # Packages
-package-lock.json
 node_modules/
 composer.lock
 vendor/

@@ -106,7 +106,7 @@ function customizer_scripts() {
 	$script_dependencies = include plugin_dir_path( __DIR__ ) . '/assets/js/customizer/controls.asset.php';
 	wp_enqueue_script(
 		'customize-nav-menu-roles',
-		plugins_url( 'assets/js/customizer/controls.js', dirname( __FILE__ ) ),
+		plugins_url( 'assets/js/customizer/controls.js', __DIR__ ),
 		array_merge( array( 'customize-nav-menus' ), $script_dependencies['dependencies'] ),
 		$script_dependencies['version'],
 		true
@@ -195,7 +195,6 @@ function preview_nav_menu_setting_postmeta( WP_Customize_Nav_Menu_Item_Setting $
 		);
 
 	}
-
 }
 
 /**

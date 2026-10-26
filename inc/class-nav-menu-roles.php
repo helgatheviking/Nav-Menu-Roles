@@ -5,7 +5,7 @@
  * @package Nav Menu Roles
  *
  * @since 1.0.0
- * @version 2.1.0
+ * @version 3.0.0
  */
 
 // Exit if accessed directly
@@ -22,7 +22,7 @@ class Nav_Menu_Roles {
 	 * @var Nav_Menu_Roles The single instance of the class
 	 * @since 1.5
 	 */
-	protected static $_instance = null;
+	protected static $instance = null;
 
 	/**
 	 * @var string Path to main plugin file.
@@ -40,7 +40,7 @@ class Nav_Menu_Roles {
 	* @constant string version number
 	* @since 1.7.0
 	*/
-	const VERSION = '2.1.3';
+	const VERSION = '3.0.0';
 
 	/**
 	 * Main Nav Menu Roles Instance
@@ -53,10 +53,10 @@ class Nav_Menu_Roles {
 	 * @return Nav_Menu_Roles - Main instance
 	 */
 	public static function instance( $file ) {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self( $file );
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self( $file );
 		}
-		return self::$_instance;
+		return self::$instance;
 	}
 
 	/**
@@ -87,6 +87,7 @@ class Nav_Menu_Roles {
 		$this->main_file = $file;
 
 		require_once plugin_dir_path( __FILE__ ) . 'customizer.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-nav-menu-roles-blocks.php';
 
 		// Admin functions.
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -120,17 +121,15 @@ class Nav_Menu_Roles {
 
 		// Upgrade routine.
 		add_action( 'plugins_loaded', array( $this, 'maybe_upgrade' ) );
-
 	}
 
 	/**
-	 * Include the custom admin walker
+	 * Admin init.
 	 */
 	public function admin_init() {
 
 		// Register Importer.
 		$this->register_importer();
-
 	}
 
 
@@ -149,7 +148,6 @@ class Nav_Menu_Roles {
 			register_importer( 'nav_menu_roles', __( 'Nav Menu Roles', 'nav-menu-roles' ), __( 'Import <strong>nav menu roles</strong> and other menu item meta skipped by the default importer', 'nav-menu-roles' ), array( $roles_import, 'dispatch' ) );
 
 		}
-
 	}
 
 	/**
@@ -216,7 +214,7 @@ class Nav_Menu_Roles {
 			// Only save allowed roles.
 			$clean = array_intersect( $meta_value, array_keys( $allowed_roles ) );
 
-		} elseif ( in_array( $meta_value, array( 'in', 'out' ) ) ) {
+		} elseif ( in_array( $meta_value, array( 'in', 'out' ), true ) ) {
 			$clean = $meta_value;
 		}
 
@@ -284,35 +282,31 @@ class Nav_Menu_Roles {
 		return $plugin_meta;
 	}
 
-
 	/**
 	 * Override the Admin Menu Walker
 	 *
 	 * @since 1.0
+	 * @deprecated 3.0.0 Fields are added via the core wp_nav_menu_item_custom_fields hook.
+	 *
+	 * @param string $walker The walker class name.
+	 * @return string The unchanged walker class name.
 	 */
 	public function edit_nav_menu_walker( $walker ) {
-		if ( ! class_exists( 'Walker_Nav_Menu_Edit_Roles' ) ) {
-
-			if ( self::is_wp_gte( '4.7' ) ) {
-				require_once plugin_dir_path( __FILE__ ) . 'class-walker-nav-menu-edit-roles-4.7.php';
-			} elseif ( self::is_wp_gte( '4.5' ) ) {
-				require_once plugin_dir_path( __FILE__ ) . 'class-walker-nav-menu-edit-roles-4.5.php';
-			} else {
-				require_once plugin_dir_path( __FILE__ ) . 'class-walker-nav-menu-edit-roles.php';
-			}
-		}
-		return 'Walker_Nav_Menu_Edit_Roles';
+		_deprecated_function( __METHOD__, '3.0.0' );
+		return $walker;
 	}
 
-
 	/**
-	 * Add fields to hook added in Walker
-	 * This will allow us to play nicely with any other plugin that is adding the same hook
-	 * @params obj $item - the menu item
-	 * @params array $args
+	 * Add fields to the wp_nav_menu_item_custom_fields hook.
+	 *
 	 * @since 1.6.0
+	 *
+	 * @param int      $item_id Menu item ID.
+	 * @param WP_Post  $item    Menu item data object.
+	 * @param int      $depth   Depth of menu item. Not used.
+	 * @param stdClass $args    An object of menu item arguments. Not used.
 	 */
-	public function custom_fields( $item_id, $item, $depth, $args ) {
+	public function custom_fields( $item_id, $item, $depth, $args ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 		global $wp_roles;
 
 		/**
@@ -387,6 +381,11 @@ class Nav_Menu_Roles {
 
 			<input type="hidden" class="nav-menu-id" value="<?php echo esc_attr( $item->ID ); ?>" />
 
+			<label for="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ); ?>">
+				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ); ?>]" id="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ); ?>" <?php checked( '', $logged_in_out ); ?> value="" />
+				<?php esc_html_e( 'Everyone', 'nav-menu-roles' ); ?>
+			</label>
+
 			<label for="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ); ?>">
 				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ); ?>]" id="nav_menu_logged_in-for-<?php echo esc_attr( $item->ID ); ?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
 				<?php esc_html_e( 'Logged In Users', 'nav-menu-roles' ); ?>   
@@ -395,11 +394,6 @@ class Nav_Menu_Roles {
 			<label for="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID ); ?>">
 				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ); ?>]" id="nav_menu_logged_out-for-<?php echo esc_attr( $item->ID ); ?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
 				<?php esc_html_e( 'Logged Out Users', 'nav-menu-roles' ); ?>	       
-			</label>
-
-			<label for="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ); ?>">
-				<input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo esc_attr( $item->ID ); ?>]" id="nav_menu_by_role-for-<?php echo esc_attr( $item->ID ); ?>" <?php checked( '', $logged_in_out ); ?> value="" />
-				<?php esc_html_e( 'Everyone', 'nav-menu-roles' ); ?>
 			</label>
 
 		</fieldset>
@@ -415,13 +409,13 @@ class Nav_Menu_Roles {
 			foreach ( $display_roles as $role => $name ) {
 
 				/* If the role has been selected, make sure it's checked. */
-				$checked = checked( true, ( is_array( $checked_roles ) && in_array( $role, $checked_roles ) ), false );
+				$checked = checked( true, ( is_array( $checked_roles ) && in_array( (string) $role, $checked_roles, true ) ), false );
 				?>
 
 				<label for="nav_menu_role-<?php echo esc_attr( $role ); ?>-for-<?php echo esc_attr( $item->ID ); ?>">
 					<input type="checkbox" name="nav-menu-role[<?php echo esc_attr( $item->ID ); ?>][<?php echo esc_attr( $i ); ?>]" id="nav_menu_role-<?php echo esc_attr( $role ); ?>-for-<?php echo esc_attr( $item->ID ); ?>" <?php echo esc_attr( $checked ); ?> value="<?php echo esc_attr( $role ); ?>" />
 					<?php echo esc_html( $name ); ?>
-					<?php $i++; ?>
+					<?php ++$i; ?>
 				</label>
 
 		<?php } ?>
@@ -439,8 +433,8 @@ class Nav_Menu_Roles {
 	 */
 	public function enqueue_scripts( $hook ) {
 		if ( 'nav-menus.php' === $hook ) {
-			
-			wp_enqueue_script( 'nav-menu-roles', plugins_url( 'assets/js/nav-menu-roles.js', $this->main_file ), array( 'jquery' ), self::VERSION, true );
+
+			wp_enqueue_script( 'nav-menu-roles', $this->plugin_url( 'assets/js/nav-menu-roles.js' ), array( 'jquery' ), self::VERSION, true );
 
 			?>
 			<style>
@@ -576,51 +570,14 @@ class Nav_Menu_Roles {
 				$is_hidden_child = false;
 
 				// Hide any item that is the child of a hidden item.
-				if ( ! empty( $item->menu_item_parent ) && in_array( $item->menu_item_parent, $hide_children_of ) ) {
+				if ( ! empty( $item->menu_item_parent ) && in_array( (int) $item->menu_item_parent, $hide_children_of, true ) ) {
 					$visible         = false;
 					$is_hidden_child = true;
 				}
 
 				// Check any item that has NMR roles set.
 				if ( $visible && isset( $item->roles ) ) {
-
-					// Check all logged in, all logged out, or role.
-					switch ( $item->roles ) {
-						case 'in':
-							/**
-							 * Multisite compatibility.
-							 *
-							 * For the logged in condition to work,
-							 * the user has to be a logged in member of the current blog
-							 * or be a logged in super user.
-							 */
-							$visible = is_user_member_of_blog() || is_super_admin() ? true : false;
-							break;
-						case 'out':
-							/**
-							 * Multisite compatibility.
-							 *
-							 * For the logged out condition to work,
-							 * the user has to be either logged out
-							 * or not be a member of the current blog.
-							 * But they also may not be a super admin,
-							 * because logged in super admins should see the internal stuff, not the external.
-							 */
-							$visible = ! is_user_member_of_blog() && ! is_super_admin() ? true : false;
-							break;
-						default:
-							$visible = false;
-							if ( is_array( $item->roles ) && ! empty( $item->roles ) ) {
-								foreach ( $item->roles as $role ) {
-									if ( current_user_can( $role ) ) {
-										$visible = true;
-										break;
-									}
-								}
-							}
-
-							break;
-					}
+					$visible = $this->is_visible_for_roles( $item->roles );
 				}
 
 				// Invert visibility if display mode is "hide" for items not already hidden as children of hidden parent.
@@ -640,7 +597,7 @@ class Nav_Menu_Roles {
 				// Unset non-visible item.
 				if ( ! $visible ) {
 					if ( isset( $item->ID ) ) {
-						$hide_children_of[] = $item->ID; // Store ID of item to hide it's children.
+						$hide_children_of[] = (int) $item->ID; // Store ID of item to hide it's children.
 					}
 					unset( $items[ $key ] );
 				}
@@ -650,6 +607,81 @@ class Nav_Menu_Roles {
 		return $items;
 	}
 
+	/**
+	 * Check whether the current user can see an item restricted to the given roles.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param  mixed $roles 'in', 'out', an array of role keys, or empty for everyone.
+	 * @return bool
+	 */
+	public function is_visible_for_roles( $roles ) {
+
+		if ( empty( $roles ) ) {
+			return true;
+		}
+
+		// Check all logged in, all logged out, or role.
+		switch ( $roles ) {
+			case 'in':
+				/**
+				 * Multisite compatibility.
+				 *
+				 * For the logged in condition to work,
+				 * the user has to be a logged in member of the current blog
+				 * or be a logged in super user.
+				 */
+				return is_user_member_of_blog() || is_super_admin();
+			case 'out':
+				/**
+				 * Multisite compatibility.
+				 *
+				 * For the logged out condition to work,
+				 * the user has to be either logged out
+				 * or not be a member of the current blog.
+				 * But they also may not be a super admin,
+				 * because logged in super admins should see the internal stuff, not the external.
+				 */
+				return ! is_user_member_of_blog() && ! is_super_admin();
+			default:
+				if ( is_array( $roles ) ) {
+					foreach ( $roles as $role ) {
+						if ( current_user_can( $role ) ) {
+							return true;
+						}
+					}
+				}
+				return false;
+		}
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| Helper Functions.
+	|--------------------------------------------------------------------------
+	*/
+
+	/**
+	 * Get the plugin url.
+	 *
+	 * @param string $path Optional path to append to the plugin url. @since 3.0.0.
+	 * @return string
+	 * @since  3.0.0
+	 */
+	public function plugin_url( $path = '' ) {
+		return untrailingslashit( plugins_url( '/', $this->main_file ) ) . ( $path ? '/' . ltrim( $path, '/' ) : '' );
+	}
+
+	/**
+	 * Get the plugin path.
+	 *
+	 * @param string $path Optional path to append to the plugin path. @since 3.0.0.
+	 * @return string
+	 * @since  3.0.0
+	 */
+	public function plugin_path( $path = '' ) {
+		return untrailingslashit( plugin_dir_path( $this->main_file ) ) . ( $path ? '/' . ltrim( $path, '/' ) : '' );
+	}
 
 	/**
 	 * Maybe upgrade
@@ -666,12 +698,14 @@ class Nav_Menu_Roles {
 	/**
 	 * Test WordPress version
 	 *
+	 * @deprecated 3.0.0
+	 *
 	 * @param  string $version - A WordPress version to compare against current version.
 	 * @return boolean
 	 */
 	public static function is_wp_gte( $version = '5.4' ) {
+		_deprecated_function( __METHOD__, '3.0.0', 'version_compare()' );
 		global $wp_version;
 		return version_compare( strtolower( $wp_version ), strtolower( $version ), '>=' );
 	}
-
 } // End class.

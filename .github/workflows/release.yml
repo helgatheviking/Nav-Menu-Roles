@@ -1,5 +1,5 @@
 # Add build zip to GitHub releases.
-# Version: 1.2.0
+# Version: 1.3.0
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: Release
 on:
@@ -16,82 +16,45 @@ jobs:
   #
   # Performs the following steps:
   # - Checks out the repository.
-  # - Sets up PHP with Composer.
-  # - Get Composer Cache Directory.
-  # - Sets up Composer Caching.
+  # - Sets up PHP with Composer and WP-CLI.
   # - Logs debug information.
-  # - Install Composer dependencies with development dependencies.
   # - Setup NodeJS.
-  # - Get NPM cache directory.
-  # - Sets up NPM Caching.
   # - Install NPM dependencies.
   # - Get release version.
   # - Get release file base name.
+  # - Check for a pre-release version.
   # - Logs debug information.
   # - Build release and ZIP.
   # - Extract changelog for release notes.
-  # - WordPress Plugin Deploy.
   # - Add package to GitHub releases.
+  # - WordPress Plugin Deploy (stable releases only).
   dist:
     name: "Build distribution release."
     runs-on: ubuntu-latest
-    env:
-      release: stable
     steps:
       - name: "Checks out the repository."
-        uses: "actions/checkout@v6"
+        uses: "actions/checkout@v7"
 
-      - name: "Sets up PHP with Composer."
+      - name: "Sets up PHP with Composer and WP-CLI."
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
-          tools: composer
+          php-version: '8.3'
+          tools: composer, wp-cli
           coverage: none
-        env:
-          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: "Get Composer Cache Directory."
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: "Sets up Composer Caching."
-        uses: "actions/cache@v4"
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-php-composer-build-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-composer-build-
 
       - name: "Logs debug information."
         run: |
           php --version
           composer --version
-
-      - name: "Install Composer dependencies with development dependencies."
-        run: |
-          composer install --no-interaction --prefer-dist --no-scripts
+          wp --version --allow-root
 
       - name: "Setup NodeJS."
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: '20'
-
-      - name: "Get NPM cache directory."
-        id: npm-cache-dir
-        run: |
-          echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-
-      - name: "Sets up NPM Caching."
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-npm-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-npm-build-
+          node-version: '24'
 
       - name: "Install NPM dependencies."
-        run: npm install
+        run: npm ci
 
       - name: "Get release version."
         run: |
@@ -101,12 +64,22 @@ jobs:
         run: |
           echo "release_name=$(node -p -e "require('./package.json').name")" >> $GITHUB_ENV
 
+      - name: "Check for a pre-release version."
+        run: |
+          # Versions such as 3.0.0-beta.1 are pre-releases.
+          if [[ "${{ env.release_tag }}" == *-* ]]; then
+            echo "prerelease=true" >> $GITHUB_ENV
+          else
+            echo "prerelease=false" >> $GITHUB_ENV
+          fi
+
       - name: "Logs debug information."
         run: |
           node --version
           npm --version
           echo ${{ env.release_tag }}
-          echo ${{ env.release_status }}
+          echo ${{ env.release_name }}
+          echo "prerelease: ${{ env.prerelease }}"
 
       - name: "Build release and ZIP"
         run: |
@@ -114,29 +87,40 @@ jobs:
 
       - name: "Extract changelog for release notes."
         run: |
-          awk -v v="${{ env.release_tag }}" '
-            /^== / { if ( p ) exit }
-            /^= [0-9]/ {
-              if ( p ) exit
-              t = $0; gsub( /^= *| *= *$/, "", t )
-              if ( t == v ) { p = 1; next }
-            }
-            p
-          ' readme.txt > release-notes.md
+          # Use the entry for this version, or for a pre-release fall back to
+          # the entry for the version it precedes (3.0.0-beta.1 => 3.0.0).
+          extract() {
+            awk -v v="$1" '
+              /^== / { if ( p ) exit }
+              /^= [0-9]/ {
+                if ( p ) exit
+                t = $0; gsub( /^= *| *= *$/, "", t )
+                if ( t == v ) { p = 1; next }
+              }
+              p
+            ' readme.txt
+          }
+          extract "$release_tag" > release-notes.md
           if [ ! -s release-notes.md ]; then
-            echo "::warning::No changelog entry found for ${{ env.release_tag }} in readme.txt."
+            base="${release_tag%%-*}"
+            [ "$base" != "$release_tag" ] && extract "$base" > release-notes.md
+          fi
+          if [ ! -s release-notes.md ]; then
+            echo "::warning::No changelog entry found for $release_tag in readme.txt."
           fi
           cat release-notes.md
 
       - name: "Add package to GitHub releases."
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body_path: release-notes.md
+          prerelease: ${{ env.prerelease }}
           files: ./deploy/${{ env.release_name }}-${{ env.release_tag }}.zip
 
       - name: WordPress Plugin Deploy
         id: deploy
+        if: env.prerelease == 'false'
         uses: 10up/action-wordpress-plugin-deploy@2.3.0
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}

@@ -8,6 +8,9 @@ module.exports = function (grunt) {
 	// load most all grunt tasks
 	require( "load-grunt-tasks" )( grunt );
 
+	var pkg          = grunt.file.readJSON( "package.json" );
+	var isPrerelease = pkg.version.indexOf( "-" ) !== -1;
+
 	// Project configuration.
 	grunt.initConfig(
 		{
@@ -117,13 +120,18 @@ module.exports = function (grunt) {
 					src: ["readme.txt", "readme.md", "<%= pkg.name %>.php", "inc/class-<%= pkg.name %>.php"],
 					overwrite: true,
 					replacements: [
+					// Pre-releases (e.g. 3.0.0-beta.1) must not become the WordPress.org stable tag.
 					{
 						from: /\*\*Stable tag:\*\* .*/,
-						to: "**Stable tag:** <%= pkg.version %>  ",
+						to: function ( match ) {
+							return isPrerelease ? match : "**Stable tag:** " + pkg.version + "  ";
+						},
 					},
 					{
 						from: /Stable tag: .*/,
-						to: "Stable tag: <%= pkg.version %>",
+						to: function ( match ) {
+							return isPrerelease ? match : "Stable tag: " + pkg.version;
+						},
 					},
 					{
 						from: /Version:.*/,
@@ -136,6 +144,21 @@ module.exports = function (grunt) {
 					{
 						from: /const VERSION = \'.*/,
 						to: "const VERSION = '<%= pkg.version %>';",
+					},
+					],
+				},
+				// Only the project's own version, not the versions of its dependencies.
+				lock: {
+					src: ["package-lock.json"],
+					overwrite: true,
+					replacements: [
+					{
+						from: /^(\{\s*"name": "[^"]+",\s*"version": )"[^"]*"/,
+						to: '$1"<%= pkg.version %>"',
+					},
+					{
+						from: /("": \{\s*"name": "[^"]+",\s*"version": )"[^"]*"/,
+						to: '$1"<%= pkg.version %>"',
 					},
 					],
 				},
