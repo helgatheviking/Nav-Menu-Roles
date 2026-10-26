@@ -40,7 +40,7 @@ class Nav_Menu_Roles {
 	* @constant string version number
 	* @since 1.7.0
 	*/
-	const VERSION = '3.0.0-beta.2';
+	const VERSION = '3.0.0';
 
 	/**
 	 * Main Nav Menu Roles Instance

@@ -6,7 +6,7 @@ Tags: menu, menus, nav menu, nav menus
 Requires at least: 6.6.0
 Tested up to: 7.1.0
 Requires PHP: 7.4
-Stable tag: 2.1.3
+Stable tag: 3.0.0
 License: GPLv3
 
 Hide custom menu items based on user roles.
