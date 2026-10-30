@@ -262,4 +262,4 @@ However, the Import plugin only imports certain post meta for menu items. As of 
 
 ### Is Nav Menu Roles compatible with WPML ?
 
-Yes, but manually. WPML developers have informed me that the meta data for nav menu items is **not** synced by WPML, meaning that menus copied into a new language will not bring their custom Nav Menu Roles settings. However, if you manually reconfigure the settings, the new language menu will work as expected.
+Yes. When you sync a menu with WPML's WP Menus Sync, the translated menu items get the same role rules. A rule you change on a translated item stays when you sync again. Translated Navigation blocks keep their rules too.
